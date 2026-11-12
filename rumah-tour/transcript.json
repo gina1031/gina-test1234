@@ -1,0 +1,673 @@
+[
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 0.0,
+  "end": 2.74,
+  "text": " Nak rumah corner lot dengan tanah tepi yang luas?",
+  "words": [
+   {
+    "w": " Nak",
+    "s": 0.0,
+    "e": 0.3
+   },
+   {
+    "w": " rumah",
+    "s": 0.3,
+    "e": 0.58
+   },
+   {
+    "w": " corner",
+    "s": 0.58,
+    "e": 0.92
+   },
+   {
+    "w": " lot",
+    "s": 0.92,
+    "e": 1.08
+   },
+   {
+    "w": " dengan",
+    "s": 1.08,
+    "e": 1.38
+   },
+   {
+    "w": " tanah",
+    "s": 1.38,
+    "e": 1.66
+   },
+   {
+    "w": " tepi",
+    "s": 1.66,
+    "e": 1.94
+   },
+   {
+    "w": " yang",
+    "s": 1.94,
+    "e": 2.18
+   },
+   {
+    "w": " luas?",
+    "s": 2.18,
+    "e": 2.74
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 3.0,
+  "end": 5.36,
+  "text": " Jom tengok rumah setingkat di Lombong Besi 2,",
+  "words": [
+   {
+    "w": " Jom",
+    "s": 3.0,
+    "e": 3.2
+   },
+   {
+    "w": " tengok",
+    "s": 3.2,
+    "e": 3.48
+   },
+   {
+    "w": " rumah",
+    "s": 3.48,
+    "e": 3.76
+   },
+   {
+    "w": " setingkat",
+    "s": 3.76,
+    "e": 4.26
+   },
+   {
+    "w": " di",
+    "s": 4.26,
+    "e": 4.5
+   },
+   {
+    "w": " Lombong",
+    "s": 4.5,
+    "e": 4.76
+   },
+   {
+    "w": " Besi",
+    "s": 4.76,
+    "e": 5.12
+   },
+   {
+    "w": " 2,",
+    "s": 5.12,
+    "e": 5.36
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 5.6,
+  "end": 7.52,
+  "text": " seksyen 29 Syah Alam.",
+  "words": [
+   {
+    "w": " seksyen",
+    "s": 5.6,
+    "e": 5.88
+   },
+   {
+    "w": " 29",
+    "s": 5.88,
+    "e": 6.46
+   },
+   {
+    "w": " Syah",
+    "s": 6.46,
+    "e": 6.92
+   },
+   {
+    "w": " Alam.",
+    "s": 6.92,
+    "e": 7.52
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 7.74,
+  "end": 10.72,
+  "text": " Rumah ini ada 3 bilik tidur dan 2 bilik air.",
+  "words": [
+   {
+    "w": " Rumah",
+    "s": 7.74,
+    "e": 7.96
+   },
+   {
+    "w": " ini",
+    "s": 7.96,
+    "e": 8.18
+   },
+   {
+    "w": " ada",
+    "s": 8.18,
+    "e": 8.44
+   },
+   {
+    "w": " 3",
+    "s": 8.44,
+    "e": 8.86
+   },
+   {
+    "w": " bilik",
+    "s": 8.86,
+    "e": 9.12
+   },
+   {
+    "w": " tidur",
+    "s": 9.12,
+    "e": 9.5
+   },
+   {
+    "w": " dan",
+    "s": 9.5,
+    "e": 9.76
+   },
+   {
+    "w": " 2",
+    "s": 9.76,
+    "e": 10.1
+   },
+   {
+    "w": " bilik",
+    "s": 10.1,
+    "e": 10.36
+   },
+   {
+    "w": " air.",
+    "s": 10.36,
+    "e": 10.72
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 11.06,
+  "end": 11.92,
+  "text": " Yang paling best,",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 11.06,
+    "e": 11.18
+   },
+   {
+    "w": " paling",
+    "s": 11.18,
+    "e": 11.56
+   },
+   {
+    "w": " best,",
+    "s": 11.56,
+    "e": 11.92
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 12.12,
+  "end": 16.1,
+  "text": " keluasan tanah sampai 4,102 kaki persegi.",
+  "words": [
+   {
+    "w": " keluasan",
+    "s": 12.12,
+    "e": 12.46
+   },
+   {
+    "w": " tanah",
+    "s": 12.46,
+    "e": 12.86
+   },
+   {
+    "w": " sampai",
+    "s": 12.86,
+    "e": 13.36
+   },
+   {
+    "w": " 4",
+    "s": 13.36,
+    "e": 14.12
+   },
+   {
+    "w": ",102",
+    "s": 14.12,
+    "e": 14.98
+   },
+   {
+    "w": " kaki",
+    "s": 14.98,
+    "e": 15.26
+   },
+   {
+    "w": " persegi.",
+    "s": 15.26,
+    "e": 16.1
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 16.32,
+  "end": 18.44,
+  "text": " Bahagian tepi rumah ini memang luas.",
+  "words": [
+   {
+    "w": " Bahagian",
+    "s": 16.32,
+    "e": 16.6
+   },
+   {
+    "w": " tepi",
+    "s": 16.6,
+    "e": 16.82
+   },
+   {
+    "w": " rumah",
+    "s": 16.82,
+    "e": 17.12
+   },
+   {
+    "w": " ini",
+    "s": 17.12,
+    "e": 17.5
+   },
+   {
+    "w": " memang",
+    "s": 17.5,
+    "e": 17.92
+   },
+   {
+    "w": " luas.",
+    "s": 17.92,
+    "e": 18.44
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 18.64,
+  "end": 20.48,
+  "text": " Nak parking 4 kereta pun boleh.",
+  "words": [
+   {
+    "w": " Nak",
+    "s": 18.64,
+    "e": 18.76
+   },
+   {
+    "w": " parking",
+    "s": 18.76,
+    "e": 19.06
+   },
+   {
+    "w": " 4",
+    "s": 19.06,
+    "e": 19.46
+   },
+   {
+    "w": " kereta",
+    "s": 19.46,
+    "e": 19.9
+   },
+   {
+    "w": " pun",
+    "s": 19.9,
+    "e": 20.1
+   },
+   {
+    "w": " boleh.",
+    "s": 20.1,
+    "e": 20.48
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 20.88,
+  "end": 21.94,
+  "text": " Nak buat mini garden,",
+  "words": [
+   {
+    "w": " Nak",
+    "s": 20.88,
+    "e": 21.02
+   },
+   {
+    "w": " buat",
+    "s": 21.02,
+    "e": 21.22
+   },
+   {
+    "w": " mini",
+    "s": 21.22,
+    "e": 21.5
+   },
+   {
+    "w": " garden,",
+    "s": 21.5,
+    "e": 21.94
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 22.16,
+  "end": 25.22,
+  "text": " tempat anak bermain atau ruang santai pun sesuai.",
+  "words": [
+   {
+    "w": " tempat",
+    "s": 22.16,
+    "e": 22.42
+   },
+   {
+    "w": " anak",
+    "s": 22.42,
+    "e": 22.62
+   },
+   {
+    "w": " bermain",
+    "s": 22.62,
+    "e": 23.18
+   },
+   {
+    "w": " atau",
+    "s": 23.18,
+    "e": 23.5
+   },
+   {
+    "w": " ruang",
+    "s": 23.5,
+    "e": 23.8
+   },
+   {
+    "w": " santai",
+    "s": 23.8,
+    "e": 24.28
+   },
+   {
+    "w": " pun",
+    "s": 24.28,
+    "e": 24.5
+   },
+   {
+    "w": " sesuai.",
+    "s": 24.5,
+    "e": 25.22
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 25.42,
+  "end": 27.3,
+  "text": " Rumah dah siap, boleh terus masuk.",
+  "words": [
+   {
+    "w": " Rumah",
+    "s": 25.42,
+    "e": 25.64
+   },
+   {
+    "w": " dah",
+    "s": 25.64,
+    "e": 25.86
+   },
+   {
+    "w": " siap,",
+    "s": 25.86,
+    "e": 26.26
+   },
+   {
+    "w": " boleh",
+    "s": 26.36,
+    "e": 26.6
+   },
+   {
+    "w": " terus",
+    "s": 26.6,
+    "e": 26.84
+   },
+   {
+    "w": " masuk.",
+    "s": 26.84,
+    "e": 27.3
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 27.64,
+  "end": 29.18,
+  "text": " Downpayment 0%,",
+  "words": [
+   {
+    "w": " Downpayment",
+    "s": 27.64,
+    "e": 28.2
+   },
+   {
+    "w": " 0%,",
+    "s": 28.2,
+    "e": 29.18
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 29.18,
+  "end": 34.16,
+  "text": " harga bersih hanya RM598,888.",
+  "words": [
+   {
+    "w": " harga",
+    "s": 29.18,
+    "e": 29.6
+   },
+   {
+    "w": " bersih",
+    "s": 29.6,
+    "e": 29.98
+   },
+   {
+    "w": " hanya",
+    "s": 29.98,
+    "e": 30.34
+   },
+   {
+    "w": " RM598",
+    "s": 30.34,
+    "e": 32.28
+   },
+   {
+    "w": ",888.",
+    "s": 32.28,
+    "e": 34.16
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 34.68,
+  "end": 35.96,
+  "text": " Berminat nak tengok rumah ni?",
+  "words": [
+   {
+    "w": " Berminat",
+    "s": 34.68,
+    "e": 35.06
+   },
+   {
+    "w": " nak",
+    "s": 35.06,
+    "e": 35.24
+   },
+   {
+    "w": " tengok",
+    "s": 35.24,
+    "e": 35.4
+   },
+   {
+    "w": " rumah",
+    "s": 35.4,
+    "e": 35.64
+   },
+   {
+    "w": " ni?",
+    "s": 35.64,
+    "e": 35.96
+   }
+  ]
+ },
+ {
+  "file": "54abc753-gina_seksyen_29.mp3",
+  "start": 36.24,
+  "end": 37.64,
+  "text": " Jom WhatsApp Gina untuk viewing!",
+  "words": [
+   {
+    "w": " Jom",
+    "s": 36.24,
+    "e": 36.44
+   },
+   {
+    "w": " WhatsApp",
+    "s": 36.44,
+    "e": 36.76
+   },
+   {
+    "w": " Gina",
+    "s": 36.76,
+    "e": 37.06
+   },
+   {
+    "w": " untuk",
+    "s": 37.06,
+    "e": 37.36
+   },
+   {
+    "w": " viewing!",
+    "s": 37.36,
+    "e": 37.64
+   }
+  ]
+ },
+ {
+  "file": "20261112_143239.mp4",
+  "start": 0.0,
+  "end": 3.9,
+  "text": " Hari ini, Jina nak bawa you orang tengok rumah dekat Tamar Bintara Jalan Kebu Baru.",
+  "words": [
+   {
+    "w": " Hari",
+    "s": 0.0,
+    "e": 0.2
+   },
+   {
+    "w": " ini,",
+    "s": 0.2,
+    "e": 0.4
+   },
+   {
+    "w": " Jina",
+    "s": 0.44,
+    "e": 0.6
+   },
+   {
+    "w": " nak",
+    "s": 0.6,
+    "e": 0.78
+   },
+   {
+    "w": " bawa",
+    "s": 0.78,
+    "e": 0.98
+   },
+   {
+    "w": " you",
+    "s": 0.98,
+    "e": 1.12
+   },
+   {
+    "w": " orang",
+    "s": 1.12,
+    "e": 1.26
+   },
+   {
+    "w": " tengok",
+    "s": 1.26,
+    "e": 1.54
+   },
+   {
+    "w": " rumah",
+    "s": 1.54,
+    "e": 1.96
+   },
+   {
+    "w": " dekat",
+    "s": 1.96,
+    "e": 2.44
+   },
+   {
+    "w": " Tamar",
+    "s": 2.44,
+    "e": 2.76
+   },
+   {
+    "w": " Bintara",
+    "s": 2.76,
+    "e": 3.1
+   },
+   {
+    "w": " Jalan",
+    "s": 3.1,
+    "e": 3.4
+   },
+   {
+    "w": " Kebu",
+    "s": 3.4,
+    "e": 3.66
+   },
+   {
+    "w": " Baru.",
+    "s": 3.66,
+    "e": 3.9
+   }
+  ]
+ },
+ {
+  "file": "20261112_143239.mp4",
+  "start": 3.92,
+  "end": 4.7,
+  "text": " Jom kita tengok dulu.",
+  "words": [
+   {
+    "w": " Jom",
+    "s": 3.92,
+    "e": 4.06
+   },
+   {
+    "w": " kita",
+    "s": 4.06,
+    "e": 4.28
+   },
+   {
+    "w": " tengok",
+    "s": 4.28,
+    "e": 4.54
+   },
+   {
+    "w": " dulu.",
+    "s": 4.54,
+    "e": 4.7
+   }
+  ]
+ }
+]

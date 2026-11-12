@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Source template (index.tpl): edit it, then run `python3 build.py` to regenerate index.html -->
 <html lang="ms" data-resolution="portrait">
   <head>
     <meta charset="UTF-8" />
@@ -9,301 +10,442 @@
       @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
       @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2"); font-weight: 900; }
       @font-face { font-family: "Emoji"; src: url("assets/fonts/noto-color-emoji-emoji-400-normal.woff2") format("woff2"); }
-
-      :root {
-        --ground: #0d0d0d;
-        --ink: #ffffff;
-        --accent: #ffd400;
-        --green: #19c37d;
-        --deep: #10233f;
-        --font-display: "Mont", "Emoji", sans-serif;
-      }
+      :root { --ground: #0d0d0d; --ink: #ffffff; --accent: #ffd400; --green: #0f8a4c; --red: #e0242b; --deep: #10233f; --font-display: "Mont", "Emoji", sans-serif; }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
       #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); color: var(--ink); }
-
       .clip { position: absolute; inset: 0; }
       video.clip, img.clip { width: 1080px; height: 1920px; object-fit: cover; }
-      .bg-blur { filter: blur(18px) brightness(0.55); transform: scale(1.12); }
-
-      .overlay { position: absolute; inset: 0; pointer-events: none; }
-      .shade-top { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 38%); }
-      .shade-bottom { background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 45%); }
-
+      .bg-blur { filter: blur(18px) brightness(0.55); }
+      .shade-top { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 40%); }
+      .shade-bot { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 30%); }
       .t-stroke { text-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 24px rgba(0,0,0,.55); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
-      .center-x { position: absolute; left: 0; right: 0; text-align: center; }
-
-      /* Hook */
-      #hook-top { top: 330px; font-weight: 900; font-size: 92px; letter-spacing: -0.02em; }
-      #hook-big { top: 440px; font-weight: 900; font-size: 124px; line-height: 1; color: var(--accent); letter-spacing: -0.03em; }
-      #hook-sub { top: 730px; font-weight: 800; font-size: 64px; }
-      .tag { display: inline-block; padding: 14px 30px; border-radius: 999px; font-weight: 900; font-size: 46px; letter-spacing: .04em; }
-      #hook-tag { top: 1380px; }
-      #hook-tag .tag { background: var(--accent); color: #000; }
-
-      /* Lower third */
-      #lt { left: 60px; right: 60px; top: 1240px; position: absolute; }
-      #lt .card { background: rgba(255,255,255,.96); color: #111; border-radius: 34px; padding: 34px 40px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
-      #lt .loc { font-weight: 900; font-size: 72px; letter-spacing: -0.02em; }
-      #lt .type { font-weight: 600; font-size: 40px; margin-top: 8px; color: #333; }
-      #lt-chip { margin-top: 22px; }
-      #lt-chip .tag { background: var(--green); color: #fff; font-size: 44px; }
-
-      /* Tour labels */
-      .label { position: absolute; left: 60px; right: 60px; text-align: center; }
-      .pill { display: inline-block; background: #000; color: #fff; padding: 18px 34px; border-radius: 22px; font-weight: 900; font-size: 58px; }
+      .cx { position: absolute; left: 40px; right: 40px; text-align: center; }
+      .y { color: var(--accent); }
+      .pill { display: inline-block; background: #000; color: #fff; padding: 18px 34px; border-radius: 22px; font-weight: 900; font-size: 58px; white-space: nowrap; }
       .pill.y { background: var(--accent); color: #000; }
       .pill.g { background: var(--green); color: #fff; }
-      #dim { top: 300px; }
-      #dim-bar { position: absolute; top: 470px; left: 140px; width: 800px; height: 10px; background: var(--accent); transform-origin: left center; border-radius: 6px; }
-      #dim-bar::before, #dim-bar::after { content: ""; position: absolute; top: -22px; width: 10px; height: 54px; background: var(--accent); border-radius: 6px; }
-      #dim-bar::before { left: 0; } #dim-bar::after { right: 0; }
-      #ready { top: 330px; }
-      #bilik-num { top: 520px; font-weight: 900; font-size: 300px; line-height: 1; color: var(--accent); }
-      #bilik-word { top: 830px; font-weight: 900; font-size: 110px; }
-      #bilikair { top: 330px; }
+      .tag { display: inline-block; padding: 14px 30px; border-radius: 999px; font-weight: 900; font-size: 44px; white-space: nowrap; }
 
-      /* Cars */
-      #cars-title { top: 300px; font-weight: 900; font-size: 74px; line-height: 1.12; }
-      #cars-title .y { color: var(--accent); font-size: 120px; display: block; }
-      #cars-row { position: absolute; top: 640px; left: 0; right: 0; display: flex; justify-content: center; gap: 26px; }
+      /* captions */
+      #captions { pointer-events: none; }
+      .cap { position: absolute; left: 50px; right: 50px; top: 1560px; text-align: center; font-weight: 900; font-size: 64px; line-height: 1.15; visibility: hidden;
+             text-shadow: 0 5px 0 rgba(0,0,0,.45), 0 0 18px rgba(0,0,0,.6); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+      .cw { color: #fff; }
+
+      /* hook */
+      #hook-a { top: 330px; font-weight: 900; font-size: 80px; }
+      #hook-a .tag { background: var(--accent); color: #000; font-size: 76px; padding: 16px 40px; }
+      #hook-b { top: 500px; font-weight: 900; font-size: 116px; line-height: 1.02; }
+
+      /* location */
+      #loc { position: absolute; left: 60px; right: 60px; top: 1120px; }
+      #loc .card { background: rgba(255,255,255,.96); color: #111; border-radius: 34px; padding: 30px 40px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+      #loc .l1 { font-weight: 900; font-size: 70px; }
+      #loc .l2 { font-weight: 800; font-size: 44px; color: #333; margin-top: 4px; }
+      #loc .l3 { font-weight: 600; font-size: 34px; color: #555; margin-top: 6px; }
+      #loc-chip { margin-top: 20px; }
+      #loc-chip .tag { background: var(--green); color: #fff; }
+
+      /* rooms */
+      #bilik-num { top: 300px; font-weight: 900; font-size: 280px; line-height: 1; }
+      #bilik-word { top: 590px; font-weight: 900; font-size: 92px; }
+      #bilikair { top: 760px; }
+
+      /* land size */
+      #best { top: 300px; }
+      #luas-num { top: 520px; font-weight: 900; font-size: 230px; line-height: 1; letter-spacing: -0.04em; }
+      #luas-unit { top: 770px; font-weight: 900; font-size: 84px; }
+      #luas-dim { top: 920px; }
+
+      /* side */
+      #side-a { top: 300px; font-weight: 900; font-size: 92px; line-height: 1.05; }
+      #side-b { top: 560px; font-weight: 900; font-size: 140px; }
+      #cars-row { position: absolute; top: 760px; left: 0; right: 0; display: flex; justify-content: center; gap: 26px; }
       #cars-row span { font-size: 130px; display: inline-block; }
-      #cars-sub { top: 1420px; font-weight: 800; font-size: 60px; }
 
-      /* Game changer list */
-      #gc-title { top: 290px; font-weight: 900; font-size: 80px; line-height: 1.08; }
-      #gc-title .y { color: var(--accent); }
-      #gc-list { position: absolute; top: 620px; left: 110px; right: 110px; display: flex; flex-direction: column; gap: 30px; }
-      .item { background: rgba(255,255,255,.95); color: #111; border-radius: 28px; padding: 26px 34px; font-weight: 800; font-size: 56px; display: flex; align-items: center; gap: 24px; }
-      .item .e { font-size: 64px; }
+      /* game changer list */
+      #gc-title { top: 300px; font-weight: 900; font-size: 84px; line-height: 1.08; }
+      #gc-list { position: absolute; top: 620px; left: 110px; right: 110px; display: flex; flex-direction: column; gap: 36px; }
+      .item { background: rgba(255,255,255,.95); color: #111; border-radius: 28px; padding: 30px 36px; font-weight: 800; font-size: 60px; display: flex; align-items: center; gap: 24px; white-space: nowrap; }
+      .item .e { font-size: 68px; }
 
-      /* Offer */
-      #offer { position: absolute; top: 560px; left: 70px; right: 70px; } #offer-title { top: 330px; font-weight: 900; font-size: 84px; color: var(--accent); } #front-lbl { top: 330px; }
-      .check { white-space: nowrap; font-weight: 900; font-size: 54px; margin-bottom: 60px; background: rgba(0,0,0,.55); padding: 26px 30px; border-radius: 28px; display: flex; gap: 20px; align-items: center; }
-      .check .bx { background: var(--green); width: 74px; height: 74px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; }
-      #price-card { position: absolute; top: 620px; left: 70px; right: 70px; background: #fff; color: #111; border-radius: 40px; padding: 46px 50px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+      /* ready */
+      #ready-a { top: 330px; }
+      #ready-b { top: 470px; font-weight: 900; font-size: 84px; }
+
+      /* price */
+      #dp { top: 220px; font-weight: 900; font-size: 120px; line-height: 1; }
+      #dp-sub { top: 360px; font-weight: 900; font-size: 64px; }
+      #price-card { position: absolute; top: 560px; left: 70px; right: 70px; background: #fff; color: #111; border-radius: 40px; padding: 46px 50px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
       #spa { white-space: nowrap; font-weight: 800; font-size: 54px; color: #666; position: relative; display: inline-block; }
-      #spa-strike { position: absolute; left: -10px; right: -10px; top: 50%; height: 8px; background: #e0242b; transform-origin: left center; border-radius: 4px; }
+      #spa-strike { position: absolute; left: -10px; right: -10px; top: 50%; height: 8px; background: var(--red); transform-origin: left center; border-radius: 4px; }
       #net-label { margin-top: 24px; font-weight: 900; font-size: 46px; letter-spacing: .1em; color: var(--deep); }
-      #net { white-space: nowrap; font-weight: 900; font-size: 132px; line-height: 1; color: #e0242b; letter-spacing: -0.04em; }
+      #net { white-space: nowrap; font-weight: 900; font-size: 132px; line-height: 1; color: var(--red); letter-spacing: -0.04em; }
       #fine { margin-top: 22px; font-weight: 600; font-size: 30px; color: #555; }
-      #cta { top: 1330px; } #price-title { top: 360px; font-weight: 900; font-size: 84px; } #cta .pill { font-size: 50px; white-space: nowrap; }
+      #bonus { top: 1060px; }
+      #bonus .tag { background: var(--green); color: #fff; font-size: 42px; }
+      #cta { top: 1250px; }
+      #cta .pill { font-size: 48px; background: #0f8a4c; color: #fff; }
       #flash { background: #fff; opacity: 0; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="42.6" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="38.58" data-width="1080" data-height="1920">
 
-      <!-- ===== VIDEO TRACK ===== -->
-      <video id="v-hook" class="clip" src="assets/clips/20261017_130833.mp4" data-start="0" data-duration="2.55" data-media-start="0.3" muted data-track-index="0"></video>
-      <video id="v-talk" class="clip" src="assets/clips/20261112_143239.mp4" data-start="2.55" data-duration="4.4" data-media-start="0.45" data-has-audio="true" data-track-index="0"></video>
-      <video id="v-hall" class="clip" src="assets/clips/20261017_130855.mp4" data-start="6.95" data-duration="2.2" data-media-start="0.1" muted data-track-index="0"></video>
-      <video id="v-front" class="clip" src="assets/clips/20261017_130938.mp4" data-start="9.15" data-duration="1.5" data-media-start="0.1" muted data-track-index="0"></video>
-      <video id="v-bed" class="clip" src="assets/clips/20261017_130929.mp4" data-start="10.65" data-duration="1.6" data-media-start="0.1" muted data-track-index="0"></video>
-      <video id="v-room" class="clip" src="assets/clips/20261017_130945.mp4" data-start="12.25" data-duration="2.4" data-media-start="0.6" muted data-track-index="0"></video>
-      <video id="v-bath" class="clip" src="assets/clips/20261017_130923.mp4" data-start="14.65" data-duration="1.2" data-media-start="0" muted data-track-index="0"></video>
-      <video id="v-side" class="clip" src="assets/clips/20261017_130833.mp4" data-start="15.85" data-duration="2.8" data-media-start="0" muted data-track-index="0"></video>
-      <img id="i-gc" class="clip bg-blur" src="assets/stills/land-end.jpg" data-start="18.65" data-duration="5.9" data-track-index="0" />
-      <img id="i-checks" class="clip bg-blur" src="assets/stills/hall.jpg" data-start="24.55" data-duration="6.4" data-track-index="0" />
-      <img id="i-price" class="clip bg-blur" src="assets/stills/bedroom.jpg" data-start="30.95" data-duration="11.65" data-track-index="0" />
+      <!-- ===== VIDEO TRACK (timed from voiceover words) ===== -->
+      <video id="v-hook" class="clip" src="assets/clips/20261017_130833.mp4" data-start="0" data-duration="2.85" data-media-start="0" muted data-track-index="0"></video>
+      <video id="v-front" class="clip" src="assets/clips/20261017_130938.mp4" data-start="2.85" data-duration="1.7" data-media-start="0" muted data-track-index="0"></video>
+      <video id="v-hall" class="clip" src="assets/clips/20261017_130855.mp4" data-start="4.55" data-duration="2.54" data-media-start="0" muted data-track-index="0"></video>
+      <video id="v-bed" class="clip" src="assets/clips/20261017_130929.mp4" data-start="7.09" data-duration="1.8" data-media-start="0" muted data-track-index="0"></video>
+      <video id="v-room" class="clip" src="assets/clips/20261017_130945.mp4" data-start="8.89" data-duration="1.22" data-media-start="1.2" muted data-track-index="0"></video>
+      <video id="v-bath" class="clip" src="assets/clips/20261017_130923.mp4" data-start="10.11" data-duration="0.725" data-media-start="0" muted data-track-index="0"></video>
+      <img id="i-land" class="clip" src="assets/stills/land-end.jpg" data-start="10.835" data-duration="5.06" data-track-index="0" />
+      <video id="v-side" class="clip" src="assets/clips/land_slow.mp4" data-start="15.895" data-duration="4.349" data-media-start="0" muted data-track-index="0"></video>
+      <img id="i-gc" class="clip bg-blur" src="assets/stills/land-end.jpg" data-start="20.244" data-duration="4.54" data-track-index="0" />
+      <video id="v-ready" class="clip" src="assets/clips/front_slow.mp4" data-start="24.784" data-duration="1.945" data-media-start="0.3" muted data-track-index="0"></video>
+      <img id="i-price" class="clip bg-blur" src="assets/stills/bedroom.jpg" data-start="26.729" data-duration="11.851" data-track-index="0" />
 
       <!-- ===== GRAPHICS ===== -->
-      <div id="g-hook" class="clip" data-start="0" data-duration="2.55" data-track-index="1">
-        <div class="overlay shade-top"></div>
-        <div id="hook-top" class="center-x t-stroke">RUMAH TERES…</div>
-        <div id="hook-big" class="center-x t-stroke">TANAH<br />4,102 sqft?!</div>
-        <div id="hook-sub" class="center-x t-stroke">🤯🤯🤯</div>
-        <div id="hook-tag" class="center-x"><span class="tag">CORNER LOT</span></div>
+      <div id="g-hook" class="clip" data-start="0" data-duration="2.85" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="hook-a" class="cx"><span class="tag">RUMAH CORNER LOT</span></div>
+        <div id="hook-b" class="cx t-stroke">TANAH TEPI<br /><span class="y">LUAS GILER</span> 🤯</div>
       </div>
 
-      <div id="g-talk" class="clip" data-start="2.55" data-duration="4.4" data-track-index="1">
-        <div id="lt">
+      <div id="g-loc" class="clip" data-start="4.3" data-duration="2.79" data-track-index="1">
+        <div id="loc">
           <div class="card">
-            <div class="loc">📍 Lombong Besi 2</div>
-            <div class="type">Single Storey Terrace • Corner No.1</div>
+            <div class="l1">📍 Lombong Besi 2</div>
+            <div class="l2">Seksyen 29, Shah Alam</div>
+            <div class="l3">Single Storey Terrace • Corner No.1</div>
           </div>
-          <div id="lt-chip"><span class="tag">🌳 Tanah Rezab Melayu</span></div>
+          <div id="loc-chip"><span class="tag">🌳 Tanah Rezab Melayu</span></div>
         </div>
       </div>
 
-      <div id="g-hall" class="clip" data-start="6.95" data-duration="2.2" data-track-index="1">
-        <div class="overlay shade-top"></div>
-        <div id="dim" class="label"><span class="pill y">Luas Binaan 20' x 40'</span></div>
-        <div id="dim-bar"></div>
+      <div id="g-bed" class="clip" data-start="7.09" data-duration="3.745" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="bilik-num" class="cx t-stroke y">3</div>
+        <div id="bilik-word" class="cx t-stroke">BILIK TIDUR 🛏️</div>
+        <div id="bilikair" class="cx"><span class="pill y">+ 2 BILIK AIR 🚿</span></div>
       </div>
 
-      <div id="g-front" class="clip" data-start="9.15" data-duration="1.5" data-track-index="1">
-        <div id="front-lbl" class="label"><span class="pill">🏡 4,102 sq ft</span></div>
+      <div id="g-land" class="clip" data-start="10.835" data-duration="5.06" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="best" class="cx"><span class="pill">YANG PALING BEST 🔥</span></div>
+        <div id="luas-num" class="cx t-stroke y">0</div>
+        <div id="luas-unit" class="cx t-stroke">KAKI PERSEGI</div>
+        <div id="luas-dim" class="cx"><span class="tag" style="background:#fff;color:#111">43' ~ 64' x 68'</span></div>
       </div>
 
-      <div id="g-bed" class="clip" data-start="10.65" data-duration="1.6" data-track-index="1">
-        <div class="overlay shade-top"></div>
-        <div id="bilik-num" class="center-x t-stroke">3</div>
-        <div id="bilik-word" class="center-x t-stroke">BILIK 🛏️</div>
-      </div>
-
-      <div id="g-bath" class="clip" data-start="13.45" data-duration="2.4" data-track-index="1">
-        <div id="bilikair" class="label"><span class="pill y">+ 2 BILIK AIR 🚿</span></div>
-      </div>
-
-      <div id="g-side" class="clip" data-start="15.85" data-duration="2.8" data-track-index="1">
-        <div class="overlay shade-top"></div>
-        <div id="cars-title" class="center-x t-stroke">Boleh masuk<span class="y">4 KERETA</span>dari tepi rumah!</div>
+      <div id="g-side" class="clip" data-start="15.895" data-duration="4.349" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="side-a" class="cx t-stroke">Bahagian tepi<br /><span class="y">MEMANG LUAS</span></div>
+        <div id="side-b" class="cx t-stroke">4 KERETA</div>
         <div id="cars-row"><span>🚗</span><span>🚙</span><span>🚗</span><span>🚙</span></div>
-        <div id="cars-sub" class="center-x t-stroke">tanpa sempit2! 🤩</div>
       </div>
 
-      <div id="g-gc" class="clip" data-start="18.65" data-duration="5.9" data-track-index="1">
-        <div id="gc-title" class="center-x t-stroke">Ruang tepi ni<br /><span class="y">GAME CHANGER</span> 🔥</div>
+      <div id="g-gc" class="clip" data-start="20.244" data-duration="4.54" data-track-index="1">
+        <div id="gc-title" class="cx t-stroke">Ruang tepi ni<br /><span class="y">BOLEH JADI…</span></div>
         <div id="gc-list">
           <div class="item"><span class="e">🌳</span>Mini garden</div>
-          <div class="item"><span class="e">🚲</span>Tempat anak main</div>
-          <div class="item"><span class="e">👕</span>Area sidai</div>
-          <div class="item"><span class="e">📦</span>Storage tambahan</div>
-          <div class="item"><span class="e">☕️</span>Chill corner sendiri</div>
+          <div class="item"><span class="e">🚲</span>Tempat anak bermain</div>
+          <div class="item"><span class="e">☕️</span>Ruang santai</div>
         </div>
       </div>
 
-      <div id="g-checks" class="clip" data-start="24.55" data-duration="6.4" data-track-index="1">
-        <div id="offer-title" class="center-x t-stroke">TAWARAN 🔥</div>
-        <div id="offer">
-          <div class="check"><span class="bx">✓</span>READY TO MOVE IN</div>
-          <div class="check"><span class="bx">✓</span>0% Downpayment</div>
-          <div class="check"><span class="bx">✓</span>FREE SPA Legal Fees &amp; MOT</div>
-        </div>
+      <div id="g-ready" class="clip" data-start="24.784" data-duration="1.945" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="ready-a" class="cx"><span class="pill g">✅ RUMAH DAH SIAP</span></div>
+        <div id="ready-b" class="cx t-stroke">Boleh terus <span class="y">MASUK!</span></div>
       </div>
 
-      <div id="g-price" class="clip" data-start="30.95" data-duration="11.65" data-track-index="1">
-        <div id="price-title" class="center-x t-stroke">💰 HARGA</div>
+      <div id="g-price" class="clip" data-start="26.729" data-duration="11.851" data-track-index="1">
+        <div id="dp" class="cx t-stroke y">0%</div>
+        <div id="dp-sub" class="cx t-stroke">DOWNPAYMENT</div>
         <div id="price-card">
           <div id="spa">Harga SPA: RM 665,431<div id="spa-strike"></div></div>
-          <div id="net-label">HARGA NET</div>
+          <div id="net-label">HARGA BERSIH</div>
           <div id="net">RM 598,888</div>
           <div id="fine">*Loan Agreement to be borne by purchaser</div>
         </div>
-        <div id="cta" class="label"><span class="pill y">📩 DM sekarang untuk viewing!</span></div>
+        <div id="bonus" class="cx"><span class="tag">🎁 FREE SPA Legal Fees &amp; MOT</span></div>
+        <div id="cta" class="cx"><span class="pill">📲 WhatsApp Gina untuk viewing!</span></div>
       </div>
 
-      <div id="flash" class="clip" data-start="0" data-duration="42.6" data-track-index="2"></div>
+      <!-- ===== CAPTIONS (word-synced to voiceover) ===== -->
+      <div id="captions" class="clip" data-start="0" data-duration="38.58" data-track-index="2">
+        <div class="cap" id="cap0"><span class="cw" id="cw0_0">Nak</span> <span class="cw" id="cw0_1">rumah</span> <span class="cw" id="cw0_2">corner</span> <span class="cw" id="cw0_3">lot</span> <span class="cw" id="cw0_4">dengan</span></div>
+        <div class="cap" id="cap1"><span class="cw" id="cw1_0">tanah</span> <span class="cw" id="cw1_1">tepi</span> <span class="cw" id="cw1_2">yang</span> <span class="cw" id="cw1_3">luas?</span></div>
+        <div class="cap" id="cap2"><span class="cw" id="cw2_0">Jom</span> <span class="cw" id="cw2_1">tengok</span> <span class="cw" id="cw2_2">rumah</span> <span class="cw" id="cw2_3">setingkat</span></div>
+        <div class="cap" id="cap3"><span class="cw" id="cw3_0">di</span> <span class="cw" id="cw3_1">Lombong</span> <span class="cw" id="cw3_2">Besi</span> <span class="cw" id="cw3_3">2,</span></div>
+        <div class="cap" id="cap4"><span class="cw" id="cw4_0">seksyen</span> <span class="cw" id="cw4_1">29</span> <span class="cw" id="cw4_2">Shah</span> <span class="cw" id="cw4_3">Alam.</span></div>
+        <div class="cap" id="cap5"><span class="cw" id="cw5_0">Rumah</span> <span class="cw" id="cw5_1">ini</span> <span class="cw" id="cw5_2">ada</span> <span class="cw" id="cw5_3">3</span> <span class="cw" id="cw5_4">bilik</span></div>
+        <div class="cap" id="cap6"><span class="cw" id="cw6_0">tidur</span> <span class="cw" id="cw6_1">dan</span> <span class="cw" id="cw6_2">2</span> <span class="cw" id="cw6_3">bilik</span> <span class="cw" id="cw6_4">air.</span></div>
+        <div class="cap" id="cap7"><span class="cw" id="cw7_0">Yang</span> <span class="cw" id="cw7_1">paling</span> <span class="cw" id="cw7_2">best,</span></div>
+        <div class="cap" id="cap8"><span class="cw" id="cw8_0">keluasan</span> <span class="cw" id="cw8_1">tanah</span> <span class="cw" id="cw8_2">sampai</span> <span class="cw" id="cw8_3">4,102</span> <span class="cw" id="cw8_4">kaki</span> <span class="cw" id="cw8_5">persegi.</span></div>
+        <div class="cap" id="cap9"><span class="cw" id="cw9_0">Bahagian</span> <span class="cw" id="cw9_1">tepi</span> <span class="cw" id="cw9_2">rumah</span> <span class="cw" id="cw9_3">ini</span> <span class="cw" id="cw9_4">memang</span> <span class="cw" id="cw9_5">luas.</span></div>
+        <div class="cap" id="cap10"><span class="cw" id="cw10_0">Nak</span> <span class="cw" id="cw10_1">parking</span> <span class="cw" id="cw10_2">4</span> <span class="cw" id="cw10_3">kereta</span> <span class="cw" id="cw10_4">pun</span> <span class="cw" id="cw10_5">boleh.</span></div>
+        <div class="cap" id="cap11"><span class="cw" id="cw11_0">Nak</span> <span class="cw" id="cw11_1">buat</span> <span class="cw" id="cw11_2">mini</span> <span class="cw" id="cw11_3">garden,</span></div>
+        <div class="cap" id="cap12"><span class="cw" id="cw12_0">tempat</span> <span class="cw" id="cw12_1">anak</span> <span class="cw" id="cw12_2">bermain</span> <span class="cw" id="cw12_3">atau</span></div>
+        <div class="cap" id="cap13"><span class="cw" id="cw13_0">ruang</span> <span class="cw" id="cw13_1">santai</span> <span class="cw" id="cw13_2">pun</span> <span class="cw" id="cw13_3">sesuai.</span></div>
+        <div class="cap" id="cap14"><span class="cw" id="cw14_0">Rumah</span> <span class="cw" id="cw14_1">dah</span> <span class="cw" id="cw14_2">siap,</span> <span class="cw" id="cw14_3">boleh</span> <span class="cw" id="cw14_4">terus</span> <span class="cw" id="cw14_5">masuk.</span></div>
+        <div class="cap" id="cap15"><span class="cw" id="cw15_0">Downpayment</span> <span class="cw" id="cw15_1">0%,</span></div>
+        <div class="cap" id="cap16"><span class="cw" id="cw16_0">harga</span> <span class="cw" id="cw16_1">bersih</span> <span class="cw" id="cw16_2">hanya</span> <span class="cw" id="cw16_3">RM598,888.</span></div>
+        <div class="cap" id="cap17"><span class="cw" id="cw17_0">Berminat</span> <span class="cw" id="cw17_1">nak</span> <span class="cw" id="cw17_2">tengok</span> <span class="cw" id="cw17_3">rumah</span> <span class="cw" id="cw17_4">ni?</span></div>
+        <div class="cap" id="cap18"><span class="cw" id="cw18_0">Jom</span> <span class="cw" id="cw18_1">WhatsApp</span> <span class="cw" id="cw18_2">Gina</span> <span class="cw" id="cw18_3">untuk</span> <span class="cw" id="cw18_4">viewing!</span></div>
+      </div>
 
-      <!-- ===== VOICEOVER (pause dipendekkan ke ~0.12s) ===== -->
-      <audio id="vo-a" src="assets/vo/voiceover.m4a" data-start="0" data-duration="2.55" data-media-start="0" data-volume="1" data-track-index="9"></audio>
-      <audio id="vo-b" src="assets/vo/voiceover.m4a" data-start="7.0" data-duration="7.76" data-media-start="2.88" data-volume="1" data-track-index="9"></audio>
-      <audio id="vo-c" src="assets/vo/voiceover.m4a" data-start="14.9" data-duration="9.54" data-media-start="10.96" data-volume="1" data-track-index="9"></audio>
-      <audio id="vo-d" src="assets/vo/voiceover.m4a" data-start="24.56" data-duration="6.32" data-media-start="20.86" data-volume="1" data-track-index="9"></audio>
-      <audio id="vo-e" src="assets/vo/voiceover.m4a" data-start="31.0" data-duration="8.26" data-media-start="27.56" data-volume="1" data-track-index="9"></audio>
-      <audio id="vo-f" src="assets/vo/voiceover.m4a" data-start="39.38" data-duration="1.82" data-media-start="36.14" data-volume="1" data-track-index="9"></audio>
+      <div id="flash" class="clip" data-start="0" data-duration="38.58" data-track-index="2"></div>
+
+      <!-- ===== VOICEOVER (pauses tightened) ===== -->
+      <audio id="vo-0" src="assets/vo/voiceover.m4a" data-start="0.0" data-duration="10.685" data-media-start="0.0" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-1" src="assets/vo/voiceover.m4a" data-start="10.685" data-duration="9.638" data-media-start="10.91" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-2" src="assets/vo/voiceover.m4a" data-start="20.323" data-duration="6.421" data-media-start="20.809" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-3" src="assets/vo/voiceover.m4a" data-start="26.744" data-duration="8.365" data-media-start="27.505" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-4" src="assets/vo/voiceover.m4a" data-start="35.109" data-duration="1.869" data-media-start="36.087" data-volume="1" data-track-index="9"></audio>
 
       <!-- ===== MUSIC BED ===== -->
-      <audio id="bed-a" src="assets/sfx/bed.m4a" data-start="0" data-duration="2.55" data-media-start="0" data-volume="0.18" data-track-index="3"></audio>
-      <audio id="bed-b" src="assets/sfx/bed.m4a" data-start="2.55" data-duration="4.4" data-media-start="2.55" data-volume="0.08" data-track-index="3"></audio>
-      <audio id="bed-c" src="assets/sfx/bed.m4a" data-start="6.95" data-duration="35.65" data-media-start="6.95" data-volume="0.16" data-fade-out="1.5" data-track-index="3"></audio>
+      <audio id="bed" src="assets/sfx/bed.m4a" data-start="0" data-duration="38.58" data-media-start="0" data-volume="0.15" data-fade-out="1.2" data-track-index="3"></audio>
 
       <!-- ===== SFX ===== -->
-      <audio id="s01" src="assets/sfx/impact.wav" data-start="0" data-duration="0.9" data-volume="0.9" data-track-index="4"></audio>
-      <audio id="s02" src="assets/sfx/pop.wav" data-start="0.35" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
-      <audio id="s03" src="assets/sfx/pop.wav" data-start="0.6" data-duration="0.12" data-volume="0.5" data-track-index="7"></audio>
-      <audio id="s04" src="assets/sfx/whoosh.wav" data-start="2.3" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
-      <audio id="s05" src="assets/sfx/pop.wav" data-start="2.85" data-duration="0.12" data-volume="0.5" data-track-index="5"></audio>
-      <audio id="s06" src="assets/sfx/pop.wav" data-start="3.95" data-duration="0.12" data-volume="0.5" data-track-index="7"></audio>
-      <audio id="s07" src="assets/sfx/whoosh.wav" data-start="6.7" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
-      <audio id="s08" src="assets/sfx/tick.wav" data-start="7.15" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
-      <audio id="s09" src="assets/sfx/whoosh.wav" data-start="8.9" data-duration="0.6" data-volume="0.6" data-track-index="6"></audio>
-      <audio id="s10" src="assets/sfx/pop.wav" data-start="9.3" data-duration="0.12" data-volume="0.5" data-track-index="5"></audio>
-      <audio id="s11" src="assets/sfx/whoosh.wav" data-start="10.4" data-duration="0.6" data-volume="0.6" data-track-index="6"></audio>
-      <audio id="s12" src="assets/sfx/impact.wav" data-start="10.75" data-duration="0.9" data-volume="0.55" data-track-index="4"></audio>
-      <audio id="s13" src="assets/sfx/whoosh.wav" data-start="12.0" data-duration="0.6" data-volume="0.6" data-track-index="6"></audio>
-      <audio id="s14" src="assets/sfx/pop.wav" data-start="13.5" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
-      <audio id="s15" src="assets/sfx/whoosh.wav" data-start="14.4" data-duration="0.6" data-volume="0.6" data-track-index="6"></audio>
-      <audio id="s16" src="assets/sfx/whoosh.wav" data-start="15.6" data-duration="0.6" data-volume="0.7" data-track-index="7"></audio>
-      <audio id="s17" src="assets/sfx/pop.wav" data-start="16.5" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
-      <audio id="s18" src="assets/sfx/pop.wav" data-start="16.75" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
-      <audio id="s19" src="assets/sfx/pop.wav" data-start="17.0" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
-      <audio id="s20" src="assets/sfx/pop.wav" data-start="17.25" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
-      <audio id="s21" src="assets/sfx/riser.wav" data-start="17.45" data-duration="1.2" data-volume="0.55" data-track-index="8"></audio>
-      <audio id="s22" src="assets/sfx/impact.wav" data-start="18.65" data-duration="0.9" data-volume="0.8" data-track-index="4"></audio>
-      <audio id="s23" src="assets/sfx/tick.wav" data-start="19.4" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
-      <audio id="s24" src="assets/sfx/tick.wav" data-start="20.2" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
-      <audio id="s25" src="assets/sfx/tick.wav" data-start="21.0" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
-      <audio id="s26" src="assets/sfx/tick.wav" data-start="21.8" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
-      <audio id="s27" src="assets/sfx/tick.wav" data-start="22.6" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
-      <audio id="s28" src="assets/sfx/whoosh.wav" data-start="24.3" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
-      <audio id="s29" src="assets/sfx/pop.wav" data-start="24.8" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
-      <audio id="s30" src="assets/sfx/pop.wav" data-start="26.6" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
-      <audio id="s31" src="assets/sfx/pop.wav" data-start="28.4" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
-      <audio id="s32" src="assets/sfx/whoosh.wav" data-start="30.7" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
-      <audio id="s33" src="assets/sfx/tick.wav" data-start="32.8" data-duration="0.06" data-volume="0.8" data-track-index="7"></audio>
-      <audio id="s34" src="assets/sfx/impact.wav" data-start="33.6" data-duration="0.9" data-volume="0.75" data-track-index="4"></audio>
-      <audio id="s35" src="assets/sfx/ding.wav" data-start="33.65" data-duration="1.2" data-volume="0.7" data-track-index="8"></audio>
-      <audio id="s36" src="assets/sfx/pop.wav" data-start="39.3" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s00" src="assets/sfx/impact.wav" data-start="0.0" data-duration="0.9" data-volume="0.85" data-track-index="4"></audio>
+      <audio id="s01" src="assets/sfx/pop.wav" data-start="0.58" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="s02" src="assets/sfx/pop.wav" data-start="1.38" data-duration="0.12" data-volume="0.55" data-track-index="6"></audio>
+      <audio id="s03" src="assets/sfx/whoosh.wav" data-start="2.6" data-duration="0.6" data-volume="0.8" data-track-index="7"></audio>
+      <audio id="s04" src="assets/sfx/whoosh.wav" data-start="4.3" data-duration="0.6" data-volume="0.6" data-track-index="4"></audio>
+      <audio id="s05" src="assets/sfx/pop.wav" data-start="4.5" data-duration="0.12" data-volume="0.5" data-track-index="5"></audio>
+      <audio id="s06" src="assets/sfx/pop.wav" data-start="5.6" data-duration="0.12" data-volume="0.45" data-track-index="6"></audio>
+      <audio id="s07" src="assets/sfx/whoosh.wav" data-start="6.84" data-duration="0.6" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="s08" src="assets/sfx/impact.wav" data-start="8.44" data-duration="0.9" data-volume="0.5" data-track-index="4"></audio>
+      <audio id="s09" src="assets/sfx/whoosh.wav" data-start="8.64" data-duration="0.6" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s10" src="assets/sfx/pop.wav" data-start="9.76" data-duration="0.12" data-volume="0.55" data-track-index="6"></audio>
+      <audio id="s11" src="assets/sfx/riser.wav" data-start="9.935" data-duration="1.2" data-volume="0.5" data-track-index="7"></audio>
+      <audio id="s12" src="assets/sfx/impact.wav" data-start="10.835" data-duration="0.9" data-volume="0.75" data-track-index="4"></audio>
+      <audio id="s13" src="assets/sfx/tick.wav" data-start="13.135" data-duration="0.06" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s14" src="assets/sfx/ding.wav" data-start="14.755" data-duration="1.2" data-volume="0.55" data-track-index="6"></audio>
+      <audio id="s15" src="assets/sfx/whoosh.wav" data-start="15.645" data-duration="0.6" data-volume="0.8" data-track-index="7"></audio>
+      <audio id="s16" src="assets/sfx/pop.wav" data-start="18.835" data-duration="0.12" data-volume="0.55" data-track-index="4"></audio>
+      <audio id="s17" src="assets/sfx/pop.wav" data-start="19.035" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="s18" src="assets/sfx/pop.wav" data-start="19.235" data-duration="0.12" data-volume="0.55" data-track-index="6"></audio>
+      <audio id="s19" src="assets/sfx/pop.wav" data-start="19.435" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
+      <audio id="s20" src="assets/sfx/whoosh.wav" data-start="19.994" data-duration="0.6" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="s21" src="assets/sfx/tick.wav" data-start="20.734" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s22" src="assets/sfx/tick.wav" data-start="21.674" data-duration="0.06" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="s23" src="assets/sfx/tick.wav" data-start="23.014" data-duration="0.06" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="s24" src="assets/sfx/whoosh.wav" data-start="24.534" data-duration="0.6" data-volume="0.8" data-track-index="4"></audio>
+      <audio id="s25" src="assets/sfx/pop.wav" data-start="25.034" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="s26" src="assets/sfx/whoosh.wav" data-start="26.479" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
+      <audio id="s27" src="assets/sfx/pop.wav" data-start="26.929" data-duration="0.12" data-volume="0.6" data-track-index="7"></audio>
+      <audio id="s28" src="assets/sfx/tick.wav" data-start="28.819" data-duration="0.06" data-volume="0.8" data-track-index="4"></audio>
+      <audio id="s29" src="assets/sfx/impact.wav" data-start="29.579" data-duration="0.9" data-volume="0.75" data-track-index="5"></audio>
+      <audio id="s30" src="assets/sfx/ding.wav" data-start="29.629" data-duration="1.2" data-volume="0.65" data-track-index="6"></audio>
+      <audio id="s31" src="assets/sfx/pop.wav" data-start="35.462" data-duration="0.12" data-volume="0.6" data-track-index="7"></audio>
     </div>
 
     <script>
       const tl = gsap.timeline({ paused: true });
       const back = "back.out(2.2)";
+      const K = {"corner": 0.58, "tanah": 1.38, "lombong": 4.5, "seksyen": 5.6, "tiga": 8.44, "dua": 9.76, "best": 10.835, "luas_n": 13.135, "kaki": 14.755, "bahagian": 16.095, "empat": 18.835, "kereta": 19.235, "mini": 20.734, "tempat": 21.674, "ruang": 23.014, "siap": 24.934, "dp": 26.879, "harga": 28.419, "rm": 29.579, "berminat": 33.919, "whatsapp": 35.462};
       tl.set("#flash", { opacity: 0 }, 0);
-      [2.55, 6.95, 10.65, 15.85, 18.65, 24.55, 30.95].forEach((t) => {
-        tl.to("#flash", { opacity: 0.55, duration: 0.05, ease: "none" }, t - 0.05)
-          .to("#flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
+      [2.85, 4.55, 7.09, 8.89, 10.11, 10.835, 15.895, 20.244, 24.784, 26.729].forEach((t) => {
+        tl.to("#flash", { opacity: 0.5, duration: 0.05, ease: "none" }, t - 0.05).to("#flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
       });
+      const kb = (sel, a, b, s0, s1) => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: b - a, ease: "none" }, a);
+      const span = (sel) => { const el = document.querySelector(sel); const a = +el.dataset.start; return [a, a + +el.dataset.duration]; };
 
-      // HOOK
-      tl.fromTo("#v-hook", { scale: 1.25 }, { scale: 1.05, duration: 2.55, ease: "power2.out" }, 0);
-      tl.fromTo("#hook-top", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power3.out" }, 0);
-      tl.fromTo("#hook-big", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: back }, 0.3);
-      tl.fromTo("#hook-sub", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: back }, 0.55);
-      tl.fromTo("#hook-tag", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, 0.6);
-      tl.to("#hook-big", { scale: 1.06, duration: 0.15, yoyo: true, repeat: 5, ease: "sine.inOut" }, 0.9);
+      // Ken Burns on every shot
+      kb("#v-hook", ...span("#v-hook"), 1.25, 1.05);
+      kb("#v-front", ...span("#v-front"), 1.12, 1.0);
+      kb("#v-hall", ...span("#v-hall"), 1.0, 1.12);
+      kb("#v-bed", ...span("#v-bed"), 1.0, 1.1);
+      kb("#v-room", ...span("#v-room"), 1.08, 1.0);
+      kb("#v-bath", ...span("#v-bath"), 1.12, 1.0);
+      kb("#i-land", ...span("#i-land"), 1.0, 1.15);
+      kb("#v-side", ...span("#v-side"), 1.0, 1.12);
+      kb("#i-gc", ...span("#i-gc"), 1.12, 1.22);
+      kb("#v-ready", ...span("#v-ready"), 1.1, 1.0);
+      kb("#i-price", ...span("#i-price"), 1.12, 1.3);
 
-      // TALK
-      tl.fromTo("#v-talk", { scale: 1.12 }, { scale: 1.0, duration: 0.5, ease: "power3.out" }, 2.55);
-      tl.fromTo("#lt .card", { x: -1100 }, { x: 0, duration: 0.45, ease: "power4.out" }, 2.8);
-      tl.fromTo("#lt-chip", { scale: 0, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, 3.9);
-      tl.to("#lt", { x: 1100, duration: 0.3, ease: "power3.in" }, 6.6);
+      // HOOK — synced to "corner lot" / "tanah tepi"
+      tl.fromTo("#hook-a", { scale: 2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: back }, K.corner);
+      tl.fromTo("#hook-b", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: back }, K.tanah);
+      tl.to("#hook-b", { scale: 1.05, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }, K.tanah + 0.4);
 
-      // TOUR
-      tl.fromTo("#v-hall", { scale: 1.0 }, { scale: 1.12, duration: 2.2, ease: "none" }, 6.95);
-      tl.fromTo("#dim", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, 7.05);
-      tl.fromTo("#dim-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 7.25);
-      tl.fromTo("#v-front", { scale: 1.15 }, { scale: 1.02, duration: 1.5, ease: "power1.out" }, 9.15);
-      tl.fromTo("#front-lbl", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, 9.25);
-      tl.fromTo("#bilik-num", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, 10.7);
-      tl.fromTo("#bilik-word", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, 10.9);
-      tl.fromTo("#v-bed", { scale: 1.0 }, { scale: 1.1, duration: 1.6, ease: "none" }, 10.65);
-      tl.fromTo("#bilikair", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power4.out" }, 13.5);
-      tl.fromTo("#v-bath", { scale: 1.15 }, { scale: 1.0, duration: 1.2, ease: "power2.out" }, 14.65);
+      // LOCATION — "Lombong Besi 2, seksyen 29 Shah Alam"
+      tl.fromTo("#loc .card", { x: -1100 }, { x: 0, duration: 0.45, ease: "power4.out" }, K.lombong - 0.2);
+      tl.fromTo("#loc-chip", { scale: 0, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, K.seksyen);
 
-      // CARS
-      tl.fromTo("#v-side", { scale: 1.0 }, { scale: 1.15, duration: 2.8, ease: "none" }, 15.85);
-      tl.fromTo("#cars-title", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, 15.95);
+      // ROOMS — "3 bilik tidur dan 2 bilik air"
+      tl.fromTo("#bilik-num", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, K.tiga);
+      tl.fromTo("#bilik-word", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.tiga + 0.25);
+      tl.fromTo("#bilikair", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, K.dua);
+
+      // LAND SIZE — counter lands on "4,102", unit on "kaki persegi"
+      tl.fromTo("#best", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, K.best);
+      const n = { v: 0 }, numEl = document.querySelector("#luas-num");
+      tl.fromTo("#luas-num", { opacity: 0 }, { opacity: 1, duration: 0.15 }, K.best + 0.8);
+      tl.fromTo(n, { v: 0 }, { v: 4102, duration: K.luas_n - (K.best + 0.8), ease: "power2.out",
+        onUpdate: () => { numEl.textContent = Math.round(n.v).toLocaleString("en-US"); } }, K.best + 0.8);
+      tl.to("#luas-num", { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, K.luas_n);
+      tl.fromTo("#luas-unit", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.kaki);
+      tl.fromTo("#luas-dim", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, K.luas_n + 0.3);
+
+      // SIDE — "Bahagian tepi ... memang luas. Nak parking 4 kereta"
+      tl.fromTo("#side-a", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, K.bahagian);
+      tl.fromTo("#side-b", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, K.empat);
       gsap.utils.toArray("#cars-row span").forEach((el, i) => {
-        tl.fromTo(el, { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.25, ease: back }, 16.5 + i * 0.25);
-      });
-      tl.fromTo("#cars-sub", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, 17.5);
-
-      // GAME CHANGER
-      tl.fromTo("#i-gc", { scale: 1.12 }, { scale: 1.25, duration: 5.9, ease: "none" }, 18.65);
-      tl.fromTo("#gc-title", { scale: 2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 18.65);
-      gsap.utils.toArray("#gc-list .item").forEach((el, i) => {
-        tl.fromTo(el, { x: i % 2 ? 900 : -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 19.4 + i * 0.8);
+        tl.fromTo(el, { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.25, ease: back }, K.empat + i * 0.2);
       });
 
-      // CHECKS
-      tl.fromTo("#i-checks", { scale: 1.12 }, { scale: 1.25, duration: 6.4, ease: "none" }, 24.55);
-      tl.fromTo("#offer-title", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, 24.6);
-      gsap.utils.toArray("#offer .check").forEach((el, i) => {
-        tl.fromTo(el, { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, 24.8 + i * 1.8);
+      // USES — each item on its spoken word
+      tl.fromTo("#gc-title", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, span("#g-gc")[0]);
+      [K.mini, K.tempat, K.ruang].forEach((t, i) => {
+        tl.fromTo(`#gc-list .item:nth-child(${i + 1})`, { x: i % 2 ? 900 : -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, t - 0.1);
       });
 
-      // PRICE
-      tl.fromTo("#i-price", { scale: 1.12 }, { scale: 1.3, duration: 11.65, ease: "none" }, 30.95);
-      tl.fromTo("#price-title", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 31.0);
-      tl.fromTo("#price-card", { y: 900 }, { y: 0, duration: 0.45, ease: "power4.out" }, 31.2);
-      tl.fromTo("#spa-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 32.8);
-      tl.fromTo("#net", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 33.6);
-      tl.to("#net", { scale: 1.06, duration: 0.45, yoyo: true, repeat: 7, ease: "sine.inOut" }, 34.0);
-      tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, 39.3);
-      tl.to("#cta", { scale: 1.05, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut" }, 39.7);
+      // READY — "Rumah dah siap, boleh terus masuk"
+      tl.fromTo("#ready-a", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, K.siap + 0.05);
+      tl.fromTo("#ready-b", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.siap + 0.4);
+
+      // PRICE — "Downpayment 0%, harga bersih hanya RM598,888"
+      tl.fromTo("#dp", { scale: 2.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, K.dp);
+      tl.fromTo("#dp-sub", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.dp + 0.2);
+      tl.fromTo("#price-card", { y: 1100 }, { y: 0, duration: 0.45, ease: "power4.out" }, K.harga - 0.1);
+      tl.fromTo("#spa-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, K.harga + 0.4);
+      tl.fromTo("#net", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, K.rm);
+      tl.to("#net", { scale: 1.06, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, K.rm + 0.4);
+      tl.fromTo("#bonus", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, K.rm + 1.2);
+      tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, K.berminat);
+      tl.to("#cta", { scale: 1.06, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut" }, K.whatsapp);
+
+      // CAPTIONS
+      gsap.set(".cap", { autoAlpha: 0 });
+      tl.set("#cap0", { autoAlpha: 1 }, 0.0).set("#cap0", { autoAlpha: 0 }, 1.38);
+      tl.fromTo("#cap0", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 0.0);
+      tl.set("#cw0_0", { color: "#ffd400" }, 0.0).set("#cw0_0", { color: "#ffffff" }, 0.35);
+      tl.set("#cw0_1", { color: "#ffd400" }, 0.3).set("#cw0_1", { color: "#ffffff" }, 0.63);
+      tl.set("#cw0_2", { color: "#ffd400" }, 0.58).set("#cw0_2", { color: "#ffffff" }, 0.9700000000000001);
+      tl.set("#cw0_3", { color: "#ffd400" }, 0.92).set("#cw0_3", { color: "#ffffff" }, 1.1300000000000001);
+      tl.set("#cw0_4", { color: "#ffd400" }, 1.08).set("#cw0_4", { color: "#ffffff" }, 1.43);
+      tl.set("#cap1", { autoAlpha: 1 }, 1.38).set("#cap1", { autoAlpha: 0 }, 3.0);
+      tl.fromTo("#cap1", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 1.38);
+      tl.set("#cw1_0", { color: "#ffd400" }, 1.38).set("#cw1_0", { color: "#ffffff" }, 1.71);
+      tl.set("#cw1_1", { color: "#ffd400" }, 1.66).set("#cw1_1", { color: "#ffffff" }, 1.99);
+      tl.set("#cw1_2", { color: "#ffd400" }, 1.94).set("#cw1_2", { color: "#ffffff" }, 2.23);
+      tl.set("#cw1_3", { color: "#ffd400" }, 2.18).set("#cw1_3", { color: "#ffffff" }, 2.79);
+      tl.set("#cap2", { autoAlpha: 1 }, 3.0).set("#cap2", { autoAlpha: 0 }, 4.26);
+      tl.fromTo("#cap2", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 3.0);
+      tl.set("#cw2_0", { color: "#ffd400" }, 3.0).set("#cw2_0", { color: "#ffffff" }, 3.25);
+      tl.set("#cw2_1", { color: "#ffd400" }, 3.2).set("#cw2_1", { color: "#ffffff" }, 3.53);
+      tl.set("#cw2_2", { color: "#ffd400" }, 3.48).set("#cw2_2", { color: "#ffffff" }, 3.8099999999999996);
+      tl.set("#cw2_3", { color: "#ffd400" }, 3.76).set("#cw2_3", { color: "#ffffff" }, 4.31);
+      tl.set("#cap3", { autoAlpha: 1 }, 4.26).set("#cap3", { autoAlpha: 0 }, 5.6);
+      tl.fromTo("#cap3", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 4.26);
+      tl.set("#cw3_0", { color: "#ffd400" }, 4.26).set("#cw3_0", { color: "#ffffff" }, 4.55);
+      tl.set("#cw3_1", { color: "#ffd400" }, 4.5).set("#cw3_1", { color: "#ffffff" }, 4.81);
+      tl.set("#cw3_2", { color: "#ffd400" }, 4.76).set("#cw3_2", { color: "#ffffff" }, 5.17);
+      tl.set("#cw3_3", { color: "#ffd400" }, 5.12).set("#cw3_3", { color: "#ffffff" }, 5.41);
+      tl.set("#cap4", { autoAlpha: 1 }, 5.6).set("#cap4", { autoAlpha: 0 }, 7.74);
+      tl.fromTo("#cap4", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 5.6);
+      tl.set("#cw4_0", { color: "#ffd400" }, 5.6).set("#cw4_0", { color: "#ffffff" }, 5.93);
+      tl.set("#cw4_1", { color: "#ffd400" }, 5.88).set("#cw4_1", { color: "#ffffff" }, 6.51);
+      tl.set("#cw4_2", { color: "#ffd400" }, 6.46).set("#cw4_2", { color: "#ffffff" }, 6.97);
+      tl.set("#cw4_3", { color: "#ffd400" }, 6.92).set("#cw4_3", { color: "#ffffff" }, 7.569999999999999);
+      tl.set("#cap5", { autoAlpha: 1 }, 7.74).set("#cap5", { autoAlpha: 0 }, 9.12);
+      tl.fromTo("#cap5", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 7.74);
+      tl.set("#cw5_0", { color: "#ffd400" }, 7.74).set("#cw5_0", { color: "#ffffff" }, 8.01);
+      tl.set("#cw5_1", { color: "#ffd400" }, 7.96).set("#cw5_1", { color: "#ffffff" }, 8.23);
+      tl.set("#cw5_2", { color: "#ffd400" }, 8.18).set("#cw5_2", { color: "#ffffff" }, 8.49);
+      tl.set("#cw5_3", { color: "#ffd400" }, 8.44).set("#cw5_3", { color: "#ffffff" }, 8.91);
+      tl.set("#cw5_4", { color: "#ffd400" }, 8.86).set("#cw5_4", { color: "#ffffff" }, 9.17);
+      tl.set("#cap6", { autoAlpha: 1 }, 9.12).set("#cap6", { autoAlpha: 0 }, 10.835);
+      tl.fromTo("#cap6", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 9.12);
+      tl.set("#cw6_0", { color: "#ffd400" }, 9.12).set("#cw6_0", { color: "#ffffff" }, 9.55);
+      tl.set("#cw6_1", { color: "#ffd400" }, 9.5).set("#cw6_1", { color: "#ffffff" }, 9.81);
+      tl.set("#cw6_2", { color: "#ffd400" }, 9.76).set("#cw6_2", { color: "#ffffff" }, 10.15);
+      tl.set("#cw6_3", { color: "#ffd400" }, 10.1).set("#cw6_3", { color: "#ffffff" }, 10.41);
+      tl.set("#cw6_4", { color: "#ffd400" }, 10.36).set("#cw6_4", { color: "#ffffff" }, 10.735000000000001);
+      tl.set("#cap7", { autoAlpha: 1 }, 10.835).set("#cap7", { autoAlpha: 0 }, 11.895);
+      tl.fromTo("#cap7", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 10.835);
+      tl.set("#cw7_0", { color: "#ffd400" }, 10.835).set("#cw7_0", { color: "#ffffff" }, 11.005);
+      tl.set("#cw7_1", { color: "#ffd400" }, 10.955).set("#cw7_1", { color: "#ffffff" }, 11.385000000000002);
+      tl.set("#cw7_2", { color: "#ffd400" }, 11.335).set("#cw7_2", { color: "#ffffff" }, 11.745000000000001);
+      tl.set("#cap8", { autoAlpha: 1 }, 11.895).set("#cap8", { autoAlpha: 0 }, 16.095);
+      tl.fromTo("#cap8", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 11.895);
+      tl.set("#cw8_0", { color: "#ffd400" }, 11.895).set("#cw8_0", { color: "#ffffff" }, 12.285);
+      tl.set("#cw8_1", { color: "#ffd400" }, 12.235).set("#cw8_1", { color: "#ffffff" }, 12.685);
+      tl.set("#cw8_2", { color: "#ffd400" }, 12.635).set("#cw8_2", { color: "#ffffff" }, 13.185);
+      tl.set("#cw8_3", { color: "#ffd400" }, 13.135).set("#cw8_3", { color: "#ffffff" }, 14.805000000000001);
+      tl.set("#cw8_4", { color: "#ffd400" }, 14.755).set("#cw8_4", { color: "#ffffff" }, 15.085);
+      tl.set("#cw8_5", { color: "#ffd400" }, 15.035).set("#cw8_5", { color: "#ffffff" }, 15.925);
+      tl.set("#cap9", { autoAlpha: 1 }, 16.095).set("#cap9", { autoAlpha: 0 }, 18.415);
+      tl.fromTo("#cap9", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 16.095);
+      tl.set("#cw9_0", { color: "#ffd400" }, 16.095).set("#cw9_0", { color: "#ffffff" }, 16.425);
+      tl.set("#cw9_1", { color: "#ffd400" }, 16.375).set("#cw9_1", { color: "#ffffff" }, 16.645);
+      tl.set("#cw9_2", { color: "#ffd400" }, 16.595).set("#cw9_2", { color: "#ffffff" }, 16.945);
+      tl.set("#cw9_3", { color: "#ffd400" }, 16.895).set("#cw9_3", { color: "#ffffff" }, 17.325);
+      tl.set("#cw9_4", { color: "#ffd400" }, 17.275).set("#cw9_4", { color: "#ffffff" }, 17.745);
+      tl.set("#cw9_5", { color: "#ffd400" }, 17.695).set("#cw9_5", { color: "#ffffff" }, 18.265);
+      tl.set("#cap10", { autoAlpha: 1 }, 18.415).set("#cap10", { autoAlpha: 0 }, 20.394);
+      tl.fromTo("#cap10", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 18.415);
+      tl.set("#cw10_0", { color: "#ffd400" }, 18.415).set("#cw10_0", { color: "#ffffff" }, 18.585);
+      tl.set("#cw10_1", { color: "#ffd400" }, 18.535).set("#cw10_1", { color: "#ffffff" }, 18.885);
+      tl.set("#cw10_2", { color: "#ffd400" }, 18.835).set("#cw10_2", { color: "#ffffff" }, 19.285);
+      tl.set("#cw10_3", { color: "#ffd400" }, 19.235).set("#cw10_3", { color: "#ffffff" }, 19.725);
+      tl.set("#cw10_4", { color: "#ffd400" }, 19.675).set("#cw10_4", { color: "#ffffff" }, 19.925);
+      tl.set("#cw10_5", { color: "#ffd400" }, 19.875).set("#cw10_5", { color: "#ffffff" }, 20.305);
+      tl.set("#cap11", { autoAlpha: 1 }, 20.394).set("#cap11", { autoAlpha: 0 }, 21.674);
+      tl.fromTo("#cap11", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 20.394);
+      tl.set("#cw11_0", { color: "#ffd400" }, 20.394).set("#cw11_0", { color: "#ffffff" }, 20.584);
+      tl.set("#cw11_1", { color: "#ffd400" }, 20.534).set("#cw11_1", { color: "#ffffff" }, 20.784000000000002);
+      tl.set("#cw11_2", { color: "#ffd400" }, 20.734).set("#cw11_2", { color: "#ffffff" }, 21.064);
+      tl.set("#cw11_3", { color: "#ffd400" }, 21.014).set("#cw11_3", { color: "#ffffff" }, 21.504);
+      tl.set("#cap12", { autoAlpha: 1 }, 21.674).set("#cap12", { autoAlpha: 0 }, 23.014);
+      tl.fromTo("#cap12", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 21.674);
+      tl.set("#cw12_0", { color: "#ffd400" }, 21.674).set("#cw12_0", { color: "#ffffff" }, 21.984);
+      tl.set("#cw12_1", { color: "#ffd400" }, 21.934).set("#cw12_1", { color: "#ffffff" }, 22.184);
+      tl.set("#cw12_2", { color: "#ffd400" }, 22.134).set("#cw12_2", { color: "#ffffff" }, 22.744);
+      tl.set("#cw12_3", { color: "#ffd400" }, 22.694).set("#cw12_3", { color: "#ffffff" }, 23.064);
+      tl.set("#cap13", { autoAlpha: 1 }, 23.014).set("#cap13", { autoAlpha: 0 }, 24.934);
+      tl.fromTo("#cap13", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 23.014);
+      tl.set("#cw13_0", { color: "#ffd400" }, 23.014).set("#cw13_0", { color: "#ffffff" }, 23.364);
+      tl.set("#cw13_1", { color: "#ffd400" }, 23.314).set("#cw13_1", { color: "#ffffff" }, 23.844);
+      tl.set("#cw13_2", { color: "#ffd400" }, 23.794).set("#cw13_2", { color: "#ffffff" }, 24.064);
+      tl.set("#cw13_3", { color: "#ffd400" }, 24.014).set("#cw13_3", { color: "#ffffff" }, 24.784000000000002);
+      tl.set("#cap14", { autoAlpha: 1 }, 24.934).set("#cap14", { autoAlpha: 0 }, 26.879);
+      tl.fromTo("#cap14", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 24.934);
+      tl.set("#cw14_0", { color: "#ffd400" }, 24.934).set("#cw14_0", { color: "#ffffff" }, 25.204);
+      tl.set("#cw14_1", { color: "#ffd400" }, 25.154).set("#cw14_1", { color: "#ffffff" }, 25.424);
+      tl.set("#cw14_2", { color: "#ffd400" }, 25.374).set("#cw14_2", { color: "#ffffff" }, 25.824);
+      tl.set("#cw14_3", { color: "#ffd400" }, 25.874).set("#cw14_3", { color: "#ffffff" }, 26.164);
+      tl.set("#cw14_4", { color: "#ffd400" }, 26.114).set("#cw14_4", { color: "#ffffff" }, 26.404);
+      tl.set("#cw14_5", { color: "#ffd400" }, 26.354).set("#cw14_5", { color: "#ffffff" }, 26.794);
+      tl.set("#cap15", { autoAlpha: 1 }, 26.879).set("#cap15", { autoAlpha: 0 }, 28.419);
+      tl.fromTo("#cap15", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 26.879);
+      tl.set("#cw15_0", { color: "#ffd400" }, 26.879).set("#cw15_0", { color: "#ffffff" }, 27.489);
+      tl.set("#cw15_1", { color: "#ffd400" }, 27.439).set("#cw15_1", { color: "#ffffff" }, 28.469);
+      tl.set("#cap16", { autoAlpha: 1 }, 28.419).set("#cap16", { autoAlpha: 0 }, 33.919);
+      tl.fromTo("#cap16", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 28.419);
+      tl.set("#cw16_0", { color: "#ffd400" }, 28.419).set("#cw16_0", { color: "#ffffff" }, 28.889);
+      tl.set("#cw16_1", { color: "#ffd400" }, 28.839).set("#cw16_1", { color: "#ffffff" }, 29.269000000000002);
+      tl.set("#cw16_2", { color: "#ffd400" }, 29.219).set("#cw16_2", { color: "#ffffff" }, 29.629);
+      tl.set("#cw16_3", { color: "#ffd400" }, 29.579).set("#cw16_3", { color: "#ffffff" }, 33.449);
+      tl.set("#cap17", { autoAlpha: 1 }, 33.919).set("#cap17", { autoAlpha: 0 }, 35.262);
+      tl.fromTo("#cap17", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 33.919);
+      tl.set("#cw17_0", { color: "#ffd400" }, 33.919).set("#cw17_0", { color: "#ffffff" }, 34.349);
+      tl.set("#cw17_1", { color: "#ffd400" }, 34.299).set("#cw17_1", { color: "#ffffff" }, 34.528999999999996);
+      tl.set("#cw17_2", { color: "#ffd400" }, 34.479).set("#cw17_2", { color: "#ffffff" }, 34.689);
+      tl.set("#cw17_3", { color: "#ffd400" }, 34.639).set("#cw17_3", { color: "#ffffff" }, 34.928999999999995);
+      tl.set("#cw17_4", { color: "#ffd400" }, 34.879).set("#cw17_4", { color: "#ffffff" }, 35.159);
+      tl.set("#cap18", { autoAlpha: 1 }, 35.262).set("#cap18", { autoAlpha: 0 }, 38.58);
+      tl.fromTo("#cap18", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 35.262);
+      tl.set("#cw18_0", { color: "#ffd400" }, 35.262).set("#cw18_0", { color: "#ffffff" }, 35.512);
+      tl.set("#cw18_1", { color: "#ffd400" }, 35.462).set("#cw18_1", { color: "#ffffff" }, 35.831999999999994);
+      tl.set("#cw18_2", { color: "#ffd400" }, 35.782).set("#cw18_2", { color: "#ffffff" }, 36.132);
+      tl.set("#cw18_3", { color: "#ffd400" }, 36.082).set("#cw18_3", { color: "#ffffff" }, 36.431999999999995);
+      tl.set("#cw18_4", { color: "#ffd400" }, 36.382).set("#cw18_4", { color: "#ffffff" }, 36.711999999999996);
 
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
