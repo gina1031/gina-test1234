@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Source template (index.tpl): edit it, then run `python3 build.py` to regenerate index.html -->
+<!-- Property-tour template. Edit config.json (and styles here), then run `python3 build.py` to regenerate index.html -->
 <html lang="ms" data-resolution="portrait">
   <head>
     <meta charset="UTF-8" />
@@ -93,89 +93,24 @@
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{{D}}" data-width="1080" data-height="1920">
 
-      <!-- ===== VIDEO TRACK (timed from voiceover words) ===== -->
+      <!-- ===== SCENES (cut on voiceover words) ===== -->
 {{SCENES}}
 
       <!-- ===== GRAPHICS ===== -->
-      <div id="g-hook" class="clip" {{HOOK}} data-track-index="1">
-        <div class="shade-top"></div>
-        <div id="hook-a" class="cx"><span class="tag">RUMAH CORNER LOT</span></div>
-        <div id="hook-b" class="cx t-stroke">TANAH TEPI<br /><span class="y">LUAS GILER</span> 🤯</div>
-      </div>
+{{GRAPHICS}}
 
-      <div id="g-loc" class="clip" {{LOC}} data-track-index="1">
-        <div id="loc">
-          <div class="card">
-            <div class="l1">📍 Lombong Besi 2</div>
-            <div class="l2">Seksyen 29, Shah Alam</div>
-            <div class="l3">Single Storey Terrace • Corner No.1</div>
-          </div>
-          <div id="loc-chip"><span class="tag">🌳 Tanah Rezab Melayu</span></div>
-        </div>
-      </div>
-
-      <div id="g-bed" class="clip" {{BED}} data-track-index="1">
-        <div class="shade-top"></div>
-        <div id="bilik-num" class="cx t-stroke y">3</div>
-        <div id="bilik-word" class="cx t-stroke">BILIK TIDUR 🛏️</div>
-        <div id="bilikair" class="cx"><span class="pill y">+ 2 BILIK AIR 🚿</span></div>
-      </div>
-
-      <div id="g-land" class="clip" {{LAND}} data-track-index="1">
-        <div class="shade-top"></div>
-        <div id="best" class="cx"><span class="pill">YANG PALING BEST 🔥</span></div>
-        <div id="luas-num" class="cx t-stroke y">0</div>
-        <div id="luas-unit" class="cx t-stroke">KAKI PERSEGI</div>
-        <div id="luas-dim" class="cx"><span class="tag" style="background:#fff;color:#111">43' ~ 64' x 68'</span></div>
-      </div>
-
-      <div id="g-side" class="clip" {{SIDE}} data-track-index="1">
-        <div class="shade-top"></div>
-        <div id="side-a" class="cx t-stroke">Bahagian tepi<br /><span class="y">MEMANG LUAS</span></div>
-        <div id="side-b" class="cx t-stroke">4 KERETA</div>
-        <div id="cars-row"><span>🚗</span><span>🚙</span><span>🚗</span><span>🚙</span></div>
-      </div>
-
-      <div id="g-gc" class="clip" {{GC}} data-track-index="1">
-        <div id="gc-title" class="cx t-stroke">Ruang tepi ni<br /><span class="y">BOLEH JADI…</span></div>
-        <div id="gc-list">
-          <div class="item"><span class="e">🌳</span>Mini garden</div>
-          <div class="item"><span class="e">🚲</span>Tempat anak bermain</div>
-          <div class="item"><span class="e">☕️</span>Ruang santai</div>
-        </div>
-      </div>
-
-      <div id="g-ready" class="clip" {{READY}} data-track-index="1">
-        <div class="shade-top"></div>
-        <div id="ready-a" class="cx"><span class="pill g">✅ RUMAH DAH SIAP</span></div>
-        <div id="ready-b" class="cx t-stroke">Boleh terus <span class="y">MASUK!</span></div>
-      </div>
-
-      <div id="g-price" class="clip" {{PRICE}} data-track-index="1">
-        <div id="dp" class="cx t-stroke y">0%</div>
-        <div id="dp-sub" class="cx t-stroke">DOWNPAYMENT</div>
-        <div id="price-card">
-          <div id="spa">Harga SPA: RM 665,431<div id="spa-strike"></div></div>
-          <div id="net-label">HARGA BERSIH</div>
-          <div id="net">RM 598,888</div>
-          <div id="fine">*Loan Agreement to be borne by purchaser</div>
-        </div>
-        <div id="bonus" class="cx"><span class="tag">🎁 FREE SPA Legal Fees &amp; MOT</span></div>
-        <div id="cta" class="cx"><span class="pill">📲 WhatsApp Gina untuk viewing!</span></div>
-      </div>
-
-      <!-- ===== CAPTIONS (word-synced to voiceover) ===== -->
+      <!-- ===== CAPTIONS (word-synced) ===== -->
       <div id="captions" class="clip" data-start="0" data-duration="{{D}}" data-track-index="2">
 {{CAPS}}
       </div>
 
       <div id="flash" class="clip" data-start="0" data-duration="{{D}}" data-track-index="2"></div>
 
-      <!-- ===== VOICEOVER (pauses tightened) ===== -->
+      <!-- ===== VOICEOVER (long pauses tightened) ===== -->
 {{VO}}
 
       <!-- ===== MUSIC BED ===== -->
-      <audio id="bed" src="assets/sfx/bed.m4a" data-start="0" data-duration="{{D}}" data-media-start="0" data-volume="0.15" data-fade-out="1.2" data-track-index="3"></audio>
+      <audio id="bed" src="assets/sfx/bed.m4a" data-start="0" data-duration="{{D}}" data-media-start="0" data-volume="{{BED_VOL}}" data-fade-out="1.2" data-track-index="3"></audio>
 
       <!-- ===== SFX ===== -->
 {{SFX}}
@@ -183,81 +118,17 @@
 
     <script>
       const tl = gsap.timeline({ paused: true });
-      const back = "back.out(2.2)";
-      const K = {{K}};
       tl.set("#flash", { opacity: 0 }, 0);
       {{CUTS}}.forEach((t) => {
         tl.to("#flash", { opacity: 0.5, duration: 0.05, ease: "none" }, t - 0.05).to("#flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
       });
-      const kb = (sel, a, b, s0, s1) => tl.fromTo(sel, { scale: s0 }, { scale: s1, duration: b - a, ease: "none" }, a);
-      const span = (sel) => { const el = document.querySelector(sel); const a = +el.dataset.start; return [a, a + +el.dataset.duration]; };
 
       // Ken Burns on every shot
-      kb("#v-hook", ...span("#v-hook"), 1.25, 1.05);
-      kb("#v-front", ...span("#v-front"), 1.12, 1.0);
-      kb("#v-hall", ...span("#v-hall"), 1.0, 1.12);
-      kb("#v-bed", ...span("#v-bed"), 1.0, 1.1);
-      kb("#v-room", ...span("#v-room"), 1.08, 1.0);
-      kb("#v-bath", ...span("#v-bath"), 1.12, 1.0);
-      kb("#i-land", ...span("#i-land"), 1.0, 1.15);
-      kb("#v-side", ...span("#v-side"), 1.0, 1.12);
-      kb("#i-gc", ...span("#i-gc"), 1.12, 1.22);
-      kb("#v-ready", ...span("#v-ready"), 1.1, 1.0);
-      kb("#i-price", ...span("#i-price"), 1.12, 1.3);
+      {{KB}}
 
-      // HOOK — synced to "corner lot" / "tanah tepi"
-      tl.fromTo("#hook-a", { scale: 2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: back }, K.corner);
-      tl.fromTo("#hook-b", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: back }, K.tanah);
-      tl.to("#hook-b", { scale: 1.05, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }, K.tanah + 0.4);
+      {{GJS}}
 
-      // LOCATION — "Lombong Besi 2, seksyen 29 Shah Alam"
-      tl.fromTo("#loc .card", { x: -1100 }, { x: 0, duration: 0.45, ease: "power4.out" }, K.lombong - 0.2);
-      tl.fromTo("#loc-chip", { scale: 0, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, K.seksyen);
-
-      // ROOMS — "3 bilik tidur dan 2 bilik air"
-      tl.fromTo("#bilik-num", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, K.tiga);
-      tl.fromTo("#bilik-word", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.tiga + 0.25);
-      tl.fromTo("#bilikair", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, K.dua);
-
-      // LAND SIZE — counter lands on "4,102", unit on "kaki persegi"
-      tl.fromTo("#best", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, K.best);
-      const n = { v: 0 }, numEl = document.querySelector("#luas-num");
-      tl.fromTo("#luas-num", { opacity: 0 }, { opacity: 1, duration: 0.15 }, K.best + 0.8);
-      tl.fromTo(n, { v: 0 }, { v: 4102, duration: K.luas_n - (K.best + 0.8), ease: "power2.out",
-        onUpdate: () => { numEl.textContent = Math.round(n.v).toLocaleString("en-US"); } }, K.best + 0.8);
-      tl.to("#luas-num", { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, K.luas_n);
-      tl.fromTo("#luas-unit", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.kaki);
-      tl.fromTo("#luas-dim", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, K.luas_n + 0.3);
-
-      // SIDE — "Bahagian tepi ... memang luas. Nak parking 4 kereta"
-      tl.fromTo("#side-a", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, K.bahagian);
-      tl.fromTo("#side-b", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, K.empat);
-      gsap.utils.toArray("#cars-row span").forEach((el, i) => {
-        tl.fromTo(el, { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.25, ease: back }, K.empat + i * 0.2);
-      });
-
-      // USES — each item on its spoken word
-      tl.fromTo("#gc-title", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, span("#g-gc")[0]);
-      [K.mini, K.tempat, K.ruang].forEach((t, i) => {
-        tl.fromTo(`#gc-list .item:nth-child(${i + 1})`, { x: i % 2 ? 900 : -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, t - 0.1);
-      });
-
-      // READY — "Rumah dah siap, boleh terus masuk"
-      tl.fromTo("#ready-a", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, K.siap + 0.05);
-      tl.fromTo("#ready-b", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.siap + 0.4);
-
-      // PRICE — "Downpayment 0%, harga bersih hanya RM598,888"
-      tl.fromTo("#dp", { scale: 2.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: "power4.out" }, K.dp);
-      tl.fromTo("#dp-sub", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, K.dp + 0.2);
-      tl.fromTo("#price-card", { y: 1100 }, { y: 0, duration: 0.45, ease: "power4.out" }, K.harga - 0.1);
-      tl.fromTo("#spa-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, K.harga + 0.4);
-      tl.fromTo("#net", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, K.rm);
-      tl.to("#net", { scale: 1.06, duration: 0.45, yoyo: true, repeat: 5, ease: "sine.inOut" }, K.rm + 0.4);
-      tl.fromTo("#bonus", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, K.rm + 1.2);
-      tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, K.berminat);
-      tl.to("#cta", { scale: 1.06, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut" }, K.whatsapp);
-
-      // CAPTIONS
+      // captions
       gsap.set(".cap", { autoAlpha: 0 });
       {{CAPJS}}
 
