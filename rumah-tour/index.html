@@ -1,59 +1,301 @@
 <!doctype html>
-<html lang="en" data-resolution="portrait">
+<html lang="ms" data-resolution="portrait">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
     <style>
-      /* Placeholders: replace all three with the film's own palette and display face. */
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2"); font-weight: 900; }
+      @font-face { font-family: "Emoji"; src: url("assets/fonts/noto-color-emoji-emoji-400-normal.woff2") format("woff2"); }
+
       :root {
-        --ground: #000;
+        --ground: #0d0d0d;
         --ink: #ffffff;
-        --font-display: sans-serif;
+        --accent: #ffd400;
+        --green: #19c37d;
+        --deep: #10233f;
+        --font-display: "Mont", "Emoji", sans-serif;
       }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1080px;
-        height: 1920px;
-        overflow: hidden;
-        background: var(--ground);
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-display);
-      }
-      #title {
-        color: var(--ink);
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); color: var(--ink); }
+
+      .clip { position: absolute; inset: 0; }
+      video.clip, img.clip { width: 1080px; height: 1920px; object-fit: cover; }
+      .bg-blur { filter: blur(18px) brightness(0.55); transform: scale(1.12); }
+
+      .overlay { position: absolute; inset: 0; pointer-events: none; }
+      .shade-top { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 38%); }
+      .shade-bottom { background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 45%); }
+
+      .t-stroke { text-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 24px rgba(0,0,0,.55); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+      .center-x { position: absolute; left: 0; right: 0; text-align: center; }
+
+      /* Hook */
+      #hook-top { top: 330px; font-weight: 900; font-size: 92px; letter-spacing: -0.02em; }
+      #hook-big { top: 440px; font-weight: 900; font-size: 124px; line-height: 1; color: var(--accent); letter-spacing: -0.03em; }
+      #hook-sub { top: 730px; font-weight: 800; font-size: 64px; }
+      .tag { display: inline-block; padding: 14px 30px; border-radius: 999px; font-weight: 900; font-size: 46px; letter-spacing: .04em; }
+      #hook-tag { top: 1380px; }
+      #hook-tag .tag { background: var(--accent); color: #000; }
+
+      /* Lower third */
+      #lt { left: 60px; right: 60px; top: 1240px; position: absolute; }
+      #lt .card { background: rgba(255,255,255,.96); color: #111; border-radius: 34px; padding: 34px 40px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+      #lt .loc { font-weight: 900; font-size: 72px; letter-spacing: -0.02em; }
+      #lt .type { font-weight: 600; font-size: 40px; margin-top: 8px; color: #333; }
+      #lt-chip { margin-top: 22px; }
+      #lt-chip .tag { background: var(--green); color: #fff; font-size: 44px; }
+
+      /* Tour labels */
+      .label { position: absolute; left: 60px; right: 60px; text-align: center; }
+      .pill { display: inline-block; background: #000; color: #fff; padding: 18px 34px; border-radius: 22px; font-weight: 900; font-size: 58px; }
+      .pill.y { background: var(--accent); color: #000; }
+      .pill.g { background: var(--green); color: #fff; }
+      #dim { top: 300px; }
+      #dim-bar { position: absolute; top: 470px; left: 140px; width: 800px; height: 10px; background: var(--accent); transform-origin: left center; border-radius: 6px; }
+      #dim-bar::before, #dim-bar::after { content: ""; position: absolute; top: -22px; width: 10px; height: 54px; background: var(--accent); border-radius: 6px; }
+      #dim-bar::before { left: 0; } #dim-bar::after { right: 0; }
+      #ready { top: 330px; }
+      #bilik-num { top: 520px; font-weight: 900; font-size: 300px; line-height: 1; color: var(--accent); }
+      #bilik-word { top: 830px; font-weight: 900; font-size: 110px; }
+      #bilikair { top: 330px; }
+
+      /* Cars */
+      #cars-title { top: 300px; font-weight: 900; font-size: 74px; line-height: 1.12; }
+      #cars-title .y { color: var(--accent); font-size: 120px; display: block; }
+      #cars-row { position: absolute; top: 640px; left: 0; right: 0; display: flex; justify-content: center; gap: 26px; }
+      #cars-row span { font-size: 130px; display: inline-block; }
+      #cars-sub { top: 1420px; font-weight: 800; font-size: 60px; }
+
+      /* Game changer list */
+      #gc-title { top: 290px; font-weight: 900; font-size: 80px; line-height: 1.08; }
+      #gc-title .y { color: var(--accent); }
+      #gc-list { position: absolute; top: 620px; left: 110px; right: 110px; display: flex; flex-direction: column; gap: 30px; }
+      .item { background: rgba(255,255,255,.95); color: #111; border-radius: 28px; padding: 26px 34px; font-weight: 800; font-size: 56px; display: flex; align-items: center; gap: 24px; }
+      .item .e { font-size: 64px; }
+
+      /* Offer */
+      #offer { position: absolute; top: 250px; left: 70px; right: 70px; }
+      .check { white-space: nowrap; font-weight: 900; font-size: 52px; margin-bottom: 26px; display: flex; gap: 20px; align-items: center; }
+      .check .bx { background: var(--green); width: 74px; height: 74px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; }
+      #price-card { position: absolute; top: 900px; left: 70px; right: 70px; background: #fff; color: #111; border-radius: 40px; padding: 46px 50px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+      #spa { white-space: nowrap; font-weight: 800; font-size: 54px; color: #666; position: relative; display: inline-block; }
+      #spa-strike { position: absolute; left: -10px; right: -10px; top: 50%; height: 8px; background: #e0242b; transform-origin: left center; border-radius: 4px; }
+      #net-label { margin-top: 24px; font-weight: 900; font-size: 46px; letter-spacing: .1em; color: var(--deep); }
+      #net { white-space: nowrap; font-weight: 900; font-size: 132px; line-height: 1; color: #e0242b; letter-spacing: -0.04em; }
+      #fine { margin-top: 22px; font-weight: 600; font-size: 30px; color: #555; }
+      #cta { top: 1560px; } #cta .pill { font-size: 50px; white-space: nowrap; }
+      #flash { background: #fff; opacity: 0; }
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1080"
-      data-height="1920"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="27.4" data-width="1080" data-height="1920">
+
+      <!-- ===== VIDEO TRACK ===== -->
+      <!-- HOOK: tanah tepi (bahagian paling luas) -->
+      <video id="v-hook" class="clip" src="assets/clips/20261017_130833.mp4" data-start="0" data-duration="2" data-media-start="0.85" muted data-track-index="0"></video>
+      <!-- Talking head (buang 0.45s senyap di awal) -->
+      <video id="v-talk" class="clip" src="assets/clips/20261112_143239.mp4" data-start="2" data-duration="4.4" data-media-start="0.45" data-has-audio="true" data-track-index="0"></video>
+      <!-- Tour -->
+      <video id="v-hall" class="clip" src="assets/clips/20261017_130855.mp4" data-start="6.4" data-duration="2.2" data-media-start="0.1" muted data-track-index="0"></video>
+      <video id="v-front" class="clip" src="assets/clips/20261017_130938.mp4" data-start="8.6" data-duration="1.5" data-media-start="0.1" muted data-track-index="0"></video>
+      <video id="v-bed" class="clip" src="assets/clips/20261017_130929.mp4" data-start="10.1" data-duration="1.6" data-media-start="0.1" muted data-track-index="0"></video>
+      <video id="v-room" class="clip" src="assets/clips/20261017_130945.mp4" data-start="11.7" data-duration="2.4" data-media-start="0.6" muted data-track-index="0"></video>
+      <video id="v-bath" class="clip" src="assets/clips/20261017_130923.mp4" data-start="14.1" data-duration="1.2" data-media-start="0" muted data-track-index="0"></video>
+      <!-- Ruang tepi: 4 kereta -->
+      <video id="v-side" class="clip" src="assets/clips/20261017_130833.mp4" data-start="15.3" data-duration="2.8" data-media-start="0" muted data-track-index="0"></video>
+      <img id="i-gc" class="clip bg-blur" src="assets/stills/land-end.jpg" data-start="18.1" data-duration="4" data-track-index="0" />
+      <img id="i-offer" class="clip bg-blur" src="assets/stills/hall.jpg" data-start="22.1" data-duration="5.3" data-track-index="0" />
+
+      <!-- ===== GRAPHICS ===== -->
+      <div id="g-hook" class="clip" data-start="0" data-duration="2" data-track-index="1">
+        <div class="overlay shade-top"></div>
+        <div id="hook-top" class="center-x t-stroke">RUMAH TERES…</div>
+        <div id="hook-big" class="center-x t-stroke">TANAH<br />4,102 sqft?!</div>
+        <div id="hook-sub" class="center-x t-stroke">🤯🤯🤯</div>
+        <div id="hook-tag" class="center-x"><span class="tag">CORNER LOT</span></div>
+      </div>
+
+      <div id="g-talk" class="clip" data-start="2" data-duration="4.4" data-track-index="1">
+        <div id="lt">
+          <div class="card">
+            <div class="loc">📍 Lombong Besi 2</div>
+            <div class="type">Single Storey Terrace • Corner No.1</div>
+          </div>
+          <div id="lt-chip"><span class="tag">🌳 Tanah Rezab Melayu</span></div>
+        </div>
+      </div>
+
+      <div id="g-hall" class="clip" data-start="6.4" data-duration="2.2" data-track-index="1">
+        <div class="overlay shade-top"></div>
+        <div id="dim" class="label"><span class="pill y">Luas Binaan 20' x 40'</span></div>
+        <div id="dim-bar"></div>
+      </div>
+
+      <div id="g-front" class="clip" data-start="8.6" data-duration="1.5" data-track-index="1">
+        <div id="ready" class="label"><span class="pill g">✅ READY TO MOVE IN</span></div>
+      </div>
+
+      <div id="g-bed" class="clip" data-start="10.1" data-duration="1.6" data-track-index="1">
+        <div class="overlay shade-top"></div>
+        <div id="bilik-num" class="center-x t-stroke">3</div>
+        <div id="bilik-word" class="center-x t-stroke">BILIK 🛏️</div>
+      </div>
+
+      <div id="g-bath" class="clip" data-start="12.9" data-duration="2.4" data-track-index="1">
+        <div id="bilikair" class="label"><span class="pill y">+ 2 BILIK AIR 🚿</span></div>
+      </div>
+
+      <div id="g-side" class="clip" data-start="15.3" data-duration="2.8" data-track-index="1">
+        <div class="overlay shade-top"></div>
+        <div id="cars-title" class="center-x t-stroke">Boleh masuk<span class="y">4 KERETA</span>dari tepi rumah!</div>
+        <div id="cars-row"><span>🚗</span><span>🚙</span><span>🚗</span><span>🚙</span></div>
+        <div id="cars-sub" class="center-x t-stroke">tanpa sempit2! 🤩</div>
+      </div>
+
+      <div id="g-gc" class="clip" data-start="18.1" data-duration="4" data-track-index="1">
+        <div id="gc-title" class="center-x t-stroke">Ruang tepi ni<br /><span class="y">GAME CHANGER</span> 🔥</div>
+        <div id="gc-list">
+          <div class="item"><span class="e">🌳</span>Mini garden</div>
+          <div class="item"><span class="e">🚲</span>Tempat anak main</div>
+          <div class="item"><span class="e">👕</span>Area sidai</div>
+          <div class="item"><span class="e">📦</span>Storage tambahan</div>
+          <div class="item"><span class="e">☕️</span>Chill corner sendiri</div>
+        </div>
+      </div>
+
+      <div id="g-offer" class="clip" data-start="22.1" data-duration="5.3" data-track-index="1">
+        <div id="offer">
+          <div class="check"><span class="bx">✓</span>READY TO MOVE IN</div>
+          <div class="check"><span class="bx">✓</span>0% Downpayment</div>
+          <div class="check"><span class="bx">✓</span>FREE SPA Legal Fees &amp; MOT</div>
+        </div>
+        <div id="price-card">
+          <div id="spa">Harga SPA: RM 665,431<div id="spa-strike"></div></div>
+          <div id="net-label">HARGA NET</div>
+          <div id="net">RM 598,888</div>
+          <div id="fine">*Loan Agreement to be borne by purchaser</div>
+        </div>
+        <div id="cta" class="label"><span class="pill y">📩 DM sekarang untuk viewing!</span></div>
+      </div>
+
+      <div id="flash" class="clip" data-start="0" data-duration="27.4" data-track-index="2"></div>
+
+      <!-- ===== AUDIO ===== -->
+      <audio id="bed-a" src="assets/sfx/bed.m4a" data-start="0" data-duration="2" data-media-start="0" data-volume="0.45" data-track-index="3"></audio>
+      <audio id="bed-b" src="assets/sfx/bed.m4a" data-start="2" data-duration="4.4" data-media-start="2" data-volume="0.12" data-track-index="3"></audio>
+      <audio id="bed-c" src="assets/sfx/bed.m4a" data-start="6.4" data-duration="21" data-media-start="6.4" data-volume="0.45" data-fade-out="1.5" data-track-index="3"></audio>
+
+      <audio id="s01" src="assets/sfx/impact.wav" data-start="0" data-duration="0.9" data-volume="0.9" data-track-index="4"></audio>
+      <audio id="s02" src="assets/sfx/pop.wav" data-start="0.35" data-duration="0.12" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s03" src="assets/sfx/pop.wav" data-start="0.6" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s04" src="assets/sfx/whoosh.wav" data-start="1.75" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
+      <audio id="s05" src="assets/sfx/pop.wav" data-start="2.3" data-duration="0.12" data-volume="0.5" data-track-index="5"></audio>
+      <audio id="s06" src="assets/sfx/pop.wav" data-start="3.4" data-duration="0.12" data-volume="0.5" data-track-index="5"></audio>
+      <audio id="s07" src="assets/sfx/whoosh.wav" data-start="6.15" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
+      <audio id="s08" src="assets/sfx/tick.wav" data-start="6.6" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s09" src="assets/sfx/whoosh.wav" data-start="8.35" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="s10" src="assets/sfx/pop.wav" data-start="8.75" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s11" src="assets/sfx/whoosh.wav" data-start="9.85" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="s12" src="assets/sfx/impact.wav" data-start="10.2" data-duration="0.9" data-volume="0.6" data-track-index="4"></audio>
+      <audio id="s13" src="assets/sfx/whoosh.wav" data-start="11.45" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="s14" src="assets/sfx/pop.wav" data-start="12.95" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s15" src="assets/sfx/whoosh.wav" data-start="13.85" data-duration="0.6" data-volume="0.6" data-track-index="6"></audio>
+      <audio id="s16" src="assets/sfx/whoosh.wav" data-start="15.05" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
+      <audio id="s17" src="assets/sfx/pop.wav" data-start="16.0" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s18" src="assets/sfx/pop.wav" data-start="16.2" data-duration="0.12" data-volume="0.6" data-track-index="7"></audio>
+      <audio id="s19" src="assets/sfx/pop.wav" data-start="16.4" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s20" src="assets/sfx/pop.wav" data-start="16.6" data-duration="0.12" data-volume="0.6" data-track-index="7"></audio>
+      <audio id="s21" src="assets/sfx/riser.wav" data-start="16.9" data-duration="1.2" data-volume="0.6" data-track-index="8"></audio>
+      <audio id="s22" src="assets/sfx/impact.wav" data-start="18.1" data-duration="0.9" data-volume="0.85" data-track-index="4"></audio>
+      <audio id="s23" src="assets/sfx/tick.wav" data-start="18.9" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s24" src="assets/sfx/tick.wav" data-start="19.35" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s25" src="assets/sfx/tick.wav" data-start="19.8" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s26" src="assets/sfx/tick.wav" data-start="20.25" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s27" src="assets/sfx/tick.wav" data-start="20.7" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s28" src="assets/sfx/whoosh.wav" data-start="21.85" data-duration="0.6" data-volume="0.8" data-track-index="6"></audio>
+      <audio id="s29" src="assets/sfx/tick.wav" data-start="22.4" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s30" src="assets/sfx/tick.wav" data-start="22.8" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s31" src="assets/sfx/tick.wav" data-start="23.2" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="s32" src="assets/sfx/pop.wav" data-start="23.7" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="s33" src="assets/sfx/tick.wav" data-start="24.3" data-duration="0.06" data-volume="0.8" data-track-index="7"></audio>
+      <audio id="s34" src="assets/sfx/impact.wav" data-start="24.7" data-duration="0.9" data-volume="0.8" data-track-index="4"></audio>
+      <audio id="s35" src="assets/sfx/ding.wav" data-start="24.75" data-duration="1.2" data-volume="0.7" data-track-index="8"></audio>
+      <audio id="s36" src="assets/sfx/pop.wav" data-start="25.25" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
     </div>
+
     <script>
       const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0);
+      const back = "back.out(2.2)";
+      tl.set("#flash", { opacity: 0 }, 0);
+
+      // flash on hard cuts
+      [2, 6.4, 10.1, 15.3, 18.1, 22.1].forEach((t) => {
+        tl.to("#flash", { opacity: 0.55, duration: 0.05, ease: "none" }, t - 0.05)
+          .to("#flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
+      });
+
+      // ---- HOOK (0-2) : punch-in + slam text
+      tl.fromTo("#v-hook", { scale: 1.25 }, { scale: 1.05, duration: 2, ease: "power2.out" }, 0);
+      tl.fromTo("#hook-top", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.22, ease: "power3.out" }, 0);
+      tl.fromTo("#hook-big", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: back }, 0.3);
+      tl.fromTo("#hook-sub", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25, ease: back }, 0.6);
+      tl.fromTo("#hook-tag", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, 0.6);
+      tl.to("#hook-big", { scale: 1.06, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.9);
+
+      // ---- TALK (2-6.4)
+      tl.fromTo("#v-talk", { scale: 1.12 }, { scale: 1.0, duration: 0.5, ease: "power3.out" }, 2);
+      tl.fromTo("#lt .card", { x: -1100 }, { x: 0, duration: 0.45, ease: "power4.out" }, 2.25);
+      tl.fromTo("#lt-chip", { scale: 0, opacity: 0, transformOrigin: "left center" }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, 3.35);
+      tl.to("#lt", { x: 1100, duration: 0.3, ease: "power3.in" }, 6.05);
+
+      // ---- HALL (6.4-8.6) : dimension
+      tl.fromTo("#v-hall", { scale: 1.0 }, { scale: 1.12, duration: 2.2, ease: "none" }, 6.4);
+      tl.fromTo("#dim", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, 6.5);
+      tl.fromTo("#dim-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 6.7);
+
+      // ---- FRONT (8.6-10.1)
+      tl.fromTo("#v-front", { scale: 1.15 }, { scale: 1.02, duration: 1.5, ease: "power1.out" }, 8.6);
+      tl.fromTo("#ready", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: back }, 8.75);
+
+      // ---- BEDROOM (10.1-11.7)
+      tl.fromTo("#bilik-num", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, 10.15);
+      tl.fromTo("#bilik-word", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: back }, 10.35);
+      tl.fromTo("#v-bed", { scale: 1.0 }, { scale: 1.1, duration: 1.6, ease: "none" }, 10.1);
+
+      // ---- ROOM -> BATH (11.7-15.3)
+      tl.fromTo("#bilikair", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power4.out" }, 12.95);
+      tl.fromTo("#v-bath", { scale: 1.15 }, { scale: 1.0, duration: 1.2, ease: "power2.out" }, 14.1);
+
+      // ---- SIDE LAND / CARS (15.3-18.1)
+      tl.fromTo("#v-side", { scale: 1.0 }, { scale: 1.15, duration: 2.8, ease: "none" }, 15.3);
+      tl.fromTo("#cars-title", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, 15.4);
+      gsap.utils.toArray("#cars-row span").forEach((el, i) => {
+        tl.fromTo(el, { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.25, ease: back }, 16.0 + i * 0.2);
+      });
+      tl.fromTo("#cars-sub", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: back }, 16.9);
+
+      // ---- GAME CHANGER (18.1-22.1)
+      tl.fromTo("#i-gc", { scale: 1.12 }, { scale: 1.22, duration: 4, ease: "none" }, 18.1);
+      tl.fromTo("#gc-title", { scale: 2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 18.1);
+      gsap.utils.toArray("#gc-list .item").forEach((el, i) => {
+        tl.fromTo(el, { x: i % 2 ? 900 : -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 18.85 + i * 0.45);
+      });
+
+      // ---- OFFER (22.1-27.4)
+      gsap.utils.toArray("#offer .check").forEach((el, i) => {
+        tl.fromTo(el, { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 22.3 + i * 0.4);
+      });
+      tl.fromTo("#price-card", { y: 900 }, { y: 0, duration: 0.45, ease: "power4.out" }, 23.5);
+      tl.fromTo("#spa-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 24.3);
+      tl.fromTo("#net", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 24.7);
+      tl.to("#net", { scale: 1.06, duration: 0.4, yoyo: true, repeat: 3, ease: "sine.inOut" }, 25.1);
+      tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: back }, 25.25);
+
+      window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>
