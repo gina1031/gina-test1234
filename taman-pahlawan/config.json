@@ -10,10 +10,12 @@
     "viewing": "viewing!",
     "Palawan,": "Pahlawan,",
     "Palawan": "“PAHLAWAN”",
-    "details.": "details!"
+    "details.": "details!",
+    "interested,": "Interested?",
+    "comment": "Comment"
   },
-  "pause_max": 0.3,
-  "pause_keep": 0.2,
+  "pause_max": 0.45,
+  "pause_keep": 0.32,
   "end_hold": 2.4,
   "music_volume": 0.16,
   "captions": true,
