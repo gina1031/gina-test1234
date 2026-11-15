@@ -24,6 +24,7 @@ Contoh siap: `rumah-tour/` (Lombong Besi 2) → `rumah-tour/renders/lombong-besi
 | `ready` | ✅ pill + baris "boleh terus masuk" | `pill`, `line` |
 | `price` | 0% DP, kad harga (SPA dipotong, harga bersih), bonus, CTA | `dp`, `card`, `price`, `bonus`, `cta`, `cta_pulse` |
 | `titlecard` | Kad pembuka gaya TikTok: baris kecil atas, nama besar kuning (Anton), pill putih, baris italic (`tc_top`, `tc_big`, `tc_pill`, `tc_script`, `tc_corner`) | `pill`, `script` |
+| `nearby` | Kad lokasi: tajuk + baris [emoji, tempat, masa] (`title`, `items`) | `items` (list) |
 | `cta` | Penutup tanpa harga: tajuk + senarai ✅ + CTA | `checks`, `cta` |
 | `text` | Headline bebas + pill (boleh guna berkali-kali) | `pill` |
 

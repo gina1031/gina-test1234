@@ -322,7 +322,23 @@ def b_titlecard(c):
         js.append(f'tl.fromTo("#tc-corner", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4 }}, {a + 0.3});')
     return h, js
 
-BLOCKS = dict(titlecard=b_titlecard, cta=b_cta, hook=b_hook, location=b_location, rooms=b_rooms, land=b_land, side=b_side, uses=b_uses,
+def b_nearby(c):
+    """Location card: title + rows [emoji, place, distance/time], each row on its cue (cues.items list)."""
+    g = c["_g"]
+    rows = "\n".join(f'          <div class="nb-row"><span class="nb-e">{E(e)}</span><span class="nb-p">{E(p)}</span><span class="nb-t">{E(t)}</span></div>'
+                     for e, p, t in g["items"])
+    h = f'''        <div class="shade-top"></div>
+        <div id="nb-title" class="cx t-stroke">{E(g.get("title", "📍 NEARBY"))}</div>
+        <div id="nb-list">
+{rows}
+        </div>'''
+    js = [f'tl.fromTo("#nb-title", {{ y: -50, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "{BACK}" }}, {c["start"] + 0.1});']
+    for i, t in enumerate(c.get("items", [c["start"] + 0.4 + 0.4 * k for k in range(len(g["items"]))])):
+        sfx("tick", t, 0.7)
+        js.append(f'tl.fromTo("#nb-list .nb-row:nth-child({i + 1})", {{ x: {-900 if i % 2 == 0 else 900}, opacity: 0 }}, {{ x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }}, {round(t - 0.1, 3)});')
+    return h, js
+
+BLOCKS = dict(nearby=b_nearby, titlecard=b_titlecard, cta=b_cta, hook=b_hook, location=b_location, rooms=b_rooms, land=b_land, side=b_side, uses=b_uses,
               ready=b_ready, price=b_price, text=b_text)
 
 G_HTML, G_JS = [], []

@@ -106,6 +106,14 @@
       #tc-script { top: 1335px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 74px; text-shadow: 0 3px 12px rgba(0,0,0,.75); }
       #tc-corner { position: absolute; top: 380px; right: 70px; font-family: "Play", serif; font-style: italic; font-size: 52px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
 
+      /* ===== nearby block ===== */
+      #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
+      #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }
+      .nb-row { display: flex; align-items: center; gap: 22px; background: rgba(255,255,255,.95); color: #111; border-radius: 22px; padding: 22px 30px; }
+      .nb-e { font-size: 56px; }
+      .nb-p { flex: 1; font-weight: 800; font-size: 46px; line-height: 1.1; }
+      .nb-t { font-weight: 900; font-size: 40px; background: #111; color: #ffd60a; border-radius: 12px; padding: 8px 16px; white-space: nowrap; }
+
       /* ===== theme: clean (TikTok-style: plain white captions, Anton headings, white pills) ===== */
       .theme-clean .cap { top: 1500px; font-weight: 700; font-size: 54px; -webkit-text-stroke: 2px rgba(0,0,0,.55); paint-order: stroke fill;
                           text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.7); }

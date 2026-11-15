@@ -66,8 +66,18 @@
       ]
     },
     {
+      "id": "nearby",
+      "from": "w:it's-0.15",
+      "src": "assets/clips/drone_top.mp4",
+      "media_start": 12,
+      "kb": [
+        1.1,
+        1.0
+      ]
+    },
+    {
       "id": "bed",
-      "from": "w:inside-0.3",
+      "from": "w:inside-0.05",
       "src": "assets/clips/walk.mp4",
       "media_start": 102.5,
       "kb": [
@@ -87,7 +97,7 @@
     },
     {
       "id": "land",
-      "from": "w:land-0.25",
+      "from": "w:land-0.8",
       "src": "assets/clips/drone_front.mp4",
       "media_start": 14,
       "kb": [
@@ -127,7 +137,7 @@
     },
     {
       "id": "freehold",
-      "from": "w:it's-0.15",
+      "from": "w:it's#2-0.15",
       "src": "assets/clips/drone_front.mp4",
       "media_start": 0,
       "kb": [
@@ -137,7 +147,7 @@
     },
     {
       "id": "cta",
-      "from": "w:want-0.2",
+      "from": "w:want#2-0.2",
       "src": "assets/stills/aerial.jpg",
       "kind": "blur",
       "kb": [
@@ -155,8 +165,8 @@
       "tc_pill": "Only 86 Units",
       "tc_script": "Telok Panglima Garang",
       "cues": {
-        "pill": "w:freehold",
-        "script": "w:telok"
+        "pill": "w:rimbayu",
+        "script": "w:klang"
       }
     },
     {
@@ -167,6 +177,35 @@
         "number": "w:86",
         "unit": "w:units",
         "dims": "w:total"
+      }
+    },
+    {
+      "block": "nearby",
+      "scene": "nearby",
+      "title": "📍 LOCATION",
+      "items": [
+        [
+          "🛣️",
+          "SKVE Highway",
+          "Minutes away"
+        ],
+        [
+          "🛍️",
+          "AEON Mall Bukit Tinggi",
+          "< 30 min"
+        ],
+        [
+          "🏘️",
+          "Bandar Rimbayu",
+          "Nearby"
+        ]
+      ],
+      "cues": {
+        "items": [
+          "w:skve",
+          "w:aeon",
+          "w:aeon+0.45"
+        ]
       }
     },
     {
@@ -210,7 +249,7 @@
       "block": "ready",
       "scene": "freehold",
       "cues": {
-        "pill": "w:freehold#2",
+        "pill": "w:freehold",
         "line": "w:open"
       }
     },
@@ -218,7 +257,7 @@
       "block": "cta",
       "scene": "cta",
       "cues": {
-        "checks": "w:want+0.3",
+        "checks": "w:want#2+0.3",
         "cta": "w:comment"
       }
     }
