@@ -17,21 +17,21 @@
     "area": "Telok Panglima Garang, Selangor",
     "property_type": "",
     "location_chip": "🏡 Double Storey Terrace",
-    "land_label": "LIMITED UNITS 🔥",
+    "land_label": "NEW PROJECT 🏡",
     "land_sqft": 86,
-    "land_unit": "UNITS ONLY",
+    "land_unit": "UNITS IN TOTAL",
     "land_dims": "Lot 8769 & Lot 8770",
     "bedrooms": "4",
     "bedrooms_label": "BEDROOMS 🛏️",
     "bathrooms": "4",
-    "ready_pill": "✅ FREEHOLD",
-    "ready_line1": "with",
-    "ready_line2": "OPEN TITLE",
-    "cta_title": "INTERESTED? 👀",
+    "ready_pill": "✅ OPEN TITLE",
+    "ready_line1": "100%",
+    "ready_line2": "FREEHOLD",
+    "cta_title": "WANT TO KNOW MORE? 🏡",
     "cta_checks": [
-      "4 Bedrooms • 4 Bathrooms",
-      "Freehold • Open Title",
-      "Only 86 Units"
+      "4 Bed • 4 Bath",
+      "Freehold & Open Title",
+      "86 Units In Total"
     ],
     "cta": "💬 Comment “PAHLAWAN”",
     "bathrooms_label": "BATHROOMS 🚿"
@@ -48,7 +48,7 @@
     },
     {
       "id": "top",
-      "from": "w:let-0.15",
+      "from": "w:this#2-0.15",
       "src": "assets/clips/drone_top.mp4",
       "kb": [
         1.0,
@@ -57,7 +57,7 @@
     },
     {
       "id": "aerial",
-      "from": "w:there-0.15",
+      "from": "w:with-0.15",
       "src": "assets/clips/drone_aerial.mp4",
       "media_start": 7,
       "kb": [
@@ -67,7 +67,7 @@
     },
     {
       "id": "bed",
-      "from": "w:every-0.3",
+      "from": "w:inside-0.3",
       "src": "assets/clips/walk.mp4",
       "media_start": 102.5,
       "kb": [
@@ -87,7 +87,7 @@
     },
     {
       "id": "land",
-      "from": "w:land-0.2",
+      "from": "w:land-0.25",
       "src": "assets/clips/drone_front.mp4",
       "media_start": 14,
       "kb": [
@@ -97,7 +97,7 @@
     },
     {
       "id": "yard",
-      "from": "w:up-0.3",
+      "from": "w:all-0.15",
       "src": "assets/clips/walk.mp4",
       "media_start": 44.5,
       "kb": [
@@ -107,7 +107,7 @@
     },
     {
       "id": "living",
-      "from": "w:is#1-0.5",
+      "from": "w:between-1.1",
       "src": "assets/clips/walk.mp4",
       "media_start": 23,
       "kb": [
@@ -127,7 +127,7 @@
     },
     {
       "id": "freehold",
-      "from": "w:and#3-0.15",
+      "from": "w:it's-0.15",
       "src": "assets/clips/drone_front.mp4",
       "media_start": 0,
       "kb": [
@@ -137,7 +137,7 @@
     },
     {
       "id": "cta",
-      "from": "w:interested-0.2",
+      "from": "w:want-0.2",
       "src": "assets/stills/aerial.jpg",
       "kind": "blur",
       "kb": [
@@ -150,9 +150,9 @@
     {
       "block": "titlecard",
       "scene": "hook",
-      "tc_top": "Freehold | Double Storey",
+      "tc_top": "Double Storey Terrace | Freehold",
       "tc_big": "TAMAN\nPAHLAWAN",
-      "tc_pill": "Open Title",
+      "tc_pill": "Only 86 Units",
       "tc_script": "Telok Panglima Garang",
       "cues": {
         "pill": "w:freehold",
@@ -166,7 +166,7 @@
         "count_from": "s:aerial.start+0.05",
         "number": "w:86",
         "unit": "w:units",
-        "dims": "w:units+0.4"
+        "dims": "w:total"
       }
     },
     {
@@ -181,7 +181,7 @@
     {
       "block": "text",
       "scene": "land",
-      "line": "LAND SIZE",
+      "line": "LAND FROM",
       "pill": "20' x 65'",
       "cues": {
         "pill": "w:20"
@@ -190,7 +190,7 @@
     {
       "block": "text",
       "scene": "yard",
-      "line": "UP TO",
+      "line": "ALL THE WAY UP TO",
       "pill": "20' x 87' • 18' x 87'",
       "cues": {
         "pill": "w:20#2"
@@ -200,8 +200,8 @@
       "block": "text",
       "from": "s:living.start",
       "to": "s:stairs.end",
-      "line": "BUILT-UP AREA",
-      "pill": "1,260 – 1,400 sqft",
+      "line": "BUILT-UP",
+      "pill": "1,260 – 1,400 sq ft",
       "cues": {
         "pill": "w:1,260"
       }
@@ -218,7 +218,7 @@
       "block": "cta",
       "scene": "cta",
       "cues": {
-        "checks": "w:interested+0.2",
+        "checks": "w:want+0.3",
         "cta": "w:comment"
       }
     }

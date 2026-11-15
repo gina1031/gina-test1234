@@ -354,10 +354,20 @@ if CFG.get("captions", True):
             if cut:
                 k = min(cut, key=lambda i: abs(i - len(ph) / 2))
                 return split(ph[:k]) + split(ph[k:])
+        conj = [i for i, w in enumerate(ph) if 2 <= i <= len(ph) - 2 and norm(w["w"]) in
+                ("and", "with", "but", "or", "dan", "atau", "untuk", "sehingga", "hingga")]
+        if conj:                               # then just before a conjunction
+            k = min(conj, key=lambda i: abs(i - len(ph) / 2))
+            return split(ph[:k]) + split(ph[k:])
         h = (len(ph) + 1) // 2
         return [ph[:h], ph[h:]]
-    for seg in TX:
-        chunks += split(seg["_words"])
+    chunks = split([w for seg in TX for w in seg["_words"]])   # whole script, split by sentence/comma/length
+    i = 0
+    while i < len(chunks) - 1:                                  # fold one-word chunks ("Hey!") into the next
+        if len(chunks[i]) == 1 and len(chunks[i]) + len(chunks[i + 1]) <= 7:
+            chunks[i:i + 2] = [chunks[i] + chunks[i + 1]]
+        else:
+            i += 1
     for ci, ch in enumerate(chunks):
         a = T(ch[0]["s"]); b = T(chunks[ci + 1][0]["s"]) if ci + 1 < len(chunks) else D
         CAP_HTML.append(f'        <div class="cap" id="cap{ci}">' + " ".join(
