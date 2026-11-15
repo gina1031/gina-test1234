@@ -7,7 +7,10 @@
     "Panglima,": "Panglima",
     "Garang.": "Garang?",
     "title": "title.",
-    "viewing": "viewing!"
+    "viewing": "viewing!",
+    "Palawan,": "Pahlawan,",
+    "Palawan": "“PAHLAWAN”",
+    "details.": "details!"
   },
   "pause_max": 0.3,
   "pause_keep": 0.2,
@@ -22,7 +25,7 @@
     "hook_emoji": "🔥",
     "location": "Taman Pahlawan",
     "area": "Telok Panglima Garang, Selangor",
-    "property_type": "Heesland Sdn Bhd • Misisama Sdn Bhd",
+    "property_type": "",
     "location_chip": "🏡 Double Storey Terrace",
     "land_label": "LIMITED UNITS 🔥",
     "land_sqft": 86,
@@ -40,7 +43,7 @@
       "Freehold • Open Title",
       "Only 86 Units"
     ],
-    "cta": "📲 WhatsApp Gina for a viewing!",
+    "cta": "💬 Comment “PAHLAWAN”",
     "bathrooms_label": "BATHROOMS 🚿"
   },
   "scenes": [
@@ -230,7 +233,7 @@
       "scene": "cta",
       "cues": {
         "checks": "w:interested+0.2",
-        "cta": "w:whatsapp"
+        "cta": "w:comment"
       }
     }
   ]

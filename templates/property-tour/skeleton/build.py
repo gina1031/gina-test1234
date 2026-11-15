@@ -69,7 +69,7 @@ def T(t):
 
 
 D = round(T(VO_END) + CFG.get("end_hold", 1.3), 2)
-norm = lambda s: s.lower().strip(",.?!:;\"'")
+norm = lambda s: s.lower().strip(",.?!:;\"'“”‘’")
 
 
 def word_t(word, n=1):
@@ -320,9 +320,22 @@ for gi, g in enumerate(CFG["graphics"]):
 # ---------------- captions ----------------
 CAP_HTML, CAP_JS, chunks = [], [], []
 if CFG.get("captions", True):
+    def split(ph):
+        ends = [i + 1 for i, w in enumerate(ph[:-1]) if w["w"][-1] in ".?!"]   # one sentence per caption
+        if ends:
+            k = min(ends, key=lambda i: abs(i - len(ph) / 2))
+            return split(ph[:k]) + split(ph[k:])
+        if len(ph) <= 6:
+            return [ph]
+        for marks in (",;",):                  # then commas, then halves
+            cut = [i + 1 for i, w in enumerate(ph[:-1]) if w["w"][-1] in marks and 2 <= i + 1 <= len(ph) - 2]
+            if cut:
+                k = min(cut, key=lambda i: abs(i - len(ph) / 2))
+                return split(ph[:k]) + split(ph[k:])
+        h = (len(ph) + 1) // 2
+        return [ph[:h], ph[h:]]
     for seg in TX:
-        ph = seg["_words"]
-        chunks += [ph] if len(ph) <= 6 else [ph[:(len(ph) + 1) // 2], ph[(len(ph) + 1) // 2:]]
+        chunks += split(seg["_words"])
     for ci, ch in enumerate(chunks):
         a = T(ch[0]["s"]); b = T(chunks[ci + 1][0]["s"]) if ci + 1 < len(chunks) else D
         CAP_HTML.append(f'        <div class="cap" id="cap{ci}">' + " ".join(
