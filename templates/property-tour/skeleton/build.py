@@ -321,7 +321,7 @@ for gi, g in enumerate(CFG["graphics"]):
 CAP_HTML, CAP_JS, chunks = [], [], []
 if CFG.get("captions", True):
     def split(ph):
-        ends = [i + 1 for i, w in enumerate(ph[:-1]) if w["w"][-1] in ".?!"]   # one sentence per caption
+        ends = [i + 1 for i, w in enumerate(ph[:-1]) if w["w"][-1] in ".?!" and not w["w"].endswith("...")]   # one sentence per caption
         if ends:
             k = min(ends, key=lambda i: abs(i - len(ph) / 2))
             return split(ph[:k]) + split(ph[k:])

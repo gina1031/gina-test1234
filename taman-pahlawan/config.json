@@ -1,19 +1,7 @@
 {
   "voiceover": "assets/vo/voiceover.m4a",
   "transcript": "transcript.json",
-  "fix_words": {
-    "Tamman": "Taman",
-    "double-story": "double-storey",
-    "Panglima,": "Panglima",
-    "Garang.": "Garang?",
-    "title": "title.",
-    "viewing": "viewing!",
-    "Palawan,": "Pahlawan,",
-    "Palawan": "“PAHLAWAN”",
-    "details.": "details!",
-    "interested,": "Interested?",
-    "comment": "Comment"
-  },
+  "fix_words": {},
   "pause_max": 0.45,
   "pause_keep": 0.32,
   "end_hold": 2.4,
@@ -60,7 +48,7 @@
     },
     {
       "id": "top",
-      "from": "w:welcome-0.15",
+      "from": "w:let-0.15",
       "src": "assets/clips/drone_top.mp4",
       "kb": [
         1.0,
@@ -69,7 +57,7 @@
     },
     {
       "id": "aerial",
-      "from": "w:only-0.15",
+      "from": "w:there-0.15",
       "src": "assets/clips/drone_aerial.mp4",
       "media_start": 7,
       "kb": [
@@ -89,7 +77,7 @@
     },
     {
       "id": "bath",
-      "from": "w:four#2-0.2",
+      "from": "w:4#2-0.2",
       "src": "assets/clips/walk.mp4",
       "media_start": 110.8,
       "kb": [
@@ -119,7 +107,7 @@
     },
     {
       "id": "living",
-      "from": "w:area-0.7",
+      "from": "w:is#1-0.5",
       "src": "assets/clips/walk.mp4",
       "media_start": 23,
       "kb": [
@@ -139,7 +127,7 @@
     },
     {
       "id": "freehold",
-      "from": "w:freehold#2-0.2",
+      "from": "w:and#3-0.15",
       "src": "assets/clips/drone_front.mp4",
       "media_start": 0,
       "kb": [
@@ -182,7 +170,7 @@
         "count_from": "s:aerial.start+0.05",
         "number": "w:86",
         "unit": "w:units",
-        "dims": "w:available"
+        "dims": "w:units+0.4"
       }
     },
     {
@@ -190,8 +178,8 @@
       "from": "s:bed.start",
       "to": "s:bath.end",
       "cues": {
-        "bed": "w:four",
-        "bath": "w:four#2"
+        "bed": "w:4",
+        "bath": "w:4#2"
       }
     },
     {
