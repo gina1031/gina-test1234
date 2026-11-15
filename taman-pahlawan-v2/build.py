@@ -312,7 +312,7 @@ def b_titlecard(c):
         <div id="tc-top" class="cx">{E(T2.get("tc_top", ""))}</div>
         <div id="tc-big" class="cx" style="font-size:{size}px">{big}</div>
         <div id="tc-pill" class="cx"><span>{E(T2.get("tc_pill", ""))}</span></div>
-        <div id="tc-script" class="cx">{E(T2.get("tc_script", ""))}</div>''' + (
+        <div id="tc-script" class="cx" style="font-size:{g.get("tc_script_size", 74)}px">{E(T2.get("tc_script", ""))}</div>''' + (
         f'\n        <div id="tc-corner">{E(T2["tc_corner"])}</div>' if T2.get("tc_corner") else "")
     a = c["start"]
     sfx("impact", a + 0.05, 0.7); sfx("pop", c.get("pill", a + 0.55), 0.5)

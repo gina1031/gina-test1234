@@ -164,11 +164,12 @@
       "tc_top": "Double Storey Terrace | Freehold",
       "tc_big": "TAMAN\nPAHLAWAN",
       "tc_pill": "Only 86 Units",
-      "tc_script": "Telok Panglima Garang",
+      "tc_script": "Next to KSL Mall Klang | Rimbayu",
       "cues": {
-        "pill": "w:rimbayu",
-        "script": "w:klang"
-      }
+        "pill": "w:ksl",
+        "script": "w:rimbayu"
+      },
+      "tc_script_size": 58
     },
     {
       "block": "land",
@@ -186,6 +187,11 @@
       "title": "📍 LOCATION",
       "items": [
         [
+          "🛍️",
+          "KSL Esplanade Mall, Klang",
+          "Minutes away"
+        ],
+        [
           "🛣️",
           "SKVE Highway",
           "Minutes away"
@@ -198,11 +204,12 @@
         [
           "🏘️",
           "Bandar Rimbayu",
-          "Nearby"
+          "Next door"
         ]
       ],
       "cues": {
         "items": [
+          "w:esplanade-0.4",
           "w:skve",
           "w:aeon",
           "w:aeon+0.45"
