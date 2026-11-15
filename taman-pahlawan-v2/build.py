@@ -289,13 +289,16 @@ def b_cta(c):
         <div id="cta-list">
 {checks}
         </div>
-        <div id="cta" class="cx"><span class="pill">{E(TXT["cta"])}</span></div>'''
+        <div id="cta" class="cx"><span class="pill">{E(TXT["cta"])}</span></div>''' + (
+        f'\n        <div id="cta-phone" class="cx">📞 {E(CFG["phone"])}</div>' if CFG.get("phone") else "")
     js = [f'tl.fromTo("#cta-title", {{ scale: 1.8, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }}, {c["start"]});']
     for i in range(len(TXT["cta_checks"])):
         t = round(c.get("checks", c["start"] + 0.3) + i * c["_g"].get("check_gap", 0.35), 3)
         sfx("tick", t, 0.7)
         js.append(f'tl.fromTo("#cta-list .check:nth-child({i + 1})", {{ x: -900, opacity: 0 }}, {{ x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }}, {t});')
     sfx("pop", c["cta"], 0.6)
+    if CFG.get("phone"):
+        js.append(f'tl.fromTo("#cta-phone", {{ y: 60, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "{BACK}" }}, {c["cta"] + 0.3});')
     js += [f'tl.fromTo("#cta", {{ y: 120, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "{BACK}" }}, {c["cta"]});',
            f'tl.to("#cta", {{ scale: 1.06, duration: 0.3, yoyo: true, repeat: 7, ease: "sine.inOut" }}, {c["cta"] + 0.4});']
     return h, js
@@ -354,6 +357,12 @@ for gi, g in enumerate(CFG["graphics"]):
     body, js = BLOCKS[g["block"]](c)
     G_HTML.append(f'      <div id="g{gi}-{g["block"]}" class="clip" data-start="{a}" data-duration="{round(b - a, 3)}" data-track-index="1">\n{body}\n      </div>')
     G_JS.append(f"// {g['block']}\n      " + "\n      ".join(js))
+
+# ---------------- persistent phone number (top-right, whole film) ----------------
+if CFG.get("phone"):
+    G_HTML.append(f'      <div id="phone-mark" class="clip" data-start="0" data-duration="{D}" data-track-index="2">'
+                  f'<div id="phone">{E(CFG["phone"])}</div></div>')
+    G_JS.append('// phone\n      tl.fromTo("#phone", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.2);')
 
 # ---------------- captions ----------------
 CAP_HTML, CAP_JS, chunks = [], [], []

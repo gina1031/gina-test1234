@@ -106,6 +106,12 @@
       #tc-script { top: 1335px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 74px; text-shadow: 0 3px 12px rgba(0,0,0,.75); }
       #tc-corner { position: absolute; top: 380px; right: 70px; font-family: "Play", serif; font-style: italic; font-size: 52px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
 
+      /* ===== phone number (config "phone") ===== */
+      #phone-mark { pointer-events: none; }
+      #phone { position: absolute; top: 205px; right: 60px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 50px;
+               color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8), 0 0 28px rgba(0,0,0,.5); }
+      #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
+
       /* ===== nearby block ===== */
       #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
       #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }
@@ -117,7 +123,7 @@
       /* ===== theme: clean (TikTok-style: plain white captions, Anton headings, white pills) ===== */
       .theme-clean .cap { top: 1500px; font-weight: 700; font-size: 54px; -webkit-text-stroke: 2px rgba(0,0,0,.55); paint-order: stroke fill;
                           text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.7); }
-      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 8%, rgba(0,0,0,.42) 18%, rgba(0,0,0,.42) 26%, rgba(0,0,0,0) 36%); }
+      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 6%, rgba(0,0,0,.42) 14%, rgba(0,0,0,.42) 20%, rgba(0,0,0,0) 26%); }
       .theme-clean #luas-num { font-size: 260px; }
       .theme-clean #luas-unit { top: 830px; }
       .theme-clean #luas-dim { top: 960px; }
@@ -218,7 +224,10 @@
           <div class="check"><span class="bx">✓</span>86 Units In Total</div>
         </div>
         <div id="cta" class="cx"><span class="pill">💬 Comment “PAHLAWAN”</span></div>
+        <div id="cta-phone" class="cx">📞 0198395315</div>
       </div>
+
+      <div id="phone-mark" class="clip" data-start="0" data-duration="47.55" data-track-index="2"><div id="phone">0198395315</div></div>
 
       <!-- ===== CAPTIONS (word-synced) ===== -->
       <div id="captions" class="clip" data-start="0" data-duration="47.55" data-track-index="2">
@@ -362,8 +371,12 @@
       tl.fromTo("#cta-list .check:nth-child(1)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 40.89);
       tl.fromTo("#cta-list .check:nth-child(2)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 41.24);
       tl.fromTo("#cta-list .check:nth-child(3)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 41.59);
+      tl.fromTo("#cta-phone", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 42.29);
       tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 41.99);
       tl.to("#cta", { scale: 1.06, duration: 0.3, yoyo: true, repeat: 7, ease: "sine.inOut" }, 42.39);
+
+      // phone
+      tl.fromTo("#phone", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.2);
 
       // captions
       gsap.set(".cap", { autoAlpha: 0 });

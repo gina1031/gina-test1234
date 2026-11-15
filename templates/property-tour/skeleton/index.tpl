@@ -106,6 +106,12 @@
       #tc-script { top: 1335px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 74px; text-shadow: 0 3px 12px rgba(0,0,0,.75); }
       #tc-corner { position: absolute; top: 380px; right: 70px; font-family: "Play", serif; font-style: italic; font-size: 52px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
 
+      /* ===== phone number (config "phone") ===== */
+      #phone-mark { pointer-events: none; }
+      #phone { position: absolute; top: 205px; right: 60px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 50px;
+               color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8), 0 0 28px rgba(0,0,0,.5); }
+      #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
+
       /* ===== nearby block ===== */
       #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
       #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }
@@ -117,7 +123,7 @@
       /* ===== theme: clean (TikTok-style: plain white captions, Anton headings, white pills) ===== */
       .theme-clean .cap { top: 1500px; font-weight: 700; font-size: 54px; -webkit-text-stroke: 2px rgba(0,0,0,.55); paint-order: stroke fill;
                           text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.7); }
-      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 8%, rgba(0,0,0,.42) 18%, rgba(0,0,0,.42) 26%, rgba(0,0,0,0) 36%); }
+      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 6%, rgba(0,0,0,.42) 14%, rgba(0,0,0,.42) 20%, rgba(0,0,0,0) 26%); }
       .theme-clean #luas-num { font-size: 260px; }
       .theme-clean #luas-unit { top: 830px; }
       .theme-clean #luas-dim { top: 960px; }

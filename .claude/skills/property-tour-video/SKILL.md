@@ -7,6 +7,16 @@ description: Edit a property / house-tour short video (Reels, TikTok, 1080x1920)
 
 Template: `templates/property-tour/` (read its README.md first). Finished reference project: `rumah-tour/`.
 
+Always (user's standing instruction): put the agent's phone number **0198395315** on every video:
+set `"phone": "0198395315"` in config.json (shows top-right for the whole film and under the CTA).
+
+Voiceover: when the user has no recording, use ElevenLabs (API key is saved on the cloud environment for
+api.elevenlabs.io) with the voice "English Gina" (English) or "Gina slow voice" (Malay); model `eleven_v3`,
+stability 0.5, similarity 0.85. Check the take with Whisper (names, CTA word); if a quoted word was skipped,
+rephrase ("comment the word X") and regenerate. Then `align_script.py`-style alignment of the known script
+onto Whisper timings for exact captions (see taman-pahlawan-v2/align_script.py).
+Never claim distances/landmarks you have not verified; label estimates and ask the user to confirm.
+
 Workflow:
 1. Inspect uploads: `ffprobe` each clip (duration, rotation, HDR transfer), make contact sheets
    (`ffmpeg -vf "fps=3,scale=270:-1,tile=6x3"`) and look at them to name each shot (land, hall, bedroom, bathroom…).
