@@ -162,14 +162,15 @@
       "block": "titlecard",
       "scene": "hook",
       "tc_top": "Double Storey Terrace | Freehold",
-      "tc_big": "TAMAN\nPAHLAWAN",
-      "tc_pill": "Only 86 Units",
-      "tc_script": "Next to KSL Mall Klang | Rimbayu",
+      "tc_big": "NEXT TO\nKSL MALL KLANG",
+      "tc_pill": "& Bandar Rimbayu",
+      "tc_script": "Taman Pahlawan",
       "cues": {
         "pill": "w:ksl",
         "script": "w:rimbayu"
       },
-      "tc_script_size": 58
+      "tc_script_size": 74,
+      "tc_size": 155
     },
     {
       "block": "land",
