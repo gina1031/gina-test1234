@@ -9,6 +9,9 @@
       @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
       @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
       @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2"); font-weight: 900; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+      @font-face { font-family: "Anton"; src: url("assets/fonts/anton-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Play"; src: url("assets/fonts/playfair-display-latin-600-italic.woff2") format("woff2"); font-style: italic; font-weight: 600; }
       @font-face { font-family: "Emoji"; src: url("assets/fonts/noto-color-emoji-emoji-400-normal.woff2") format("woff2"); }
       :root { --ground: #0d0d0d; --ink: #ffffff; --accent: #ffd400; --green: #0f8a4c; --red: #e0242b; --deep: #10233f; --font-display: "Mont", "Emoji", sans-serif; }
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,10 +96,39 @@
       .check { white-space: nowrap; font-weight: 900; font-size: 54px; margin-bottom: 40px; background: rgba(0,0,0,.55); padding: 26px 30px; border-radius: 28px; display: flex; gap: 20px; align-items: center; }
       .check .bx { background: var(--green); width: 74px; height: 74px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; flex: none; }
       #flash { background: #fff; opacity: 0; }
+
+      /* ===== titlecard block (any theme) ===== */
+      #tc-top { top: 660px; font-weight: 700; font-size: 54px; text-shadow: 0 3px 10px rgba(0,0,0,.7); }
+      #tc-big { top: 740px; font-family: "Anton", sans-serif; font-size: 250px; line-height: 0.95; color: #ffd60a; text-transform: uppercase;
+                -webkit-text-stroke: 5px #111; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,.35), 0 0 40px rgba(0,0,0,.35); }
+      #tc-pill { top: 1230px; }
+      #tc-pill span { display: inline-block; background: #fff; color: #111; font-weight: 700; font-size: 52px; padding: 10px 34px; border-radius: 14px; }
+      #tc-script { top: 1335px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 74px; text-shadow: 0 3px 12px rgba(0,0,0,.75); }
+      #tc-corner { position: absolute; top: 380px; right: 70px; font-family: "Play", serif; font-style: italic; font-size: 52px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
+
+      /* ===== theme: clean (TikTok-style: plain white captions, Anton headings, white pills) ===== */
+      .theme-clean .cap { top: 1500px; font-weight: 700; font-size: 54px; -webkit-text-stroke: 2px rgba(0,0,0,.55); paint-order: stroke fill;
+                          text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.7); }
+      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 8%, rgba(0,0,0,.42) 18%, rgba(0,0,0,.42) 26%, rgba(0,0,0,0) 36%); }
+      .theme-clean #luas-num { font-size: 260px; }
+      .theme-clean #luas-unit { top: 830px; }
+      .theme-clean #luas-dim { top: 960px; }
+      .theme-clean #bilik-num { font-size: 260px; }
+      .theme-clean #bilik-word { top: 620px; }
+      .theme-clean #bilikair { top: 770px; }
+      .theme-clean #cta .pill { background: #ffd60a; color: #111; }
+      .theme-clean .t-stroke { font-family: "Anton", "Emoji", sans-serif; font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase;
+                               -webkit-text-stroke: 4px #111; text-shadow: 0 8px 0 rgba(0,0,0,.3), 0 0 30px rgba(0,0,0,.35); }
+      .theme-clean .y { color: #ffd60a; }
+      .theme-clean .pill, .theme-clean .pill.y, .theme-clean .pill.g { background: #fff; color: #111; font-weight: 700; border-radius: 14px; }
+      .theme-clean .tag { background: #fff !important; color: #111 !important; border-radius: 14px; font-weight: 700; }
+      .theme-clean .shade-top { background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 35%); }
+      .theme-clean .check { background: rgba(255,255,255,.95); color: #111; }
+      .theme-clean .check .bx { background: #111; color: #ffd60a; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="{{D}}" data-width="1080" data-height="1920">
+    <div id="root" class="{{THEME}}" data-composition-id="main" data-start="0" data-duration="{{D}}" data-width="1080" data-height="1920">
 
       <!-- ===== SCENES (cut on voiceover words) ===== -->
 {{SCENES}}

@@ -1,0 +1,228 @@
+{
+  "voiceover": "assets/vo/voiceover.m4a",
+  "transcript": "transcript.json",
+  "fix_words": {},
+  "pause_max": 0.45,
+  "pause_keep": 0.32,
+  "end_hold": 2.4,
+  "music_volume": 0.16,
+  "captions": true,
+  "whoosh_on_cuts": true,
+  "text": {
+    "hook_tag": "📍 TELOK PANGLIMA GARANG",
+    "hook_line1": "2-STOREY HOME",
+    "hook_line2": "FREEHOLD!",
+    "hook_emoji": "🔥",
+    "location": "Taman Pahlawan",
+    "area": "Telok Panglima Garang, Selangor",
+    "property_type": "",
+    "location_chip": "🏡 Double Storey Terrace",
+    "land_label": "LIMITED UNITS 🔥",
+    "land_sqft": 86,
+    "land_unit": "UNITS ONLY",
+    "land_dims": "Lot 8769 & Lot 8770",
+    "bedrooms": "4",
+    "bedrooms_label": "BEDROOMS 🛏️",
+    "bathrooms": "4",
+    "ready_pill": "✅ FREEHOLD",
+    "ready_line1": "with",
+    "ready_line2": "OPEN TITLE",
+    "cta_title": "INTERESTED? 👀",
+    "cta_checks": [
+      "4 Bedrooms • 4 Bathrooms",
+      "Freehold • Open Title",
+      "Only 86 Units"
+    ],
+    "cta": "💬 Comment “PAHLAWAN”",
+    "bathrooms_label": "BATHROOMS 🚿"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "from": 0,
+      "src": "assets/clips/drone_corner.mp4",
+      "kb": [
+        1.2,
+        1.02
+      ]
+    },
+    {
+      "id": "top",
+      "from": "w:let-0.15",
+      "src": "assets/clips/drone_top.mp4",
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "aerial",
+      "from": "w:there-0.15",
+      "src": "assets/clips/drone_aerial.mp4",
+      "media_start": 7,
+      "kb": [
+        1.05,
+        1.15
+      ]
+    },
+    {
+      "id": "bed",
+      "from": "w:every-0.3",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 102.5,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "bath",
+      "from": "w:4#2-0.2",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 110.8,
+      "kb": [
+        1.1,
+        1.0
+      ]
+    },
+    {
+      "id": "land",
+      "from": "w:land-0.2",
+      "src": "assets/clips/drone_front.mp4",
+      "media_start": 14,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "yard",
+      "from": "w:up-0.3",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 44.5,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "living",
+      "from": "w:is#1-0.5",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 23,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "stairs",
+      "from": "w:1,400-0.3",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 51,
+      "kb": [
+        1.08,
+        1.0
+      ]
+    },
+    {
+      "id": "freehold",
+      "from": "w:and#3-0.15",
+      "src": "assets/clips/drone_front.mp4",
+      "media_start": 0,
+      "kb": [
+        1.15,
+        1.0
+      ]
+    },
+    {
+      "id": "cta",
+      "from": "w:interested-0.2",
+      "src": "assets/stills/aerial.jpg",
+      "kind": "blur",
+      "kb": [
+        1.12,
+        1.3
+      ]
+    }
+  ],
+  "graphics": [
+    {
+      "block": "titlecard",
+      "scene": "hook",
+      "tc_top": "Freehold | Double Storey",
+      "tc_big": "TAMAN\nPAHLAWAN",
+      "tc_pill": "Open Title",
+      "tc_script": "Telok Panglima Garang",
+      "cues": {
+        "pill": "w:freehold",
+        "script": "w:telok"
+      }
+    },
+    {
+      "block": "land",
+      "scene": "aerial",
+      "cues": {
+        "count_from": "s:aerial.start+0.05",
+        "number": "w:86",
+        "unit": "w:units",
+        "dims": "w:units+0.4"
+      }
+    },
+    {
+      "block": "rooms",
+      "from": "s:bed.start",
+      "to": "s:bath.end",
+      "cues": {
+        "bed": "w:4",
+        "bath": "w:4#2"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land",
+      "line": "LAND SIZE",
+      "pill": "20' x 65'",
+      "cues": {
+        "pill": "w:20"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "yard",
+      "line": "UP TO",
+      "pill": "20' x 87' • 18' x 87'",
+      "cues": {
+        "pill": "w:20#2"
+      }
+    },
+    {
+      "block": "text",
+      "from": "s:living.start",
+      "to": "s:stairs.end",
+      "line": "BUILT-UP AREA",
+      "pill": "1,260 – 1,400 sqft",
+      "cues": {
+        "pill": "w:1,260"
+      }
+    },
+    {
+      "block": "ready",
+      "scene": "freehold",
+      "cues": {
+        "pill": "w:freehold#2",
+        "line": "w:open"
+      }
+    },
+    {
+      "block": "cta",
+      "scene": "cta",
+      "cues": {
+        "checks": "w:interested+0.2",
+        "cta": "w:comment"
+      }
+    }
+  ],
+  "theme": "clean",
+  "caption_highlight": false
+}

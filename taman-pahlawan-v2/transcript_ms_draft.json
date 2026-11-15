@@ -1,0 +1,341 @@
+[
+ {
+  "file": "voiceover.m4a",
+  "start": 0.0,
+  "end": 4.0,
+  "text": "Cari rumah teres dua tingkat freehold di Telok Panglima Garang?",
+  "words": [
+   {
+    "w": " Cari",
+    "s": 0.0,
+    "e": 0.72
+   },
+   {
+    "w": " rumah",
+    "s": 0.72,
+    "e": 1.04
+   },
+   {
+    "w": " teres",
+    "s": 1.04,
+    "e": 1.46
+   },
+   {
+    "w": " dua",
+    "s": 1.46,
+    "e": 1.74
+   },
+   {
+    "w": " tingkat",
+    "s": 1.74,
+    "e": 2.08
+   },
+   {
+    "w": " freehold",
+    "s": 2.08,
+    "e": 2.54
+   },
+   {
+    "w": " di",
+    "s": 2.54,
+    "e": 2.76
+   },
+   {
+    "w": " Telok",
+    "s": 2.76,
+    "e": 3.08
+   },
+   {
+    "w": " Panglima",
+    "s": 3.08,
+    "e": 3.56
+   },
+   {
+    "w": " Garang?",
+    "s": 3.56,
+    "e": 4.0
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 5.12,
+  "end": 7.0,
+  "text": "Jom lihat projek baharu Taman Pahlawan.",
+  "words": [
+   {
+    "w": " Jom",
+    "s": 5.12,
+    "e": 5.3
+   },
+   {
+    "w": " lihat",
+    "s": 5.3,
+    "e": 5.6
+   },
+   {
+    "w": " projek",
+    "s": 5.6,
+    "e": 6.06
+   },
+   {
+    "w": " baharu",
+    "s": 6.06,
+    "e": 6.54
+   },
+   {
+    "w": " Taman",
+    "s": 6.54,
+    "e": 6.9
+   },
+   {
+    "w": " Pahlawan.",
+    "s": 6.9,
+    "e": 7.300000000000001
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 8.64,
+  "end": 11.54,
+  "text": "Hanya 86 unit sahaja.",
+  "words": [
+   {
+    "w": " Hanya",
+    "s": 8.64,
+    "e": 8.82
+   },
+   {
+    "w": " 86",
+    "s": 8.82,
+    "e": 9.78
+   },
+   {
+    "w": " unit",
+    "s": 9.78,
+    "e": 10.16
+   },
+   {
+    "w": " sahaja.",
+    "s": 10.16,
+    "e": 11.54
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 11.84,
+  "end": 15.42,
+  "text": "Setiap rumah ada 4 bilik tidur dan 4 bilik air.",
+  "words": [
+   {
+    "w": " Setiap",
+    "s": 11.84,
+    "e": 12.18
+   },
+   {
+    "w": " rumah",
+    "s": 12.18,
+    "e": 12.48
+   },
+   {
+    "w": " ada",
+    "s": 12.48,
+    "e": 12.76
+   },
+   {
+    "w": " 4",
+    "s": 12.76,
+    "e": 13.1
+   },
+   {
+    "w": " bilik",
+    "s": 13.1,
+    "e": 13.36
+   },
+   {
+    "w": " tidur",
+    "s": 13.36,
+    "e": 13.96
+   },
+   {
+    "w": " dan",
+    "s": 13.96,
+    "e": 14.28
+   },
+   {
+    "w": " 4",
+    "s": 14.28,
+    "e": 14.62
+   },
+   {
+    "w": " bilik",
+    "s": 14.62,
+    "e": 14.96
+   },
+   {
+    "w": " air.",
+    "s": 14.96,
+    "e": 15.42
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 16.0,
+  "end": 22.62,
+  "text": "Saiz tanah 20x65 kaki sehingga 20x87 kaki.",
+  "words": [
+   {
+    "w": " Saiz",
+    "s": 16.0,
+    "e": 16.22
+   },
+   {
+    "w": " tanah",
+    "s": 16.22,
+    "e": 16.74
+   },
+   {
+    "w": " 20x65",
+    "s": 16.74,
+    "e": 18.74
+   },
+   {
+    "w": " kaki",
+    "s": 18.74,
+    "e": 19.14
+   },
+   {
+    "w": " sehingga",
+    "s": 19.14,
+    "e": 19.5
+   },
+   {
+    "w": " 20x87",
+    "s": 19.5,
+    "e": 21.32
+   },
+   {
+    "w": " kaki.",
+    "s": 21.32,
+    "e": 22.62
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 22.84,
+  "end": 28.0,
+  "text": "Keluasan binaan 1,260 hingga 1,400 kaki persegi.",
+  "words": [
+   {
+    "w": " Keluasan",
+    "s": 22.84,
+    "e": 23.24
+   },
+   {
+    "w": " binaan",
+    "s": 23.24,
+    "e": 23.66
+   },
+   {
+    "w": " 1,260",
+    "s": 23.66,
+    "e": 25.44
+   },
+   {
+    "w": " hingga",
+    "s": 25.44,
+    "e": 26.0
+   },
+   {
+    "w": " 1,400",
+    "s": 26.0,
+    "e": 27.02
+   },
+   {
+    "w": " kaki",
+    "s": 27.02,
+    "e": 27.5
+   },
+   {
+    "w": " persegi.",
+    "s": 27.5,
+    "e": 28.0
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 28.0,
+  "end": 32.0,
+  "text": "Hak milik kekal, freehold dan open title.",
+  "words": [
+   {
+    "w": " Hak",
+    "s": 28.0,
+    "e": 29.32
+   },
+   {
+    "w": " milik",
+    "s": 29.32,
+    "e": 29.6
+   },
+   {
+    "w": " kekal,",
+    "s": 29.6,
+    "e": 29.96
+   },
+   {
+    "w": " freehold",
+    "s": 29.96,
+    "e": 30.46
+   },
+   {
+    "w": " dan",
+    "s": 30.46,
+    "e": 30.78
+   },
+   {
+    "w": " open",
+    "s": 30.78,
+    "e": 31.14
+   },
+   {
+    "w": " title.",
+    "s": 31.14,
+    "e": 32.0
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 32.0,
+  "end": 34.72,
+  "text": "Berminat? Hubungi Gina sekarang!",
+  "words": [
+   {
+    "w": " Berminat?",
+    "s": 32.0,
+    "e": 33.18
+   },
+   {
+    "w": " Hubungi",
+    "s": 33.18,
+    "e": 33.78
+   },
+   {
+    "w": " Gina",
+    "s": 33.78,
+    "e": 34.02
+   },
+   {
+    "w": " sekarang!",
+    "s": 34.02,
+    "e": 34.72
+   }
+  ]
+ }
+]

@@ -300,7 +300,29 @@ def b_cta(c):
            f'tl.to("#cta", {{ scale: 1.06, duration: 0.3, yoyo: true, repeat: 7, ease: "sine.inOut" }}, {c["cta"] + 0.4});']
     return h, js
 
-BLOCKS = dict(cta=b_cta, hook=b_hook, location=b_location, rooms=b_rooms, land=b_land, side=b_side, uses=b_uses,
+def b_titlecard(c):
+    """Opening title card: small top line, giant Anton name, white pill, italic script line, optional corner text."""
+    g = c["_g"]; T2 = {**TXT, **g}
+    big = "<br />".join(E(x) for x in T2["tc_big"].split("\n"))
+    size = g.get("tc_size", 250)
+    h = f'''        <div class="shade-top"></div>
+        <div id="tc-top" class="cx">{E(T2.get("tc_top", ""))}</div>
+        <div id="tc-big" class="cx" style="font-size:{size}px">{big}</div>
+        <div id="tc-pill" class="cx"><span>{E(T2.get("tc_pill", ""))}</span></div>
+        <div id="tc-script" class="cx">{E(T2.get("tc_script", ""))}</div>''' + (
+        f'\n        <div id="tc-corner">{E(T2["tc_corner"])}</div>' if T2.get("tc_corner") else "")
+    a = c["start"]
+    sfx("impact", a + 0.05, 0.7); sfx("pop", c.get("pill", a + 0.55), 0.5)
+    js = [f'tl.fromTo("#tc-top", {{ y: -40, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }}, {a + 0.05});',
+          f'tl.fromTo("#tc-big", {{ scale: 1.6, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }}, {a + 0.1});',
+          f'tl.fromTo("#tc-pill", {{ scale: 0, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.3, ease: "{BACK}" }}, {c.get("pill", a + 0.55)});',
+          f'tl.fromTo("#tc-script", {{ y: 30, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }}, {c.get("script", a + 0.8)});',
+          f'tl.to("#tc-big", {{ scale: 1.03, duration: 1.2, yoyo: true, repeat: 1, ease: "sine.inOut" }}, {a + 0.6});']
+    if T2.get("tc_corner"):
+        js.append(f'tl.fromTo("#tc-corner", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4 }}, {a + 0.3});')
+    return h, js
+
+BLOCKS = dict(titlecard=b_titlecard, cta=b_cta, hook=b_hook, location=b_location, rooms=b_rooms, land=b_land, side=b_side, uses=b_uses,
               ready=b_ready, price=b_price, text=b_text)
 
 G_HTML, G_JS = [], []
@@ -343,7 +365,8 @@ if CFG.get("captions", True):
         CAP_JS.append(f'tl.set("#cap{ci}", {{ autoAlpha: 1 }}, {a}).set("#cap{ci}", {{ autoAlpha: 0 }}, {b});'
                       f' tl.fromTo("#cap{ci}", {{ scale: 0.85 }}, {{ scale: 1, duration: 0.15, ease: "back.out(3)" }}, {a});')
         for k, w in enumerate(ch):
-            CAP_JS.append(f'tl.set("#cw{ci}_{k}", {{ color: "#ffd400" }}, {T(w["s"])}).set("#cw{ci}_{k}", {{ color: "#ffffff" }}, {T(w["e"]) + 0.05});')
+            if CFG.get("caption_highlight", True):
+                CAP_JS.append(f'tl.set("#cw{ci}_{k}", {{ color: "#ffd400" }}, {T(w["s"])}).set("#cw{ci}_{k}", {{ color: "#ffffff" }}, {T(w["e"]) + 0.05});')
 
 # ---------------- write ----------------
 DUR = {"impact": 0.9, "pop": 0.12, "whoosh": 0.6, "tick": 0.06, "riser": 1.2, "ding": 1.2}
@@ -351,7 +374,7 @@ SFX_HTML = "\n".join(f'      <audio id="sfx{i:02d}" src="assets/sfx/{k}.wav" dat
                      f'data-volume="{v}" data-track-index="{4 + i % 4}"></audio>'
                      for i, (k, t, v) in enumerate(sorted(SFX, key=lambda x: x[1])))
 out = (ROOT / "index.tpl").read_text()
-for k, v in dict(D=D, SCENES="\n".join(SC_HTML), GRAPHICS="\n\n".join(G_HTML), CAPS="\n".join(CAP_HTML), VO=VO, SFX=SFX_HTML,
+for k, v in dict(THEME="theme-" + CFG.get("theme", "bold"), D=D, SCENES="\n".join(SC_HTML), GRAPHICS="\n\n".join(G_HTML), CAPS="\n".join(CAP_HTML), VO=VO, SFX=SFX_HTML,
                  BED_VOL=CFG.get("music_volume", 0.15), CUTS=json.dumps(starts[1:]), KB="\n      ".join(KB),
                  GJS="\n\n      ".join(G_JS), CAPJS="\n      ".join(CAP_JS)).items():
     out = out.replace("{{" + k + "}}", str(v))

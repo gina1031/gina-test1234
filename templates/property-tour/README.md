@@ -23,10 +23,16 @@ Contoh siap: `rumah-tour/` (Lombong Besi 2) → `rumah-tour/renders/lombong-besi
 | `uses` | Senarai kegunaan, satu-satu | `items` (list) |
 | `ready` | ✅ pill + baris "boleh terus masuk" | `pill`, `line` |
 | `price` | 0% DP, kad harga (SPA dipotong, harga bersih), bonus, CTA | `dp`, `card`, `price`, `bonus`, `cta`, `cta_pulse` |
+| `titlecard` | Kad pembuka gaya TikTok: baris kecil atas, nama besar kuning (Anton), pill putih, baris italic (`tc_top`, `tc_big`, `tc_pill`, `tc_script`, `tc_corner`) | `pill`, `script` |
 | `cta` | Penutup tanpa harga: tajuk + senarai ✅ + CTA | `checks`, `cta` |
 | `text` | Headline bebas + pill (boleh guna berkali-kali) | `pill` |
 
 Block yang tak perlu boleh dibuang dari `graphics`. Teks yang kosong (contohnya `bonus`, `price_old`, `location_chip`) tak akan dipaparkan.
+
+## Tema
+
+- `"theme": "bold"` (default): caption tebal, perkataan disebut jadi kuning. Contoh: `rumah-tour`, `taman-pahlawan`.
+- `"theme": "clean"` + `"caption_highlight": false`: gaya TikTok yang bersih (caption putih biasa, tajuk Anton kuning, pill putih). Biasanya dibuka dengan block `titlecard`. Contoh: `taman-pahlawan-v2`.
 
 ## Cara guna (listing baru)
 
