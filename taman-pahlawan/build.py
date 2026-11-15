@@ -24,25 +24,41 @@ for seg in TX:
     seg_words = []
     for w in seg["words"]:
         t = w["w"].strip()
-        if seg_words and re.match(r"^[,.]\d", t):          # whisper splits "4" ",102"
+        if seg_words and (re.match(r"^[,.]\d", t) or re.match(r"^-\w", t)):  # "4" ",102" / "built" "-up"
             seg_words[-1]["w"] += t; seg_words[-1]["e"] = w["e"]
         else:
-            seg_words.append({"w": CFG.get("fix_words", {}).get(t, t), "s": w["s"], "e": w["e"]})
+            seg_words.append({"w": t, "s": w["s"], "e": w["e"]})
+    for w in seg_words:
+        w["w"] = CFG.get("fix_words", {}).get(w["w"], w["w"])
     seg["_words"] = seg_words
     words += seg_words
 
 # ---------------- pause tightening ----------------
-# Cut only where the voiceover is actually silent (ffmpeg silencedetect), never on word-gap guesses:
+# Cut only where the voiceover is actually quiet (measured loudness), never on word-gap guesses:
 # whisper's word ends can be early for long spoken numbers ("lapan puluh enam" -> "86").
 pmax, pkeep = CFG.get("pause_max", 0.3), CFG.get("pause_keep", 0.1)
-_sd = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(ROOT / CFG["voiceover"]), "-af",
-                      f"silencedetect=n={CFG.get('silence_db', -35)}dB:d={pmax}", "-f", "null", "-"],
-                     capture_output=True, text=True).stderr
-_st = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", _sd)]
-_en = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", _sd)]
-CUTS = [(round(a + pkeep / 2, 3), round(b - pkeep / 2, 3)) for a, b in zip(_st, _en)
+# Loudness every 50 ms; "quiet" = within `quiet_db` (default 6 dB) of the recording's own noise floor
+# (10th percentile), so room tone / cloned-voice hiss doesn't hide the pauses.
+_rms = subprocess.run(["ffmpeg", "-v", "error", "-i", str(ROOT / CFG["voiceover"]), "-af",
+                       "aresample=16000,asetnsamples=800,astats=metadata=1:reset=1,"
+                       "ametadata=print:key=lavfi.astats.Overall.RMS_level:file=-", "-f", "null", "-"],
+                      capture_output=True, text=True).stdout
+_lv = [max(-90.0, float(x)) if x not in ("-inf", "inf") else -90.0 for x in re.findall(r"RMS_level=(-?[\d.]+|-?inf)", _rms)]
+_floor = sorted(_lv)[len(_lv) // 10] if _lv else -90
+_q = [v < _floor + CFG.get("quiet_db", 6) for v in _lv]
+_runs, i = [], 0
+while i < len(_q):
+    if _q[i]:
+        j = i
+        while j < len(_q) and _q[j]:
+            j += 1
+        _runs.append((i * 0.05, j * 0.05)); i = j
+    else:
+        i += 1
+_st = [a for a, b in _runs]; _en = [b for a, b in _runs]
+CUTS = [(round(a + pkeep / 2, 3), round(b - pkeep / 2, 3)) for a, b in _runs
         if a > 0.05 and b - a > pmax and a < words[-1]["s"]]
-VO_END = max(words[-1]["e"] + 0.3, (_st[-1] if len(_st) > len(_en) else words[-1]["e"] + 0.3))
+VO_END = min(words[-1]["e"] + 0.5, _st[-1] + 0.05) if _st and _st[-1] > words[-1]["s"] else words[-1]["e"] + 0.3
 
 
 def T(t):

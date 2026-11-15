@@ -2,339 +2,394 @@
  {
   "file": "voiceover.m4a",
   "start": 0.0,
-  "end": 4.0,
-  "text": "Cari rumah teres dua tingkat freehold di Telok Panglima Garang?",
+  "end": 4.9,
+  "text": " Looking for a freehold double-story home in Telok Panglima, Garang.",
   "words": [
    {
-    "w": " Cari",
+    "w": " Looking",
     "s": 0.0,
-    "e": 0.72
+    "e": 0.84
    },
    {
-    "w": " rumah",
-    "s": 0.72,
-    "e": 1.04
+    "w": " for",
+    "s": 0.84,
+    "e": 1.24
    },
    {
-    "w": " teres",
-    "s": 1.04,
-    "e": 1.46
-   },
-   {
-    "w": " dua",
-    "s": 1.46,
-    "e": 1.74
-   },
-   {
-    "w": " tingkat",
-    "s": 1.74,
-    "e": 2.08
+    "w": " a",
+    "s": 1.24,
+    "e": 1.5
    },
    {
     "w": " freehold",
-    "s": 2.08,
-    "e": 2.54
+    "s": 1.5,
+    "e": 2.0
    },
    {
-    "w": " di",
-    "s": 2.54,
-    "e": 2.76
+    "w": " double",
+    "s": 2.0,
+    "e": 2.4
+   },
+   {
+    "w": "-story",
+    "s": 2.4,
+    "e": 2.8
+   },
+   {
+    "w": " home",
+    "s": 2.8,
+    "e": 3.2
+   },
+   {
+    "w": " in",
+    "s": 3.2,
+    "e": 3.64
    },
    {
     "w": " Telok",
-    "s": 2.76,
-    "e": 3.08
+    "s": 3.64,
+    "e": 3.9
    },
    {
-    "w": " Panglima",
-    "s": 3.08,
-    "e": 3.56
+    "w": " Panglima,",
+    "s": 3.9,
+    "e": 4.5
    },
    {
-    "w": " Garang?",
-    "s": 3.56,
-    "e": 4.0
+    "w": " Garang.",
+    "s": 4.6,
+    "e": 4.9
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 5.12,
-  "end": 7.0,
-  "text": "Jom lihat projek baharu Taman Pahlawan.",
+  "start": 5.54,
+  "end": 8.56,
+  "text": " Welcome to Tamman Pahlawan, a brand new project.",
   "words": [
    {
-    "w": " Jom",
-    "s": 5.12,
-    "e": 5.3
+    "w": " Welcome",
+    "s": 5.54,
+    "e": 5.84
    },
    {
-    "w": " lihat",
-    "s": 5.3,
-    "e": 5.6
+    "w": " to",
+    "s": 5.84,
+    "e": 6.18
    },
    {
-    "w": " projek",
-    "s": 5.6,
-    "e": 6.06
+    "w": " Tamman",
+    "s": 6.18,
+    "e": 6.56
    },
    {
-    "w": " baharu",
-    "s": 6.06,
-    "e": 6.54
+    "w": " Pahlawan,",
+    "s": 6.56,
+    "e": 7.14
    },
    {
-    "w": " Taman",
-    "s": 6.54,
-    "e": 6.9
+    "w": " a",
+    "s": 7.36,
+    "e": 7.42
    },
    {
-    "w": " Pahlawan.",
-    "s": 6.9,
-    "e": 7.300000000000001
+    "w": " brand",
+    "s": 7.42,
+    "e": 7.6
+   },
+   {
+    "w": " new",
+    "s": 7.6,
+    "e": 7.94
+   },
+   {
+    "w": " project.",
+    "s": 7.94,
+    "e": 8.56
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 8.64,
-  "end": 11.54,
-  "text": "Hanya 86 unit sahaja.",
+  "start": 9.02,
+  "end": 11.06,
+  "text": " Only 86 units available.",
   "words": [
    {
-    "w": " Hanya",
-    "s": 8.64,
-    "e": 8.82
+    "w": " Only",
+    "s": 9.02,
+    "e": 9.34
    },
    {
     "w": " 86",
-    "s": 8.82,
-    "e": 9.78
+    "s": 9.34,
+    "e": 9.88
    },
    {
-    "w": " unit",
-    "s": 9.78,
-    "e": 10.16
+    "w": " units",
+    "s": 9.88,
+    "e": 10.42
    },
    {
-    "w": " sahaja.",
-    "s": 10.16,
-    "e": 11.54
+    "w": " available.",
+    "s": 10.42,
+    "e": 11.06
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 11.84,
-  "end": 15.42,
-  "text": "Setiap rumah ada 4 bilik tidur dan 4 bilik air.",
+  "start": 11.7,
+  "end": 15.32,
+  "text": " Every home comes with four bedrooms and four bathrooms.",
   "words": [
    {
-    "w": " Setiap",
-    "s": 11.84,
-    "e": 12.18
+    "w": " Every",
+    "s": 11.7,
+    "e": 11.98
    },
    {
-    "w": " rumah",
-    "s": 12.18,
-    "e": 12.48
+    "w": " home",
+    "s": 11.98,
+    "e": 12.32
    },
    {
-    "w": " ada",
-    "s": 12.48,
-    "e": 12.76
+    "w": " comes",
+    "s": 12.32,
+    "e": 12.78
    },
    {
-    "w": " 4",
-    "s": 12.76,
-    "e": 13.1
+    "w": " with",
+    "s": 12.78,
+    "e": 13.06
    },
    {
-    "w": " bilik",
-    "s": 13.1,
-    "e": 13.36
+    "w": " four",
+    "s": 13.06,
+    "e": 13.34
    },
    {
-    "w": " tidur",
-    "s": 13.36,
-    "e": 13.96
+    "w": " bedrooms",
+    "s": 13.34,
+    "e": 13.9
    },
    {
-    "w": " dan",
-    "s": 13.96,
+    "w": " and",
+    "s": 13.9,
     "e": 14.28
    },
    {
-    "w": " 4",
+    "w": " four",
     "s": 14.28,
-    "e": 14.62
+    "e": 14.64
    },
    {
-    "w": " bilik",
-    "s": 14.62,
-    "e": 14.96
-   },
-   {
-    "w": " air.",
-    "s": 14.96,
-    "e": 15.42
+    "w": " bathrooms.",
+    "s": 14.64,
+    "e": 15.32
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 16.0,
-  "end": 22.62,
-  "text": "Saiz tanah 20x65 kaki sehingga 20x87 kaki.",
+  "start": 15.78,
+  "end": 21.48,
+  "text": " Land sizes from 20 by 65 up to 20 by 87 feet.",
   "words": [
    {
-    "w": " Saiz",
-    "s": 16.0,
-    "e": 16.22
+    "w": " Land",
+    "s": 15.78,
+    "e": 16.08
    },
    {
-    "w": " tanah",
-    "s": 16.22,
-    "e": 16.74
+    "w": " sizes",
+    "s": 16.08,
+    "e": 16.46
    },
    {
-    "w": " 20x65",
-    "s": 16.74,
-    "e": 18.74
+    "w": " from",
+    "s": 16.46,
+    "e": 16.88
    },
    {
-    "w": " kaki",
-    "s": 18.74,
-    "e": 19.14
+    "w": " 20",
+    "s": 16.88,
+    "e": 17.44
    },
    {
-    "w": " sehingga",
-    "s": 19.14,
-    "e": 19.5
+    "w": " by",
+    "s": 17.44,
+    "e": 17.7
    },
    {
-    "w": " 20x87",
-    "s": 19.5,
-    "e": 21.32
+    "w": " 65",
+    "s": 17.7,
+    "e": 18.48
    },
    {
-    "w": " kaki.",
-    "s": 21.32,
-    "e": 22.62
+    "w": " up",
+    "s": 18.48,
+    "e": 19.16
+   },
+   {
+    "w": " to",
+    "s": 19.16,
+    "e": 19.42
+   },
+   {
+    "w": " 20",
+    "s": 19.42,
+    "e": 19.88
+   },
+   {
+    "w": " by",
+    "s": 19.88,
+    "e": 20.2
+   },
+   {
+    "w": " 87",
+    "s": 20.2,
+    "e": 20.94
+   },
+   {
+    "w": " feet.",
+    "s": 20.94,
+    "e": 21.48
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 22.84,
-  "end": 28.0,
-  "text": "Keluasan binaan 1,260 hingga 1,400 kaki persegi.",
+  "start": 21.9,
+  "end": 27.64,
+  "text": " Built-up area from 1,260 to 1,400 square feet.",
   "words": [
    {
-    "w": " Keluasan",
-    "s": 22.84,
-    "e": 23.24
+    "w": " Built",
+    "s": 21.9,
+    "e": 22.06
    },
    {
-    "w": " binaan",
-    "s": 23.24,
-    "e": 23.66
+    "w": "-up",
+    "s": 22.06,
+    "e": 22.38
    },
    {
-    "w": " 1,260",
-    "s": 23.66,
-    "e": 25.44
+    "w": " area",
+    "s": 22.38,
+    "e": 22.8
    },
    {
-    "w": " hingga",
-    "s": 25.44,
-    "e": 26.0
+    "w": " from",
+    "s": 22.8,
+    "e": 23.22
    },
    {
-    "w": " 1,400",
-    "s": 26.0,
-    "e": 27.02
+    "w": " 1",
+    "s": 23.22,
+    "e": 23.58
    },
    {
-    "w": " kaki",
-    "s": 27.02,
-    "e": 27.5
+    "w": ",260",
+    "s": 23.58,
+    "e": 25.0
    },
    {
-    "w": " persegi.",
-    "s": 27.5,
-    "e": 28.0
+    "w": " to",
+    "s": 25.0,
+    "e": 25.66
+   },
+   {
+    "w": " 1",
+    "s": 25.66,
+    "e": 26.06
+   },
+   {
+    "w": ",400",
+    "s": 26.06,
+    "e": 26.92
+   },
+   {
+    "w": " square",
+    "s": 26.92,
+    "e": 27.22
+   },
+   {
+    "w": " feet.",
+    "s": 27.22,
+    "e": 27.64
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 28.0,
-  "end": 32.0,
-  "text": "Hak milik kekal, freehold dan open title.",
+  "start": 27.64,
+  "end": 29.72,
+  "text": " Freehold with open title",
   "words": [
    {
-    "w": " Hak",
-    "s": 28.0,
-    "e": 29.32
+    "w": " Freehold",
+    "s": 27.64,
+    "e": 28.58
    },
    {
-    "w": " milik",
-    "s": 29.32,
-    "e": 29.6
-   },
-   {
-    "w": " kekal,",
-    "s": 29.6,
-    "e": 29.96
-   },
-   {
-    "w": " freehold",
-    "s": 29.96,
-    "e": 30.46
-   },
-   {
-    "w": " dan",
-    "s": 30.46,
-    "e": 30.78
+    "w": " with",
+    "s": 28.58,
+    "e": 28.8
    },
    {
     "w": " open",
-    "s": 30.78,
-    "e": 31.14
+    "s": 28.8,
+    "e": 29.2
    },
    {
-    "w": " title.",
-    "s": 31.14,
-    "e": 32.0
+    "w": " title",
+    "s": 29.2,
+    "e": 29.72
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 32.0,
-  "end": 34.72,
-  "text": "Berminat? Hubungi Gina sekarang!",
+  "start": 29.72,
+  "end": 33.08,
+  "text": " Interested? WhatsApp Gina now for a viewing",
   "words": [
    {
-    "w": " Berminat?",
-    "s": 32.0,
-    "e": 33.18
+    "w": " Interested?",
+    "s": 29.72,
+    "e": 31.04
    },
    {
-    "w": " Hubungi",
-    "s": 33.18,
-    "e": 33.78
+    "w": " WhatsApp",
+    "s": 31.08,
+    "e": 31.46
    },
    {
     "w": " Gina",
-    "s": 33.78,
-    "e": 34.02
+    "s": 31.46,
+    "e": 31.88
    },
    {
-    "w": " sekarang!",
-    "s": 34.02,
-    "e": 34.72
+    "w": " now",
+    "s": 31.88,
+    "e": 32.22
+   },
+   {
+    "w": " for",
+    "s": 32.22,
+    "e": 32.56
+   },
+   {
+    "w": " a",
+    "s": 32.56,
+    "e": 32.74
+   },
+   {
+    "w": " viewing",
+    "s": 32.74,
+    "e": 33.08
    }
   ]
  }
