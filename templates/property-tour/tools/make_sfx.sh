@@ -2,7 +2,7 @@
 # Synthesize the SFX kit + a soft music bed into <project>/assets/sfx (no downloads needed).
 # Usage: tools/make_sfx.sh <project-dir> [bed-seconds=60]
 set -euo pipefail
-OUT="$1/assets/sfx"; BED="${2:-60}"; mkdir -p "$OUT"; cd "$OUT"
+OUT="$(mkdir -p "$1/assets/sfx" && cd "$1/assets/sfx" && pwd)"; BED="${2:-60}"; cd "$OUT"
 A="-hide_banner -loglevel error -y"
 ffmpeg $A -f lavfi -i "anoisesrc=d=0.6:c=pink:a=0.9" -af "highpass=f=300,lowpass=f=4000,volume='sin(PI*t/0.6)^2':eval=frame,afade=t=out:st=0.45:d=0.15,aecho=0.6:0.4:30:0.3,volume=19dB" -ar 48000 -ac 2 whoosh.wav
 ffmpeg $A -f lavfi -i "aevalsrc='0.8*sin(2*PI*(900-6000*t)*t)*exp(-38*t)':d=0.12:s=48000" -ac 2 pop.wav

@@ -87,6 +87,11 @@
       #bonus .tag { background: var(--green); color: #fff; font-size: 42px; }
       #cta { top: 1250px; }
       #cta .pill { font-size: 48px; background: #0f8a4c; color: #fff; }
+      /* cta block (no price) */
+      #cta-title { top: 300px; font-weight: 900; font-size: 84px; line-height: 1.08; }
+      #cta-list { position: absolute; top: 560px; left: 70px; right: 70px; }
+      .check { white-space: nowrap; font-weight: 900; font-size: 54px; margin-bottom: 40px; background: rgba(0,0,0,.55); padding: 26px 30px; border-radius: 28px; display: flex; gap: 20px; align-items: center; }
+      .check .bx { background: var(--green); width: 74px; height: 74px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; flex: none; }
       #flash { background: #fff; opacity: 0; }
     </style>
   </head>

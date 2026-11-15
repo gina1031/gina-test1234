@@ -23,7 +23,8 @@ Contoh siap: `rumah-tour/` (Lombong Besi 2) → `rumah-tour/renders/lombong-besi
 | `uses` | Senarai kegunaan, satu-satu | `items` (list) |
 | `ready` | ✅ pill + baris "boleh terus masuk" | `pill`, `line` |
 | `price` | 0% DP, kad harga (SPA dipotong, harga bersih), bonus, CTA | `dp`, `card`, `price`, `bonus`, `cta`, `cta_pulse` |
-| `text` | Headline bebas + pill (block tambahan) | `pill` |
+| `cta` | Penutup tanpa harga: tajuk + senarai ✅ + CTA | `checks`, `cta` |
+| `text` | Headline bebas + pill (boleh guna berkali-kali) | `pill` |
 
 Block yang tak perlu boleh dibuang dari `graphics`. Teks yang kosong (contohnya `bonus`, `price_old`, `location_chip`) tak akan dipaparkan.
 
@@ -48,6 +49,13 @@ cd rumah-baru && python3 build.py && npx hyperframes check && npx hyperframes pr
 npx hyperframes render -q delivery --sdr -o renders/final.mp4
 ```
 
+## Tiada voiceover? (draf TTS)
+
+`tools/tts_draft.py` boleh jana voiceover draf Bahasa Melayu dari skrip, menggunakan model MMS Malay.
+Model ni berlesen **CC-BY-NC (non-komersial)**, jadi guna untuk timing dan preview sahaja.
+Sebelum post, rakam skrip yang sama, jalankan `transcribe.py` semula, dan `python3 build.py`.
+Contoh: `taman-pahlawan/vo_say.txt` + `vo_target.txt`.
+
 ## Rujukan masa dalam `config.json`
 
 | Tulis | Maksud |
@@ -71,5 +79,6 @@ npx hyperframes render -q delivery --sdr -o renders/final.mp4
 
 - **Pembetulan ejaan transcript:** `fix_words` (contoh `{"Syah": "Shah"}`).
 - **Kawal pause:** `pause_max` / `pause_keep`. Pause lebih panjang dari `pause_max` dipendekkan ke `pause_keep`.
+  Pause dikesan dari senyap sebenar dalam audio (ffmpeg silencedetect, `silence_db`, default -35), bukan dari jarak perkataan Whisper.
 - **Render guna `--sdr`:** footage phone Samsung/iPhone selalu HDR (HLG), dan nampak pudar kalau keluar HDR di IG/TikTok.
 - **Ubah gaya:** warna/font semua dalam `:root` dan CSS di `index.tpl`.

@@ -32,13 +32,17 @@ for seg in TX:
     words += seg_words
 
 # ---------------- pause tightening ----------------
+# Cut only where the voiceover is actually silent (ffmpeg silencedetect), never on word-gap guesses:
+# whisper's word ends can be early for long spoken numbers ("lapan puluh enam" -> "86").
 pmax, pkeep = CFG.get("pause_max", 0.3), CFG.get("pause_keep", 0.1)
-CUTS = []
-for a, b in zip(words, words[1:]):
-    gap = b["s"] - a["e"]
-    if gap > pmax:
-        CUTS.append((round(a["e"] + pkeep / 2, 3), round(b["s"] - pkeep / 2, 3)))
-VO_END = words[-1]["e"] + 0.3
+_sd = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(ROOT / CFG["voiceover"]), "-af",
+                      f"silencedetect=n={CFG.get('silence_db', -35)}dB:d={pmax}", "-f", "null", "-"],
+                     capture_output=True, text=True).stderr
+_st = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", _sd)]
+_en = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", _sd)]
+CUTS = [(round(a + pkeep / 2, 3), round(b - pkeep / 2, 3)) for a, b in zip(_st, _en)
+        if a > 0.05 and b - a > pmax and a < words[-1]["s"]]
+VO_END = max(words[-1]["e"] + 0.3, (_st[-1] if len(_st) > len(_en) else words[-1]["e"] + 0.3))
 
 
 def T(t):
@@ -137,7 +141,7 @@ BACK = 'back.out(2.2)'
 # Each block: (config) -> (html, [js lines]). `c` holds resolved cue times.
 def b_hook(c):
     h = f'''        <div class="shade-top"></div>
-        <div id="hook-a" class="cx"><span class="tag">{E(TXT["hook_tag"])}</span></div>
+        <div id="hook-a" class="cx"><span class="tag" style="font-size:{min(76, int(1200 / max(1, len(TXT["hook_tag"]))))}px">{E(TXT["hook_tag"])}</span></div>
         <div id="hook-b" class="cx t-stroke">{E(TXT["hook_line1"])}<br /><span class="y">{E(TXT["hook_line2"])}</span> {E(TXT.get("hook_emoji", ""))}</div>'''
     sfx("pop", c["tag"]); sfx("pop", c["line"])
     return h, [f'tl.fromTo("#hook-a", {{ scale: 2, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.25, ease: "{BACK}" }}, {c["tag"]});',
@@ -262,7 +266,25 @@ def b_text(c, i=[0]):
         js.append(f'tl.fromTo("#tx{k}-p", {{ y: 60, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.3, ease: "{BACK}" }}, {c.get("pill", c["start"] + 0.35)});')
     return h, js
 
-BLOCKS = dict(hook=b_hook, location=b_location, rooms=b_rooms, land=b_land, side=b_side, uses=b_uses,
+def b_cta(c):
+    """Closing card for listings without a price: title, ✅ checklist, CTA pill."""
+    checks = "\n".join(f'          <div class="check"><span class="bx">✓</span>{E(t)}</div>' for t in TXT["cta_checks"])
+    h = f'''        <div id="cta-title" class="cx t-stroke">{E(TXT.get("cta_title", ""))}</div>
+        <div id="cta-list">
+{checks}
+        </div>
+        <div id="cta" class="cx"><span class="pill">{E(TXT["cta"])}</span></div>'''
+    js = [f'tl.fromTo("#cta-title", {{ scale: 1.8, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }}, {c["start"]});']
+    for i in range(len(TXT["cta_checks"])):
+        t = round(c.get("checks", c["start"] + 0.3) + i * c["_g"].get("check_gap", 0.35), 3)
+        sfx("tick", t, 0.7)
+        js.append(f'tl.fromTo("#cta-list .check:nth-child({i + 1})", {{ x: -900, opacity: 0 }}, {{ x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }}, {t});')
+    sfx("pop", c["cta"], 0.6)
+    js += [f'tl.fromTo("#cta", {{ y: 120, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "{BACK}" }}, {c["cta"]});',
+           f'tl.to("#cta", {{ scale: 1.06, duration: 0.3, yoyo: true, repeat: 7, ease: "sine.inOut" }}, {c["cta"] + 0.4});']
+    return h, js
+
+BLOCKS = dict(cta=b_cta, hook=b_hook, location=b_location, rooms=b_rooms, land=b_land, side=b_side, uses=b_uses,
               ready=b_ready, price=b_price, text=b_text)
 
 G_HTML, G_JS = [], []
