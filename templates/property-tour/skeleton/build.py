@@ -396,8 +396,8 @@ if CFG.get("captions", True):
             i += 1
     for ci, ch in enumerate(chunks):
         a = T(ch[0]["s"]); b = T(chunks[ci + 1][0]["s"]) if ci + 1 < len(chunks) else D
-        CAP_HTML.append(f'        <div class="cap" id="cap{ci}">' + " ".join(
-            f'<span class="cw" id="cw{ci}_{k}">{E(w["w"])}</span>' for k, w in enumerate(ch)) + "</div>")
+        CAP_HTML.append(f'        <div class="cap" id="cap{ci}"><span class="cap-in">' + " ".join(
+            f'<span class="cw" id="cw{ci}_{k}">{E(w["w"])}</span>' for k, w in enumerate(ch)) + "</span></div>")
         CAP_JS.append(f'tl.set("#cap{ci}", {{ autoAlpha: 1 }}, {a}).set("#cap{ci}", {{ autoAlpha: 0 }}, {b});'
                       f' tl.fromTo("#cap{ci}", {{ scale: 0.85 }}, {{ scale: 1, duration: 0.15, ease: "back.out(3)" }}, {a});')
         for k, w in enumerate(ch):
@@ -410,7 +410,7 @@ SFX_HTML = "\n".join(f'      <audio id="sfx{i:02d}" src="assets/sfx/{k}.wav" dat
                      f'data-volume="{v}" data-track-index="{4 + i % 4}"></audio>'
                      for i, (k, t, v) in enumerate(sorted(SFX, key=lambda x: x[1])))
 out = (ROOT / "index.tpl").read_text()
-for k, v in dict(THEME="theme-" + CFG.get("theme", "bold"), D=D, SCENES="\n".join(SC_HTML), GRAPHICS="\n\n".join(G_HTML), CAPS="\n".join(CAP_HTML), VO=VO, SFX=SFX_HTML,
+for k, v in dict(THEME=" ".join("theme-" + t for t in CFG.get("theme", "bold").split()), D=D, SCENES="\n".join(SC_HTML), GRAPHICS="\n\n".join(G_HTML), CAPS="\n".join(CAP_HTML), VO=VO, SFX=SFX_HTML,
                  BED_VOL=CFG.get("music_volume", 0.15), CUTS=json.dumps(starts[1:]), KB="\n      ".join(KB),
                  GJS="\n\n      ".join(G_JS), CAPJS="\n      ".join(CAP_JS)).items():
     out = out.replace("{{" + k + "}}", str(v))

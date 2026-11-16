@@ -112,6 +112,50 @@
                color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8), 0 0 28px rgba(0,0,0,.5); }
       #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
 
+      /* ===== theme add-on: luxe (use "theme": "clean luxe") — dark, serif italic, gold ===== */
+      .theme-luxe .t-stroke, .theme-luxe #tc-big { font-family: "Play", serif !important; font-style: italic; font-weight: 600; text-transform: none;
+                               letter-spacing: 0; -webkit-text-stroke: 0; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.7); }
+      .theme-luxe #tc-big { color: #f3d27a !important; line-height: 1.02; }
+      .theme-luxe .y { color: #f3d27a; }
+      .theme-luxe .pill, .theme-luxe .pill.y, .theme-luxe .pill.g, .theme-luxe .tag, .theme-luxe #tc-pill span {
+               background: rgba(12,16,28,.72) !important; color: #f3d27a !important; border: 2px solid #d4af37; border-radius: 999px; font-weight: 700; }
+      .theme-luxe #cta .pill { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .check, .theme-luxe .nb-row, .theme-luxe .item { background: rgba(12,16,28,.8) !important; color: #fff !important; border: 1.5px solid rgba(212,175,55,.6); }
+      .theme-luxe .check .bx { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .nb-t { background: #d4af37; color: #0c101c; }
+      .theme-luxe .shade-top { background: linear-gradient(180deg, rgba(5,8,16,.65) 0%, rgba(5,8,16,0) 45%); }
+      .theme-luxe #flash { background: #f3d27a; }
+
+      /* ===== theme add-on: promo (use "theme": "clean promo") — red/yellow sale style ===== */
+      .theme-promo .t-stroke { display: inline-block; left: 50%; right: auto; transform-origin: center; translate: -50% 0; background: #e11d2e; color: #fff;
+                               padding: 6px 30px; border-radius: 10px; -webkit-text-stroke: 0; text-shadow: none; box-shadow: 0 8px 0 #8f0f1b; }
+      .theme-promo #bilik-num, .theme-promo #luas-num { background: none; box-shadow: none; color: #ffd60a; -webkit-text-stroke: 6px #e11d2e; }
+      .theme-promo #tc-big { color: #ffd60a; -webkit-text-stroke: 7px #e11d2e; text-shadow: 0 12px 0 #8f0f1b; }
+      .theme-promo .pill, .theme-promo .pill.y, .theme-promo .pill.g, .theme-promo .tag, .theme-promo #tc-pill span {
+               background: #ffd60a !important; color: #111 !important; border: 4px solid #111; border-radius: 12px; font-weight: 900; rotate: -3deg; display: inline-block; }
+      .theme-promo #cta .pill { background: #e11d2e !important; color: #fff !important; border-color: #fff; }
+      .theme-promo .cap-in { background: #ffd60a; color: #111; padding: 2px 14px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-promo .cap .cw { color: #111; }
+      .theme-promo .cap { -webkit-text-stroke: 0; text-shadow: none; line-height: 1.35; }
+      .theme-promo #captions { background: none; }
+      .theme-promo .check .bx, .theme-promo .nb-t { background: #e11d2e !important; color: #fff !important; }
+
+      /* ===== theme add-on: card (use "theme": "clean card") — modern boxed labels, green accent ===== */
+      .theme-card .t-stroke { display: inline-block; left: 50%; right: auto; translate: -50% 0; background: rgba(17,17,17,.78); color: #fff;
+                              font-family: "Mont", "Emoji", sans-serif; font-weight: 800; text-transform: none; letter-spacing: -0.01em;
+                              padding: 12px 34px; border-radius: 26px; -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card #bilik-num, .theme-card #luas-num { color: #22c55e; }
+      .theme-card .y { color: #4ade80; }
+      .theme-card #tc-big { font-family: "Mont", sans-serif; font-weight: 900; color: #fff; -webkit-text-stroke: 0; text-transform: none;
+                            letter-spacing: -0.04em; text-shadow: 0 6px 24px rgba(0,0,0,.6); }
+      .theme-card .pill, .theme-card .pill.y, .theme-card .pill.g, .theme-card .tag, .theme-card #tc-pill span {
+               background: #22c55e !important; color: #fff !important; border-radius: 999px; font-weight: 800; }
+      .theme-card .cap { -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card .cap-in { background: #fff; color: #111; padding: 4px 16px; border-radius: 10px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-card .cap .cw { color: #111; }
+      .theme-card #captions { background: none; }
+      .theme-card .check .bx, .theme-card .nb-t { background: #22c55e !important; color: #fff !important; }
+
       /* ===== nearby block ===== */
       #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
       #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }

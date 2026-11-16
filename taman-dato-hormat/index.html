@@ -112,6 +112,50 @@
                color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8), 0 0 28px rgba(0,0,0,.5); }
       #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
 
+      /* ===== theme add-on: luxe (use "theme": "clean luxe") — dark, serif italic, gold ===== */
+      .theme-luxe .t-stroke, .theme-luxe #tc-big { font-family: "Play", serif !important; font-style: italic; font-weight: 600; text-transform: none;
+                               letter-spacing: 0; -webkit-text-stroke: 0; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.7); }
+      .theme-luxe #tc-big { color: #f3d27a !important; line-height: 1.02; }
+      .theme-luxe .y { color: #f3d27a; }
+      .theme-luxe .pill, .theme-luxe .pill.y, .theme-luxe .pill.g, .theme-luxe .tag, .theme-luxe #tc-pill span {
+               background: rgba(12,16,28,.72) !important; color: #f3d27a !important; border: 2px solid #d4af37; border-radius: 999px; font-weight: 700; }
+      .theme-luxe #cta .pill { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .check, .theme-luxe .nb-row, .theme-luxe .item { background: rgba(12,16,28,.8) !important; color: #fff !important; border: 1.5px solid rgba(212,175,55,.6); }
+      .theme-luxe .check .bx { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .nb-t { background: #d4af37; color: #0c101c; }
+      .theme-luxe .shade-top { background: linear-gradient(180deg, rgba(5,8,16,.65) 0%, rgba(5,8,16,0) 45%); }
+      .theme-luxe #flash { background: #f3d27a; }
+
+      /* ===== theme add-on: promo (use "theme": "clean promo") — red/yellow sale style ===== */
+      .theme-promo .t-stroke { display: inline-block; left: 50%; right: auto; transform-origin: center; translate: -50% 0; background: #e11d2e; color: #fff;
+                               padding: 6px 30px; border-radius: 10px; -webkit-text-stroke: 0; text-shadow: none; box-shadow: 0 8px 0 #8f0f1b; }
+      .theme-promo #bilik-num, .theme-promo #luas-num { background: none; box-shadow: none; color: #ffd60a; -webkit-text-stroke: 6px #e11d2e; }
+      .theme-promo #tc-big { color: #ffd60a; -webkit-text-stroke: 7px #e11d2e; text-shadow: 0 12px 0 #8f0f1b; }
+      .theme-promo .pill, .theme-promo .pill.y, .theme-promo .pill.g, .theme-promo .tag, .theme-promo #tc-pill span {
+               background: #ffd60a !important; color: #111 !important; border: 4px solid #111; border-radius: 12px; font-weight: 900; rotate: -3deg; display: inline-block; }
+      .theme-promo #cta .pill { background: #e11d2e !important; color: #fff !important; border-color: #fff; }
+      .theme-promo .cap-in { background: #ffd60a; color: #111; padding: 2px 14px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-promo .cap .cw { color: #111; }
+      .theme-promo .cap { -webkit-text-stroke: 0; text-shadow: none; line-height: 1.35; }
+      .theme-promo #captions { background: none; }
+      .theme-promo .check .bx, .theme-promo .nb-t { background: #e11d2e !important; color: #fff !important; }
+
+      /* ===== theme add-on: card (use "theme": "clean card") — modern boxed labels, green accent ===== */
+      .theme-card .t-stroke { display: inline-block; left: 50%; right: auto; translate: -50% 0; background: rgba(17,17,17,.78); color: #fff;
+                              font-family: "Mont", "Emoji", sans-serif; font-weight: 800; text-transform: none; letter-spacing: -0.01em;
+                              padding: 12px 34px; border-radius: 26px; -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card #bilik-num, .theme-card #luas-num { color: #22c55e; }
+      .theme-card .y { color: #4ade80; }
+      .theme-card #tc-big { font-family: "Mont", sans-serif; font-weight: 900; color: #fff; -webkit-text-stroke: 0; text-transform: none;
+                            letter-spacing: -0.04em; text-shadow: 0 6px 24px rgba(0,0,0,.6); }
+      .theme-card .pill, .theme-card .pill.y, .theme-card .pill.g, .theme-card .tag, .theme-card #tc-pill span {
+               background: #22c55e !important; color: #fff !important; border-radius: 999px; font-weight: 800; }
+      .theme-card .cap { -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card .cap-in { background: #fff; color: #111; padding: 4px 16px; border-radius: 10px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-card .cap .cw { color: #111; }
+      .theme-card #captions { background: none; }
+      .theme-card .check .bx, .theme-card .nb-t { background: #22c55e !important; color: #fff !important; }
+
       /* ===== nearby block ===== */
       #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
       #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }
@@ -228,33 +272,33 @@
 
       <!-- ===== CAPTIONS (word-synced) ===== -->
       <div id="captions" class="clip" data-start="0" data-duration="67.97" data-track-index="2">
-        <div class="cap" id="cap0"><span class="cw" id="cw0_0">Cari</span> <span class="cw" id="cw0_1">rumah</span> <span class="cw" id="cw0_2">setingkat</span> <span class="cw" id="cw0_3">di</span></div>
-        <div class="cap" id="cap1"><span class="cw" id="cw1_0">Telok</span> <span class="cw" id="cw1_1">Panglima</span> <span class="cw" id="cw1_2">Garang,</span></div>
-        <div class="cap" id="cap2"><span class="cw" id="cw2_0">harga</span> <span class="cw" id="cw2_1">bawah</span> <span class="cw" id="cw2_2">RM400k?</span></div>
-        <div class="cap" id="cap3"><span class="cw" id="cw3_0">Jom</span> <span class="cw" id="cw3_1">tengok</span> <span class="cw" id="cw3_2">Taman</span> <span class="cw" id="cw3_3">Dato</span> <span class="cw" id="cw3_4">Hormat.</span></div>
-        <div class="cap" id="cap4"><span class="cw" id="cw4_0">Projek</span> <span class="cw" id="cw4_1">baharu</span> <span class="cw" id="cw4_2">rumah</span> <span class="cw" id="cw4_3">teres</span> <span class="cw" id="cw4_4">setingkat,</span></div>
-        <div class="cap" id="cap5"><span class="cw" id="cw5_0">cuma</span> <span class="cw" id="cw5_1">19</span> <span class="cw" id="cw5_2">unit</span> <span class="cw" id="cw5_3">sahaja.</span></div>
-        <div class="cap" id="cap6"><span class="cw" id="cw6_0">Harga</span> <span class="cw" id="cw6_1">bermula</span> <span class="cw" id="cw6_2">dari</span> <span class="cw" id="cw6_3">RM399k.</span></div>
-        <div class="cap" id="cap7"><span class="cw" id="cw7_0">Saiz</span> <span class="cw" id="cw7_1">tanah</span> <span class="cw" id="cw7_2">20</span> <span class="cw" id="cw7_3">x</span> <span class="cw" id="cw7_4">101,</span></div>
-        <div class="cap" id="cap8"><span class="cw" id="cw8_0">sampai</span> <span class="cw" id="cw8_1">116</span> <span class="cw" id="cw8_2">kaki.</span></div>
-        <div class="cap" id="cap9"><span class="cw" id="cw9_0">Keluasan</span> <span class="cw" id="cw9_1">binaan</span> <span class="cw" id="cw9_2">20</span> <span class="cw" id="cw9_3">x</span> <span class="cw" id="cw9_4">50</span> <span class="cw" id="cw9_5">kaki,</span></div>
-        <div class="cap" id="cap10"><span class="cw" id="cw10_0">dengan</span> <span class="cw" id="cw10_1">4</span> <span class="cw" id="cw10_2">bilik</span> <span class="cw" id="cw10_3">tidur</span></div>
-        <div class="cap" id="cap11"><span class="cw" id="cw11_0">dan</span> <span class="cw" id="cw11_1">4</span> <span class="cw" id="cw11_2">bilik</span> <span class="cw" id="cw11_3">air.</span></div>
-        <div class="cap" id="cap12"><span class="cw" id="cw12_0">Lokasi</span> <span class="cw" id="cw12_1">dekat</span> <span class="cw" id="cw12_2">dengan</span> <span class="cw" id="cw12_3">tol</span></div>
-        <div class="cap" id="cap13"><span class="cw" id="cw13_0">SKVE</span> <span class="cw" id="cw13_1">Teluk</span> <span class="cw" id="cw13_2">Panglima</span> <span class="cw" id="cw13_3">Garang,</span></div>
-        <div class="cap" id="cap14"><span class="cw" id="cw14_0">dan</span> <span class="cw" id="cw14_1">tak</span> <span class="cw" id="cw14_2">jauh</span> <span class="cw" id="cw14_3">dari</span></div>
-        <div class="cap" id="cap15"><span class="cw" id="cw15_0">KSL</span> <span class="cw" id="cw15_1">Mall</span> <span class="cw" id="cw15_2">Klang.</span></div>
-        <div class="cap" id="cap16"><span class="cw" id="cw16_0">Yang</span> <span class="cw" id="cw16_1">paling</span> <span class="cw" id="cw16_2">best,</span></div>
-        <div class="cap" id="cap17"><span class="cw" id="cw17_0">pembeli</span> <span class="cw" id="cw17_1">dapat</span> <span class="cw" id="cw17_2">pakej</span> <span class="cw" id="cw17_3">percuma:</span> <span class="cw" id="cw17_4">peti</span> <span class="cw" id="cw17_5">sejuk,</span></div>
-        <div class="cap" id="cap18"><span class="cw" id="cw18_0">mesin</span> <span class="cw" id="cw18_1">basuh,</span></div>
-        <div class="cap" id="cap19"><span class="cw" id="cw19_0">TV</span> <span class="cw" id="cw19_1">Skyworth</span> <span class="cw" id="cw19_2">55</span> <span class="cw" id="cw19_3">inci,</span></div>
-        <div class="cap" id="cap20"><span class="cw" id="cw20_0">5</span> <span class="cw" id="cw20_1">kipas</span> <span class="cw" id="cw20_2">siling,</span></div>
-        <div class="cap" id="cap21"><span class="cw" id="cw21_0">dan</span> <span class="cw" id="cw21_1">5</span> <span class="cw" id="cw21_2">aircond</span> <span class="cw" id="cw21_3">inverter.</span></div>
-        <div class="cap" id="cap22"><span class="cw" id="cw22_0">Projek</span> <span class="cw" id="cw22_1">sedang</span> <span class="cw" id="cw22_2">dalam</span> <span class="cw" id="cw22_3">pembinaan,</span></div>
-        <div class="cap" id="cap23"><span class="cw" id="cw23_0">dijangka</span> <span class="cw" id="cw23_1">siap</span> <span class="cw" id="cw23_2">tahun</span> <span class="cw" id="cw23_3">2028.</span></div>
-        <div class="cap" id="cap24"><span class="cw" id="cw24_0">Terma</span> <span class="cw" id="cw24_1">dan</span> <span class="cw" id="cw24_2">syarat</span> <span class="cw" id="cw24_3">dikenakan.</span></div>
-        <div class="cap" id="cap25"><span class="cw" id="cw25_0">Berminat?</span> <span class="cw" id="cw25_1">Komen</span> <span class="cw" id="cw25_2">perkataan</span> <span class="cw" id="cw25_3">“HORMAT”,</span></div>
-        <div class="cap" id="cap26"><span class="cw" id="cw26_0">nanti</span> <span class="cw" id="cw26_1">saya</span> <span class="cw" id="cw26_2">hubungi</span> <span class="cw" id="cw26_3">anda.</span></div>
+        <div class="cap" id="cap0"><span class="cap-in"><span class="cw" id="cw0_0">Cari</span> <span class="cw" id="cw0_1">rumah</span> <span class="cw" id="cw0_2">setingkat</span> <span class="cw" id="cw0_3">di</span></span></div>
+        <div class="cap" id="cap1"><span class="cap-in"><span class="cw" id="cw1_0">Telok</span> <span class="cw" id="cw1_1">Panglima</span> <span class="cw" id="cw1_2">Garang,</span></span></div>
+        <div class="cap" id="cap2"><span class="cap-in"><span class="cw" id="cw2_0">harga</span> <span class="cw" id="cw2_1">bawah</span> <span class="cw" id="cw2_2">RM400k?</span></span></div>
+        <div class="cap" id="cap3"><span class="cap-in"><span class="cw" id="cw3_0">Jom</span> <span class="cw" id="cw3_1">tengok</span> <span class="cw" id="cw3_2">Taman</span> <span class="cw" id="cw3_3">Dato</span> <span class="cw" id="cw3_4">Hormat.</span></span></div>
+        <div class="cap" id="cap4"><span class="cap-in"><span class="cw" id="cw4_0">Projek</span> <span class="cw" id="cw4_1">baharu</span> <span class="cw" id="cw4_2">rumah</span> <span class="cw" id="cw4_3">teres</span> <span class="cw" id="cw4_4">setingkat,</span></span></div>
+        <div class="cap" id="cap5"><span class="cap-in"><span class="cw" id="cw5_0">cuma</span> <span class="cw" id="cw5_1">19</span> <span class="cw" id="cw5_2">unit</span> <span class="cw" id="cw5_3">sahaja.</span></span></div>
+        <div class="cap" id="cap6"><span class="cap-in"><span class="cw" id="cw6_0">Harga</span> <span class="cw" id="cw6_1">bermula</span> <span class="cw" id="cw6_2">dari</span> <span class="cw" id="cw6_3">RM399k.</span></span></div>
+        <div class="cap" id="cap7"><span class="cap-in"><span class="cw" id="cw7_0">Saiz</span> <span class="cw" id="cw7_1">tanah</span> <span class="cw" id="cw7_2">20</span> <span class="cw" id="cw7_3">x</span> <span class="cw" id="cw7_4">101,</span></span></div>
+        <div class="cap" id="cap8"><span class="cap-in"><span class="cw" id="cw8_0">sampai</span> <span class="cw" id="cw8_1">116</span> <span class="cw" id="cw8_2">kaki.</span></span></div>
+        <div class="cap" id="cap9"><span class="cap-in"><span class="cw" id="cw9_0">Keluasan</span> <span class="cw" id="cw9_1">binaan</span> <span class="cw" id="cw9_2">20</span> <span class="cw" id="cw9_3">x</span> <span class="cw" id="cw9_4">50</span> <span class="cw" id="cw9_5">kaki,</span></span></div>
+        <div class="cap" id="cap10"><span class="cap-in"><span class="cw" id="cw10_0">dengan</span> <span class="cw" id="cw10_1">4</span> <span class="cw" id="cw10_2">bilik</span> <span class="cw" id="cw10_3">tidur</span></span></div>
+        <div class="cap" id="cap11"><span class="cap-in"><span class="cw" id="cw11_0">dan</span> <span class="cw" id="cw11_1">4</span> <span class="cw" id="cw11_2">bilik</span> <span class="cw" id="cw11_3">air.</span></span></div>
+        <div class="cap" id="cap12"><span class="cap-in"><span class="cw" id="cw12_0">Lokasi</span> <span class="cw" id="cw12_1">dekat</span> <span class="cw" id="cw12_2">dengan</span> <span class="cw" id="cw12_3">tol</span></span></div>
+        <div class="cap" id="cap13"><span class="cap-in"><span class="cw" id="cw13_0">SKVE</span> <span class="cw" id="cw13_1">Teluk</span> <span class="cw" id="cw13_2">Panglima</span> <span class="cw" id="cw13_3">Garang,</span></span></div>
+        <div class="cap" id="cap14"><span class="cap-in"><span class="cw" id="cw14_0">dan</span> <span class="cw" id="cw14_1">tak</span> <span class="cw" id="cw14_2">jauh</span> <span class="cw" id="cw14_3">dari</span></span></div>
+        <div class="cap" id="cap15"><span class="cap-in"><span class="cw" id="cw15_0">KSL</span> <span class="cw" id="cw15_1">Mall</span> <span class="cw" id="cw15_2">Klang.</span></span></div>
+        <div class="cap" id="cap16"><span class="cap-in"><span class="cw" id="cw16_0">Yang</span> <span class="cw" id="cw16_1">paling</span> <span class="cw" id="cw16_2">best,</span></span></div>
+        <div class="cap" id="cap17"><span class="cap-in"><span class="cw" id="cw17_0">pembeli</span> <span class="cw" id="cw17_1">dapat</span> <span class="cw" id="cw17_2">pakej</span> <span class="cw" id="cw17_3">percuma:</span> <span class="cw" id="cw17_4">peti</span> <span class="cw" id="cw17_5">sejuk,</span></span></div>
+        <div class="cap" id="cap18"><span class="cap-in"><span class="cw" id="cw18_0">mesin</span> <span class="cw" id="cw18_1">basuh,</span></span></div>
+        <div class="cap" id="cap19"><span class="cap-in"><span class="cw" id="cw19_0">TV</span> <span class="cw" id="cw19_1">Skyworth</span> <span class="cw" id="cw19_2">55</span> <span class="cw" id="cw19_3">inci,</span></span></div>
+        <div class="cap" id="cap20"><span class="cap-in"><span class="cw" id="cw20_0">5</span> <span class="cw" id="cw20_1">kipas</span> <span class="cw" id="cw20_2">siling,</span></span></div>
+        <div class="cap" id="cap21"><span class="cap-in"><span class="cw" id="cw21_0">dan</span> <span class="cw" id="cw21_1">5</span> <span class="cw" id="cw21_2">aircond</span> <span class="cw" id="cw21_3">inverter.</span></span></div>
+        <div class="cap" id="cap22"><span class="cap-in"><span class="cw" id="cw22_0">Projek</span> <span class="cw" id="cw22_1">sedang</span> <span class="cw" id="cw22_2">dalam</span> <span class="cw" id="cw22_3">pembinaan,</span></span></div>
+        <div class="cap" id="cap23"><span class="cap-in"><span class="cw" id="cw23_0">dijangka</span> <span class="cw" id="cw23_1">siap</span> <span class="cw" id="cw23_2">tahun</span> <span class="cw" id="cw23_3">2028.</span></span></div>
+        <div class="cap" id="cap24"><span class="cap-in"><span class="cw" id="cw24_0">Terma</span> <span class="cw" id="cw24_1">dan</span> <span class="cw" id="cw24_2">syarat</span> <span class="cw" id="cw24_3">dikenakan.</span></span></div>
+        <div class="cap" id="cap25"><span class="cap-in"><span class="cw" id="cw25_0">Berminat?</span> <span class="cw" id="cw25_1">Komen</span> <span class="cw" id="cw25_2">perkataan</span> <span class="cw" id="cw25_3">“HORMAT”,</span></span></div>
+        <div class="cap" id="cap26"><span class="cap-in"><span class="cw" id="cw26_0">nanti</span> <span class="cw" id="cw26_1">saya</span> <span class="cw" id="cw26_2">hubungi</span> <span class="cw" id="cw26_3">anda.</span></span></div>
       </div>
 
       <div id="flash" class="clip" data-start="0" data-duration="67.97" data-track-index="2"></div>
