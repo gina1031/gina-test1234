@@ -40,28 +40,30 @@
     {
       "id": "aerial",
       "from": "w:jom-0.15",
-      "src": "assets/stills/render_aerial.jpg",
-      "kind": "img",
+      "src": "assets/stills/raw/render_aerial.jpg",
+      "kind": "card",
       "kb": [
         1.0,
         1.08
-      ]
+      ],
+      "top": 1060
     },
     {
       "id": "price",
       "from": "w:harga#2-0.15",
-      "src": "assets/stills/render_front.jpg",
-      "kind": "img",
+      "src": "assets/stills/raw/render_front.jpg",
+      "kind": "card",
       "kb": [
         1.0,
-        1.1
-      ]
+        1.15
+      ],
+      "top": 760
     },
     {
       "id": "land",
       "from": "w:saiz-0.15",
-      "src": "assets/stills/plan_end.jpg",
-      "kind": "img",
+      "src": "assets/stills/raw/plan_end.jpg",
+      "kind": "pan",
       "kb": [
         1.0,
         1.06
@@ -80,8 +82,8 @@
     {
       "id": "rooms",
       "from": "w:dengan-0.1",
-      "src": "assets/stills/plan_intermediate.jpg",
-      "kind": "img",
+      "src": "assets/stills/raw/plan_intermediate.jpg",
+      "kind": "pan",
       "kb": [
         1.0,
         1.06
@@ -90,22 +92,71 @@
     {
       "id": "map",
       "from": "w:lokasi-0.15",
-      "src": "assets/stills/map.jpg",
-      "kind": "img",
+      "src": "assets/stills/raw/map.jpg",
+      "kind": "card",
       "kb": [
         1.0,
         1.08
-      ]
+      ],
+      "top": 820,
+      "pin": {
+        "x": 14.3,
+        "y": 83.8,
+        "at": "w:lokasi+0.3"
+      },
+      "focus": [
+        {
+          "at": "w:tol-0.2",
+          "x": 25,
+          "y": 75,
+          "s": 1.8
+        }
+      ],
+      "focus_out": "w:ksl-0.3"
     },
     {
       "id": "free",
       "from": "w:yang-0.15",
-      "src": "assets/stills/appliances.jpg",
-      "kind": "img",
+      "src": "assets/stills/raw/appliances.jpg",
+      "kind": "card",
       "kb": [
         1.0,
         1.28
-      ]
+      ],
+      "top": 300,
+      "focus": [
+        {
+          "at": "w:peti-0.25",
+          "x": 15.6,
+          "y": 47,
+          "s": 2.4
+        },
+        {
+          "at": "w:mesin-0.25",
+          "x": 37,
+          "y": 52,
+          "s": 2.4
+        },
+        {
+          "at": "w:tv-0.25",
+          "x": 60.6,
+          "y": 50,
+          "s": 2.2
+        },
+        {
+          "at": "w:kipas-0.25",
+          "x": 70.4,
+          "y": 30,
+          "s": 2.2
+        },
+        {
+          "at": "w:aircond-0.25",
+          "x": 87,
+          "y": 48,
+          "s": 2.4
+        }
+      ],
+      "focus_out": "w:inverter+0.6"
     },
     {
       "id": "site",
@@ -229,5 +280,6 @@
     }
   ],
   "theme": "clean",
-  "caption_highlight": false
+  "caption_highlight": false,
+  "transitions": "slide"
 }

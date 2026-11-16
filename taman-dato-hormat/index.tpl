@@ -156,6 +156,20 @@
       .theme-card #captions { background: none; }
       .theme-card .check .bx, .theme-card .nb-t { background: #22c55e !important; color: #fff !important; }
 
+      /* ===== animated scene kinds ===== */
+      .scard, .span { overflow: hidden; }
+      .scard .sc-bg, .span .sc-bg { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; filter: blur(26px) brightness(0.5) saturate(1.2); }
+      .sc-wrap { position: absolute; border-radius: 30px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.2); }
+      .sc-zoom { position: absolute; inset: 0; }
+      .sc-fg { width: 100%; height: 100%; display: block; object-fit: cover; }
+      .sc-pin { position: absolute; width: 0; height: 0; }
+      .pin-dot { position: absolute; left: -45px; top: -88px; font-size: 90px; filter: drop-shadow(0 6px 6px rgba(0,0,0,.5)); }
+      .pin-pulse { position: absolute; left: -40px; top: -40px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,214,10,.55); border: 4px solid #ffd60a; }
+      .span .sc-pan { position: absolute; left: 0; top: 0; width: 1080px; }
+      .tcl { display: block; }
+      #tc-shine { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; pointer-events: none; mix-blend-mode: overlay;
+                  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.85) 50%, transparent 65%); }
+
       /* ===== nearby block ===== */
       #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
       #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }

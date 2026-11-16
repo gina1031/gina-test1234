@@ -109,6 +109,11 @@ VO = "\n".join(f'      <audio id="vo-{i}" src="{vo_src}" data-start="{T(s)}" dat
                f'data-media-start="{s}" data-volume="{CFG.get("vo_volume", 1)}" data-track-index="9"></audio>'
                for i, (s, e) in enumerate(pieces))
 
+# ---------------- SFX helper ----------------
+SFX = [("impact", 0.0, 0.85)]
+def sfx(kind, t, v=0.55):
+    SFX.append((kind, round(t, 3), v))
+
 # ---------------- scenes ----------------
 def media_len(src):
     try:
@@ -122,12 +127,28 @@ starts = [ref(s["from"]) for s in scenes]
 for i, s in enumerate(scenes):
     SCENE_T[s["id"]] = (starts[i], starts[i + 1] if i + 1 < len(scenes) else D)
 SC_HTML, KB, problems = [], [], []
-for s in scenes:
-    a, b = SCENE_T[s["id"]]; d = round(b - a, 3); kind = s.get("kind", "video"); sid = "sc-" + s["id"]
+SLIDE = CFG.get("transitions", "flash") == "slide"
+ENTER = [("xPercent", 100), ("yPercent", 100), ("scale", 1.35), ("xPercent", -100)]
+
+
+def img_size(src):
+    try:
+        w, h = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=width,height", "-of", "csv=p=0",
+                               str(ROOT / src)], capture_output=True, text=True, check=True).stdout.strip().split(",")[:2]
+        return int(w), int(h)
+    except Exception:
+        return 1080, 1920
+
+
+for si, s in enumerate(scenes):
+    a, b = SCENE_T[s["id"]]; kind = s.get("kind", "video"); sid = "sc-" + s["id"]
+    last = si == len(scenes) - 1
+    d = round(b - a + (0 if last or not SLIDE else 0.5), 3)      # overlap so the next scene slides in over this one
     if not (ROOT / s["src"]).exists():
         problems.append(f'scene "{s["id"]}": file not found: {s["src"]}')
-    if d <= 0:
+    if b - a <= 0:
         problems.append(f'scene "{s["id"]}" has no length ({a}->{b}); check its "from" against the next scene')
+    k0, k1 = s.get("kb", [1.0, 1.1] if kind == "video" else [1.12, 1.25])
     if kind == "video":
         ms = s.get("media_start", 0); L = media_len(s["src"])
         if L is not None and d > L - ms + 0.02:
@@ -135,20 +156,57 @@ for s in scenes:
                             f'(use a slow-mo copy, a still, or move the cut)')
         SC_HTML.append(f'      <video id="{sid}" class="clip" src="{s["src"]}" data-start="{a}" data-duration="{d}" '
                        f'data-media-start="{ms}" muted data-track-index="0"></video>')
+        KB.append(f'tl.fromTo("#{sid}", {{ scale: {k0} }}, {{ scale: {k1}, duration: {d}, ease: "none" }}, {a});')
+    elif kind == "card":                                   # framed photo over its own blurred copy, floats, can zoom to spots
+        iw, ih = img_size(s["src"]); W = s.get("width", 1000); H = round(W * ih / iw)
+        top = s.get("top", round(1000 - H / 2))
+        pin = ""
+        if s.get("pin"):
+            px, py = s["pin"]["x"], s["pin"]["y"]
+            pin = (f'<div class="sc-pin" style="left:{px}%;top:{py}%"><div class="pin-pulse"></div>'
+                   f'<div class="pin-dot">📍</div></div>')
+        SC_HTML.append(f'      <div id="{sid}" class="clip scard" data-start="{a}" data-duration="{d}" data-track-index="0">'
+                       f'<img class="sc-bg" src="{s["src"]}" />'
+                       f'<div class="sc-wrap" style="top:{top}px;left:{(1080 - W) // 2}px;width:{W}px;height:{H}px">'
+                       f'<div class="sc-zoom"><img class="sc-fg" src="{s["src"]}" />{pin}</div></div></div>')
+        KB += [f'tl.fromTo("#{sid} .sc-bg", {{ scale: 1.25, x: 30 }}, {{ scale: 1.4, x: -30, duration: {d}, ease: "none" }}, {a});',
+               f'tl.fromTo("#{sid} .sc-wrap", {{ scale: 0.72, rotation: -5, y: 140, opacity: 0 }}, {{ scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.6)" }}, {a + 0.05});',
+               f'tl.to("#{sid} .sc-wrap", {{ y: -14, rotation: 0.6, duration: {round(max(0.8, (d - 0.8) / 2), 3)}, yoyo: true, repeat: 1, ease: "sine.inOut" }}, {a + 0.75});']
+        focus = s.get("focus", [])
+        if not focus:
+            KB.append(f'tl.fromTo("#{sid} .sc-zoom", {{ scale: {k0} }}, {{ scale: {k1}, duration: {d}, ease: "none" }}, {a});')
+        for f in focus:                                    # zoom inside the frame to a point (x%, y%)
+            t = ref(f["at"]); z = f.get("s", 2.2)
+            tx = round((0.5 - f["x"] / 100) * W * z); ty = round((0.5 - f["y"] / 100) * H * z)
+            KB.append(f'tl.to("#{sid} .sc-zoom", {{ scale: {z}, x: {tx}, y: {ty}, duration: 0.7, ease: "power3.inOut" }}, {t});')
+            sfx("whoosh", t, 0.45)
+        if s.get("focus_out"):
+            KB.append(f'tl.to("#{sid} .sc-zoom", {{ scale: 1, x: 0, y: 0, duration: 0.7, ease: "power3.inOut" }}, {ref(s["focus_out"])});')
+        if s.get("pin"):
+            pt = ref(s["pin"].get("at", a + 0.6))
+            sfx("pop", pt, 0.6)
+            KB += [f'tl.fromTo("#{sid} .pin-dot", {{ y: -260, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.55, ease: "bounce.out" }}, {pt});',
+                   f'tl.fromTo("#{sid} .pin-pulse", {{ scale: 0.4, opacity: 0.9 }}, {{ scale: 3.2, opacity: 0, duration: 1.1, ease: "power1.out", repeat: {max(0, int((b - pt) / 1.1) - 1)} }}, {pt + 0.4});']
+    elif kind == "pan":                                    # tall image (floor plan) scrolled top -> bottom
+        iw, ih = img_size(s["src"]); H = round(1080 * ih / iw); travel = max(0, H - 1920)
+        SC_HTML.append(f'      <div id="{sid}" class="clip span" data-start="{a}" data-duration="{d}" data-track-index="0">'
+                       f'<img class="sc-bg" src="{s["src"]}" /><img class="sc-pan" src="{s["src"]}" style="height:{H}px" /></div>')
+        frm, to = (0, -travel) if s.get("dir", "down") == "down" else (-travel, 0)
+        KB += [f'tl.fromTo("#{sid} .sc-pan", {{ y: {frm} }}, {{ y: {to}, duration: {d}, ease: "sine.inOut" }}, {a});',
+               f'tl.fromTo("#{sid} .sc-bg", {{ scale: 1.3 }}, {{ scale: 1.45, duration: {d}, ease: "none" }}, {a});']
     else:
         cls = "clip bg-blur" if kind == "blur" else "clip"
         SC_HTML.append(f'      <img id="{sid}" class="{cls}" src="{s["src"]}" data-start="{a}" data-duration="{d}" data-track-index="0" />')
-    k0, k1 = s.get("kb", [1.0, 1.1] if kind == "video" else [1.12, 1.25])
-    KB.append(f'tl.fromTo("#{sid}", {{ scale: {k0} }}, {{ scale: {k1}, duration: {d}, ease: "none" }}, {a});')
+        KB.append(f'tl.fromTo("#{sid}", {{ scale: {k0} }}, {{ scale: {k1}, duration: {d}, ease: "none" }}, {a});')
+    if SLIDE and si > 0:                                   # scene enters by sliding / zooming over the previous one
+        prop, v = ENTER[si % len(ENTER)]
+        frm = f"{prop}: {v}" + (", opacity: 0" if prop == "scale" else "")
+        to = f"{prop}: {1 if prop == 'scale' else 0}" + (", opacity: 1" if prop == "scale" else "")
+        KB.append(f'tl.fromTo("#{sid}", {{ {frm} }}, {{ {to}, duration: 0.5, ease: "power3.out", immediateRender: false }}, {a});')
 if problems:
     raise SystemExit("\n".join(["Timeline problems:"] + problems))
-
-# ---------------- SFX helper ----------------
-SFX = [("impact", 0.0, 0.85)]
 if CFG.get("whoosh_on_cuts", True):
     SFX += [("whoosh", max(0, starts[i] - 0.25), 0.7) for i in range(1, len(scenes))]
-def sfx(kind, t, v=0.55):
-    SFX.append((kind, round(t, 3), v))
 
 E = lambda s: html.escape(str(s))
 BACK = 'back.out(2.2)'
@@ -306,19 +364,20 @@ def b_cta(c):
 def b_titlecard(c):
     """Opening title card: small top line, giant Anton name, white pill, italic script line, optional corner text."""
     g = c["_g"]; T2 = {**TXT, **g}
-    big = "<br />".join(E(x) for x in T2["tc_big"].split("\n"))
+    big = "".join(f'<span class="tcl">{E(x)}</span>' for x in T2["tc_big"].split("\n"))
     size = g.get("tc_size", 250)
     pill_top = int(740 + (T2["tc_big"].count("\n") + 1) * size * 0.95 + 40)   # sit just under the big title
     h = f'''        <div class="shade-top"></div>
         <div id="tc-top" class="cx">{E(T2.get("tc_top", ""))}</div>
-        <div id="tc-big" class="cx" style="font-size:{size}px">{big}</div>
+        <div id="tc-big" class="cx" style="font-size:{size}px">{big}<div id="tc-shine"></div></div>
         <div id="tc-pill" class="cx" style="top:{pill_top}px"><span>{E(T2.get("tc_pill", ""))}</span></div>
         <div id="tc-script" class="cx" style="top:{pill_top + 105}px;font-size:{g.get("tc_script_size", 74)}px">{E(T2.get("tc_script", ""))}</div>''' + (
         f'\n        <div id="tc-corner">{E(T2["tc_corner"])}</div>' if T2.get("tc_corner") else "")
     a = c["start"]
     sfx("impact", a + 0.05, 0.7); sfx("pop", c.get("pill", a + 0.55), 0.5)
     js = [f'tl.fromTo("#tc-top", {{ y: -40, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }}, {a + 0.05});',
-          f'tl.fromTo("#tc-big", {{ scale: 1.6, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }}, {a + 0.1});',
+          f'gsap.utils.toArray("#tc-big .tcl").forEach((el, i) => tl.fromTo(el, {{ y: 120, scale: 1.5, rotation: i % 2 ? 4 : -4, opacity: 0 }}, {{ y: 0, scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }}, {a + 0.1} + i * 0.22));',
+          f'tl.fromTo("#tc-shine", {{ xPercent: -120 }}, {{ xPercent: 120, duration: 0.9, ease: "power2.inOut" }}, {a + 1.0});',
           f'tl.fromTo("#tc-pill", {{ scale: 0, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.3, ease: "{BACK}" }}, {c.get("pill", a + 0.55)});',
           f'tl.fromTo("#tc-script", {{ y: 30, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }}, {c.get("script", a + 0.8)});',
           f'tl.to("#tc-big", {{ scale: 1.03, duration: 1.2, yoyo: true, repeat: 1, ease: "sine.inOut" }}, {a + 0.6});']
@@ -411,7 +470,7 @@ SFX_HTML = "\n".join(f'      <audio id="sfx{i:02d}" src="assets/sfx/{k}.wav" dat
                      for i, (k, t, v) in enumerate(sorted(SFX, key=lambda x: x[1])))
 out = (ROOT / "index.tpl").read_text()
 for k, v in dict(THEME=" ".join("theme-" + t for t in CFG.get("theme", "bold").split()), D=D, SCENES="\n".join(SC_HTML), GRAPHICS="\n\n".join(G_HTML), CAPS="\n".join(CAP_HTML), VO=VO, SFX=SFX_HTML,
-                 BED_VOL=CFG.get("music_volume", 0.15), CUTS=json.dumps(starts[1:]), KB="\n      ".join(KB),
+                 BED_VOL=CFG.get("music_volume", 0.15), CUTS=json.dumps([] if SLIDE else starts[1:]), KB="\n      ".join(KB),
                  GJS="\n\n      ".join(G_JS), CAPJS="\n      ".join(CAP_JS)).items():
     out = out.replace("{{" + k + "}}", str(v))
 assert "{{" not in out, re.findall(r"\{\{\w+\}\}", out)
