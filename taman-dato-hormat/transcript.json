@@ -1,0 +1,633 @@
+[
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Cari",
+    "s": 0.0,
+    "e": 0.48
+   },
+   {
+    "w": " rumah",
+    "s": 0.48,
+    "e": 0.88
+   },
+   {
+    "w": " setingkat",
+    "s": 0.88,
+    "e": 1.5
+   },
+   {
+    "w": " di",
+    "s": 1.5,
+    "e": 1.76
+   },
+   {
+    "w": " Telok",
+    "s": 1.76,
+    "e": 2.12
+   },
+   {
+    "w": " Panglima",
+    "s": 2.12,
+    "e": 2.78
+   },
+   {
+    "w": " Garang,",
+    "s": 2.78,
+    "e": 3.48
+   },
+   {
+    "w": " harga",
+    "s": 3.48,
+    "e": 4.14
+   },
+   {
+    "w": " bawah",
+    "s": 4.14,
+    "e": 4.76
+   },
+   {
+    "w": " RM400k?",
+    "s": 4.76,
+    "e": 6.4
+   }
+  ],
+  "start": 0.0,
+  "end": 6.4,
+  "text": " Cari rumah setingkat di Telok Panglima Garang, harga bawah RM400k?"
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Jom",
+    "s": 6.44,
+    "e": 6.78
+   },
+   {
+    "w": " tengok",
+    "s": 6.78,
+    "e": 7.22
+   },
+   {
+    "w": " Taman",
+    "s": 7.22,
+    "e": 7.64
+   },
+   {
+    "w": " Dato",
+    "s": 7.64,
+    "e": 8.08
+   },
+   {
+    "w": " Hormat.",
+    "s": 8.08,
+    "e": 8.88
+   }
+  ],
+  "start": 6.44,
+  "end": 8.88,
+  "text": " Jom tengok Taman Dato Hormat."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Projek",
+    "s": 9.08,
+    "e": 9.4
+   },
+   {
+    "w": " baharu",
+    "s": 9.4,
+    "e": 9.86
+   },
+   {
+    "w": " rumah",
+    "s": 9.86,
+    "e": 10.32
+   },
+   {
+    "w": " teres",
+    "s": 10.32,
+    "e": 10.72
+   },
+   {
+    "w": " setingkat,",
+    "s": 10.72,
+    "e": 11.62
+   },
+   {
+    "w": " cuma",
+    "s": 11.9,
+    "e": 12.14
+   },
+   {
+    "w": " 19",
+    "s": 12.14,
+    "e": 12.86
+   },
+   {
+    "w": " unit",
+    "s": 12.86,
+    "e": 13.32
+   },
+   {
+    "w": " sahaja.",
+    "s": 13.32,
+    "e": 14.16
+   }
+  ],
+  "start": 9.08,
+  "end": 14.16,
+  "text": " Projek baharu rumah teres setingkat, cuma 19 unit sahaja."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Harga",
+    "s": 14.34,
+    "e": 14.78
+   },
+   {
+    "w": " bermula",
+    "s": 14.78,
+    "e": 15.26
+   },
+   {
+    "w": " dari",
+    "s": 15.26,
+    "e": 15.76
+   },
+   {
+    "w": " RM399k.",
+    "s": 15.76,
+    "e": 18.32
+   }
+  ],
+  "start": 14.34,
+  "end": 18.32,
+  "text": " Harga bermula dari RM399k."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Saiz",
+    "s": 19.18,
+    "e": 19.38
+   },
+   {
+    "w": " tanah",
+    "s": 19.38,
+    "e": 20.06
+   },
+   {
+    "w": " 20",
+    "s": 20.06,
+    "e": 20.82
+   },
+   {
+    "w": " x",
+    "s": 20.82,
+    "e": 21.28
+   },
+   {
+    "w": " 101,",
+    "s": 21.28,
+    "e": 22.22
+   },
+   {
+    "w": " sampai",
+    "s": 22.22,
+    "e": 23.04
+   },
+   {
+    "w": " 116",
+    "s": 23.04,
+    "e": 24.24
+   },
+   {
+    "w": " kaki.",
+    "s": 24.24,
+    "e": 25.04
+   }
+  ],
+  "start": 19.18,
+  "end": 25.04,
+  "text": " Saiz tanah 20 x 101, sampai 116 kaki."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Keluasan",
+    "s": 25.04,
+    "e": 25.72
+   },
+   {
+    "w": " binaan",
+    "s": 25.72,
+    "e": 26.5
+   },
+   {
+    "w": " 20",
+    "s": 26.5,
+    "e": 27.12
+   },
+   {
+    "w": " x",
+    "s": 27.12,
+    "e": 27.74
+   },
+   {
+    "w": " 50",
+    "s": 27.74,
+    "e": 28.36
+   },
+   {
+    "w": " kaki,",
+    "s": 28.36,
+    "e": 29.22
+   },
+   {
+    "w": " dengan",
+    "s": 29.22,
+    "e": 29.76
+   },
+   {
+    "w": " 4",
+    "s": 29.76,
+    "e": 30.26
+   },
+   {
+    "w": " bilik",
+    "s": 30.26,
+    "e": 30.58
+   },
+   {
+    "w": " tidur",
+    "s": 30.58,
+    "e": 31.1
+   },
+   {
+    "w": " dan",
+    "s": 31.1,
+    "e": 31.4
+   },
+   {
+    "w": " 4",
+    "s": 31.4,
+    "e": 31.8
+   },
+   {
+    "w": " bilik",
+    "s": 31.8,
+    "e": 32.16
+   },
+   {
+    "w": " air.",
+    "s": 32.16,
+    "e": 32.62
+   }
+  ],
+  "start": 25.04,
+  "end": 32.62,
+  "text": " Keluasan binaan 20 x 50 kaki, dengan 4 bilik tidur dan 4 bilik air."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Lokasi",
+    "s": 33.04,
+    "e": 33.64
+   },
+   {
+    "w": " dekat",
+    "s": 33.64,
+    "e": 34.2
+   },
+   {
+    "w": " dengan",
+    "s": 34.2,
+    "e": 34.58
+   },
+   {
+    "w": " tol",
+    "s": 34.58,
+    "e": 34.94
+   },
+   {
+    "w": " SKVE",
+    "s": 34.94,
+    "e": 35.88
+   },
+   {
+    "w": " Teluk",
+    "s": 35.88,
+    "e": 36.4
+   },
+   {
+    "w": " Panglima",
+    "s": 36.4,
+    "e": 36.92
+   },
+   {
+    "w": " Garang,",
+    "s": 36.92,
+    "e": 37.56
+   },
+   {
+    "w": " dan",
+    "s": 37.56,
+    "e": 38.04
+   },
+   {
+    "w": " tak",
+    "s": 38.04,
+    "e": 38.28
+   },
+   {
+    "w": " jauh",
+    "s": 38.28,
+    "e": 38.6
+   },
+   {
+    "w": " dari",
+    "s": 38.6,
+    "e": 38.98
+   },
+   {
+    "w": " KSL",
+    "s": 38.98,
+    "e": 39.56
+   },
+   {
+    "w": " Mall",
+    "s": 39.56,
+    "e": 40.0
+   },
+   {
+    "w": " Klang.",
+    "s": 40.0,
+    "e": 40.74
+   }
+  ],
+  "start": 33.04,
+  "end": 40.74,
+  "text": " Lokasi dekat dengan tol SKVE Teluk Panglima Garang, dan tak jauh dari KSL Mall Klang."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 40.96,
+    "e": 41.1
+   },
+   {
+    "w": " paling",
+    "s": 41.1,
+    "e": 41.52
+   },
+   {
+    "w": " best,",
+    "s": 41.52,
+    "e": 42.0
+   },
+   {
+    "w": " pembeli",
+    "s": 42.26,
+    "e": 42.68
+   },
+   {
+    "w": " dapat",
+    "s": 42.68,
+    "e": 43.1
+   },
+   {
+    "w": " pakej",
+    "s": 43.1,
+    "e": 43.6
+   },
+   {
+    "w": " percuma:",
+    "s": 43.6,
+    "e": 44.46
+   },
+   {
+    "w": " peti",
+    "s": 44.74,
+    "e": 44.94
+   },
+   {
+    "w": " sejuk,",
+    "s": 44.94,
+    "e": 45.54
+   },
+   {
+    "w": " mesin",
+    "s": 45.88,
+    "e": 46.18
+   },
+   {
+    "w": " basuh,",
+    "s": 46.18,
+    "e": 46.84
+   },
+   {
+    "w": " TV",
+    "s": 47.12,
+    "e": 47.5
+   },
+   {
+    "w": " Skyworth",
+    "s": 47.5,
+    "e": 48.2
+   },
+   {
+    "w": " 55",
+    "s": 48.2,
+    "e": 48.84
+   },
+   {
+    "w": " inci,",
+    "s": 48.84,
+    "e": 49.8
+   }
+  ],
+  "start": 40.96,
+  "end": 49.8,
+  "text": " Yang paling best, pembeli dapat pakej percuma: peti sejuk, mesin basuh, TV Skyworth 55 inci,"
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " 5",
+    "s": 49.8,
+    "e": 50.4
+   },
+   {
+    "w": " kipas",
+    "s": 50.4,
+    "e": 50.94
+   },
+   {
+    "w": " siling,",
+    "s": 50.94,
+    "e": 51.36
+   },
+   {
+    "w": " dan",
+    "s": 51.36,
+    "e": 52.04
+   },
+   {
+    "w": " 5",
+    "s": 52.04,
+    "e": 52.58
+   },
+   {
+    "w": " aircond",
+    "s": 52.58,
+    "e": 53.14
+   },
+   {
+    "w": " inverter.",
+    "s": 53.14,
+    "e": 53.9
+   }
+  ],
+  "start": 49.8,
+  "end": 53.9,
+  "text": " 5 kipas siling, dan 5 aircond inverter."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Projek",
+    "s": 54.36,
+    "e": 54.68
+   },
+   {
+    "w": " sedang",
+    "s": 54.68,
+    "e": 55.16
+   },
+   {
+    "w": " dalam",
+    "s": 55.16,
+    "e": 55.46
+   },
+   {
+    "w": " pembinaan,",
+    "s": 55.46,
+    "e": 56.54
+   },
+   {
+    "w": " dijangka",
+    "s": 56.54,
+    "e": 57.16
+   },
+   {
+    "w": " siap",
+    "s": 57.16,
+    "e": 57.56
+   },
+   {
+    "w": " tahun",
+    "s": 57.56,
+    "e": 58.18
+   },
+   {
+    "w": " 2028.",
+    "s": 58.18,
+    "e": 59.9
+   }
+  ],
+  "start": 54.36,
+  "end": 59.9,
+  "text": " Projek sedang dalam pembinaan, dijangka siap tahun 2028."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Terma",
+    "s": 60.18,
+    "e": 60.58
+   },
+   {
+    "w": " dan",
+    "s": 60.58,
+    "e": 60.8
+   },
+   {
+    "w": " syarat",
+    "s": 60.8,
+    "e": 61.16
+   },
+   {
+    "w": " dikenakan.",
+    "s": 61.16,
+    "e": 61.98
+   }
+  ],
+  "start": 60.18,
+  "end": 61.98,
+  "text": " Terma dan syarat dikenakan."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Berminat?",
+    "s": 62.36,
+    "e": 63.16
+   },
+   {
+    "w": " Komen",
+    "s": 63.56,
+    "e": 63.76
+   },
+   {
+    "w": " perkataan",
+    "s": 63.76,
+    "e": 64.4
+   },
+   {
+    "w": " “HORMAT”,",
+    "s": 64.4,
+    "e": 65.18
+   },
+   {
+    "w": " nanti",
+    "s": 65.18,
+    "e": 65.78
+   },
+   {
+    "w": " saya",
+    "s": 65.78,
+    "e": 66.22
+   },
+   {
+    "w": " hubungi",
+    "s": 66.22,
+    "e": 66.78
+   },
+   {
+    "w": " anda.",
+    "s": 66.78,
+    "e": 67.12
+   }
+  ],
+  "start": 62.36,
+  "end": 67.12,
+  "text": " Berminat? Komen perkataan “HORMAT”, nanti saya hubungi anda."
+ }
+]

@@ -1,0 +1,233 @@
+{
+  "phone": "0198395315",
+  "voiceover": "assets/vo/voiceover.m4a",
+  "transcript": "transcript.json",
+  "fix_words": {},
+  "pause_max": 0.45,
+  "pause_keep": 0.3,
+  "end_hold": 2.2,
+  "music_volume": 0.15,
+  "captions": true,
+  "whoosh_on_cuts": true,
+  "text": {
+    "land_label": "PROJEK TERHAD 🔥",
+    "land_sqft": 19,
+    "land_unit": "UNIT SAHAJA",
+    "land_dims": "Rumah Teres Setingkat",
+    "bedrooms": "4",
+    "bedrooms_label": "BILIK TIDUR 🛏️",
+    "bathrooms": "4",
+    "bathrooms_label": "BILIK AIR 🚿",
+    "cta_title": "BERMINAT? 👀",
+    "cta_checks": [
+      "4 Bilik • 4 Bilik Air",
+      "Free Pakej Elektrik 🎁",
+      "Open Title • Leasehold"
+    ],
+    "cta": "💬 Komen “HORMAT”"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "from": 0,
+      "src": "assets/stills/render_corner.jpg",
+      "kind": "img",
+      "kb": [
+        1.12,
+        1.0
+      ]
+    },
+    {
+      "id": "aerial",
+      "from": "w:jom-0.15",
+      "src": "assets/stills/render_aerial.jpg",
+      "kind": "img",
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "price",
+      "from": "w:harga#2-0.15",
+      "src": "assets/stills/render_front.jpg",
+      "kind": "img",
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "land",
+      "from": "w:saiz-0.15",
+      "src": "assets/stills/plan_end.jpg",
+      "kind": "img",
+      "kb": [
+        1.0,
+        1.06
+      ]
+    },
+    {
+      "id": "build",
+      "from": "w:keluasan-0.15",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 12,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "rooms",
+      "from": "w:dengan-0.1",
+      "src": "assets/stills/plan_intermediate.jpg",
+      "kind": "img",
+      "kb": [
+        1.0,
+        1.06
+      ]
+    },
+    {
+      "id": "map",
+      "from": "w:lokasi-0.15",
+      "src": "assets/stills/map.jpg",
+      "kind": "img",
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "free",
+      "from": "w:yang-0.15",
+      "src": "assets/stills/appliances.jpg",
+      "kind": "img",
+      "kb": [
+        1.0,
+        1.28
+      ]
+    },
+    {
+      "id": "site",
+      "from": "w:projek#2-0.15",
+      "src": "assets/clips/walk.mp4",
+      "media_start": 20,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "cta",
+      "from": "w:berminat-0.2",
+      "src": "assets/stills/render_aerial.jpg",
+      "kind": "blur",
+      "kb": [
+        1.1,
+        1.25
+      ]
+    }
+  ],
+  "graphics": [
+    {
+      "block": "titlecard",
+      "scene": "hook",
+      "tc_top": "Setingkat | Open Title",
+      "tc_big": "DARI\nRM399K",
+      "tc_size": 230,
+      "tc_pill": "🎁 Free Pakej Elektrik",
+      "tc_script": "Taman Dato Hormat",
+      "cues": {
+        "pill": "w:garang",
+        "script": "w:harga"
+      }
+    },
+    {
+      "block": "land",
+      "scene": "aerial",
+      "cues": {
+        "count_from": "s:aerial.start+0.4",
+        "number": "w:19",
+        "unit": "w:unit",
+        "dims": "w:sahaja"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "price",
+      "line": "HARGA BERMULA",
+      "pill": "RM399K",
+      "cues": {
+        "pill": "w:rm399k"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land",
+      "line": "SAIZ TANAH",
+      "pill": "20' x 101' ~ 116'",
+      "cues": {
+        "pill": "w:20"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "build",
+      "line": "KELUASAN BINAAN",
+      "pill": "20' x 50'",
+      "cues": {
+        "pill": "w:20#2"
+      }
+    },
+    {
+      "block": "rooms",
+      "scene": "rooms",
+      "cues": {
+        "bed": "w:4",
+        "bath": "w:4#2"
+      }
+    },
+    {
+      "block": "nearby",
+      "scene": "map",
+      "title": "📍 LOKASI",
+      "items": [
+        [
+          "🛣️",
+          "Tol SKVE Teluk Panglima Garang",
+          "Dekat"
+        ],
+        [
+          "🛍️",
+          "KSL Mall Klang",
+          "Tak jauh"
+        ]
+      ],
+      "cues": {
+        "items": [
+          "w:skve",
+          "w:ksl"
+        ]
+      }
+    },
+    {
+      "block": "text",
+      "scene": "site",
+      "line": "SIAP 2028",
+      "pill": "🏗️ Sedang dibina",
+      "cues": {
+        "pill": "w:pembinaan"
+      }
+    },
+    {
+      "block": "cta",
+      "scene": "cta",
+      "cues": {
+        "checks": "w:berminat+0.3",
+        "cta": "w:komen"
+      }
+    }
+  ],
+  "theme": "clean",
+  "caption_highlight": false
+}
