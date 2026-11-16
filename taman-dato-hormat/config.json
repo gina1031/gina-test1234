@@ -10,21 +10,21 @@
   "captions": true,
   "whoosh_on_cuts": true,
   "text": {
-    "land_label": "PROJEK TERHAD 🔥",
+    "land_label": "LIMITED UNITS 🔥",
     "land_sqft": 19,
-    "land_unit": "UNIT SAHAJA",
-    "land_dims": "Rumah Teres Setingkat",
+    "land_unit": "UNITS ONLY",
+    "land_dims": "Single Storey Terrace",
     "bedrooms": "4",
-    "bedrooms_label": "BILIK TIDUR 🛏️",
-    "bathrooms": "4",
-    "bathrooms_label": "BILIK AIR 🚿",
-    "cta_title": "BERMINAT? 👀",
+    "bedrooms_label": "BEDROOMS 🛏️",
+    "bathrooms": "2",
+    "bathrooms_label": "BATHROOMS 🚿",
+    "cta_title": "INTERESTED? 👀",
     "cta_checks": [
-      "4 Bilik • 4 Bilik Air",
-      "Free Pakej Elektrik 🎁",
+      "4 Bed • 2 Bath",
+      "Free Appliance Package 🎁",
       "Open Title • Leasehold"
     ],
-    "cta": "💬 Komen / DM untuk info"
+    "cta": "💬 Comment / DM for info"
   },
   "scenes": [
     {
@@ -39,7 +39,7 @@
     },
     {
       "id": "aerial",
-      "from": "w:jom-0.15",
+      "from": "w:let-0.15",
       "src": "assets/stills/raw/render_aerial.jpg",
       "kind": "card",
       "kb": [
@@ -50,7 +50,7 @@
     },
     {
       "id": "price",
-      "from": "w:harga#2-0.15",
+      "from": "w:prices-0.15",
       "src": "assets/stills/raw/render_front.jpg",
       "kind": "card",
       "kb": [
@@ -61,7 +61,7 @@
     },
     {
       "id": "land",
-      "from": "w:saiz-0.15",
+      "from": "w:the#1-0.15",
       "src": "assets/stills/raw/plan_end.jpg",
       "kind": "pan",
       "kb": [
@@ -71,7 +71,7 @@
     },
     {
       "id": "build",
-      "from": "w:keluasan-0.15",
+      "from": "w:built-up-0.35",
       "src": "assets/clips/walk.mp4",
       "media_start": 12,
       "kb": [
@@ -81,7 +81,7 @@
     },
     {
       "id": "rooms",
-      "from": "w:dengan-0.1",
+      "from": "w:with#2-0.1",
       "src": "assets/stills/raw/plan_intermediate.jpg",
       "kind": "pan",
       "kb": [
@@ -91,7 +91,7 @@
     },
     {
       "id": "map",
-      "from": "w:lokasi-0.15",
+      "from": "w:close-0.5",
       "src": "assets/stills/raw/map.jpg",
       "kind": "card",
       "kb": [
@@ -102,11 +102,11 @@
       "pin": {
         "x": 14.3,
         "y": 83.8,
-        "at": "w:lokasi+0.3"
+        "at": "w:close+0.2"
       },
       "focus": [
         {
-          "at": "w:tol-0.2",
+          "at": "w:skve-0.2",
           "x": 25,
           "y": 75,
           "s": 1.8
@@ -116,7 +116,7 @@
     },
     {
       "id": "free",
-      "from": "w:yang-0.15",
+      "from": "w:best-0.45",
       "src": "assets/stills/raw/appliances.jpg",
       "kind": "card",
       "kb": [
@@ -126,41 +126,41 @@
       "top": 300,
       "focus": [
         {
-          "at": "w:peti-0.25",
+          "at": "w:fridge-0.25",
           "x": 15.6,
           "y": 47,
           "s": 2.4
         },
         {
-          "at": "w:mesin-0.25",
+          "at": "w:washing-0.25",
           "x": 37,
           "y": 52,
           "s": 2.4
         },
         {
-          "at": "w:tv-0.25",
+          "at": "w:55-inch-0.25",
           "x": 60.6,
           "y": 50,
           "s": 2.2
         },
         {
-          "at": "w:kipas-0.25",
+          "at": "w:ceiling-0.25",
           "x": 70.4,
           "y": 30,
           "s": 2.2
         },
         {
-          "at": "w:aircond-0.25",
+          "at": "w:inverter-0.25",
           "x": 87,
           "y": 48,
           "s": 2.4
         }
       ],
-      "focus_out": "w:inverter+0.6"
+      "focus_out": "w:conditioners+0.5"
     },
     {
       "id": "site",
-      "from": "w:projek#2-0.15",
+      "from": "w:project#2-0.3",
       "src": "assets/clips/walk.mp4",
       "media_start": 20,
       "kb": [
@@ -170,7 +170,7 @@
     },
     {
       "id": "cta",
-      "from": "w:berminat-0.2",
+      "from": "w:interested-0.2",
       "src": "assets/stills/render_aerial.jpg",
       "kind": "blur",
       "kb": [
@@ -183,14 +183,14 @@
     {
       "block": "titlecard",
       "scene": "hook",
-      "tc_top": "Setingkat | Open Title",
-      "tc_big": "DARI\nRM399K",
+      "tc_top": "Single Storey | Open Title",
+      "tc_big": "FROM\nRM399K",
       "tc_size": 230,
-      "tc_pill": "🎁 Free Pakej Elektrik",
+      "tc_pill": "🎁 Free Appliance Package",
       "tc_script": "Taman Dato Hormat",
       "cues": {
         "pill": "w:garang",
-        "script": "w:harga"
+        "script": "w:under"
       }
     },
     {
@@ -199,14 +199,14 @@
       "cues": {
         "count_from": "s:aerial.start+0.4",
         "number": "w:19",
-        "unit": "w:unit",
-        "dims": "w:sahaja"
+        "unit": "w:units",
+        "dims": "w:units+0.5"
       }
     },
     {
       "block": "text",
       "scene": "price",
-      "line": "HARGA BERMULA",
+      "line": "PRICE FROM",
       "pill": "RM399K",
       "cues": {
         "pill": "w:rm399k"
@@ -215,7 +215,7 @@
     {
       "block": "text",
       "scene": "land",
-      "line": "SAIZ TANAH",
+      "line": "LAND SIZE",
       "pill": "20' x 101' ~ 116'",
       "cues": {
         "pill": "w:20"
@@ -224,7 +224,7 @@
     {
       "block": "text",
       "scene": "build",
-      "line": "KELUASAN BINAAN",
+      "line": "BUILT-UP",
       "pill": "20' x 50'",
       "cues": {
         "pill": "w:20#2"
@@ -235,23 +235,23 @@
       "scene": "rooms",
       "cues": {
         "bed": "w:4",
-        "bath": "w:4#2"
+        "bath": "w:2"
       }
     },
     {
       "block": "nearby",
       "scene": "map",
-      "title": "📍 LOKASI",
+      "title": "📍 LOCATION",
       "items": [
         [
           "🛣️",
-          "Tol SKVE Teluk Panglima Garang",
-          "Dekat"
+          "SKVE Teluk Panglima Garang Toll",
+          "Close by"
         ],
         [
           "🛍️",
           "KSL Mall Klang",
-          "Tak jauh"
+          "Not far"
         ]
       ],
       "cues": {
@@ -264,18 +264,18 @@
     {
       "block": "text",
       "scene": "site",
-      "line": "SIAP 2028",
-      "pill": "🏗️ Sedang dibina",
+      "line": "COMPLETION 2028",
+      "pill": "🏗️ Under construction",
       "cues": {
-        "pill": "w:pembinaan"
+        "pill": "w:construction"
       }
     },
     {
       "block": "cta",
       "scene": "cta",
       "cues": {
-        "checks": "w:berminat+0.3",
-        "cta": "w:komen"
+        "checks": "w:interested+0.3",
+        "cta": "w:comment"
       }
     }
   ],

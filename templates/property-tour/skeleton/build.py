@@ -81,7 +81,7 @@ def word_t(word, n=1):
 
 
 SCENE_T = {}
-REF = re.compile(r"^(?:w:(?P<w>[^#+\-]+?)(?:#(?P<n>\d+))?|s:(?P<s>[\w-]+)\.(?P<edge>start|end)|(?P<end>end))(?P<off>[+-]\d*\.?\d+)?$")
+REF = re.compile(r"^(?:w:(?P<w>[^#+]+?)(?:#(?P<n>\d+))?|s:(?P<s>[\w-]+)\.(?P<edge>start|end)|(?P<end>end))(?P<off>[+-]\d*\.?\d+)?$")
 
 
 def ref(r):

@@ -3,636 +3,687 @@
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Cari",
+    "w": " Looking",
     "s": 0.0,
-    "e": 0.48
+    "e": 0.36
    },
    {
-    "w": " rumah",
-    "s": 0.48,
-    "e": 0.88
+    "w": " for",
+    "s": 0.36,
+    "e": 0.66
    },
    {
-    "w": " setingkat",
-    "s": 0.88,
-    "e": 1.5
+    "w": " a",
+    "s": 0.66,
+    "e": 0.82
    },
    {
-    "w": " di",
-    "s": 1.5,
-    "e": 1.76
+    "w": " single-storey",
+    "s": 0.82,
+    "e": 1.6
+   },
+   {
+    "w": " home",
+    "s": 1.6,
+    "e": 1.8
+   },
+   {
+    "w": " in",
+    "s": 1.8,
+    "e": 2.14
    },
    {
     "w": " Telok",
-    "s": 1.76,
-    "e": 2.12
+    "s": 2.14,
+    "e": 2.4
    },
    {
     "w": " Panglima",
-    "s": 2.12,
-    "e": 2.78
+    "s": 2.4,
+    "e": 2.96
    },
    {
     "w": " Garang,",
-    "s": 2.78,
-    "e": 3.48
+    "s": 2.96,
+    "e": 3.4
    },
    {
-    "w": " harga",
-    "s": 3.48,
-    "e": 4.14
-   },
-   {
-    "w": " bawah",
-    "s": 4.14,
-    "e": 4.76
+    "w": " under",
+    "s": 3.4,
+    "e": 3.8
    },
    {
     "w": " RM400k?",
-    "s": 4.76,
-    "e": 6.4
+    "s": 3.8,
+    "e": 4.96
    }
   ],
   "start": 0.0,
-  "end": 6.4,
-  "text": " Cari rumah setingkat di Telok Panglima Garang, harga bawah RM400k?"
+  "end": 4.96,
+  "text": " Looking for a single-storey home in Telok Panglima Garang, under RM400k?"
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Jom",
-    "s": 6.5,
-    "e": 6.78
+    "w": " Let",
+    "s": 5.32,
+    "e": 5.52
    },
    {
-    "w": " tengok",
-    "s": 6.78,
-    "e": 7.22
+    "w": " me",
+    "s": 5.52,
+    "e": 5.7
+   },
+   {
+    "w": " show",
+    "s": 5.7,
+    "e": 5.98
+   },
+   {
+    "w": " you",
+    "s": 5.98,
+    "e": 6.32
    },
    {
     "w": " Taman",
-    "s": 7.22,
-    "e": 7.64
+    "s": 6.32,
+    "e": 6.72
    },
    {
     "w": " Dato",
-    "s": 7.64,
-    "e": 8.08
+    "s": 6.72,
+    "e": 7.12
    },
    {
     "w": " Hormat.",
-    "s": 8.08,
+    "s": 7.12,
+    "e": 7.62
+   },
+   {
+    "w": " It's",
+    "s": 7.94,
+    "e": 8.14
+   },
+   {
+    "w": " a",
+    "s": 8.14,
+    "e": 8.36
+   },
+   {
+    "w": " brand",
+    "s": 8.36,
+    "e": 8.52
+   },
+   {
+    "w": " new",
+    "s": 8.52,
     "e": 8.88
-   }
-  ],
-  "start": 6.5,
-  "end": 8.88,
-  "text": " Jom tengok Taman Dato Hormat."
- },
- {
-  "file": "voiceover.m4a",
-  "words": [
-   {
-    "w": " Projek",
-    "s": 9.08,
-    "e": 9.4
    },
    {
-    "w": " baharu",
-    "s": 9.4,
-    "e": 9.86
+    "w": " single-storey",
+    "s": 8.88,
+    "e": 9.74
    },
    {
-    "w": " rumah",
-    "s": 9.86,
-    "e": 10.32
+    "w": " terrace",
+    "s": 9.74,
+    "e": 10.1
    },
    {
-    "w": " teres",
-    "s": 10.32,
-    "e": 10.72
+    "w": " project,",
+    "s": 10.1,
+    "e": 10.56
    },
    {
-    "w": " setingkat,",
-    "s": 10.72,
-    "e": 11.62
+    "w": " with",
+    "s": 10.56,
+    "e": 10.8
    },
    {
-    "w": " cuma",
-    "s": 11.78,
-    "e": 12.14
+    "w": " only",
+    "s": 10.8,
+    "e": 11.22
    },
    {
     "w": " 19",
-    "s": 12.14,
-    "e": 12.88
+    "s": 11.22,
+    "e": 11.76
    },
    {
-    "w": " unit",
-    "s": 12.88,
-    "e": 13.32
-   },
-   {
-    "w": " sahaja.",
-    "s": 13.32,
-    "e": 14.16
+    "w": " units.",
+    "s": 11.76,
+    "e": 12.34
    }
   ],
-  "start": 9.08,
-  "end": 14.16,
-  "text": " Projek baharu rumah teres setingkat, cuma 19 unit sahaja."
+  "start": 5.32,
+  "end": 12.34,
+  "text": " Let me show you Taman Dato Hormat. It's a brand new single-storey terrace project, with only 19 units."
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Harga",
-    "s": 14.34,
-    "e": 14.78
+    "w": " Prices",
+    "s": 12.86,
+    "e": 13.1
    },
    {
-    "w": " bermula",
-    "s": 14.78,
-    "e": 15.26
+    "w": " start",
+    "s": 13.1,
+    "e": 13.48
    },
    {
-    "w": " dari",
-    "s": 15.26,
-    "e": 15.76
+    "w": " from",
+    "s": 13.48,
+    "e": 13.76
    },
    {
     "w": " RM399k.",
-    "s": 15.76,
-    "e": 18.32
-   }
-  ],
-  "start": 14.34,
-  "end": 18.32,
-  "text": " Harga bermula dari RM399k."
- },
- {
-  "file": "voiceover.m4a",
-  "words": [
-   {
-    "w": " Saiz",
-    "s": 19.18,
-    "e": 19.38
+    "s": 13.76,
+    "e": 15.54
    },
    {
-    "w": " tanah",
-    "s": 19.38,
-    "e": 20.06
+    "w": " The",
+    "s": 16.24,
+    "e": 16.62
+   },
+   {
+    "w": " land",
+    "s": 16.62,
+    "e": 16.92
+   },
+   {
+    "w": " is",
+    "s": 16.92,
+    "e": 17.18
    },
    {
     "w": " 20",
-    "s": 20.06,
-    "e": 20.82
+    "s": 17.18,
+    "e": 17.74
    },
    {
     "w": " x",
-    "s": 20.82,
-    "e": 21.28
+    "s": 17.74,
+    "e": 18.02
    },
    {
     "w": " 101,",
-    "s": 21.28,
-    "e": 22.24
+    "s": 18.02,
+    "e": 18.98
    },
    {
-    "w": " sampai",
-    "s": 22.24,
-    "e": 23.06
+    "w": " up",
+    "s": 18.98,
+    "e": 19.46
+   },
+   {
+    "w": " to",
+    "s": 19.46,
+    "e": 19.76
    },
    {
     "w": " 116",
-    "s": 23.06,
-    "e": 24.24
+    "s": 19.76,
+    "e": 20.76
    },
    {
-    "w": " kaki.",
-    "s": 24.24,
-    "e": 25.04
+    "w": " feet.",
+    "s": 20.76,
+    "e": 21.2
    }
   ],
-  "start": 19.18,
-  "end": 25.04,
-  "text": " Saiz tanah 20 x 101, sampai 116 kaki."
+  "start": 12.86,
+  "end": 21.2,
+  "text": " Prices start from RM399k. The land is 20 x 101, up to 116 feet."
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Keluasan",
-    "s": 25.04,
-    "e": 25.72
+    "w": " The",
+    "s": 21.64,
+    "e": 21.86
    },
    {
-    "w": " binaan",
-    "s": 25.72,
-    "e": 26.5
+    "w": " built-up",
+    "s": 21.86,
+    "e": 22.28
+   },
+   {
+    "w": " is",
+    "s": 22.28,
+    "e": 22.56
    },
    {
     "w": " 20",
-    "s": 26.5,
-    "e": 27.113
+    "s": 22.56,
+    "e": 23.02
    },
    {
     "w": " x",
-    "s": 27.113,
-    "e": 27.727
+    "s": 23.02,
+    "e": 23.34
    },
    {
     "w": " 50",
-    "s": 27.727,
-    "e": 28.34
+    "s": 23.34,
+    "e": 23.82
    },
    {
-    "w": " kaki,",
-    "s": 28.34,
-    "e": 29.26
+    "w": " feet,",
+    "s": 23.82,
+    "e": 24.16
    },
    {
-    "w": " dengan",
-    "s": 29.26,
-    "e": 29.76
-   },
-   {
-    "w": " 4",
-    "s": 29.76,
-    "e": 30.26
-   },
-   {
-    "w": " bilik",
-    "s": 30.26,
-    "e": 30.58
-   },
-   {
-    "w": " tidur",
-    "s": 30.58,
-    "e": 31.1
-   },
-   {
-    "w": " dan",
-    "s": 31.1,
-    "e": 31.4
+    "w": " with",
+    "s": 24.16,
+    "e": 24.42
    },
    {
     "w": " 4",
-    "s": 31.4,
-    "e": 31.8
+    "s": 24.42,
+    "e": 24.78
    },
    {
-    "w": " bilik",
-    "s": 31.8,
-    "e": 32.18
+    "w": " bedrooms",
+    "s": 24.78,
+    "e": 25.16
    },
    {
-    "w": " air.",
-    "s": 32.18,
-    "e": 32.76
+    "w": " and",
+    "s": 25.16,
+    "e": 25.6
+   },
+   {
+    "w": " 2",
+    "s": 25.6,
+    "e": 25.9
+   },
+   {
+    "w": " bathrooms.",
+    "s": 25.9,
+    "e": 26.5
    }
   ],
-  "start": 25.04,
-  "end": 32.76,
-  "text": " Keluasan binaan 20 x 50 kaki, dengan 4 bilik tidur dan 4 bilik air."
+  "start": 21.64,
+  "end": 26.5,
+  "text": " The built-up is 20 x 50 feet, with 4 bedrooms and 2 bathrooms."
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Lokasi",
-    "s": 33.04,
-    "e": 33.64
+    "w": " It's",
+    "s": 26.5,
+    "e": 27.38
    },
    {
-    "w": " dekat",
-    "s": 33.64,
-    "e": 34.2
+    "w": " close",
+    "s": 27.38,
+    "e": 27.56
    },
    {
-    "w": " dengan",
-    "s": 34.2,
-    "e": 34.58
+    "w": " to",
+    "s": 27.56,
+    "e": 27.8
    },
    {
-    "w": " tol",
-    "s": 34.58,
-    "e": 34.92
+    "w": " the",
+    "s": 27.8,
+    "e": 27.98
    },
    {
     "w": " SKVE",
-    "s": 34.92,
-    "e": 35.88
+    "s": 27.98,
+    "e": 28.88
    },
    {
     "w": " Teluk",
-    "s": 35.88,
-    "e": 36.4
+    "s": 28.88,
+    "e": 29.34
    },
    {
     "w": " Panglima",
-    "s": 36.4,
-    "e": 36.92
+    "s": 29.34,
+    "e": 29.9
    },
    {
-    "w": " Garang,",
-    "s": 36.92,
-    "e": 37.56
+    "w": " Garang",
+    "s": 29.9,
+    "e": 30.32
    },
    {
-    "w": " dan",
-    "s": 37.56,
-    "e": 38.04
+    "w": " toll,",
+    "s": 30.32,
+    "e": 30.64
    },
    {
-    "w": " tak",
-    "s": 38.04,
-    "e": 38.28
+    "w": " and",
+    "s": 30.64,
+    "e": 31.2
    },
    {
-    "w": " jauh",
-    "s": 38.28,
-    "e": 38.6
+    "w": " not",
+    "s": 31.2,
+    "e": 31.46
    },
    {
-    "w": " dari",
-    "s": 38.6,
-    "e": 38.98
+    "w": " far",
+    "s": 31.46,
+    "e": 31.78
+   },
+   {
+    "w": " from",
+    "s": 31.78,
+    "e": 32.16
    },
    {
     "w": " KSL",
-    "s": 38.98,
-    "e": 39.56
+    "s": 32.16,
+    "e": 32.72
    },
    {
     "w": " Mall",
-    "s": 39.56,
-    "e": 39.98
+    "s": 32.72,
+    "e": 33.14
    },
    {
     "w": " Klang.",
-    "s": 39.98,
-    "e": 40.74
+    "s": 33.48,
+    "e": 33.58
    }
   ],
-  "start": 33.04,
-  "end": 40.74,
-  "text": " Lokasi dekat dengan tol SKVE Teluk Panglima Garang, dan tak jauh dari KSL Mall Klang."
+  "start": 26.5,
+  "end": 33.58,
+  "text": " It's close to the SKVE Teluk Panglima Garang toll, and not far from KSL Mall Klang."
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Yang",
-    "s": 40.96,
-    "e": 41.1
+    "w": " And",
+    "s": 34.16,
+    "e": 34.28
    },
    {
-    "w": " paling",
-    "s": 41.1,
-    "e": 41.52
+    "w": " the",
+    "s": 34.28,
+    "e": 34.46
    },
    {
-    "w": " best,",
-    "s": 41.52,
-    "e": 42.0
+    "w": " best",
+    "s": 34.46,
+    "e": 34.64
    },
    {
-    "w": " pembeli",
-    "s": 42.26,
-    "e": 42.68
+    "w": " part,",
+    "s": 34.64,
+    "e": 35.12
    },
    {
-    "w": " dapat",
-    "s": 42.68,
-    "e": 43.1
+    "w": " buyers",
+    "s": 35.44,
+    "e": 35.7
    },
    {
-    "w": " pakej",
-    "s": 43.1,
-    "e": 43.6
+    "w": " get",
+    "s": 35.7,
+    "e": 36.02
    },
    {
-    "w": " percuma:",
-    "s": 43.6,
-    "e": 44.46
+    "w": " a",
+    "s": 36.02,
+    "e": 36.26
    },
    {
-    "w": " peti",
-    "s": 44.74,
-    "e": 44.96
+    "w": " free",
+    "s": 36.26,
+    "e": 36.44
    },
    {
-    "w": " sejuk,",
-    "s": 44.96,
-    "e": 45.54
+    "w": " appliance",
+    "s": 36.44,
+    "e": 37.0
    },
    {
-    "w": " mesin",
-    "s": 45.88,
-    "e": 46.18
+    "w": " package:",
+    "s": 37.0,
+    "e": 37.52
    },
    {
-    "w": " basuh,",
-    "s": 46.18,
-    "e": 46.84
+    "w": " a",
+    "s": 38.02,
+    "e": 38.24
    },
    {
-    "w": " TV",
-    "s": 47.14,
-    "e": 47.5
+    "w": " fridge,",
+    "s": 38.24,
+    "e": 38.56
    },
+   {
+    "w": " a",
+    "s": 38.92,
+    "e": 39.14
+   },
+   {
+    "w": " washing",
+    "s": 39.14,
+    "e": 39.38
+   },
+   {
+    "w": " machine,",
+    "s": 39.38,
+    "e": 39.92
+   },
+   {
+    "w": " a",
+    "s": 40.26,
+    "e": 40.42
+   },
+   {
+    "w": " 55-inch",
+    "s": 40.42,
+    "e": 41.54
+   }
+  ],
+  "start": 34.16,
+  "end": 41.54,
+  "text": " And the best part, buyers get a free appliance package: a fridge, a washing machine, a 55-inch"
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
    {
     "w": " Skyworth",
-    "s": 47.5,
-    "e": 48.18
+    "s": 41.54,
+    "e": 42.38
    },
    {
-    "w": " 55",
-    "s": 48.18,
-    "e": 48.84
+    "w": " TV,",
+    "s": 42.38,
+    "e": 42.9
    },
    {
-    "w": " inci,",
-    "s": 48.84,
-    "e": 49.8
+    "w": " 5",
+    "s": 43.48,
+    "e": 43.68
+   },
+   {
+    "w": " ceiling",
+    "s": 43.68,
+    "e": 44.1
+   },
+   {
+    "w": " fans,",
+    "s": 44.1,
+    "e": 44.48
+   },
+   {
+    "w": " and",
+    "s": 44.48,
+    "e": 44.84
+   },
+   {
+    "w": " 5",
+    "s": 44.84,
+    "e": 45.32
+   },
+   {
+    "w": " inverter",
+    "s": 45.32,
+    "e": 46.04
+   },
+   {
+    "w": " air",
+    "s": 46.04,
+    "e": 46.32
+   },
+   {
+    "w": " conditioners.",
+    "s": 46.32,
+    "e": 47.12
    }
   ],
-  "start": 40.96,
-  "end": 49.8,
-  "text": " Yang paling best, pembeli dapat pakej percuma: peti sejuk, mesin basuh, TV Skyworth 55 inci,"
+  "start": 41.54,
+  "end": 47.12,
+  "text": " Skyworth TV, 5 ceiling fans, and 5 inverter air conditioners."
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " 5",
-    "s": 49.8,
-    "e": 50.4
+    "w": " The",
+    "s": 47.6,
+    "e": 47.76
    },
    {
-    "w": " kipas",
-    "s": 50.4,
-    "e": 50.94
+    "w": " project",
+    "s": 47.76,
+    "e": 48.06
    },
    {
-    "w": " siling,",
-    "s": 50.94,
+    "w": " is",
+    "s": 48.06,
+    "e": 48.34
+   },
+   {
+    "w": " under",
+    "s": 48.34,
+    "e": 48.6
+   },
+   {
+    "w": " construction,",
+    "s": 48.6,
+    "e": 49.26
+   },
+   {
+    "w": " with",
+    "s": 49.26,
+    "e": 49.66
+   },
+   {
+    "w": " completion",
+    "s": 49.66,
+    "e": 50.28
+   },
+   {
+    "w": " expected",
+    "s": 50.28,
+    "e": 50.96
+   },
+   {
+    "w": " in",
+    "s": 50.96,
     "e": 51.38
    },
    {
-    "w": " dan",
-    "s": 51.38,
-    "e": 52.04
-   },
-   {
-    "w": " 5",
-    "s": 52.04,
-    "e": 52.58
-   },
-   {
-    "w": " aircond",
-    "s": 52.58,
-    "e": 53.14
-   },
-   {
-    "w": " inverter.",
-    "s": 53.14,
-    "e": 53.84
-   }
-  ],
-  "start": 49.8,
-  "end": 53.84,
-  "text": " 5 kipas siling, dan 5 aircond inverter."
- },
- {
-  "file": "voiceover.m4a",
-  "words": [
-   {
-    "w": " Projek",
-    "s": 54.38,
-    "e": 54.68
-   },
-   {
-    "w": " sedang",
-    "s": 54.68,
-    "e": 55.16
-   },
-   {
-    "w": " dalam",
-    "s": 55.16,
-    "e": 55.46
-   },
-   {
-    "w": " pembinaan,",
-    "s": 55.46,
-    "e": 56.54
-   },
-   {
-    "w": " dijangka",
-    "s": 56.54,
-    "e": 57.16
-   },
-   {
-    "w": " siap",
-    "s": 57.16,
-    "e": 57.56
-   },
-   {
-    "w": " tahun",
-    "s": 57.56,
-    "e": 58.16
-   },
-   {
     "w": " 2028.",
-    "s": 58.16,
-    "e": 59.92
+    "s": 51.38,
+    "e": 52.5
    }
   ],
-  "start": 54.38,
-  "end": 59.92,
-  "text": " Projek sedang dalam pembinaan, dijangka siap tahun 2028."
+  "start": 47.6,
+  "end": 52.5,
+  "text": " The project is under construction, with completion expected in 2028."
  },
  {
   "file": "voiceover.m4a",
   "words": [
    {
-    "w": " Terma",
-    "s": 60.18,
-    "e": 60.58
+    "w": " Terms",
+    "s": 52.5,
+    "e": 53.28
    },
    {
-    "w": " dan",
-    "s": 60.58,
-    "e": 60.8
+    "w": " and",
+    "s": 53.28,
+    "e": 53.58
    },
    {
-    "w": " syarat",
-    "s": 60.8,
-    "e": 61.16
+    "w": " conditions",
+    "s": 53.58,
+    "e": 54.06
    },
    {
-    "w": " dikenakan.",
-    "s": 61.16,
-    "e": 62.06
-   }
-  ],
-  "start": 60.18,
-  "end": 62.06,
-  "text": " Terma dan syarat dikenakan."
- },
- {
-  "file": "voiceover.m4a",
-  "words": [
-   {
-    "w": " Berminat?",
-    "s": 62.52,
-    "e": 63.3
+    "w": " apply.",
+    "s": 54.06,
+    "e": 54.58
    },
    {
-    "w": " Komen",
-    "s": 63.72,
-    "e": 64.02
+    "w": " Interested?",
+    "s": 55.02,
+    "e": 55.68
    },
    {
-    "w": " atau",
-    "s": 64.02,
-    "e": 64.4
+    "w": " Just",
+    "s": 55.96,
+    "e": 56.14
+   },
+   {
+    "w": " comment",
+    "s": 56.14,
+    "e": 56.6
+   },
+   {
+    "w": " or",
+    "s": 56.6,
+    "e": 56.94
    },
    {
     "w": " DM",
-    "s": 64.4,
-    "e": 64.84
+    "s": 56.94,
+    "e": 57.18
    },
    {
-    "w": " je,",
-    "s": 64.84,
-    "e": 65.26
+    "w": " me,",
+    "s": 57.18,
+    "e": 57.54
    },
    {
-    "w": " saya",
-    "s": 65.26,
-    "e": 65.78
+    "w": " and",
+    "s": 57.54,
+    "e": 57.82
    },
    {
-    "w": " akan",
-    "s": 65.78,
-    "e": 66.06
+    "w": " I'll",
+    "s": 57.82,
+    "e": 58.06
    },
    {
     "w": " contact",
-    "s": 66.06,
-    "e": 66.4
+    "s": 58.06,
+    "e": 58.42
    },
    {
-    "w": " anda.",
-    "s": 66.4,
-    "e": 66.72
+    "w": " you.",
+    "s": 58.42,
+    "e": 58.72
    }
   ],
-  "start": 62.52,
-  "end": 66.72,
-  "text": " Berminat? Komen atau DM je, saya akan contact anda."
+  "start": 52.5,
+  "end": 58.72,
+  "text": " Terms and conditions apply. Interested? Just comment or DM me, and I'll contact you."
  }
 ]
