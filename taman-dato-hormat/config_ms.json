@@ -16,11 +16,11 @@
     "land_dims": "Rumah Teres Setingkat",
     "bedrooms": "4",
     "bedrooms_label": "BILIK TIDUR 🛏️",
-    "bathrooms": "4",
+    "bathrooms": "2",
     "bathrooms_label": "BILIK AIR 🚿",
     "cta_title": "BERMINAT? 👀",
     "cta_checks": [
-      "4 Bilik • 4 Bilik Air",
+      "4 Bilik • 2 Bilik Air",
       "Free Pakej Elektrik 🎁",
       "Open Title • Leasehold"
     ],
@@ -235,7 +235,7 @@
       "scene": "rooms",
       "cues": {
         "bed": "w:4",
-        "bath": "w:4#2"
+        "bath": "w:2"
       }
     },
     {
