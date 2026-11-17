@@ -25,9 +25,9 @@
     "cta_checks": [
       "4 Bed • 4 Bath",
       "Freehold • Only 62 Units",
-      "Phase 2 Now Selling"
+      "Phase 2 • Low Density"
     ],
-    "cta": "💬 Comment / DM for price"
+    "cta": "💬 Comment / DM for info"
   },
   "scenes": [
     {
@@ -145,7 +145,7 @@
     {
       "block": "titlecard",
       "scene": "hook",
-      "tc_top": "Phase 2 Now Selling | Freehold 2-Storey",
+      "tc_top": "Phase 2 | Freehold 2-Storey",
       "tc_big": "BUKIT TINGGI\nKLANG",
       "tc_size": 185,
       "tc_pill": "Only 62 Units",
@@ -232,7 +232,7 @@
       "block": "text",
       "scene": "done",
       "line": "PHASE 1 COMPLETED",
-      "pill": "✅ Phase 2 now selling",
+      "pill": "✅ Phase 2 is here",
       "cues": {
         "pill": "w:handed"
       }
