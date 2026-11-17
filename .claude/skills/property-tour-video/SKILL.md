@@ -17,6 +17,10 @@ rephrase ("comment the word X") and regenerate. Then `align_script.py`-style ali
 onto Whisper timings for exact captions (see taman-pahlawan-v2/align_script.py).
 Never claim distances/landmarks you have not verified; label estimates and ask the user to confirm.
 
+ASK FIRST (user's standing instruction): before changing or re-rendering any video, describe the planned
+change (what text/voice/scene changes, with the exact new wording) and wait for the user's OK. Snapshots/previews
+for discussion are fine; do not render or push a changed video until the user approves.
+
 Workflow:
 1. Inspect uploads: `ffprobe` each clip (duration, rotation, HDR transfer), make contact sheets
    (`ffmpeg -vf "fps=3,scale=270:-1,tile=6x3"`) and look at them to name each shot (land, hall, bedroom, bathroom…).
