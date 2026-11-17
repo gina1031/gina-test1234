@@ -24,7 +24,7 @@
       "Free Appliance Package 🎁",
       "Open Title • Leasehold"
     ],
-    "cta": "💬 Comment / DM for info"
+    "cta": "💬 Comment / DM for price"
   },
   "scenes": [
     {
@@ -50,7 +50,7 @@
     },
     {
       "id": "price",
-      "from": "w:prices-0.15",
+      "from": "w:price-0.5",
       "src": "assets/stills/raw/render_front.jpg",
       "kind": "card",
       "kb": [
@@ -61,7 +61,7 @@
     },
     {
       "id": "land",
-      "from": "w:the#1-0.15",
+      "from": "w:land-0.15",
       "src": "assets/stills/raw/plan_end.jpg",
       "kind": "pan",
       "kb": [
@@ -183,14 +183,14 @@
     {
       "block": "titlecard",
       "scene": "hook",
-      "tc_top": "Single Storey | Open Title",
-      "tc_big": "FROM\nRM399K",
-      "tc_size": 230,
+      "tc_top": "Telok Panglima Garang | Open Title",
+      "tc_big": "SINGLE\nSTOREY",
+      "tc_size": 220,
       "tc_pill": "🎁 Free Appliance Package",
       "tc_script": "Taman Dato Hormat",
       "cues": {
-        "pill": "w:garang",
-        "script": "w:under"
+        "pill": "w:new",
+        "script": "w:garang"
       }
     },
     {
@@ -206,10 +206,10 @@
     {
       "block": "text",
       "scene": "price",
-      "line": "PRICE FROM",
-      "pill": "RM399K",
+      "line": "AFFORDABLE PRICE",
+      "pill": "💬 Comment for latest price",
       "cues": {
-        "pill": "w:rm399k"
+        "pill": "w:affordable"
       }
     },
     {
