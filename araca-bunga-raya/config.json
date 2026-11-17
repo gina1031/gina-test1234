@@ -1,175 +1,186 @@
 {
   "phone": "0198395315",
+  "theme": "clean",
+  "caption_highlight": false,
+  "transitions": "slide",
   "voiceover": "assets/vo/voiceover.m4a",
   "transcript": "transcript.json",
-  "fix_words": {
-    "Syah": "Shah"
-  },
-  "pause_max": 0.3,
-  "pause_keep": 0.1,
-  "end_hold": 1.8,
+  "fix_words": {},
+  "pause_max": 0.45,
+  "pause_keep": 0.3,
+  "end_hold": 2.2,
   "music_volume": 0.15,
   "captions": true,
   "whoosh_on_cuts": true,
   "text": {
-    "hook_tag": "RUMAH CORNER LOT",
-    "hook_line1": "TANAH TEPI",
-    "hook_line2": "LUAS GILER",
-    "hook_emoji": "🤯",
-    "location": "Lombong Besi 2",
-    "area": "Seksyen 29, Shah Alam",
-    "property_type": "Single Storey Terrace • Corner No.1",
-    "location_chip": "🌳 Tanah Rezab Melayu",
-    "bedrooms": "3",
-    "bathrooms": "2",
-    "land_label": "YANG PALING BEST 🔥",
-    "land_sqft": 4102,
-    "land_unit": "KAKI PERSEGI",
-    "land_dims": "43' ~ 64' x 68'",
-    "side_line1": "Bahagian tepi",
-    "side_line2": "MEMANG LUAS",
-    "cars": 4,
-    "uses_line1": "Ruang tepi ni",
-    "uses_line2": "BOLEH JADI…",
-    "uses": [
-      [
-        "🌳",
-        "Mini garden"
-      ],
-      [
-        "🚲",
-        "Tempat anak bermain"
-      ],
-      [
-        "☕️",
-        "Ruang santai"
-      ]
+    "land_label": "LOW DENSITY 🌿",
+    "land_sqft": 62,
+    "land_unit": "UNITS ONLY",
+    "land_dims": "Freehold 2-Storey Terrace",
+    "bedrooms": "4",
+    "bedrooms_label": "BEDROOMS 🛏️",
+    "bathrooms": "4",
+    "bathrooms_label": "BATHROOMS 🚿",
+    "cta_title": "INTERESTED? 👀",
+    "cta_checks": [
+      "4 Bed • 4 Bath",
+      "Freehold • Only 62 Units",
+      "Near LRT Sri Andalas"
     ],
-    "ready_pill": "✅ RUMAH DAH SIAP",
-    "ready_line1": "Boleh terus",
-    "ready_line2": "MASUK!",
-    "dp_big": "0%",
-    "dp_small": "DOWNPAYMENT",
-    "price_old": "Harga SPA: RM 665,431",
-    "price_label": "HARGA BERSIH",
-    "price": "RM 598,888",
-    "fine_print": "*Loan Agreement to be borne by purchaser",
-    "bonus": "🎁 FREE SPA Legal Fees & MOT",
-    "cta": "📲 WhatsApp Gina untuk viewing!"
+    "cta": "💬 Comment / DM for price"
   },
   "scenes": [
     {
       "id": "hook",
       "from": 0,
-      "src": "assets/clips/20261017_130833.mp4",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 0.2,
       "kb": [
-        1.25,
-        1.05
-      ]
-    },
-    {
-      "id": "front",
-      "from": "w:jom-0.15",
-      "src": "assets/clips/20261017_130938.mp4",
-      "kb": [
-        1.12,
+        1.15,
         1.0
       ]
     },
     {
-      "id": "hall",
-      "from": "w:jom+1.55",
-      "src": "assets/clips/20261017_130855.mp4",
+      "id": "porch",
+      "from": "w:this-0.15",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 4.5,
       "kb": [
         1.0,
-        1.12
+        1.1
       ]
     },
     {
-      "id": "bed",
-      "from": "w:rumah#3-0.65",
-      "src": "assets/clips/20261017_130929.mp4"
-    },
-    {
-      "id": "room",
-      "from": "w:rumah#3+1.15",
-      "src": "assets/clips/20261017_130945.mp4",
-      "media_start": 1.2,
+      "id": "units",
+      "from": "w:it's-0.15",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 61.0,
       "kb": [
-        1.08,
-        1.0
+        1.0,
+        1.08
       ]
     },
     {
-      "id": "bath",
-      "from": "w:2#2+0.35",
-      "src": "assets/clips/20261017_130923.mp4",
+      "id": "builtup",
+      "from": "w:each-0.15",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 9,
       "kb": [
-        1.12,
-        1.0
+        1.0,
+        1.08
       ]
     },
     {
       "id": "land",
-      "from": "w:yang#2",
-      "src": "assets/stills/land-end.jpg",
-      "kind": "img",
+      "from": "w:land-0.3",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 58.0,
       "kb": [
         1.0,
-        1.15
+        1.08
       ]
     },
     {
-      "id": "side",
-      "from": "w:bahagian-0.2",
-      "src": "assets/clips/land_slow.mp4",
+      "id": "bed",
+      "from": "w:inside-0.15",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 108,
       "kb": [
         1.0,
-        1.12
+        1.08
       ]
     },
     {
-      "id": "uses",
-      "from": "w:nak#3-0.15",
-      "src": "assets/stills/land-end.jpg",
-      "kind": "blur"
-    },
-    {
-      "id": "ready",
-      "from": "w:rumah#5-0.15",
-      "src": "assets/clips/front_slow.mp4",
-      "media_start": 0.3,
+      "id": "bath",
+      "from": "w:4#2-0.2",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 123,
       "kb": [
         1.1,
         1.0
       ]
     },
     {
-      "id": "price",
-      "from": "w:downpayment-0.15",
-      "src": "assets/stills/bedroom.jpg",
+      "id": "loc1",
+      "from": "w:sri-0.3",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 126,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "loc2",
+      "from": "w:close-0.15",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 117,
+      "kb": [
+        1.1,
+        1.0
+      ]
+    },
+    {
+      "id": "done",
+      "from": "w:phase-0.15",
+      "src": "assets/clips/araca.mp4",
+      "media_start": 72,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "cta",
+      "from": "w:interested-0.2",
+      "src": "assets/stills/front.jpg",
       "kind": "blur",
       "kb": [
-        1.12,
-        1.3
+        1.1,
+        1.25
       ]
     }
   ],
   "graphics": [
     {
-      "block": "hook",
+      "block": "titlecard",
       "scene": "hook",
+      "tc_top": "Near AEON Mall | Freehold 2-Storey",
+      "tc_big": "BUKIT TINGGI\nKLANG",
+      "tc_size": 185,
+      "tc_pill": "Only 62 Units",
+      "tc_script": "Araca @ Taman Bunga Raya",
       "cues": {
-        "tag": "w:corner",
-        "line": "w:tanah"
+        "pill": "w:freehold",
+        "script": "w:double-storey"
       }
     },
     {
-      "block": "location",
-      "from": "w:lombong-0.2",
-      "to": "s:hall.end",
+      "block": "land",
+      "scene": "units",
       "cues": {
-        "chip": "w:seksyen"
+        "count_from": "s:units.start+0.3",
+        "number": "w:62",
+        "unit": "w:units",
+        "dims": "w:units+0.4"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "builtup",
+      "line": "BUILT-UP",
+      "pill": "1,556 sq ft",
+      "cues": {
+        "pill": "w:1,556"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land",
+      "line": "LAND SIZE",
+      "pill": "20' x 70' ~ 75'",
+      "cues": {
+        "pill": "w:20"
       }
     },
     {
@@ -177,56 +188,61 @@
       "from": "s:bed.start",
       "to": "s:bath.end",
       "cues": {
-        "bed": "w:3",
-        "bath": "w:2#2"
+        "bed": "w:4",
+        "bath": "w:4#2"
       }
     },
     {
-      "block": "land",
-      "scene": "land",
-      "cues": {
-        "number": "w:4,102",
-        "unit": "w:kaki",
-        "dims": "w:4,102+0.3"
-      }
-    },
-    {
-      "block": "side",
-      "scene": "side",
-      "cues": {
-        "title": "w:bahagian",
-        "cars": "w:4"
-      }
-    },
-    {
-      "block": "uses",
-      "scene": "uses",
+      "block": "nearby",
+      "from": "s:loc1.start",
+      "to": "s:loc2.end",
+      "title": "📍 LOCATION",
+      "items": [
+        [
+          "🚆",
+          "LRT Sri Andalas",
+          "~3 km"
+        ],
+        [
+          "🏙️",
+          "Klang Town",
+          "Minutes away"
+        ],
+        [
+          "🛍️",
+          "AEON Mall Bukit Tinggi",
+          "Close by"
+        ],
+        [
+          "🛣️",
+          "Federal Hwy • KESAS • NKVE",
+          "Easy access"
+        ]
+      ],
       "cues": {
         "items": [
-          "w:mini",
-          "w:tempat",
-          "w:ruang"
+          "w:andalas",
+          "w:klang#2",
+          "w:aeon",
+          "w:federal"
         ]
       }
     },
     {
-      "block": "ready",
-      "scene": "ready",
+      "block": "text",
+      "scene": "done",
+      "line": "PHASE 1 COMPLETED",
+      "pill": "✅ Real finished home",
       "cues": {
-        "pill": "w:rumah#5+0.05",
-        "line": "w:rumah#5+0.45"
+        "pill": "w:completed"
       }
     },
     {
-      "block": "price",
-      "scene": "price",
+      "block": "cta",
+      "scene": "cta",
       "cues": {
-        "dp": "w:downpayment",
-        "card": "w:harga-0.1",
-        "price": "w:rm598,888",
-        "bonus": "w:rm598,888+1.2",
-        "cta": "w:berminat",
-        "cta_pulse": "w:whatsapp"
+        "checks": "w:interested+0.3",
+        "cta": "w:comment"
       }
     }
   ]
