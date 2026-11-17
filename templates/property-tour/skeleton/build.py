@@ -368,7 +368,7 @@ def b_titlecard(c):
     size = g.get("tc_size", 250)
     pill_top = int(740 + (T2["tc_big"].count("\n") + 1) * size * 0.95 + 40)   # sit just under the big title
     h = f'''        <div class="shade-top"></div>
-        <div id="tc-top" class="cx">{E(T2.get("tc_top", ""))}</div>
+        <div id="tc-top" class="cx" style="font-size:{min(54, int(1750 / max(1, len(T2.get("tc_top", "")))))}px;white-space:nowrap">{E(T2.get("tc_top", ""))}</div>
         <div id="tc-big" class="cx" style="font-size:{size}px">{big}<div id="tc-shine"></div></div>
         <div id="tc-pill" class="cx" style="top:{pill_top}px"><span>{E(T2.get("tc_pill", ""))}</span></div>
         <div id="tc-script" class="cx" style="top:{pill_top + 105}px;font-size:{g.get("tc_script_size", 74)}px">{E(T2.get("tc_script", ""))}</div>''' + (

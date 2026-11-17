@@ -25,7 +25,7 @@
     "cta_checks": [
       "4 Bed • 4 Bath",
       "Freehold • Only 62 Units",
-      "Near LRT Sri Andalas"
+      "Phase 2 Now Selling"
     ],
     "cta": "💬 Comment / DM for price"
   },
@@ -122,7 +122,7 @@
     },
     {
       "id": "done",
-      "from": "w:phase-0.15",
+      "from": "w:phase#2-0.15",
       "src": "assets/clips/araca.mp4",
       "media_start": 72,
       "kb": [
@@ -145,7 +145,7 @@
     {
       "block": "titlecard",
       "scene": "hook",
-      "tc_top": "Near AEON Mall | Freehold 2-Storey",
+      "tc_top": "Phase 2 Now Selling | Freehold 2-Storey",
       "tc_big": "BUKIT TINGGI\nKLANG",
       "tc_size": 185,
       "tc_pill": "Only 62 Units",
@@ -232,9 +232,9 @@
       "block": "text",
       "scene": "done",
       "line": "PHASE 1 COMPLETED",
-      "pill": "✅ Real finished home",
+      "pill": "✅ Phase 2 now selling",
       "cues": {
-        "pill": "w:completed"
+        "pill": "w:handed"
       }
     },
     {
