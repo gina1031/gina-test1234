@@ -17,6 +17,8 @@ rephrase ("comment the word X") and regenerate. Then `align_script.py`-style ali
 onto Whisper timings for exact captions (see taman-pahlawan-v2/align_script.py).
 TikTok reach (user's rule): never show the price as big on-screen text and never speak the price in the
 voiceover; say "affordable" and end with a "Comment / DM for price" CTA instead.
+Also avoid hard-sell words TikTok demotes ("selling", "for sale", "buy now", "promo") in on-screen text and VO;
+e.g. write "Phase 2" not "Phase 2 now selling".
 Cover headline (user's rule): the big yellow words are the landmark people instantly recognise (big mall, town,
 LRT station, highway — e.g. "NEAR AEON BUKIT TINGGI", "NEAR KSL MALL KLANG"), never price and never the little-known
 taman name; the taman/project name goes in the small italic line. Use "NEXT TO" only when truly adjacent, else "NEAR".
