@@ -1,0 +1,577 @@
+[
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Cari",
+    "s": 0.0,
+    "e": 0.52
+   },
+   {
+    "w": " rumah",
+    "s": 0.52,
+    "e": 0.88
+   },
+   {
+    "w": " setingkat",
+    "s": 0.88,
+    "e": 1.58
+   },
+   {
+    "w": " untuk",
+    "s": 1.58,
+    "e": 1.9
+   },
+   {
+    "w": " keluarga,",
+    "s": 1.9,
+    "e": 2.8
+   },
+   {
+    "w": " dekat",
+    "s": 2.8,
+    "e": 3.28
+   },
+   {
+    "w": " dengan",
+    "s": 3.28,
+    "e": 3.6
+   },
+   {
+    "w": " Bandar",
+    "s": 3.6,
+    "e": 3.96
+   },
+   {
+    "w": " Rimbayu?",
+    "s": 3.96,
+    "e": 5.0
+   }
+  ],
+  "start": 0.0,
+  "end": 5.0,
+  "text": " Cari rumah setingkat untuk keluarga, dekat dengan Bandar Rimbayu?"
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Jom",
+    "s": 5.28,
+    "e": 5.44
+   },
+   {
+    "w": " tengok",
+    "s": 5.44,
+    "e": 5.82
+   },
+   {
+    "w": " projek",
+    "s": 5.82,
+    "e": 6.26
+   },
+   {
+    "w": " baharu",
+    "s": 6.26,
+    "e": 6.74
+   },
+   {
+    "w": " di",
+    "s": 6.74,
+    "e": 7.04
+   },
+   {
+    "w": " Taman",
+    "s": 7.04,
+    "e": 7.36
+   },
+   {
+    "w": " Bentara,",
+    "s": 7.36,
+    "e": 8.0
+   },
+   {
+    "w": " Telok",
+    "s": 8.0,
+    "e": 8.48
+   },
+   {
+    "w": " Panglima",
+    "s": 8.48,
+    "e": 9.04
+   },
+   {
+    "w": " Garang.",
+    "s": 9.04,
+    "e": 9.7
+   }
+  ],
+  "start": 5.28,
+  "end": 9.7,
+  "text": " Jom tengok projek baharu di Taman Bentara, Telok Panglima Garang."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Cuma",
+    "s": 9.7,
+    "e": 10.36
+   },
+   {
+    "w": " 22",
+    "s": 10.36,
+    "e": 10.94
+   },
+   {
+    "w": " unit",
+    "s": 10.94,
+    "e": 11.36
+   },
+   {
+    "w": " sahaja,",
+    "s": 11.36,
+    "e": 12.16
+   },
+   {
+    "w": " atas",
+    "s": 12.16,
+    "e": 12.8
+   },
+   {
+    "w": " Tanah",
+    "s": 12.8,
+    "e": 13.22
+   },
+   {
+    "w": " Rezab",
+    "s": 13.22,
+    "e": 13.56
+   },
+   {
+    "w": " Melayu.",
+    "s": 13.56,
+    "e": 14.44
+   }
+  ],
+  "start": 9.7,
+  "end": 14.44,
+  "text": " Cuma 22 unit sahaja, atas Tanah Rezab Melayu."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Keluasan",
+    "s": 14.44,
+    "e": 15.12
+   },
+   {
+    "w": " binaan",
+    "s": 15.12,
+    "e": 15.66
+   },
+   {
+    "w": " 1,200",
+    "s": 15.66,
+    "e": 16.62
+   },
+   {
+    "w": " kaki",
+    "s": 16.62,
+    "e": 17.18
+   },
+   {
+    "w": " persegi,",
+    "s": 17.18,
+    "e": 18.06
+   },
+   {
+    "w": " dengan",
+    "s": 18.06,
+    "e": 18.48
+   },
+   {
+    "w": " 4",
+    "s": 18.48,
+    "e": 18.92
+   },
+   {
+    "w": " bilik",
+    "s": 18.92,
+    "e": 19.26
+   },
+   {
+    "w": " tidur",
+    "s": 19.26,
+    "e": 19.78
+   },
+   {
+    "w": " dan",
+    "s": 19.78,
+    "e": 20.08
+   },
+   {
+    "w": " 2",
+    "s": 20.08,
+    "e": 20.46
+   },
+   {
+    "w": " bilik",
+    "s": 20.46,
+    "e": 20.84
+   },
+   {
+    "w": " air.",
+    "s": 20.84,
+    "e": 21.52
+   }
+  ],
+  "start": 14.44,
+  "end": 21.52,
+  "text": " Keluasan binaan 1,200 kaki persegi, dengan 4 bilik tidur dan 2 bilik air."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Tanahnya",
+    "s": 21.52,
+    "e": 22.26
+   },
+   {
+    "w": " panjang,",
+    "s": 22.26,
+    "e": 22.82
+   },
+   {
+    "w": " 20",
+    "s": 22.82,
+    "e": 23.56
+   },
+   {
+    "w": " x",
+    "s": 23.56,
+    "e": 24.3
+   },
+   {
+    "w": " 102,",
+    "s": 24.3,
+    "e": 25.04
+   },
+   {
+    "w": " sampai",
+    "s": 25.04,
+    "e": 25.72
+   },
+   {
+    "w": " 106",
+    "s": 25.72,
+    "e": 26.82
+   },
+   {
+    "w": " kaki,",
+    "s": 26.82,
+    "e": 27.5
+   }
+  ],
+  "start": 21.52,
+  "end": 27.5,
+  "text": " Tanahnya panjang, 20 x 102, sampai 106 kaki,"
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " jadi",
+    "s": 27.5,
+    "e": 28.2
+   },
+   {
+    "w": " ada",
+    "s": 28.5,
+    "e": 28.56
+   },
+   {
+    "w": " ruang",
+    "s": 28.56,
+    "e": 28.94
+   },
+   {
+    "w": " untuk",
+    "s": 28.94,
+    "e": 29.32
+   },
+   {
+    "w": " anak-anak",
+    "s": 29.32,
+    "e": 29.8
+   },
+   {
+    "w": " bermain,",
+    "s": 29.8,
+    "e": 30.58
+   },
+   {
+    "w": " atau",
+    "s": 30.58,
+    "e": 31.14
+   },
+   {
+    "w": " nak",
+    "s": 31.14,
+    "e": 31.42
+   },
+   {
+    "w": " buat",
+    "s": 31.42,
+    "e": 31.72
+   },
+   {
+    "w": " extension",
+    "s": 31.72,
+    "e": 32.32
+   },
+   {
+    "w": " nanti.",
+    "s": 32.32,
+    "e": 33.12
+   }
+  ],
+  "start": 27.5,
+  "end": 33.12,
+  "text": " jadi ada ruang untuk anak-anak bermain, atau nak buat extension nanti."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Rumah",
+    "s": 33.5,
+    "e": 33.78
+   },
+   {
+    "w": " setingkat,",
+    "s": 33.78,
+    "e": 34.5
+   },
+   {
+    "w": " mudah",
+    "s": 34.84,
+    "e": 35.14
+   },
+   {
+    "w": " untuk",
+    "s": 35.14,
+    "e": 35.44
+   },
+   {
+    "w": " ibu",
+    "s": 35.44,
+    "e": 35.72
+   },
+   {
+    "w": " bapa",
+    "s": 35.72,
+    "e": 36.16
+   },
+   {
+    "w": " dan",
+    "s": 36.16,
+    "e": 36.4
+   },
+   {
+    "w": " warga",
+    "s": 36.4,
+    "e": 36.8
+   },
+   {
+    "w": " emas,",
+    "s": 36.8,
+    "e": 37.38
+   },
+   {
+    "w": " tak",
+    "s": 37.58,
+    "e": 37.72
+   },
+   {
+    "w": " perlu",
+    "s": 37.72,
+    "e": 38.14
+   },
+   {
+    "w": " naik",
+    "s": 38.14,
+    "e": 38.48
+   },
+   {
+    "w": " tangga.",
+    "s": 38.48,
+    "e": 39.26
+   }
+  ],
+  "start": 33.5,
+  "end": 39.26,
+  "text": " Rumah setingkat, mudah untuk ibu bapa dan warga emas, tak perlu naik tangga."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Lokasi",
+    "s": 39.6,
+    "e": 40.12
+   },
+   {
+    "w": " dekat",
+    "s": 40.12,
+    "e": 40.54
+   },
+   {
+    "w": " dengan",
+    "s": 40.54,
+    "e": 40.86
+   },
+   {
+    "w": " lebuhraya",
+    "s": 40.86,
+    "e": 41.48
+   },
+   {
+    "w": " West",
+    "s": 41.48,
+    "e": 41.9
+   },
+   {
+    "w": " Coast",
+    "s": 41.9,
+    "e": 42.16
+   },
+   {
+    "w": " dan",
+    "s": 42.16,
+    "e": 42.62
+   },
+   {
+    "w": " SKVE,",
+    "s": 42.62,
+    "e": 43.48
+   }
+  ],
+  "start": 39.6,
+  "end": 43.48,
+  "text": " Lokasi dekat dengan lebuhraya West Coast dan SKVE,"
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " senang",
+    "s": 44.08,
+    "e": 44.42
+   },
+   {
+    "w": " nak",
+    "s": 44.42,
+    "e": 44.64
+   },
+   {
+    "w": " ke",
+    "s": 44.64,
+    "e": 44.92
+   },
+   {
+    "w": " Klang,",
+    "s": 44.92,
+    "e": 45.3
+   },
+   {
+    "w": " Kota",
+    "s": 45.64,
+    "e": 45.92
+   },
+   {
+    "w": " Kemuning",
+    "s": 45.92,
+    "e": 46.4
+   },
+   {
+    "w": " dan",
+    "s": 46.4,
+    "e": 46.84
+   },
+   {
+    "w": " Shah",
+    "s": 46.84,
+    "e": 47.14
+   },
+   {
+    "w": " Alam.",
+    "s": 47.14,
+    "e": 47.58
+   }
+  ],
+  "start": 44.08,
+  "end": 47.58,
+  "text": " senang nak ke Klang, Kota Kemuning dan Shah Alam."
+ },
+ {
+  "file": "voiceover.m4a",
+  "words": [
+   {
+    "w": " Berminat?",
+    "s": 48.04,
+    "e": 48.8
+   },
+   {
+    "w": " Komen",
+    "s": 49.24,
+    "e": 49.46
+   },
+   {
+    "w": " atau",
+    "s": 49.46,
+    "e": 49.86
+   },
+   {
+    "w": " DM",
+    "s": 49.86,
+    "e": 50.26
+   },
+   {
+    "w": " untuk",
+    "s": 50.26,
+    "e": 50.64
+   },
+   {
+    "w": " info,",
+    "s": 50.64,
+    "e": 51.1
+   },
+   {
+    "w": " nanti",
+    "s": 51.74,
+    "e": 51.96
+   },
+   {
+    "w": " saya",
+    "s": 51.96,
+    "e": 52.32
+   },
+   {
+    "w": " hubungi",
+    "s": 52.32,
+    "e": 52.84
+   },
+   {
+    "w": " anda.",
+    "s": 52.84,
+    "e": 53.18
+   }
+  ],
+  "start": 48.04,
+  "end": 53.18,
+  "text": " Berminat? Komen atau DM untuk info, nanti saya hubungi anda."
+ }
+]

@@ -1,0 +1,251 @@
+{
+  "phone": "0198395315",
+  "theme": "clean",
+  "caption_highlight": false,
+  "transitions": "slide",
+  "voiceover": "assets/vo/voiceover.m4a",
+  "transcript": "transcript.json",
+  "fix_words": {},
+  "pause_max": 0.45,
+  "pause_keep": 0.3,
+  "end_hold": 2.2,
+  "music_volume": 0.15,
+  "captions": true,
+  "whoosh_on_cuts": true,
+  "text": {
+    "land_label": "TANAH REZAB MELAYU 🌿",
+    "land_sqft": 22,
+    "land_unit": "UNIT SAHAJA",
+    "land_dims": "Rumah Teres Setingkat",
+    "bedrooms": "4",
+    "bedrooms_label": "BILIK TIDUR 🛏️",
+    "bathrooms": "2",
+    "bathrooms_label": "BILIK AIR 🚿",
+    "cta_title": "BERMINAT? 👀",
+    "cta_checks": [
+      "4 Bilik • 2 Bilik Air",
+      "Tanah Rezab Melayu",
+      "22 Unit Sahaja"
+    ],
+    "cta": "💬 Komen / DM untuk info"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "from": 0,
+      "src": "assets/stills/cover.jpg",
+      "kind": "img",
+      "kb": [
+        1.1,
+        1.0
+      ]
+    },
+    {
+      "id": "aerial",
+      "from": "w:jom-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 0,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "units",
+      "from": "w:cuma-0.15",
+      "src": "assets/clips/row.mp4",
+      "media_start": 9,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "builtup",
+      "from": "w:keluasan-0.15",
+      "src": "assets/clips/front_close.mp4",
+      "media_start": 4,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "rooms",
+      "from": "w:dengan#2-0.1",
+      "src": "assets/clips/front_side.mp4",
+      "media_start": 26,
+      "kb": [
+        1.08,
+        1.0
+      ]
+    },
+    {
+      "id": "land1",
+      "from": "w:tanahnya-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 14,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "land2",
+      "from": "w:jadi-0.15",
+      "src": "assets/clips/front_side.mp4",
+      "media_start": 38,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "nolift",
+      "from": "w:rumah#2-0.15",
+      "src": "assets/stills/raw/render.jpg",
+      "kind": "card",
+      "top": 1000,
+      "kb": [
+        1.0,
+        1.12
+      ]
+    },
+    {
+      "id": "map",
+      "from": "w:lokasi-0.15",
+      "src": "assets/stills/raw/map.jpg",
+      "kind": "card",
+      "top": 1150,
+      "pin": {
+        "x": 54.7,
+        "y": 56.6,
+        "at": "w:lokasi+0.3"
+      },
+      "width": 900
+    },
+    {
+      "id": "cta",
+      "from": "w:berminat-0.2",
+      "src": "assets/stills/cover.jpg",
+      "kind": "blur",
+      "kb": [
+        1.1,
+        1.25
+      ]
+    }
+  ],
+  "graphics": [
+    {
+      "block": "titlecard",
+      "scene": "hook",
+      "tc_top": "Rumah Setingkat | Tanah Rezab Melayu",
+      "tc_big": "DEKAT\nBANDAR RIMBAYU",
+      "tc_size": 150,
+      "tc_pill": "22 Unit Sahaja",
+      "tc_script": "Taman Bentara, Telok Panglima Garang",
+      "tc_script_size": 50,
+      "cues": {
+        "pill": "w:setingkat",
+        "script": "w:keluarga"
+      }
+    },
+    {
+      "block": "land",
+      "scene": "units",
+      "cues": {
+        "count_from": "s:units.start+0.3",
+        "number": "w:22",
+        "unit": "w:unit",
+        "dims": "w:rezab"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "builtup",
+      "line": "KELUASAN BINAAN",
+      "pill": "1,200 kaki persegi",
+      "cues": {
+        "pill": "w:1,200"
+      }
+    },
+    {
+      "block": "rooms",
+      "scene": "rooms",
+      "cues": {
+        "bed": "w:4",
+        "bath": "w:2"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land1",
+      "line": "SAIZ TANAH",
+      "pill": "20' x 102' ~ 106'",
+      "cues": {
+        "pill": "w:20"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land2",
+      "line": "RUANG LUAS 🌳",
+      "pill": "Anak-anak bermain • Extension",
+      "cues": {
+        "pill": "w:ruang"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "nolift",
+      "line": "TIADA TANGGA ✅",
+      "pill": "Mesra warga emas",
+      "cues": {
+        "pill": "w:mudah"
+      }
+    },
+    {
+      "block": "nearby",
+      "scene": "map",
+      "title": "📍 LOKASI",
+      "items": [
+        [
+          "🏘️",
+          "Bandar Rimbayu",
+          "Dekat"
+        ],
+        [
+          "🛣️",
+          "Lebuhraya WCE",
+          "Beberapa minit"
+        ],
+        [
+          "🛣️",
+          "SKVE",
+          "Beberapa minit"
+        ],
+        [
+          "🏙️",
+          "Klang • Shah Alam",
+          "Mudah akses"
+        ]
+      ],
+      "cues": {
+        "items": [
+          "w:lokasi+0.4",
+          "w:west",
+          "w:skve",
+          "w:senang"
+        ]
+      }
+    },
+    {
+      "block": "cta",
+      "scene": "cta",
+      "cues": {
+        "checks": "w:berminat+0.3",
+        "cta": "w:komen"
+      }
+    }
+  ]
+}

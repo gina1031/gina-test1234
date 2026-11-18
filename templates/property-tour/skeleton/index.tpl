@@ -109,7 +109,8 @@
       /* ===== phone number (config "phone") ===== */
       #phone-mark { pointer-events: none; }
       #phone { position: absolute; top: 205px; right: 60px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 50px;
-               color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8), 0 0 28px rgba(0,0,0,.5); }
+               color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8);
+               background: rgba(0,0,0,.38); padding: 2px 18px 6px; border-radius: 14px; }
       #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
 
       /* ===== theme add-on: luxe (use "theme": "clean luxe") — dark, serif italic, gold ===== */

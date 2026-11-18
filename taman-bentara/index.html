@@ -1,0 +1,491 @@
+<!doctype html>
+<!-- Property-tour template. Edit config.json (and styles here), then run `python3 build.py` to regenerate index.html -->
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2"); font-weight: 900; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+      @font-face { font-family: "Anton"; src: url("assets/fonts/anton-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Play"; src: url("assets/fonts/playfair-display-latin-600-italic.woff2") format("woff2"); font-style: italic; font-weight: 600; }
+      @font-face { font-family: "Emoji"; src: url("assets/fonts/noto-color-emoji-emoji-400-normal.woff2") format("woff2"); }
+      :root { --ground: #0d0d0d; --ink: #ffffff; --accent: #ffd400; --green: #0f8a4c; --red: #e0242b; --deep: #10233f; --font-display: "Mont", "Emoji", sans-serif; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); color: var(--ink); }
+      .clip { position: absolute; inset: 0; }
+      video.clip, img.clip { width: 1080px; height: 1920px; object-fit: cover; }
+      .bg-blur { filter: blur(18px) brightness(0.55); }
+      .shade-top { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 40%); }
+      .shade-bot { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 30%); }
+      .t-stroke { text-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 24px rgba(0,0,0,.55); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+      .cx { position: absolute; left: 40px; right: 40px; text-align: center; }
+      .y { color: var(--accent); }
+      .pill { display: inline-block; background: #000; color: #fff; padding: 18px 34px; border-radius: 22px; font-weight: 900; font-size: 58px; white-space: nowrap; }
+      .pill.y { background: var(--accent); color: #000; }
+      .pill.g { background: var(--green); color: #fff; }
+      .tag { display: inline-block; padding: 14px 30px; border-radius: 999px; font-weight: 900; font-size: 44px; white-space: nowrap; }
+
+      /* captions */
+      #captions { pointer-events: none; }
+      .cap { position: absolute; left: 50px; right: 50px; top: 1560px; text-align: center; font-weight: 900; font-size: 64px; line-height: 1.15; visibility: hidden;
+             text-shadow: 0 5px 0 rgba(0,0,0,.45), 0 0 18px rgba(0,0,0,.6); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+      .cw { color: #fff; }
+
+      /* hook */
+      #hook-a { top: 330px; font-weight: 900; font-size: 80px; }
+      #hook-a .tag { background: var(--accent); color: #000; font-size: 76px; padding: 16px 40px; }
+      #hook-b { top: 500px; font-weight: 900; font-size: 116px; line-height: 1.02; }
+
+      /* location */
+      #loc { position: absolute; left: 60px; right: 60px; top: 1120px; }
+      #loc .card { background: rgba(255,255,255,.96); color: #111; border-radius: 34px; padding: 30px 40px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+      #loc .l1 { font-weight: 900; font-size: 70px; }
+      #loc .l2 { font-weight: 800; font-size: 44px; color: #333; margin-top: 4px; }
+      #loc .l3 { font-weight: 600; font-size: 34px; color: #555; margin-top: 6px; }
+      #loc-chip { margin-top: 20px; }
+      #loc-chip .tag { background: var(--green); color: #fff; }
+
+      /* rooms */
+      #bilik-num { top: 300px; font-weight: 900; font-size: 280px; line-height: 1; }
+      #bilik-word { top: 590px; font-weight: 900; font-size: 92px; }
+      #bilikair { top: 760px; }
+
+      /* land size */
+      #best { top: 300px; }
+      #luas-num { top: 520px; font-weight: 900; font-size: 230px; line-height: 1; letter-spacing: -0.04em; }
+      #luas-unit { top: 770px; font-weight: 900; font-size: 84px; }
+      #luas-dim { top: 920px; }
+
+      /* side */
+      #side-a { top: 300px; font-weight: 900; font-size: 92px; line-height: 1.05; }
+      #side-b { top: 560px; font-weight: 900; font-size: 140px; }
+      #cars-row { position: absolute; top: 760px; left: 0; right: 0; display: flex; justify-content: center; gap: 26px; }
+      #cars-row span { font-size: 130px; display: inline-block; }
+
+      /* game changer list */
+      #gc-title { top: 300px; font-weight: 900; font-size: 84px; line-height: 1.08; }
+      #gc-list { position: absolute; top: 620px; left: 110px; right: 110px; display: flex; flex-direction: column; gap: 36px; }
+      .item { background: rgba(255,255,255,.95); color: #111; border-radius: 28px; padding: 30px 36px; font-weight: 800; font-size: 60px; display: flex; align-items: center; gap: 24px; white-space: nowrap; }
+      .item .e { font-size: 68px; }
+
+      /* ready */
+      #ready-a { top: 330px; }
+      #ready-b { top: 470px; font-weight: 900; font-size: 84px; }
+
+      /* price */
+      #dp { top: 220px; font-weight: 900; font-size: 120px; line-height: 1; }
+      #dp-sub { top: 360px; font-weight: 900; font-size: 64px; }
+      #price-card { position: absolute; top: 560px; left: 70px; right: 70px; background: #fff; color: #111; border-radius: 40px; padding: 46px 50px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+      #spa { white-space: nowrap; font-weight: 800; font-size: 54px; color: #666; position: relative; display: inline-block; }
+      #spa-strike { position: absolute; left: -10px; right: -10px; top: 50%; height: 8px; background: var(--red); transform-origin: left center; border-radius: 4px; }
+      #net-label { margin-top: 24px; font-weight: 900; font-size: 46px; letter-spacing: .1em; color: var(--deep); }
+      #net { white-space: nowrap; font-weight: 900; font-size: 132px; line-height: 1; color: var(--red); letter-spacing: -0.04em; }
+      #fine { margin-top: 22px; font-weight: 600; font-size: 30px; color: #555; }
+      #bonus { top: 1060px; }
+      #bonus .tag { background: var(--green); color: #fff; font-size: 42px; }
+      #cta { top: 1250px; }
+      #cta .pill { font-size: 48px; background: #0f8a4c; color: #fff; }
+      /* cta block (no price) */
+      #cta-title { top: 300px; font-weight: 900; font-size: 84px; line-height: 1.08; }
+      #cta-list { position: absolute; top: 560px; left: 70px; right: 70px; }
+      .check { white-space: nowrap; font-weight: 900; font-size: 54px; margin-bottom: 40px; background: rgba(0,0,0,.55); padding: 26px 30px; border-radius: 28px; display: flex; gap: 20px; align-items: center; }
+      .check .bx { background: var(--green); width: 74px; height: 74px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; flex: none; }
+      #flash { background: #fff; opacity: 0; }
+
+      /* ===== titlecard block (any theme) ===== */
+      #tc-top { top: 660px; font-weight: 700; font-size: 54px; text-shadow: 0 3px 10px rgba(0,0,0,.7); }
+      #tc-big { top: 740px; font-family: "Anton", sans-serif; font-size: 250px; line-height: 0.95; color: #ffd60a; text-transform: uppercase;
+                -webkit-text-stroke: 5px #111; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,.35), 0 0 40px rgba(0,0,0,.35); }
+      #tc-pill { top: 1230px; }
+      #tc-pill span { display: inline-block; background: #fff; color: #111; font-weight: 700; font-size: 52px; padding: 10px 34px; border-radius: 14px; }
+      #tc-script { top: 1335px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 74px; text-shadow: 0 3px 12px rgba(0,0,0,.75); }
+      #tc-corner { position: absolute; top: 380px; right: 70px; font-family: "Play", serif; font-style: italic; font-size: 52px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
+
+      /* ===== phone number (config "phone") ===== */
+      #phone-mark { pointer-events: none; }
+      #phone { position: absolute; top: 205px; right: 60px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 50px;
+               color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8);
+               background: rgba(0,0,0,.38); padding: 2px 18px 6px; border-radius: 14px; }
+      #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
+
+      /* ===== theme add-on: luxe (use "theme": "clean luxe") — dark, serif italic, gold ===== */
+      .theme-luxe .t-stroke, .theme-luxe #tc-big { font-family: "Play", serif !important; font-style: italic; font-weight: 600; text-transform: none;
+                               letter-spacing: 0; -webkit-text-stroke: 0; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.7); }
+      .theme-luxe #tc-big { color: #f3d27a !important; line-height: 1.02; }
+      .theme-luxe .y { color: #f3d27a; }
+      .theme-luxe .pill, .theme-luxe .pill.y, .theme-luxe .pill.g, .theme-luxe .tag, .theme-luxe #tc-pill span {
+               background: rgba(12,16,28,.72) !important; color: #f3d27a !important; border: 2px solid #d4af37; border-radius: 999px; font-weight: 700; }
+      .theme-luxe #cta .pill { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .check, .theme-luxe .nb-row, .theme-luxe .item { background: rgba(12,16,28,.8) !important; color: #fff !important; border: 1.5px solid rgba(212,175,55,.6); }
+      .theme-luxe .check .bx { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .nb-t { background: #d4af37; color: #0c101c; }
+      .theme-luxe .shade-top { background: linear-gradient(180deg, rgba(5,8,16,.65) 0%, rgba(5,8,16,0) 45%); }
+      .theme-luxe #flash { background: #f3d27a; }
+
+      /* ===== theme add-on: promo (use "theme": "clean promo") — red/yellow sale style ===== */
+      .theme-promo .t-stroke { display: inline-block; left: 50%; right: auto; transform-origin: center; translate: -50% 0; background: #e11d2e; color: #fff;
+                               padding: 6px 30px; border-radius: 10px; -webkit-text-stroke: 0; text-shadow: none; box-shadow: 0 8px 0 #8f0f1b; }
+      .theme-promo #bilik-num, .theme-promo #luas-num { background: none; box-shadow: none; color: #ffd60a; -webkit-text-stroke: 6px #e11d2e; }
+      .theme-promo #tc-big { color: #ffd60a; -webkit-text-stroke: 7px #e11d2e; text-shadow: 0 12px 0 #8f0f1b; }
+      .theme-promo .pill, .theme-promo .pill.y, .theme-promo .pill.g, .theme-promo .tag, .theme-promo #tc-pill span {
+               background: #ffd60a !important; color: #111 !important; border: 4px solid #111; border-radius: 12px; font-weight: 900; rotate: -3deg; display: inline-block; }
+      .theme-promo #cta .pill { background: #e11d2e !important; color: #fff !important; border-color: #fff; }
+      .theme-promo .cap-in { background: #ffd60a; color: #111; padding: 2px 14px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-promo .cap .cw { color: #111; }
+      .theme-promo .cap { -webkit-text-stroke: 0; text-shadow: none; line-height: 1.35; }
+      .theme-promo #captions { background: none; }
+      .theme-promo .check .bx, .theme-promo .nb-t { background: #e11d2e !important; color: #fff !important; }
+
+      /* ===== theme add-on: card (use "theme": "clean card") — modern boxed labels, green accent ===== */
+      .theme-card .t-stroke { display: inline-block; left: 50%; right: auto; translate: -50% 0; background: rgba(17,17,17,.78); color: #fff;
+                              font-family: "Mont", "Emoji", sans-serif; font-weight: 800; text-transform: none; letter-spacing: -0.01em;
+                              padding: 12px 34px; border-radius: 26px; -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card #bilik-num, .theme-card #luas-num { color: #22c55e; }
+      .theme-card .y { color: #4ade80; }
+      .theme-card #tc-big { font-family: "Mont", sans-serif; font-weight: 900; color: #fff; -webkit-text-stroke: 0; text-transform: none;
+                            letter-spacing: -0.04em; text-shadow: 0 6px 24px rgba(0,0,0,.6); }
+      .theme-card .pill, .theme-card .pill.y, .theme-card .pill.g, .theme-card .tag, .theme-card #tc-pill span {
+               background: #22c55e !important; color: #fff !important; border-radius: 999px; font-weight: 800; }
+      .theme-card .cap { -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card .cap-in { background: #fff; color: #111; padding: 4px 16px; border-radius: 10px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-card .cap .cw { color: #111; }
+      .theme-card #captions { background: none; }
+      .theme-card .check .bx, .theme-card .nb-t { background: #22c55e !important; color: #fff !important; }
+
+      /* ===== animated scene kinds ===== */
+      .scard, .span { overflow: hidden; }
+      .scard .sc-bg, .span .sc-bg { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; filter: blur(26px) brightness(0.5) saturate(1.2); }
+      .sc-wrap { position: absolute; border-radius: 30px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.2); }
+      .sc-zoom { position: absolute; inset: 0; }
+      .sc-fg { width: 100%; height: 100%; display: block; object-fit: cover; }
+      .sc-pin { position: absolute; width: 0; height: 0; }
+      .pin-dot { position: absolute; left: -45px; top: -88px; font-size: 90px; filter: drop-shadow(0 6px 6px rgba(0,0,0,.5)); }
+      .pin-pulse { position: absolute; left: -40px; top: -40px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,214,10,.55); border: 4px solid #ffd60a; }
+      .span .sc-pan { position: absolute; left: 0; top: 0; width: 1080px; }
+      .tcl { display: block; }
+      #tc-shine { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; pointer-events: none; mix-blend-mode: overlay;
+                  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.85) 50%, transparent 65%); }
+
+      /* ===== nearby block ===== */
+      #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
+      #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }
+      .nb-row { display: flex; align-items: center; gap: 22px; background: rgba(255,255,255,.95); color: #111; border-radius: 22px; padding: 22px 30px; }
+      .nb-e { font-size: 56px; }
+      .nb-p { flex: 1; font-weight: 800; font-size: 46px; line-height: 1.1; }
+      .nb-t { font-weight: 900; font-size: 40px; background: #111; color: #ffd60a; border-radius: 12px; padding: 8px 16px; white-space: nowrap; }
+
+      /* ===== theme: clean (TikTok-style: plain white captions, Anton headings, white pills) ===== */
+      .theme-clean .cap { top: 1500px; font-weight: 700; font-size: 54px; -webkit-text-stroke: 2px rgba(0,0,0,.55); paint-order: stroke fill;
+                          text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.7); }
+      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 6%, rgba(0,0,0,.42) 14%, rgba(0,0,0,.42) 20%, rgba(0,0,0,0) 26%); }
+      .theme-clean #luas-num { font-size: 260px; }
+      .theme-clean #luas-unit { top: 830px; }
+      .theme-clean #luas-dim { top: 960px; }
+      .theme-clean #bilik-num { font-size: 260px; }
+      .theme-clean #bilik-word { top: 620px; }
+      .theme-clean #bilikair { top: 770px; }
+      .theme-clean #cta .pill { background: #ffd60a; color: #111; }
+      .theme-clean .t-stroke { font-family: "Anton", "Emoji", sans-serif; font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase;
+                               -webkit-text-stroke: 4px #111; text-shadow: 0 8px 0 rgba(0,0,0,.3), 0 0 30px rgba(0,0,0,.35); }
+      .theme-clean .y { color: #ffd60a; }
+      .theme-clean .pill, .theme-clean .pill.y, .theme-clean .pill.g { background: #fff; color: #111; font-weight: 700; border-radius: 14px; }
+      .theme-clean .tag { background: #fff !important; color: #111 !important; border-radius: 14px; font-weight: 700; }
+      .theme-clean .shade-top { background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 35%); }
+      .theme-clean .check { background: rgba(255,255,255,.95); color: #111; }
+      .theme-clean .check .bx { background: #111; color: #ffd60a; }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="theme-clean" data-composition-id="main" data-start="0" data-duration="53.95" data-width="1080" data-height="1920">
+
+      <!-- ===== SCENES (cut on voiceover words) ===== -->
+      <img id="sc-hook" class="clip" src="assets/stills/cover.jpg" data-start="0.0" data-duration="5.28" data-track-index="0" />
+      <video id="sc-aerial" class="clip" src="assets/clips/aerial.mp4" data-start="4.78" data-duration="4.77" data-media-start="0" muted data-track-index="0"></video>
+      <video id="sc-units" class="clip" src="assets/clips/row.mp4" data-start="9.05" data-duration="5.04" data-media-start="9" muted data-track-index="0"></video>
+      <video id="sc-builtup" class="clip" src="assets/clips/front_close.mp4" data-start="13.59" data-duration="4.17" data-media-start="4" muted data-track-index="0"></video>
+      <video id="sc-rooms" class="clip" src="assets/clips/front_side.mp4" data-start="17.26" data-duration="3.66" data-media-start="26" muted data-track-index="0"></video>
+      <video id="sc-land1" class="clip" src="assets/clips/aerial.mp4" data-start="20.42" data-duration="6.48" data-media-start="14" muted data-track-index="0"></video>
+      <video id="sc-land2" class="clip" src="assets/clips/front_side.mp4" data-start="26.4" data-duration="6.5" data-media-start="38" muted data-track-index="0"></video>
+      <div id="sc-nolift" class="clip scard" data-start="32.4" data-duration="6.35" data-track-index="0"><img class="sc-bg" src="assets/stills/raw/render.jpg" /><div class="sc-wrap" style="top:1000px;left:40px;width:1000px;height:600px"><div class="sc-zoom"><img class="sc-fg" src="assets/stills/raw/render.jpg" /></div></div></div>
+      <div id="sc-map" class="clip scard" data-start="38.25" data-duration="8.59" data-track-index="0"><img class="sc-bg" src="assets/stills/raw/map.jpg" /><div class="sc-wrap" style="top:1150px;left:90px;width:900px;height:454px"><div class="sc-zoom"><img class="sc-fg" src="assets/stills/raw/map.jpg" /><div class="sc-pin" style="left:54.7%;top:56.6%"><div class="pin-pulse"></div><div class="pin-dot">📍</div></div></div></div></div>
+      <img id="sc-cta" class="clip bg-blur" src="assets/stills/cover.jpg" data-start="46.34" data-duration="7.61" data-track-index="0" />
+
+      <!-- ===== GRAPHICS ===== -->
+      <div id="g0-titlecard" class="clip" data-start="0.0" data-duration="4.78" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tc-top" class="cx" style="font-size:48px;white-space:nowrap">Rumah Setingkat | Tanah Rezab Melayu</div>
+        <div id="tc-big" class="cx" style="font-size:150px"><span class="tcl">DEKAT</span><span class="tcl">BANDAR RIMBAYU</span><div id="tc-shine"></div></div>
+        <div id="tc-pill" class="cx" style="top:1065px"><span>22 Unit Sahaja</span></div>
+        <div id="tc-script" class="cx" style="top:1170px;font-size:50px">Taman Bentara, Telok Panglima Garang</div>
+      </div>
+
+      <div id="g1-land" class="clip" data-start="9.05" data-duration="4.54" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="best" class="cx"><span class="pill">TANAH REZAB MELAYU 🌿</span></div>
+        <div id="luas-num" class="cx t-stroke y">0</div>
+        <div id="luas-unit" class="cx t-stroke">UNIT SAHAJA</div>
+        <div id="luas-dim" class="cx"><span class="tag" style="background:#fff;color:#111">Rumah Teres Setingkat</span></div>
+      </div>
+
+      <div id="g2-text" class="clip" data-start="13.59" data-duration="3.67" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx1" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">KELUASAN BINAAN</div>
+        <div id="tx1-p" class="cx" style="top:490px"><span class="pill y">1,200 kaki persegi</span></div>
+      </div>
+
+      <div id="g3-rooms" class="clip" data-start="17.26" data-duration="3.16" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="bilik-num" class="cx t-stroke y">4</div>
+        <div id="bilik-word" class="cx t-stroke">BILIK TIDUR 🛏️</div>
+        <div id="bilikair" class="cx"><span class="pill y">+ 2 BILIK AIR 🚿</span></div>
+      </div>
+
+      <div id="g4-text" class="clip" data-start="20.42" data-duration="5.98" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx2" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">SAIZ TANAH</div>
+        <div id="tx2-p" class="cx" style="top:490px"><span class="pill y">20&#x27; x 102&#x27; ~ 106&#x27;</span></div>
+      </div>
+
+      <div id="g5-text" class="clip" data-start="26.4" data-duration="6.0" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx3" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">RUANG LUAS 🌳</div>
+        <div id="tx3-p" class="cx" style="top:490px"><span class="pill y">Anak-anak bermain • Extension</span></div>
+      </div>
+
+      <div id="g6-text" class="clip" data-start="32.4" data-duration="5.85" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx4" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">TIADA TANGGA ✅</div>
+        <div id="tx4-p" class="cx" style="top:490px"><span class="pill y">Mesra warga emas</span></div>
+      </div>
+
+      <div id="g7-nearby" class="clip" data-start="38.25" data-duration="8.09" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="nb-title" class="cx t-stroke">📍 LOKASI</div>
+        <div id="nb-list">
+          <div class="nb-row"><span class="nb-e">🏘️</span><span class="nb-p">Bandar Rimbayu</span><span class="nb-t">Dekat</span></div>
+          <div class="nb-row"><span class="nb-e">🛣️</span><span class="nb-p">Lebuhraya WCE</span><span class="nb-t">Beberapa minit</span></div>
+          <div class="nb-row"><span class="nb-e">🛣️</span><span class="nb-p">SKVE</span><span class="nb-t">Beberapa minit</span></div>
+          <div class="nb-row"><span class="nb-e">🏙️</span><span class="nb-p">Klang • Shah Alam</span><span class="nb-t">Mudah akses</span></div>
+        </div>
+      </div>
+
+      <div id="g8-cta" class="clip" data-start="46.34" data-duration="7.61" data-track-index="1">
+        <div id="cta-title" class="cx t-stroke">BERMINAT? 👀</div>
+        <div id="cta-list">
+          <div class="check"><span class="bx">✓</span>4 Bilik • 2 Bilik Air</div>
+          <div class="check"><span class="bx">✓</span>Tanah Rezab Melayu</div>
+          <div class="check"><span class="bx">✓</span>22 Unit Sahaja</div>
+        </div>
+        <div id="cta" class="cx"><span class="pill">💬 Komen / DM untuk info</span></div>
+        <div id="cta-phone" class="cx">📞 0198395315</div>
+      </div>
+
+      <div id="phone-mark" class="clip" data-start="0" data-duration="53.95" data-track-index="2"><div id="phone">0198395315</div></div>
+
+      <!-- ===== CAPTIONS (word-synced) ===== -->
+      <div id="captions" class="clip" data-start="0" data-duration="53.95" data-track-index="2">
+        <div class="cap" id="cap0"><span class="cap-in"><span class="cw" id="cw0_0">Cari</span> <span class="cw" id="cw0_1">rumah</span> <span class="cw" id="cw0_2">setingkat</span> <span class="cw" id="cw0_3">untuk</span> <span class="cw" id="cw0_4">keluarga,</span></span></div>
+        <div class="cap" id="cap1"><span class="cap-in"><span class="cw" id="cw1_0">dekat</span> <span class="cw" id="cw1_1">dengan</span> <span class="cw" id="cw1_2">Bandar</span> <span class="cw" id="cw1_3">Rimbayu?</span></span></div>
+        <div class="cap" id="cap2"><span class="cap-in"><span class="cw" id="cw2_0">Jom</span> <span class="cw" id="cw2_1">tengok</span> <span class="cw" id="cw2_2">projek</span> <span class="cw" id="cw2_3">baharu</span></span></div>
+        <div class="cap" id="cap3"><span class="cap-in"><span class="cw" id="cw3_0">di</span> <span class="cw" id="cw3_1">Taman</span> <span class="cw" id="cw3_2">Bentara,</span></span></div>
+        <div class="cap" id="cap4"><span class="cap-in"><span class="cw" id="cw4_0">Telok</span> <span class="cw" id="cw4_1">Panglima</span> <span class="cw" id="cw4_2">Garang.</span></span></div>
+        <div class="cap" id="cap5"><span class="cap-in"><span class="cw" id="cw5_0">Cuma</span> <span class="cw" id="cw5_1">22</span> <span class="cw" id="cw5_2">unit</span> <span class="cw" id="cw5_3">sahaja,</span></span></div>
+        <div class="cap" id="cap6"><span class="cap-in"><span class="cw" id="cw6_0">atas</span> <span class="cw" id="cw6_1">Tanah</span> <span class="cw" id="cw6_2">Rezab</span> <span class="cw" id="cw6_3">Melayu.</span></span></div>
+        <div class="cap" id="cap7"><span class="cap-in"><span class="cw" id="cw7_0">Keluasan</span> <span class="cw" id="cw7_1">binaan</span> <span class="cw" id="cw7_2">1,200</span> <span class="cw" id="cw7_3">kaki</span> <span class="cw" id="cw7_4">persegi,</span></span></div>
+        <div class="cap" id="cap8"><span class="cap-in"><span class="cw" id="cw8_0">dengan</span> <span class="cw" id="cw8_1">4</span> <span class="cw" id="cw8_2">bilik</span> <span class="cw" id="cw8_3">tidur</span></span></div>
+        <div class="cap" id="cap9"><span class="cap-in"><span class="cw" id="cw9_0">dan</span> <span class="cw" id="cw9_1">2</span> <span class="cw" id="cw9_2">bilik</span> <span class="cw" id="cw9_3">air.</span></span></div>
+        <div class="cap" id="cap10"><span class="cap-in"><span class="cw" id="cw10_0">Tanahnya</span> <span class="cw" id="cw10_1">panjang,</span> <span class="cw" id="cw10_2">20</span> <span class="cw" id="cw10_3">x</span> <span class="cw" id="cw10_4">102,</span></span></div>
+        <div class="cap" id="cap11"><span class="cap-in"><span class="cw" id="cw11_0">sampai</span> <span class="cw" id="cw11_1">106</span> <span class="cw" id="cw11_2">kaki,</span></span></div>
+        <div class="cap" id="cap12"><span class="cap-in"><span class="cw" id="cw12_0">jadi</span> <span class="cw" id="cw12_1">ada</span> <span class="cw" id="cw12_2">ruang</span> <span class="cw" id="cw12_3">untuk</span> <span class="cw" id="cw12_4">anak-anak</span> <span class="cw" id="cw12_5">bermain,</span></span></div>
+        <div class="cap" id="cap13"><span class="cap-in"><span class="cw" id="cw13_0">atau</span> <span class="cw" id="cw13_1">nak</span> <span class="cw" id="cw13_2">buat</span> <span class="cw" id="cw13_3">extension</span> <span class="cw" id="cw13_4">nanti.</span></span></div>
+        <div class="cap" id="cap14"><span class="cap-in"><span class="cw" id="cw14_0">Rumah</span> <span class="cw" id="cw14_1">setingkat,</span></span></div>
+        <div class="cap" id="cap15"><span class="cap-in"><span class="cw" id="cw15_0">mudah</span> <span class="cw" id="cw15_1">untuk</span> <span class="cw" id="cw15_2">ibu</span> <span class="cw" id="cw15_3">bapa</span></span></div>
+        <div class="cap" id="cap16"><span class="cap-in"><span class="cw" id="cw16_0">dan</span> <span class="cw" id="cw16_1">warga</span> <span class="cw" id="cw16_2">emas,</span></span></div>
+        <div class="cap" id="cap17"><span class="cap-in"><span class="cw" id="cw17_0">tak</span> <span class="cw" id="cw17_1">perlu</span> <span class="cw" id="cw17_2">naik</span> <span class="cw" id="cw17_3">tangga.</span></span></div>
+        <div class="cap" id="cap18"><span class="cap-in"><span class="cw" id="cw18_0">Lokasi</span> <span class="cw" id="cw18_1">dekat</span> <span class="cw" id="cw18_2">dengan</span> <span class="cw" id="cw18_3">lebuhraya</span> <span class="cw" id="cw18_4">West</span> <span class="cw" id="cw18_5">Coast</span></span></div>
+        <div class="cap" id="cap19"><span class="cap-in"><span class="cw" id="cw19_0">dan</span> <span class="cw" id="cw19_1">SKVE,</span></span></div>
+        <div class="cap" id="cap20"><span class="cap-in"><span class="cw" id="cw20_0">senang</span> <span class="cw" id="cw20_1">nak</span> <span class="cw" id="cw20_2">ke</span> <span class="cw" id="cw20_3">Klang,</span></span></div>
+        <div class="cap" id="cap21"><span class="cap-in"><span class="cw" id="cw21_0">Kota</span> <span class="cw" id="cw21_1">Kemuning</span> <span class="cw" id="cw21_2">dan</span> <span class="cw" id="cw21_3">Shah</span> <span class="cw" id="cw21_4">Alam.</span></span></div>
+        <div class="cap" id="cap22"><span class="cap-in"><span class="cw" id="cw22_0">Berminat?</span> <span class="cw" id="cw22_1">Komen</span> <span class="cw" id="cw22_2">atau</span> <span class="cw" id="cw22_3">DM</span> <span class="cw" id="cw22_4">untuk</span> <span class="cw" id="cw22_5">info,</span></span></div>
+        <div class="cap" id="cap23"><span class="cap-in"><span class="cw" id="cw23_0">nanti</span> <span class="cw" id="cw23_1">saya</span> <span class="cw" id="cw23_2">hubungi</span> <span class="cw" id="cw23_3">anda.</span></span></div>
+      </div>
+
+      <div id="flash" class="clip" data-start="0" data-duration="53.95" data-track-index="2"></div>
+
+      <!-- ===== VOICEOVER (long pauses tightened) ===== -->
+      <audio id="vo-0" src="assets/vo/voiceover.m4a" data-start="0.0" data-duration="4.7" data-media-start="0.0" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-1" src="assets/vo/voiceover.m4a" data-start="4.7" data-duration="4.45" data-media-start="5.05" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-2" src="assets/vo/voiceover.m4a" data-start="9.15" data-duration="4.5" data-media-start="9.65" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-3" src="assets/vo/voiceover.m4a" data-start="13.65" data-duration="6.9" data-media-start="14.35" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-4" src="assets/vo/voiceover.m4a" data-start="20.55" data-duration="17.55" data-media-start="21.5" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-5" src="assets/vo/voiceover.m4a" data-start="38.1" data-duration="4.3" data-media-start="39.3" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-6" src="assets/vo/voiceover.m4a" data-start="42.4" data-duration="3.75" data-media-start="43.75" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-7" src="assets/vo/voiceover.m4a" data-start="46.15" data-duration="5.6" data-media-start="47.65" data-volume="1" data-track-index="9"></audio>
+
+      <!-- ===== MUSIC BED ===== -->
+      <audio id="bed" src="assets/sfx/bed.m4a" data-start="0" data-duration="53.95" data-media-start="0" data-volume="0.15" data-fade-out="1.2" data-track-index="3"></audio>
+
+      <!-- ===== SFX ===== -->
+      <audio id="sfx00" src="assets/sfx/impact.wav" data-start="0" data-duration="0.9" data-volume="0.85" data-track-index="4"></audio>
+      <audio id="sfx01" src="assets/sfx/impact.wav" data-start="0.05" data-duration="0.9" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx02" src="assets/sfx/pop.wav" data-start="0.88" data-duration="0.12" data-volume="0.5" data-track-index="6"></audio>
+      <audio id="sfx03" src="assets/sfx/whoosh.wav" data-start="4.53" data-duration="0.6" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx04" src="assets/sfx/riser.wav" data-start="8.15" data-duration="1.2" data-volume="0.5" data-track-index="4"></audio>
+      <audio id="sfx05" src="assets/sfx/whoosh.wav" data-start="8.8" data-duration="0.6" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx06" src="assets/sfx/impact.wav" data-start="9.05" data-duration="0.9" data-volume="0.75" data-track-index="6"></audio>
+      <audio id="sfx07" src="assets/sfx/tick.wav" data-start="9.86" data-duration="0.06" data-volume="0.6" data-track-index="7"></audio>
+      <audio id="sfx08" src="assets/sfx/ding.wav" data-start="10.44" data-duration="1.2" data-volume="0.55" data-track-index="4"></audio>
+      <audio id="sfx09" src="assets/sfx/whoosh.wav" data-start="13.34" data-duration="0.6" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx10" src="assets/sfx/pop.wav" data-start="13.59" data-duration="0.12" data-volume="0.55" data-track-index="6"></audio>
+      <audio id="sfx11" src="assets/sfx/whoosh.wav" data-start="17.01" data-duration="0.6" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx12" src="assets/sfx/impact.wav" data-start="17.78" data-duration="0.9" data-volume="0.5" data-track-index="4"></audio>
+      <audio id="sfx13" src="assets/sfx/pop.wav" data-start="19.38" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="sfx14" src="assets/sfx/whoosh.wav" data-start="20.17" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx15" src="assets/sfx/pop.wav" data-start="20.42" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
+      <audio id="sfx16" src="assets/sfx/whoosh.wav" data-start="26.15" data-duration="0.6" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx17" src="assets/sfx/pop.wav" data-start="26.4" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="sfx18" src="assets/sfx/whoosh.wav" data-start="32.15" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx19" src="assets/sfx/pop.wav" data-start="32.4" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
+      <audio id="sfx20" src="assets/sfx/whoosh.wav" data-start="38.0" data-duration="0.6" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx21" src="assets/sfx/pop.wav" data-start="38.7" data-duration="0.12" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="sfx22" src="assets/sfx/tick.wav" data-start="38.8" data-duration="0.06" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx23" src="assets/sfx/tick.wav" data-start="40.28" data-duration="0.06" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx24" src="assets/sfx/tick.wav" data-start="41.42" data-duration="0.06" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx25" src="assets/sfx/tick.wav" data-start="42.73" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx26" src="assets/sfx/whoosh.wav" data-start="46.09" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx27" src="assets/sfx/tick.wav" data-start="46.84" data-duration="0.06" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx28" src="assets/sfx/tick.wav" data-start="47.19" data-duration="0.06" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx29" src="assets/sfx/tick.wav" data-start="47.54" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx30" src="assets/sfx/pop.wav" data-start="47.74" data-duration="0.12" data-volume="0.6" data-track-index="6"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#flash", { opacity: 0 }, 0);
+      [].forEach((t) => {
+        tl.to("#flash", { opacity: 0.5, duration: 0.05, ease: "none" }, t - 0.05).to("#flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
+      });
+
+      // Ken Burns on every shot
+      tl.fromTo("#sc-hook", { scale: 1.1 }, { scale: 1.0, duration: 5.28, ease: "none" }, 0.0);
+      tl.fromTo("#sc-aerial", { scale: 1.0 }, { scale: 1.1, duration: 4.77, ease: "none" }, 4.78);
+      tl.fromTo("#sc-aerial", { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 4.78);
+      tl.fromTo("#sc-units", { scale: 1.0 }, { scale: 1.08, duration: 5.04, ease: "none" }, 9.05);
+      tl.fromTo("#sc-units", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, 9.05);
+      tl.fromTo("#sc-builtup", { scale: 1.0 }, { scale: 1.08, duration: 4.17, ease: "none" }, 13.59);
+      tl.fromTo("#sc-builtup", { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 13.59);
+      tl.fromTo("#sc-rooms", { scale: 1.08 }, { scale: 1.0, duration: 3.66, ease: "none" }, 17.26);
+      tl.fromTo("#sc-rooms", { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 17.26);
+      tl.fromTo("#sc-land1", { scale: 1.0 }, { scale: 1.1, duration: 6.48, ease: "none" }, 20.42);
+      tl.fromTo("#sc-land1", { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 20.42);
+      tl.fromTo("#sc-land2", { scale: 1.0 }, { scale: 1.08, duration: 6.5, ease: "none" }, 26.4);
+      tl.fromTo("#sc-land2", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, 26.4);
+      tl.fromTo("#sc-nolift .sc-bg", { scale: 1.25, x: 30 }, { scale: 1.4, x: -30, duration: 6.35, ease: "none" }, 32.4);
+      tl.fromTo("#sc-nolift .sc-wrap", { scale: 0.72, rotation: -5, y: 140, opacity: 0 }, { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.6)" }, 32.449999999999996);
+      tl.to("#sc-nolift .sc-wrap", { y: -14, rotation: 0.6, duration: 2.775, yoyo: true, repeat: 1, ease: "sine.inOut" }, 33.15);
+      tl.fromTo("#sc-nolift .sc-zoom", { scale: 1.0 }, { scale: 1.12, duration: 6.35, ease: "none" }, 32.4);
+      tl.fromTo("#sc-nolift", { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 32.4);
+      tl.fromTo("#sc-map .sc-bg", { scale: 1.25, x: 30 }, { scale: 1.4, x: -30, duration: 8.59, ease: "none" }, 38.25);
+      tl.fromTo("#sc-map .sc-wrap", { scale: 0.72, rotation: -5, y: 140, opacity: 0 }, { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.6)" }, 38.3);
+      tl.to("#sc-map .sc-wrap", { y: -14, rotation: 0.6, duration: 3.895, yoyo: true, repeat: 1, ease: "sine.inOut" }, 39.0);
+      tl.fromTo("#sc-map .sc-zoom", { scale: 1.12 }, { scale: 1.25, duration: 8.59, ease: "none" }, 38.25);
+      tl.fromTo("#sc-map .pin-dot", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "bounce.out" }, 38.7);
+      tl.fromTo("#sc-map .pin-pulse", { scale: 0.4, opacity: 0.9 }, { scale: 3.2, opacity: 0, duration: 1.1, ease: "power1.out", repeat: 5 }, 39.1);
+      tl.fromTo("#sc-map", { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 38.25);
+      tl.fromTo("#sc-cta", { scale: 1.1 }, { scale: 1.25, duration: 7.61, ease: "none" }, 46.34);
+      tl.fromTo("#sc-cta", { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 46.34);
+
+      // titlecard
+      tl.fromTo("#tc-top", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.05);
+      gsap.utils.toArray("#tc-big .tcl").forEach((el, i) => tl.fromTo(el, { y: 120, scale: 1.5, rotation: i % 2 ? 4 : -4, opacity: 0 }, { y: 0, scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 0.1 + i * 0.22));
+      tl.fromTo("#tc-shine", { xPercent: -120 }, { xPercent: 120, duration: 0.9, ease: "power2.inOut" }, 1.0);
+      tl.fromTo("#tc-pill", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 0.88);
+      tl.fromTo("#tc-script", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 1.9);
+      tl.to("#tc-big", { scale: 1.03, duration: 1.2, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.6);
+
+      // land
+      tl.fromTo("#best", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 9.05);
+      tl.fromTo("#luas-num", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 9.35);
+      (() => { const n = { v: 0 }, el = document.querySelector("#luas-num"); tl.fromTo(n, { v: 0 }, { v: 22, duration: 0.51, ease: "power2.out", onUpdate: () => { el.textContent = Math.round(n.v).toLocaleString("en-US"); } }, 9.35); })();
+      tl.to("#luas-num", { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, 9.86);
+      tl.fromTo("#luas-unit", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 10.44);
+      tl.fromTo("#luas-dim", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 12.72);
+
+      // text
+      tl.fromTo("#tx1", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 13.59);
+      tl.fromTo("#tx1-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 14.96);
+
+      // rooms
+      tl.fromTo("#bilik-num", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, 17.78);
+      tl.fromTo("#bilik-word", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 18.03);
+      tl.fromTo("#bilikair", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 19.38);
+
+      // text
+      tl.fromTo("#tx2", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 20.42);
+      tl.fromTo("#tx2-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 21.87);
+
+      // text
+      tl.fromTo("#tx3", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 26.4);
+      tl.fromTo("#tx3-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 27.61);
+
+      // text
+      tl.fromTo("#tx4", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 32.4);
+      tl.fromTo("#tx4-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 33.89);
+
+      // nearby
+      tl.fromTo("#nb-title", { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 38.35);
+      tl.fromTo("#nb-list .nb-row:nth-child(1)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 38.7);
+      tl.fromTo("#nb-list .nb-row:nth-child(2)", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 40.18);
+      tl.fromTo("#nb-list .nb-row:nth-child(3)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 41.32);
+      tl.fromTo("#nb-list .nb-row:nth-child(4)", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 42.63);
+
+      // cta
+      tl.fromTo("#cta-title", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 46.34);
+      tl.fromTo("#cta-list .check:nth-child(1)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 46.84);
+      tl.fromTo("#cta-list .check:nth-child(2)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 47.19);
+      tl.fromTo("#cta-list .check:nth-child(3)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 47.54);
+      tl.fromTo("#cta-phone", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 48.04);
+      tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 47.74);
+      tl.to("#cta", { scale: 1.06, duration: 0.3, yoyo: true, repeat: 7, ease: "sine.inOut" }, 48.14);
+
+      // phone
+      tl.fromTo("#phone", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.2);
+
+      // captions
+      gsap.set(".cap", { autoAlpha: 0 });
+      tl.set("#cap0", { autoAlpha: 1 }, 0.0).set("#cap0", { autoAlpha: 0 }, 2.8); tl.fromTo("#cap0", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 0.0);
+      tl.set("#cap1", { autoAlpha: 1 }, 2.8).set("#cap1", { autoAlpha: 0 }, 4.93); tl.fromTo("#cap1", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 2.8);
+      tl.set("#cap2", { autoAlpha: 1 }, 4.93).set("#cap2", { autoAlpha: 0 }, 6.39); tl.fromTo("#cap2", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 4.93);
+      tl.set("#cap3", { autoAlpha: 1 }, 6.39).set("#cap3", { autoAlpha: 0 }, 7.65); tl.fromTo("#cap3", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 6.39);
+      tl.set("#cap4", { autoAlpha: 1 }, 7.65).set("#cap4", { autoAlpha: 0 }, 9.2); tl.fromTo("#cap4", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 7.65);
+      tl.set("#cap5", { autoAlpha: 1 }, 9.2).set("#cap5", { autoAlpha: 0 }, 11.66); tl.fromTo("#cap5", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 9.2);
+      tl.set("#cap6", { autoAlpha: 1 }, 11.66).set("#cap6", { autoAlpha: 0 }, 13.74); tl.fromTo("#cap6", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 11.66);
+      tl.set("#cap7", { autoAlpha: 1 }, 13.74).set("#cap7", { autoAlpha: 0 }, 17.36); tl.fromTo("#cap7", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 13.74);
+      tl.set("#cap8", { autoAlpha: 1 }, 17.36).set("#cap8", { autoAlpha: 0 }, 19.08); tl.fromTo("#cap8", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 17.36);
+      tl.set("#cap9", { autoAlpha: 1 }, 19.08).set("#cap9", { autoAlpha: 0 }, 20.57); tl.fromTo("#cap9", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 19.08);
+      tl.set("#cap10", { autoAlpha: 1 }, 20.57).set("#cap10", { autoAlpha: 0 }, 24.09); tl.fromTo("#cap10", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 20.57);
+      tl.set("#cap11", { autoAlpha: 1 }, 24.09).set("#cap11", { autoAlpha: 0 }, 26.55); tl.fromTo("#cap11", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 24.09);
+      tl.set("#cap12", { autoAlpha: 1 }, 26.55).set("#cap12", { autoAlpha: 0 }, 29.63); tl.fromTo("#cap12", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 26.55);
+      tl.set("#cap13", { autoAlpha: 1 }, 29.63).set("#cap13", { autoAlpha: 0 }, 32.55); tl.fromTo("#cap13", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 29.63);
+      tl.set("#cap14", { autoAlpha: 1 }, 32.55).set("#cap14", { autoAlpha: 0 }, 33.89); tl.fromTo("#cap14", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 32.55);
+      tl.set("#cap15", { autoAlpha: 1 }, 33.89).set("#cap15", { autoAlpha: 0 }, 35.21); tl.fromTo("#cap15", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 33.89);
+      tl.set("#cap16", { autoAlpha: 1 }, 35.21).set("#cap16", { autoAlpha: 0 }, 36.63); tl.fromTo("#cap16", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 35.21);
+      tl.set("#cap17", { autoAlpha: 1 }, 36.63).set("#cap17", { autoAlpha: 0 }, 38.4); tl.fromTo("#cap17", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 36.63);
+      tl.set("#cap18", { autoAlpha: 1 }, 38.4).set("#cap18", { autoAlpha: 0 }, 40.96); tl.fromTo("#cap18", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 38.4);
+      tl.set("#cap19", { autoAlpha: 1 }, 40.96).set("#cap19", { autoAlpha: 0 }, 42.73); tl.fromTo("#cap19", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 40.96);
+      tl.set("#cap20", { autoAlpha: 1 }, 42.73).set("#cap20", { autoAlpha: 0 }, 44.29); tl.fromTo("#cap20", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 42.73);
+      tl.set("#cap21", { autoAlpha: 1 }, 44.29).set("#cap21", { autoAlpha: 0 }, 46.54); tl.fromTo("#cap21", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 44.29);
+      tl.set("#cap22", { autoAlpha: 1 }, 46.54).set("#cap22", { autoAlpha: 0 }, 50.24); tl.fromTo("#cap22", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 46.54);
+      tl.set("#cap23", { autoAlpha: 1 }, 50.24).set("#cap23", { autoAlpha: 0 }, 53.95); tl.fromTo("#cap23", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 50.24);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
