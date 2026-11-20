@@ -49,13 +49,13 @@
  },
  {
   "file": "voiceover.m4a",
-  "start": 5.7,
+  "start": 5.68,
   "end": 10.78,
   "text": " Ini peluang untuk ada rumah sendiri dekat dengan tempat kerja.",
   "words": [
    {
     "w": " Ini",
-    "s": 5.7,
+    "s": 5.68,
     "e": 5.86
    },
    {
@@ -81,11 +81,11 @@
    {
     "w": " sendiri",
     "s": 7.44,
-    "e": 8.16
+    "e": 8.22
    },
    {
     "w": " dekat",
-    "s": 8.16,
+    "s": 8.22,
     "e": 8.94
    },
    {
@@ -134,11 +134,11 @@
    {
     "w": " dua",
     "s": 13.56,
-    "e": 13.88
+    "e": 13.9
    },
    {
     "w": " tingkat",
-    "s": 13.88,
+    "s": 13.9,
     "e": 14.48
    },
    {
@@ -162,26 +162,26 @@
   "file": "voiceover.m4a",
   "start": 16.2,
   "end": 20.66,
-  "text": " tanah rezap Melayu dan hak milik kekal, freehold,",
+  "text": " Tanah Rezab Melayu dan hak milik kekal Freehold.",
   "words": [
    {
-    "w": " tanah",
+    "w": " Tanah",
     "s": 16.2,
     "e": 16.54
    },
    {
-    "w": " rezap",
+    "w": " Rezab",
     "s": 16.54,
-    "e": 16.96
+    "e": 16.94
    },
    {
     "w": " Melayu",
-    "s": 16.96,
-    "e": 17.86
+    "s": 16.94,
+    "e": 17.84
    },
    {
     "w": " dan",
-    "s": 17.86,
+    "s": 17.84,
     "e": 18.32
    },
    {
@@ -195,41 +195,41 @@
     "e": 19.04
    },
    {
-    "w": " kekal,",
+    "w": " kekal",
     "s": 19.04,
-    "e": 19.7
+    "e": 19.64
    },
    {
-    "w": " freehold,",
-    "s": 20.08,
+    "w": " Freehold.",
+    "s": 19.64,
     "e": 20.66
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 21.28,
+  "start": 21.26,
   "end": 23.92,
-  "text": " tiga bilik tidur dan dua bilik air,",
+  "text": " Tiga bilik tidur dan dua bilik air.",
   "words": [
    {
-    "w": " tiga",
-    "s": 21.28,
+    "w": " Tiga",
+    "s": 21.26,
     "e": 21.68
    },
    {
     "w": " bilik",
     "s": 21.68,
-    "e": 22.0
+    "e": 21.98
    },
    {
     "w": " tidur",
-    "s": 22.0,
-    "e": 22.5
+    "s": 21.98,
+    "e": 22.52
    },
    {
     "w": " dan",
-    "s": 22.5,
+    "s": 22.52,
     "e": 22.84
    },
    {
@@ -243,7 +243,7 @@
     "e": 23.52
    },
    {
-    "w": " air,",
+    "w": " air.",
     "s": 23.52,
     "e": 23.92
    }
@@ -251,81 +251,76 @@
  },
  {
   "file": "voiceover.m4a",
-  "start": 23.92,
-  "end": 31.78,
-  "text": " Keluasan binaan 1,000 kaki persegi atas tanah 20 x 65 kaki.",
+  "start": 24.26,
+  "end": 27.58,
+  "text": " Keluasan binaan seribu kaki persegi.",
   "words": [
    {
     "w": " Keluasan",
-    "s": 23.92,
-    "e": 24.94
+    "s": 24.26,
+    "e": 24.96
    },
    {
     "w": " binaan",
-    "s": 24.94,
-    "e": 25.6
+    "s": 24.96,
+    "e": 25.62
    },
    {
-    "w": " 1",
-    "s": 25.6,
-    "e": 26.02
-   },
-   {
-    "w": ",000",
-    "s": 26.02,
+    "w": " seribu",
+    "s": 25.62,
     "e": 26.3
    },
    {
     "w": " kaki",
     "s": 26.3,
-    "e": 26.66
+    "e": 26.64
    },
    {
-    "w": " persegi",
-    "s": 26.66,
-    "e": 27.6
-   },
-   {
-    "w": " atas",
-    "s": 27.6,
-    "e": 28.16
-   },
-   {
-    "w": " tanah",
-    "s": 28.16,
-    "e": 28.8
-   },
-   {
-    "w": " 20",
-    "s": 28.8,
-    "e": 29.44
-   },
-   {
-    "w": " x",
-    "s": 29.44,
-    "e": 29.88
-   },
-   {
-    "w": " 65",
-    "s": 29.88,
-    "e": 30.58
-   },
-   {
-    "w": " kaki.",
-    "s": 30.58,
-    "e": 31.78
+    "w": " persegi.",
+    "s": 26.64,
+    "e": 27.58
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 32.06,
-  "end": 39.24,
-  "text": " Lokasi dekat dengan Westpots, Taman Perindustrian Pulau Indah dan Selangor Halal Hub.",
+  "start": 27.58,
+  "end": 34.64,
+  "text": " atas tanah 20 x 65 kaki, lokasi dekat dengan Westpots,",
   "words": [
    {
-    "w": " Lokasi",
-    "s": 32.06,
+    "w": " atas",
+    "s": 27.58,
+    "e": 28.2
+   },
+   {
+    "w": " tanah",
+    "s": 28.2,
+    "e": 28.8
+   },
+   {
+    "w": " 20",
+    "s": 28.8,
+    "e": 29.46
+   },
+   {
+    "w": " x",
+    "s": 29.46,
+    "e": 29.88
+   },
+   {
+    "w": " 65",
+    "s": 29.88,
+    "e": 30.6
+   },
+   {
+    "w": " kaki,",
+    "s": 30.6,
+    "e": 31.76
+   },
+   {
+    "w": " lokasi",
+    "s": 32.1,
     "e": 32.68
    },
    {
@@ -341,16 +336,24 @@
    {
     "w": " Westpots,",
     "s": 33.56,
-    "e": 34.66
-   },
+    "e": 34.64
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 34.98,
+  "end": 39.16,
+  "text": " Taman Perindustrian Pulau Indah dan Selangor Halal Hub.",
+  "words": [
    {
     "w": " Taman",
     "s": 34.98,
-    "e": 35.26
+    "e": 35.28
    },
    {
     "w": " Perindustrian",
-    "s": 35.26,
+    "s": 35.28,
     "e": 36.16
    },
    {
@@ -361,16 +364,16 @@
    {
     "w": " Indah",
     "s": 36.48,
-    "e": 37.22
+    "e": 37.2
    },
    {
     "w": " dan",
-    "s": 37.22,
-    "e": 37.66
+    "s": 37.2,
+    "e": 37.64
    },
    {
     "w": " Selangor",
-    "s": 37.66,
+    "s": 37.64,
     "e": 38.28
    },
    {
@@ -381,15 +384,15 @@
    {
     "w": " Hub.",
     "s": 38.82,
-    "e": 39.24
+    "e": 39.16
    }
   ]
  },
  {
   "file": "voiceover.m4a",
   "start": 39.72,
-  "end": 48.6,
-  "text": " Kawasan ini terus berkembang, sesuai untuk duduk sendiri atau untuk disewakan kepada pekerja di sekitar sini.",
+  "end": 44.32,
+  "text": " Kawasan ini terus berkembang sesuai untuk duduk sendiri",
   "words": [
    {
     "w": " Kawasan",
@@ -399,51 +402,59 @@
    {
     "w": " ini",
     "s": 40.2,
-    "e": 40.6
+    "e": 40.62
    },
    {
     "w": " terus",
-    "s": 40.6,
-    "e": 41.08
+    "s": 40.62,
+    "e": 41.06
    },
    {
-    "w": " berkembang,",
-    "s": 41.08,
-    "e": 42.08
+    "w": " berkembang",
+    "s": 41.06,
+    "e": 42.18
    },
    {
     "w": " sesuai",
-    "s": 42.4,
+    "s": 42.18,
     "e": 42.92
    },
    {
     "w": " untuk",
     "s": 42.92,
-    "e": 43.34
+    "e": 43.3
    },
    {
     "w": " duduk",
-    "s": 43.34,
-    "e": 43.68
+    "s": 43.3,
+    "e": 43.66
    },
    {
     "w": " sendiri",
-    "s": 43.68,
+    "s": 43.66,
     "e": 44.32
-   },
+   }
+  ]
+ },
+ {
+  "file": "voiceover.m4a",
+  "start": 44.32,
+  "end": 48.68,
+  "text": " atau untuk disewakan kepada pekerja di sekitar sini.",
+  "words": [
    {
     "w": " atau",
     "s": 44.32,
-    "e": 45.18
+    "e": 45.16
    },
    {
     "w": " untuk",
-    "s": 45.18,
-    "e": 45.6
+    "s": 45.16,
+    "e": 45.58
    },
    {
     "w": " disewakan",
-    "s": 45.6,
+    "s": 45.58,
     "e": 46.34
    },
    {
@@ -454,88 +465,93 @@
    {
     "w": " pekerja",
     "s": 46.74,
-    "e": 47.44
+    "e": 47.46
    },
    {
     "w": " di",
-    "s": 47.44,
-    "e": 47.68
+    "s": 47.46,
+    "e": 47.7
    },
    {
     "w": " sekitar",
-    "s": 47.68,
+    "s": 47.7,
     "e": 48.12
    },
    {
     "w": " sini.",
     "s": 48.12,
-    "e": 48.6
+    "e": 48.68
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 49.18,
-  "end": 52.66,
-  "text": " Berminat, komen atau DM untuk info.",
+  "start": 49.3,
+  "end": 53.5,
+  "text": " Berminat? Komen atau DM untuk info lanjut.",
   "words": [
    {
-    "w": " Berminat,",
-    "s": 49.18,
-    "e": 50.14
+    "w": " Berminat?",
+    "s": 49.3,
+    "e": 50.3
    },
    {
-    "w": " komen",
-    "s": 50.48,
-    "e": 50.76
+    "w": " Komen",
+    "s": 50.58,
+    "e": 50.96
    },
    {
     "w": " atau",
-    "s": 50.76,
-    "e": 51.18
+    "s": 50.96,
+    "e": 51.3
    },
    {
     "w": " DM",
-    "s": 51.18,
-    "e": 51.62
+    "s": 51.3,
+    "e": 51.7
    },
    {
     "w": " untuk",
-    "s": 51.62,
-    "e": 52.06
+    "s": 51.7,
+    "e": 52.28
    },
    {
-    "w": " info.",
-    "s": 52.06,
-    "e": 52.66
+    "w": " info",
+    "s": 52.28,
+    "e": 52.68
+   },
+   {
+    "w": " lanjut.",
+    "s": 52.68,
+    "e": 53.5
    }
   ]
  },
  {
   "file": "voiceover.m4a",
-  "start": 52.66,
-  "end": 54.86,
+  "start": 53.68,
+  "end": 55.6,
   "text": " Nanti saya hubungi anda.",
   "words": [
    {
     "w": " Nanti",
-    "s": 52.66,
-    "e": 53.62
+    "s": 53.68,
+    "e": 54.22
    },
    {
     "w": " saya",
-    "s": 53.62,
-    "e": 53.92
+    "s": 54.22,
+    "e": 54.78
    },
    {
     "w": " hubungi",
-    "s": 53.92,
-    "e": 54.52
+    "s": 54.78,
+    "e": 55.36
    },
    {
     "w": " anda.",
-    "s": 54.52,
-    "e": 54.86
+    "s": 55.36,
+    "e": 55.6
    }
   ]
  }
