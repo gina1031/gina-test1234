@@ -1,0 +1,244 @@
+{
+  "phone": "0198395315",
+  "theme": "clean",
+  "caption_highlight": false,
+  "transitions": "slide",
+  "voiceover": "assets/vo/voiceover.m4a",
+  "transcript": "transcript.json",
+  "fix_words": {},
+  "pause_max": 0.45,
+  "pause_keep": 0.3,
+  "end_hold": 2.2,
+  "music_volume": 0.15,
+  "captions": true,
+  "whoosh_on_cuts": true,
+  "text": {
+    "bedrooms": "3",
+    "bedrooms_label": "BILIK TIDUR 🛏️",
+    "bathrooms": "2",
+    "bathrooms_label": "BILIK AIR 🚿",
+    "cta_title": "BERMINAT? 👀",
+    "cta_checks": [
+      "3 Bilik • 2 Bilik Air",
+      "Freehold • Rezab Melayu",
+      "Dekat Westports"
+    ],
+    "cta": "💬 Komen / DM untuk info"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "from": 0,
+      "src": "assets/clips/front_a.mp4",
+      "media_start": 0,
+      "kb": [
+        1.15,
+        1.0
+      ]
+    },
+    {
+      "id": "work",
+      "from": "w:ini-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 4,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "intro",
+      "from": "w:harmoni-0.15",
+      "src": "assets/clips/front_b.mp4",
+      "media_start": 0,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "rezab",
+      "from": "w:tanah-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 26,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "rooms",
+      "from": "w:3-0.15",
+      "src": "assets/clips/front_c.mp4",
+      "media_start": 0,
+      "kb": [
+        1.08,
+        1.0
+      ]
+    },
+    {
+      "id": "builtup",
+      "from": "w:keluasan-0.15",
+      "src": "assets/clips/front_a.mp4",
+      "media_start": 7,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "land",
+      "from": "w:atas-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 36,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "loc",
+      "from": "w:lokasi-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 12,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "growth",
+      "from": "w:kawasan#2-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 40,
+      "kb": [
+        1.1,
+        1.0
+      ]
+    },
+    {
+      "id": "cta",
+      "from": "w:berminat-0.2",
+      "src": "assets/stills/front.jpg",
+      "kind": "blur",
+      "kb": [
+        1.1,
+        1.25
+      ]
+    }
+  ],
+  "graphics": [
+    {
+      "block": "titlecard",
+      "scene": "hook",
+      "tc_top": "Teres 2 Tingkat | Freehold Rezab Melayu",
+      "tc_big": "DEKAT\nWESTPORTS",
+      "tc_size": 200,
+      "tc_pill": "Pulau Indah",
+      "tc_script": "Harmoni Indah",
+      "cues": {
+        "pill": "w:westports",
+        "script": "w:industri"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "work",
+      "line": "RUMAH SENDIRI 🏡",
+      "pill": "Dekat tempat kerja",
+      "cues": {
+        "pill": "w:dekat"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "intro",
+      "line": "HARMONI INDAH",
+      "pill": "Teres 2 Tingkat • Pulau Indah",
+      "cues": {
+        "pill": "w:teres"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "rezab",
+      "line": "TANAH REZAB MELAYU 🌿",
+      "pill": "✅ Freehold",
+      "cues": {
+        "pill": "w:freehold"
+      }
+    },
+    {
+      "block": "rooms",
+      "scene": "rooms",
+      "cues": {
+        "bed": "w:3",
+        "bath": "w:2"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "builtup",
+      "line": "KELUASAN BINAAN",
+      "pill": "1,000 kaki persegi",
+      "cues": {
+        "pill": "w:1,000"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land",
+      "line": "SAIZ TANAH",
+      "pill": "20' x 65' / 66'",
+      "cues": {
+        "pill": "w:20"
+      }
+    },
+    {
+      "block": "nearby",
+      "scene": "loc",
+      "title": "📍 LOKASI",
+      "items": [
+        [
+          "⚓",
+          "Westports",
+          "Dekat"
+        ],
+        [
+          "🏭",
+          "Taman Perindustrian Pulau Indah",
+          "Dekat"
+        ],
+        [
+          "🕌",
+          "Selangor Halal Hub",
+          "Dekat"
+        ]
+      ],
+      "cues": {
+        "items": [
+          "w:westports#2",
+          "w:taman",
+          "w:selangor"
+        ]
+      }
+    },
+    {
+      "block": "text",
+      "scene": "growth",
+      "line": "KAWASAN BERKEMBANG 📈",
+      "pill": "Duduk sendiri • Disewakan",
+      "cues": {
+        "pill": "w:sesuai"
+      }
+    },
+    {
+      "block": "cta",
+      "scene": "cta",
+      "cues": {
+        "checks": "w:berminat+0.3",
+        "cta": "w:komen"
+      }
+    }
+  ]
+}

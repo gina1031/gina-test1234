@@ -1,0 +1,487 @@
+<!doctype html>
+<!-- Property-tour template. Edit config.json (and styles here), then run `python3 build.py` to regenerate index.html -->
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2"); font-weight: 800; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2"); font-weight: 900; }
+      @font-face { font-family: "Mont"; src: url("assets/fonts/montserrat-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+      @font-face { font-family: "Anton"; src: url("assets/fonts/anton-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Play"; src: url("assets/fonts/playfair-display-latin-600-italic.woff2") format("woff2"); font-style: italic; font-weight: 600; }
+      @font-face { font-family: "Emoji"; src: url("assets/fonts/noto-color-emoji-emoji-400-normal.woff2") format("woff2"); }
+      :root { --ground: #0d0d0d; --ink: #ffffff; --accent: #ffd400; --green: #0f8a4c; --red: #e0242b; --deep: #10233f; --font-display: "Mont", "Emoji", sans-serif; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); color: var(--ink); }
+      .clip { position: absolute; inset: 0; }
+      video.clip, img.clip { width: 1080px; height: 1920px; object-fit: cover; }
+      .bg-blur { filter: blur(18px) brightness(0.55); }
+      .shade-top { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 40%); }
+      .shade-bot { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 30%); }
+      .t-stroke { text-shadow: 0 6px 0 rgba(0,0,0,.35), 0 0 24px rgba(0,0,0,.55); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+      .cx { position: absolute; left: 40px; right: 40px; text-align: center; }
+      .y { color: var(--accent); }
+      .pill { display: inline-block; background: #000; color: #fff; padding: 18px 34px; border-radius: 22px; font-weight: 900; font-size: 58px; white-space: nowrap; }
+      .pill.y { background: var(--accent); color: #000; }
+      .pill.g { background: var(--green); color: #fff; }
+      .tag { display: inline-block; padding: 14px 30px; border-radius: 999px; font-weight: 900; font-size: 44px; white-space: nowrap; }
+
+      /* captions */
+      #captions { pointer-events: none; }
+      .cap { position: absolute; left: 50px; right: 50px; top: 1560px; text-align: center; font-weight: 900; font-size: 64px; line-height: 1.15; visibility: hidden;
+             text-shadow: 0 5px 0 rgba(0,0,0,.45), 0 0 18px rgba(0,0,0,.6); -webkit-text-stroke: 3px #000; paint-order: stroke fill; }
+      .cw { color: #fff; }
+
+      /* hook */
+      #hook-a { top: 330px; font-weight: 900; font-size: 80px; }
+      #hook-a .tag { background: var(--accent); color: #000; font-size: 76px; padding: 16px 40px; }
+      #hook-b { top: 500px; font-weight: 900; font-size: 116px; line-height: 1.02; }
+
+      /* location */
+      #loc { position: absolute; left: 60px; right: 60px; top: 1120px; }
+      #loc .card { background: rgba(255,255,255,.96); color: #111; border-radius: 34px; padding: 30px 40px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+      #loc .l1 { font-weight: 900; font-size: 70px; }
+      #loc .l2 { font-weight: 800; font-size: 44px; color: #333; margin-top: 4px; }
+      #loc .l3 { font-weight: 600; font-size: 34px; color: #555; margin-top: 6px; }
+      #loc-chip { margin-top: 20px; }
+      #loc-chip .tag { background: var(--green); color: #fff; }
+
+      /* rooms */
+      #bilik-num { top: 300px; font-weight: 900; font-size: 280px; line-height: 1; }
+      #bilik-word { top: 590px; font-weight: 900; font-size: 92px; }
+      #bilikair { top: 760px; }
+
+      /* land size */
+      #best { top: 300px; }
+      #luas-num { top: 520px; font-weight: 900; font-size: 230px; line-height: 1; letter-spacing: -0.04em; }
+      #luas-unit { top: 770px; font-weight: 900; font-size: 84px; }
+      #luas-dim { top: 920px; }
+
+      /* side */
+      #side-a { top: 300px; font-weight: 900; font-size: 92px; line-height: 1.05; }
+      #side-b { top: 560px; font-weight: 900; font-size: 140px; }
+      #cars-row { position: absolute; top: 760px; left: 0; right: 0; display: flex; justify-content: center; gap: 26px; }
+      #cars-row span { font-size: 130px; display: inline-block; }
+
+      /* game changer list */
+      #gc-title { top: 300px; font-weight: 900; font-size: 84px; line-height: 1.08; }
+      #gc-list { position: absolute; top: 620px; left: 110px; right: 110px; display: flex; flex-direction: column; gap: 36px; }
+      .item { background: rgba(255,255,255,.95); color: #111; border-radius: 28px; padding: 30px 36px; font-weight: 800; font-size: 60px; display: flex; align-items: center; gap: 24px; white-space: nowrap; }
+      .item .e { font-size: 68px; }
+
+      /* ready */
+      #ready-a { top: 330px; }
+      #ready-b { top: 470px; font-weight: 900; font-size: 84px; }
+
+      /* price */
+      #dp { top: 220px; font-weight: 900; font-size: 120px; line-height: 1; }
+      #dp-sub { top: 360px; font-weight: 900; font-size: 64px; }
+      #price-card { position: absolute; top: 560px; left: 70px; right: 70px; background: #fff; color: #111; border-radius: 40px; padding: 46px 50px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+      #spa { white-space: nowrap; font-weight: 800; font-size: 54px; color: #666; position: relative; display: inline-block; }
+      #spa-strike { position: absolute; left: -10px; right: -10px; top: 50%; height: 8px; background: var(--red); transform-origin: left center; border-radius: 4px; }
+      #net-label { margin-top: 24px; font-weight: 900; font-size: 46px; letter-spacing: .1em; color: var(--deep); }
+      #net { white-space: nowrap; font-weight: 900; font-size: 132px; line-height: 1; color: var(--red); letter-spacing: -0.04em; }
+      #fine { margin-top: 22px; font-weight: 600; font-size: 30px; color: #555; }
+      #bonus { top: 1060px; }
+      #bonus .tag { background: var(--green); color: #fff; font-size: 42px; }
+      #cta { top: 1250px; }
+      #cta .pill { font-size: 48px; background: #0f8a4c; color: #fff; }
+      /* cta block (no price) */
+      #cta-title { top: 300px; font-weight: 900; font-size: 84px; line-height: 1.08; }
+      #cta-list { position: absolute; top: 560px; left: 70px; right: 70px; }
+      .check { white-space: nowrap; font-weight: 900; font-size: 54px; margin-bottom: 40px; background: rgba(0,0,0,.55); padding: 26px 30px; border-radius: 28px; display: flex; gap: 20px; align-items: center; }
+      .check .bx { background: var(--green); width: 74px; height: 74px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; flex: none; }
+      #flash { background: #fff; opacity: 0; }
+
+      /* ===== titlecard block (any theme) ===== */
+      #tc-top { top: 660px; font-weight: 700; font-size: 54px; text-shadow: 0 3px 10px rgba(0,0,0,.7); }
+      #tc-big { top: 740px; font-family: "Anton", sans-serif; font-size: 250px; line-height: 0.95; color: #ffd60a; text-transform: uppercase;
+                -webkit-text-stroke: 5px #111; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,.35), 0 0 40px rgba(0,0,0,.35); }
+      #tc-pill { top: 1230px; }
+      #tc-pill span { display: inline-block; background: #fff; color: #111; font-weight: 700; font-size: 52px; padding: 10px 34px; border-radius: 14px; }
+      #tc-script { top: 1335px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 74px; text-shadow: 0 3px 12px rgba(0,0,0,.75); }
+      #tc-corner { position: absolute; top: 380px; right: 70px; font-family: "Play", serif; font-style: italic; font-size: 52px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
+
+      /* ===== phone number (config "phone") ===== */
+      #phone-mark { pointer-events: none; }
+      #phone { position: absolute; top: 205px; right: 60px; font-family: "Play", serif; font-style: italic; font-weight: 600; font-size: 50px;
+               color: #fff; letter-spacing: 0.02em; text-shadow: 0 2px 4px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8);
+               background: rgba(0,0,0,.38); padding: 2px 18px 6px; border-radius: 14px; }
+      #cta-phone { top: 1370px; font-weight: 800; font-size: 56px; text-shadow: 0 3px 10px rgba(0,0,0,.8); }
+
+      /* ===== theme add-on: luxe (use "theme": "clean luxe") — dark, serif italic, gold ===== */
+      .theme-luxe .t-stroke, .theme-luxe #tc-big { font-family: "Play", serif !important; font-style: italic; font-weight: 600; text-transform: none;
+                               letter-spacing: 0; -webkit-text-stroke: 0; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.7); }
+      .theme-luxe #tc-big { color: #f3d27a !important; line-height: 1.02; }
+      .theme-luxe .y { color: #f3d27a; }
+      .theme-luxe .pill, .theme-luxe .pill.y, .theme-luxe .pill.g, .theme-luxe .tag, .theme-luxe #tc-pill span {
+               background: rgba(12,16,28,.72) !important; color: #f3d27a !important; border: 2px solid #d4af37; border-radius: 999px; font-weight: 700; }
+      .theme-luxe #cta .pill { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .check, .theme-luxe .nb-row, .theme-luxe .item { background: rgba(12,16,28,.8) !important; color: #fff !important; border: 1.5px solid rgba(212,175,55,.6); }
+      .theme-luxe .check .bx { background: #d4af37 !important; color: #0c101c !important; }
+      .theme-luxe .nb-t { background: #d4af37; color: #0c101c; }
+      .theme-luxe .shade-top { background: linear-gradient(180deg, rgba(5,8,16,.65) 0%, rgba(5,8,16,0) 45%); }
+      .theme-luxe #flash { background: #f3d27a; }
+
+      /* ===== theme add-on: promo (use "theme": "clean promo") — red/yellow sale style ===== */
+      .theme-promo .t-stroke { display: inline-block; left: 50%; right: auto; transform-origin: center; translate: -50% 0; background: #e11d2e; color: #fff;
+                               padding: 6px 30px; border-radius: 10px; -webkit-text-stroke: 0; text-shadow: none; box-shadow: 0 8px 0 #8f0f1b; }
+      .theme-promo #bilik-num, .theme-promo #luas-num { background: none; box-shadow: none; color: #ffd60a; -webkit-text-stroke: 6px #e11d2e; }
+      .theme-promo #tc-big { color: #ffd60a; -webkit-text-stroke: 7px #e11d2e; text-shadow: 0 12px 0 #8f0f1b; }
+      .theme-promo .pill, .theme-promo .pill.y, .theme-promo .pill.g, .theme-promo .tag, .theme-promo #tc-pill span {
+               background: #ffd60a !important; color: #111 !important; border: 4px solid #111; border-radius: 12px; font-weight: 900; rotate: -3deg; display: inline-block; }
+      .theme-promo #cta .pill { background: #e11d2e !important; color: #fff !important; border-color: #fff; }
+      .theme-promo .cap-in { background: #ffd60a; color: #111; padding: 2px 14px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-promo .cap .cw { color: #111; }
+      .theme-promo .cap { -webkit-text-stroke: 0; text-shadow: none; line-height: 1.35; }
+      .theme-promo #captions { background: none; }
+      .theme-promo .check .bx, .theme-promo .nb-t { background: #e11d2e !important; color: #fff !important; }
+
+      /* ===== theme add-on: card (use "theme": "clean card") — modern boxed labels, green accent ===== */
+      .theme-card .t-stroke { display: inline-block; left: 50%; right: auto; translate: -50% 0; background: rgba(17,17,17,.78); color: #fff;
+                              font-family: "Mont", "Emoji", sans-serif; font-weight: 800; text-transform: none; letter-spacing: -0.01em;
+                              padding: 12px 34px; border-radius: 26px; -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card #bilik-num, .theme-card #luas-num { color: #22c55e; }
+      .theme-card .y { color: #4ade80; }
+      .theme-card #tc-big { font-family: "Mont", sans-serif; font-weight: 900; color: #fff; -webkit-text-stroke: 0; text-transform: none;
+                            letter-spacing: -0.04em; text-shadow: 0 6px 24px rgba(0,0,0,.6); }
+      .theme-card .pill, .theme-card .pill.y, .theme-card .pill.g, .theme-card .tag, .theme-card #tc-pill span {
+               background: #22c55e !important; color: #fff !important; border-radius: 999px; font-weight: 800; }
+      .theme-card .cap { -webkit-text-stroke: 0; text-shadow: none; }
+      .theme-card .cap-in { background: #fff; color: #111; padding: 4px 16px; border-radius: 10px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+      .theme-card .cap .cw { color: #111; }
+      .theme-card #captions { background: none; }
+      .theme-card .check .bx, .theme-card .nb-t { background: #22c55e !important; color: #fff !important; }
+
+      /* ===== animated scene kinds ===== */
+      .scard, .span { overflow: hidden; }
+      .scard .sc-bg, .span .sc-bg { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; filter: blur(26px) brightness(0.5) saturate(1.2); }
+      .sc-wrap { position: absolute; border-radius: 30px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.2); }
+      .sc-zoom { position: absolute; inset: 0; }
+      .sc-fg { width: 100%; height: 100%; display: block; object-fit: cover; }
+      .sc-pin { position: absolute; width: 0; height: 0; }
+      .pin-dot { position: absolute; left: -45px; top: -88px; font-size: 90px; filter: drop-shadow(0 6px 6px rgba(0,0,0,.5)); }
+      .pin-pulse { position: absolute; left: -40px; top: -40px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,214,10,.55); border: 4px solid #ffd60a; }
+      .span .sc-pan { position: absolute; left: 0; top: 0; width: 1080px; }
+      .tcl { display: block; }
+      #tc-shine { position: absolute; top: 0; bottom: 0; left: 0; width: 100%; pointer-events: none; mix-blend-mode: overlay;
+                  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.85) 50%, transparent 65%); }
+
+      /* ===== nearby block ===== */
+      #nb-title { top: 300px; font-weight: 900; font-size: 84px; }
+      #nb-list { position: absolute; top: 470px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 26px; }
+      .nb-row { display: flex; align-items: center; gap: 22px; background: rgba(255,255,255,.95); color: #111; border-radius: 22px; padding: 22px 30px; }
+      .nb-e { font-size: 56px; }
+      .nb-p { flex: 1; font-weight: 800; font-size: 46px; line-height: 1.1; }
+      .nb-t { font-weight: 900; font-size: 40px; background: #111; color: #ffd60a; border-radius: 12px; padding: 8px 16px; white-space: nowrap; }
+
+      /* ===== theme: clean (TikTok-style: plain white captions, Anton headings, white pills) ===== */
+      .theme-clean .cap { top: 1500px; font-weight: 700; font-size: 54px; -webkit-text-stroke: 2px rgba(0,0,0,.55); paint-order: stroke fill;
+                          text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 0 18px rgba(0,0,0,.7); }
+      .theme-clean #captions { background: linear-gradient(0deg, rgba(0,0,0,0) 6%, rgba(0,0,0,.42) 14%, rgba(0,0,0,.42) 20%, rgba(0,0,0,0) 26%); }
+      .theme-clean #luas-num { font-size: 260px; }
+      .theme-clean #luas-unit { top: 830px; }
+      .theme-clean #luas-dim { top: 960px; }
+      .theme-clean #bilik-num { font-size: 260px; }
+      .theme-clean #bilik-word { top: 620px; }
+      .theme-clean #bilikair { top: 770px; }
+      .theme-clean #cta .pill { background: #ffd60a; color: #111; }
+      .theme-clean .t-stroke { font-family: "Anton", "Emoji", sans-serif; font-weight: 400; letter-spacing: 0.01em; text-transform: uppercase;
+                               -webkit-text-stroke: 4px #111; text-shadow: 0 8px 0 rgba(0,0,0,.3), 0 0 30px rgba(0,0,0,.35); }
+      .theme-clean .y { color: #ffd60a; }
+      .theme-clean .pill, .theme-clean .pill.y, .theme-clean .pill.g { background: #fff; color: #111; font-weight: 700; border-radius: 14px; }
+      .theme-clean .tag { background: #fff !important; color: #111 !important; border-radius: 14px; font-weight: 700; }
+      .theme-clean .shade-top { background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 35%); }
+      .theme-clean .check { background: rgba(255,255,255,.95); color: #111; }
+      .theme-clean .check .bx { background: #111; color: #ffd60a; }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="theme-clean" data-composition-id="main" data-start="0" data-duration="52.61" data-width="1080" data-height="1920">
+
+      <!-- ===== SCENES (cut on voiceover words) ===== -->
+      <video id="sc-hook" class="clip" src="assets/clips/front_a.mp4" data-start="0.0" data-duration="5.6" data-media-start="0" muted data-track-index="0"></video>
+      <video id="sc-work" class="clip" src="assets/clips/aerial.mp4" data-start="5.1" data-duration="5.54" data-media-start="4" muted data-track-index="0"></video>
+      <video id="sc-intro" class="clip" src="assets/clips/front_b.mp4" data-start="10.14" data-duration="5.16" data-media-start="0" muted data-track-index="0"></video>
+      <video id="sc-rezab" class="clip" src="assets/clips/aerial.mp4" data-start="14.8" data-duration="5.03" data-media-start="26" muted data-track-index="0"></video>
+      <video id="sc-rooms" class="clip" src="assets/clips/front_c.mp4" data-start="19.33" data-duration="3.12" data-media-start="0" muted data-track-index="0"></video>
+      <video id="sc-builtup" class="clip" src="assets/clips/front_a.mp4" data-start="21.95" data-duration="3.75" data-media-start="7" muted data-track-index="0"></video>
+      <video id="sc-land" class="clip" src="assets/clips/aerial.mp4" data-start="25.2" data-duration="4.56" data-media-start="36" muted data-track-index="0"></video>
+      <video id="sc-loc" class="clip" src="assets/clips/aerial.mp4" data-start="29.26" data-duration="7.11" data-media-start="12" muted data-track-index="0"></video>
+      <video id="sc-growth" class="clip" src="assets/clips/aerial.mp4" data-start="35.87" data-duration="9.26" data-media-start="40" muted data-track-index="0"></video>
+      <img id="sc-cta" class="clip bg-blur" src="assets/stills/front.jpg" data-start="44.63" data-duration="7.98" data-track-index="0" />
+
+      <!-- ===== GRAPHICS ===== -->
+      <div id="g0-titlecard" class="clip" data-start="0.0" data-duration="5.1" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tc-top" class="cx" style="font-size:44px;white-space:nowrap">Teres 2 Tingkat | Freehold Rezab Melayu</div>
+        <div id="tc-big" class="cx" style="font-size:200px"><span class="tcl">DEKAT</span><span class="tcl">WESTPORTS</span><div id="tc-shine"></div></div>
+        <div id="tc-pill" class="cx" style="top:1160px"><span>Pulau Indah</span></div>
+        <div id="tc-script" class="cx" style="top:1265px;font-size:74px">Harmoni Indah</div>
+      </div>
+
+      <div id="g1-text" class="clip" data-start="5.1" data-duration="5.04" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx1" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">RUMAH SENDIRI 🏡</div>
+        <div id="tx1-p" class="cx" style="top:490px"><span class="pill y">Dekat tempat kerja</span></div>
+      </div>
+
+      <div id="g2-text" class="clip" data-start="10.14" data-duration="4.66" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx2" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">HARMONI INDAH</div>
+        <div id="tx2-p" class="cx" style="top:490px"><span class="pill y">Teres 2 Tingkat • Pulau Indah</span></div>
+      </div>
+
+      <div id="g3-text" class="clip" data-start="14.8" data-duration="4.53" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx3" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">TANAH REZAB MELAYU 🌿</div>
+        <div id="tx3-p" class="cx" style="top:490px"><span class="pill y">✅ Freehold</span></div>
+      </div>
+
+      <div id="g4-rooms" class="clip" data-start="19.33" data-duration="2.62" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="bilik-num" class="cx t-stroke y">3</div>
+        <div id="bilik-word" class="cx t-stroke">BILIK TIDUR 🛏️</div>
+        <div id="bilikair" class="cx"><span class="pill y">+ 2 BILIK AIR 🚿</span></div>
+      </div>
+
+      <div id="g5-text" class="clip" data-start="21.95" data-duration="3.25" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx4" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">KELUASAN BINAAN</div>
+        <div id="tx4-p" class="cx" style="top:490px"><span class="pill y">1,000 kaki persegi</span></div>
+      </div>
+
+      <div id="g6-text" class="clip" data-start="25.2" data-duration="4.06" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx5" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">SAIZ TANAH</div>
+        <div id="tx5-p" class="cx" style="top:490px"><span class="pill y">20&#x27; x 65&#x27; / 66&#x27;</span></div>
+      </div>
+
+      <div id="g7-nearby" class="clip" data-start="29.26" data-duration="6.61" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="nb-title" class="cx t-stroke">📍 LOKASI</div>
+        <div id="nb-list">
+          <div class="nb-row"><span class="nb-e">⚓</span><span class="nb-p">Westports</span><span class="nb-t">Dekat</span></div>
+          <div class="nb-row"><span class="nb-e">🏭</span><span class="nb-p">Taman Perindustrian Pulau Indah</span><span class="nb-t">Dekat</span></div>
+          <div class="nb-row"><span class="nb-e">🕌</span><span class="nb-p">Selangor Halal Hub</span><span class="nb-t">Dekat</span></div>
+        </div>
+      </div>
+
+      <div id="g8-text" class="clip" data-start="35.87" data-duration="8.76" data-track-index="1">
+        <div class="shade-top"></div>
+        <div id="tx6" class="cx t-stroke" style="top:330px;font-weight:900;font-size:92px">KAWASAN BERKEMBANG 📈</div>
+        <div id="tx6-p" class="cx" style="top:490px"><span class="pill y">Duduk sendiri • Disewakan</span></div>
+      </div>
+
+      <div id="g9-cta" class="clip" data-start="44.63" data-duration="7.98" data-track-index="1">
+        <div id="cta-title" class="cx t-stroke">BERMINAT? 👀</div>
+        <div id="cta-list">
+          <div class="check"><span class="bx">✓</span>3 Bilik • 2 Bilik Air</div>
+          <div class="check"><span class="bx">✓</span>Freehold • Rezab Melayu</div>
+          <div class="check"><span class="bx">✓</span>Dekat Westports</div>
+        </div>
+        <div id="cta" class="cx"><span class="pill">💬 Komen / DM untuk info</span></div>
+        <div id="cta-phone" class="cx">📞 0198395315</div>
+      </div>
+
+      <div id="phone-mark" class="clip" data-start="0" data-duration="52.61" data-track-index="2"><div id="phone">0198395315</div></div>
+
+      <!-- ===== CAPTIONS (word-synced) ===== -->
+      <div id="captions" class="clip" data-start="0" data-duration="52.61" data-track-index="2">
+        <div class="cap" id="cap0"><span class="cap-in"><span class="cw" id="cw0_0">Kerja</span> <span class="cw" id="cw0_1">di</span> <span class="cw" id="cw0_2">Westports,</span></span></div>
+        <div class="cap" id="cap1"><span class="cap-in"><span class="cw" id="cw1_0">atau</span> <span class="cw" id="cw1_1">kawasan</span> <span class="cw" id="cw1_2">industri</span> <span class="cw" id="cw1_3">Pulau</span> <span class="cw" id="cw1_4">Indah?</span></span></div>
+        <div class="cap" id="cap2"><span class="cap-in"><span class="cw" id="cw2_0">Ini</span> <span class="cw" id="cw2_1">peluang</span> <span class="cw" id="cw2_2">untuk</span> <span class="cw" id="cw2_3">ada</span> <span class="cw" id="cw2_4">rumah</span> <span class="cw" id="cw2_5">sendiri,</span></span></div>
+        <div class="cap" id="cap3"><span class="cap-in"><span class="cw" id="cw3_0">dekat</span> <span class="cw" id="cw3_1">dengan</span> <span class="cw" id="cw3_2">tempat</span> <span class="cw" id="cw3_3">kerja.</span></span></div>
+        <div class="cap" id="cap4"><span class="cap-in"><span class="cw" id="cw4_0">Harmoni</span> <span class="cw" id="cw4_1">Indah,</span></span></div>
+        <div class="cap" id="cap5"><span class="cap-in"><span class="cw" id="cw5_0">rumah</span> <span class="cw" id="cw5_1">teres</span> <span class="cw" id="cw5_2">dua</span> <span class="cw" id="cw5_3">tingkat</span></span></div>
+        <div class="cap" id="cap6"><span class="cap-in"><span class="cw" id="cw6_0">di</span> <span class="cw" id="cw6_1">Pulau</span> <span class="cw" id="cw6_2">Indah.</span></span></div>
+        <div class="cap" id="cap7"><span class="cap-in"><span class="cw" id="cw7_0">Tanah</span> <span class="cw" id="cw7_1">Rezab</span> <span class="cw" id="cw7_2">Melayu,</span></span></div>
+        <div class="cap" id="cap8"><span class="cap-in"><span class="cw" id="cw8_0">dan</span> <span class="cw" id="cw8_1">hak</span> <span class="cw" id="cw8_2">milik</span> <span class="cw" id="cw8_3">kekal,</span> <span class="cw" id="cw8_4">freehold.</span></span></div>
+        <div class="cap" id="cap9"><span class="cap-in"><span class="cw" id="cw9_0">3</span> <span class="cw" id="cw9_1">bilik</span> <span class="cw" id="cw9_2">tidur</span></span></div>
+        <div class="cap" id="cap10"><span class="cap-in"><span class="cw" id="cw10_0">dan</span> <span class="cw" id="cw10_1">2</span> <span class="cw" id="cw10_2">bilik</span> <span class="cw" id="cw10_3">air,</span></span></div>
+        <div class="cap" id="cap11"><span class="cap-in"><span class="cw" id="cw11_0">keluasan</span> <span class="cw" id="cw11_1">binaan</span> <span class="cw" id="cw11_2">1,000</span> <span class="cw" id="cw11_3">kaki</span> <span class="cw" id="cw11_4">persegi,</span></span></div>
+        <div class="cap" id="cap12"><span class="cap-in"><span class="cw" id="cw12_0">atas</span> <span class="cw" id="cw12_1">tanah</span> <span class="cw" id="cw12_2">20</span> <span class="cw" id="cw12_3">x</span> <span class="cw" id="cw12_4">65</span> <span class="cw" id="cw12_5">kaki.</span></span></div>
+        <div class="cap" id="cap13"><span class="cap-in"><span class="cw" id="cw13_0">Lokasi</span> <span class="cw" id="cw13_1">dekat</span> <span class="cw" id="cw13_2">dengan</span> <span class="cw" id="cw13_3">Westports,</span></span></div>
+        <div class="cap" id="cap14"><span class="cap-in"><span class="cw" id="cw14_0">Taman</span> <span class="cw" id="cw14_1">Perindustrian</span> <span class="cw" id="cw14_2">Pulau</span> <span class="cw" id="cw14_3">Indah</span></span></div>
+        <div class="cap" id="cap15"><span class="cap-in"><span class="cw" id="cw15_0">dan</span> <span class="cw" id="cw15_1">Selangor</span> <span class="cw" id="cw15_2">Halal</span> <span class="cw" id="cw15_3">Hub.</span></span></div>
+        <div class="cap" id="cap16"><span class="cap-in"><span class="cw" id="cw16_0">Kawasan</span> <span class="cw" id="cw16_1">ini</span> <span class="cw" id="cw16_2">terus</span> <span class="cw" id="cw16_3">berkembang,</span></span></div>
+        <div class="cap" id="cap17"><span class="cap-in"><span class="cw" id="cw17_0">sesuai</span> <span class="cw" id="cw17_1">untuk</span> <span class="cw" id="cw17_2">duduk</span> <span class="cw" id="cw17_3">sendiri,</span></span></div>
+        <div class="cap" id="cap18"><span class="cap-in"><span class="cw" id="cw18_0">atau</span> <span class="cw" id="cw18_1">untuk</span> <span class="cw" id="cw18_2">disewakan</span> <span class="cw" id="cw18_3">kepada</span></span></div>
+        <div class="cap" id="cap19"><span class="cap-in"><span class="cw" id="cw19_0">pekerja</span> <span class="cw" id="cw19_1">di</span> <span class="cw" id="cw19_2">sekitar</span> <span class="cw" id="cw19_3">sini.</span></span></div>
+        <div class="cap" id="cap20"><span class="cap-in"><span class="cw" id="cw20_0">Berminat?</span> <span class="cw" id="cw20_1">Komen</span> <span class="cw" id="cw20_2">atau</span> <span class="cw" id="cw20_3">DM</span> <span class="cw" id="cw20_4">untuk</span> <span class="cw" id="cw20_5">info,</span></span></div>
+        <div class="cap" id="cap21"><span class="cap-in"><span class="cw" id="cw21_0">nanti</span> <span class="cw" id="cw21_1">saya</span> <span class="cw" id="cw21_2">hubungi</span> <span class="cw" id="cw21_3">anda.</span></span></div>
+      </div>
+
+      <div id="flash" class="clip" data-start="0" data-duration="52.61" data-track-index="2"></div>
+
+      <!-- ===== VOICEOVER (long pauses tightened) ===== -->
+      <audio id="vo-0" src="assets/vo/voiceover.m4a" data-start="0.0" data-duration="4.75" data-media-start="0.0" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-1" src="assets/vo/voiceover.m4a" data-start="4.75" data-duration="5.3" data-media-start="5.2" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-2" src="assets/vo/voiceover.m4a" data-start="10.05" data-duration="1.35" data-media-start="10.8" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-3" src="assets/vo/voiceover.m4a" data-start="11.4" data-duration="3.25" data-media-start="12.35" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-4" src="assets/vo/voiceover.m4a" data-start="14.65" data-duration="1.7" data-media-start="15.9" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-5" src="assets/vo/voiceover.m4a" data-start="16.35" data-duration="2.9" data-media-start="17.8" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-6" src="assets/vo/voiceover.m4a" data-start="19.25" data-duration="2.85" data-media-start="21.05" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-7" src="assets/vo/voiceover.m4a" data-start="22.1" data-duration="3.25" data-media-start="24.1" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-8" src="assets/vo/voiceover.m4a" data-start="25.35" data-duration="3.75" data-media-start="27.6" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-9" src="assets/vo/voiceover.m4a" data-start="29.1" data-duration="2.45" data-media-start="31.75" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-10" src="assets/vo/voiceover.m4a" data-start="31.55" data-duration="2.35" data-media-start="34.7" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-11" src="assets/vo/voiceover.m4a" data-start="33.9" data-duration="1.85" data-media-start="37.2" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-12" src="assets/vo/voiceover.m4a" data-start="35.75" data-duration="2.45" data-media-start="39.45" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-13" src="assets/vo/voiceover.m4a" data-start="38.2" data-duration="2.25" data-media-start="42.1" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-14" src="assets/vo/voiceover.m4a" data-start="40.45" data-duration="4.15" data-media-start="44.5" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-15" src="assets/vo/voiceover.m4a" data-start="44.6" data-duration="1.0" data-media-start="48.95" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-16" src="assets/vo/voiceover.m4a" data-start="45.6" data-duration="2.45" data-media-start="50.2" data-volume="1" data-track-index="9"></audio>
+      <audio id="vo-17" src="assets/vo/voiceover.m4a" data-start="48.05" data-duration="2.36" data-media-start="52.8" data-volume="1" data-track-index="9"></audio>
+
+      <!-- ===== MUSIC BED ===== -->
+      <audio id="bed" src="assets/sfx/bed.m4a" data-start="0" data-duration="52.61" data-media-start="0" data-volume="0.15" data-fade-out="1.2" data-track-index="3"></audio>
+
+      <!-- ===== SFX ===== -->
+      <audio id="sfx00" src="assets/sfx/impact.wav" data-start="0" data-duration="0.9" data-volume="0.85" data-track-index="4"></audio>
+      <audio id="sfx01" src="assets/sfx/impact.wav" data-start="0.05" data-duration="0.9" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx02" src="assets/sfx/pop.wav" data-start="1.0" data-duration="0.12" data-volume="0.5" data-track-index="6"></audio>
+      <audio id="sfx03" src="assets/sfx/whoosh.wav" data-start="4.85" data-duration="0.6" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx04" src="assets/sfx/pop.wav" data-start="5.1" data-duration="0.12" data-volume="0.55" data-track-index="4"></audio>
+      <audio id="sfx05" src="assets/sfx/whoosh.wav" data-start="9.89" data-duration="0.6" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx06" src="assets/sfx/pop.wav" data-start="10.14" data-duration="0.12" data-volume="0.55" data-track-index="6"></audio>
+      <audio id="sfx07" src="assets/sfx/whoosh.wav" data-start="14.55" data-duration="0.6" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx08" src="assets/sfx/pop.wav" data-start="14.8" data-duration="0.12" data-volume="0.55" data-track-index="4"></audio>
+      <audio id="sfx09" src="assets/sfx/whoosh.wav" data-start="19.08" data-duration="0.6" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx10" src="assets/sfx/impact.wav" data-start="19.48" data-duration="0.9" data-volume="0.5" data-track-index="6"></audio>
+      <audio id="sfx11" src="assets/sfx/pop.wav" data-start="21.04" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
+      <audio id="sfx12" src="assets/sfx/whoosh.wav" data-start="21.7" data-duration="0.6" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx13" src="assets/sfx/pop.wav" data-start="21.95" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="sfx14" src="assets/sfx/whoosh.wav" data-start="24.95" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx15" src="assets/sfx/pop.wav" data-start="25.2" data-duration="0.12" data-volume="0.55" data-track-index="7"></audio>
+      <audio id="sfx16" src="assets/sfx/whoosh.wav" data-start="29.01" data-duration="0.6" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx17" src="assets/sfx/tick.wav" data-start="30.91" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx18" src="assets/sfx/tick.wav" data-start="31.83" data-duration="0.06" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx19" src="assets/sfx/tick.wav" data-start="34.36" data-duration="0.06" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx20" src="assets/sfx/whoosh.wav" data-start="35.62" data-duration="0.6" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx21" src="assets/sfx/pop.wav" data-start="35.87" data-duration="0.12" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="sfx22" src="assets/sfx/whoosh.wav" data-start="44.38" data-duration="0.6" data-volume="0.7" data-track-index="6"></audio>
+      <audio id="sfx23" src="assets/sfx/tick.wav" data-start="45.13" data-duration="0.06" data-volume="0.7" data-track-index="7"></audio>
+      <audio id="sfx24" src="assets/sfx/tick.wav" data-start="45.48" data-duration="0.06" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx25" src="assets/sfx/tick.wav" data-start="45.83" data-duration="0.06" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx26" src="assets/sfx/pop.wav" data-start="45.88" data-duration="0.12" data-volume="0.6" data-track-index="6"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#flash", { opacity: 0 }, 0);
+      [].forEach((t) => {
+        tl.to("#flash", { opacity: 0.5, duration: 0.05, ease: "none" }, t - 0.05).to("#flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, t);
+      });
+
+      // Ken Burns on every shot
+      tl.fromTo("#sc-hook", { scale: 1.15 }, { scale: 1.0, duration: 5.6, ease: "none" }, 0.0);
+      tl.fromTo("#sc-work", { scale: 1.0 }, { scale: 1.1, duration: 5.54, ease: "none" }, 5.1);
+      tl.fromTo("#sc-work", { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 5.1);
+      tl.fromTo("#sc-intro", { scale: 1.0 }, { scale: 1.1, duration: 5.16, ease: "none" }, 10.14);
+      tl.fromTo("#sc-intro", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, 10.14);
+      tl.fromTo("#sc-rezab", { scale: 1.0 }, { scale: 1.1, duration: 5.03, ease: "none" }, 14.8);
+      tl.fromTo("#sc-rezab", { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 14.8);
+      tl.fromTo("#sc-rooms", { scale: 1.08 }, { scale: 1.0, duration: 3.12, ease: "none" }, 19.33);
+      tl.fromTo("#sc-rooms", { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 19.33);
+      tl.fromTo("#sc-builtup", { scale: 1.0 }, { scale: 1.08, duration: 3.75, ease: "none" }, 21.95);
+      tl.fromTo("#sc-builtup", { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 21.95);
+      tl.fromTo("#sc-land", { scale: 1.0 }, { scale: 1.1, duration: 4.56, ease: "none" }, 25.2);
+      tl.fromTo("#sc-land", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, 25.2);
+      tl.fromTo("#sc-loc", { scale: 1.0 }, { scale: 1.1, duration: 7.11, ease: "none" }, 29.26);
+      tl.fromTo("#sc-loc", { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 29.26);
+      tl.fromTo("#sc-growth", { scale: 1.1 }, { scale: 1.0, duration: 9.26, ease: "none" }, 35.87);
+      tl.fromTo("#sc-growth", { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 35.87);
+      tl.fromTo("#sc-cta", { scale: 1.1 }, { scale: 1.25, duration: 7.98, ease: "none" }, 44.63);
+      tl.fromTo("#sc-cta", { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 44.63);
+
+      // titlecard
+      tl.fromTo("#tc-top", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.05);
+      gsap.utils.toArray("#tc-big .tcl").forEach((el, i) => tl.fromTo(el, { y: 120, scale: 1.5, rotation: i % 2 ? 4 : -4, opacity: 0 }, { y: 0, scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, 0.1 + i * 0.22));
+      tl.fromTo("#tc-shine", { xPercent: -120 }, { xPercent: 120, duration: 0.9, ease: "power2.inOut" }, 1.0);
+      tl.fromTo("#tc-pill", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 1.0);
+      tl.fromTo("#tc-script", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 3.18);
+      tl.to("#tc-big", { scale: 1.03, duration: 1.2, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.6);
+
+      // text
+      tl.fromTo("#tx1", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 5.1);
+      tl.fromTo("#tx1-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 7.71);
+
+      // text
+      tl.fromTo("#tx2", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 10.14);
+      tl.fromTo("#tx2-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 12.03);
+
+      // text
+      tl.fromTo("#tx3", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 14.8);
+      tl.fromTo("#tx3-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 18.63);
+
+      // rooms
+      tl.fromTo("#bilik-num", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.out" }, 19.48);
+      tl.fromTo("#bilik-word", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 19.73);
+      tl.fromTo("#bilikair", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 21.04);
+
+      // text
+      tl.fromTo("#tx4", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 21.95);
+      tl.fromTo("#tx4-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 23.6);
+
+      // text
+      tl.fromTo("#tx5", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 25.2);
+      tl.fromTo("#tx5-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 26.55);
+
+      // nearby
+      tl.fromTo("#nb-title", { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 29.360000000000003);
+      tl.fromTo("#nb-list .nb-row:nth-child(1)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 30.81);
+      tl.fromTo("#nb-list .nb-row:nth-child(2)", { x: 900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 31.73);
+      tl.fromTo("#nb-list .nb-row:nth-child(3)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 34.26);
+
+      // text
+      tl.fromTo("#tx6", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 35.87);
+      tl.fromTo("#tx6-p", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "back.out(2.2)" }, 38.5);
+
+      // cta
+      tl.fromTo("#cta-title", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.out" }, 44.63);
+      tl.fromTo("#cta-list .check:nth-child(1)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 45.13);
+      tl.fromTo("#cta-list .check:nth-child(2)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 45.48);
+      tl.fromTo("#cta-list .check:nth-child(3)", { x: -900, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 45.83);
+      tl.fromTo("#cta-phone", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 46.18);
+      tl.fromTo("#cta", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, 45.88);
+      tl.to("#cta", { scale: 1.06, duration: 0.3, yoyo: true, repeat: 7, ease: "sine.inOut" }, 46.28);
+
+      // phone
+      tl.fromTo("#phone", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.2);
+
+      // captions
+      gsap.set(".cap", { autoAlpha: 0 });
+      tl.set("#cap0", { autoAlpha: 1 }, 0.0).set("#cap0", { autoAlpha: 0 }, 2.34); tl.fromTo("#cap0", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 0.0);
+      tl.set("#cap1", { autoAlpha: 1 }, 2.34).set("#cap1", { autoAlpha: 0 }, 5.25); tl.fromTo("#cap1", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 2.34);
+      tl.set("#cap2", { autoAlpha: 1 }, 5.25).set("#cap2", { autoAlpha: 0 }, 7.71); tl.fromTo("#cap2", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 5.25);
+      tl.set("#cap3", { autoAlpha: 1 }, 7.71).set("#cap3", { autoAlpha: 0 }, 10.29); tl.fromTo("#cap3", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 7.71);
+      tl.set("#cap4", { autoAlpha: 1 }, 10.29).set("#cap4", { autoAlpha: 0 }, 11.73); tl.fromTo("#cap4", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 10.29);
+      tl.set("#cap5", { autoAlpha: 1 }, 11.73).set("#cap5", { autoAlpha: 0 }, 13.53); tl.fromTo("#cap5", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 11.73);
+      tl.set("#cap6", { autoAlpha: 1 }, 13.53).set("#cap6", { autoAlpha: 0 }, 14.95); tl.fromTo("#cap6", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 13.53);
+      tl.set("#cap7", { autoAlpha: 1 }, 14.95).set("#cap7", { autoAlpha: 0 }, 16.41); tl.fromTo("#cap7", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 14.95);
+      tl.set("#cap8", { autoAlpha: 1 }, 16.41).set("#cap8", { autoAlpha: 0 }, 19.48); tl.fromTo("#cap8", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 16.41);
+      tl.set("#cap9", { autoAlpha: 1 }, 19.48).set("#cap9", { autoAlpha: 0 }, 20.7); tl.fromTo("#cap9", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 19.48);
+      tl.set("#cap10", { autoAlpha: 1 }, 20.7).set("#cap10", { autoAlpha: 0 }, 22.1); tl.fromTo("#cap10", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 20.7);
+      tl.set("#cap11", { autoAlpha: 1 }, 22.1).set("#cap11", { autoAlpha: 0 }, 25.35); tl.fromTo("#cap11", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 22.1);
+      tl.set("#cap12", { autoAlpha: 1 }, 25.35).set("#cap12", { autoAlpha: 0 }, 29.41); tl.fromTo("#cap12", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 25.35);
+      tl.set("#cap13", { autoAlpha: 1 }, 29.41).set("#cap13", { autoAlpha: 0 }, 31.83); tl.fromTo("#cap13", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 29.41);
+      tl.set("#cap14", { autoAlpha: 1 }, 31.83).set("#cap14", { autoAlpha: 0 }, 33.92); tl.fromTo("#cap14", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 31.83);
+      tl.set("#cap15", { autoAlpha: 1 }, 33.92).set("#cap15", { autoAlpha: 0 }, 36.02); tl.fromTo("#cap15", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 33.92);
+      tl.set("#cap16", { autoAlpha: 1 }, 36.02).set("#cap16", { autoAlpha: 0 }, 38.5); tl.fromTo("#cap16", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 36.02);
+      tl.set("#cap17", { autoAlpha: 1 }, 38.5).set("#cap17", { autoAlpha: 0 }, 40.42); tl.fromTo("#cap17", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 38.5);
+      tl.set("#cap18", { autoAlpha: 1 }, 40.42).set("#cap18", { autoAlpha: 0 }, 42.69); tl.fromTo("#cap18", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 40.42);
+      tl.set("#cap19", { autoAlpha: 1 }, 42.69).set("#cap19", { autoAlpha: 0 }, 44.83); tl.fromTo("#cap19", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 42.69);
+      tl.set("#cap20", { autoAlpha: 1 }, 44.83).set("#cap20", { autoAlpha: 0 }, 48.05); tl.fromTo("#cap20", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 44.83);
+      tl.set("#cap21", { autoAlpha: 1 }, 48.05).set("#cap21", { autoAlpha: 0 }, 52.61); tl.fromTo("#cap21", { scale: 0.85 }, { scale: 1, duration: 0.15, ease: "back.out(3)" }, 48.05);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
