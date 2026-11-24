@@ -1,0 +1,236 @@
+{
+  "phone": "0198395315",
+  "theme": "clean",
+  "caption_highlight": false,
+  "transitions": "slide",
+  "voiceover": "assets/vo/voiceover.m4a",
+  "transcript": "transcript.json",
+  "fix_words": {},
+  "pause_max": 0.45,
+  "pause_keep": 0.3,
+  "end_hold": 2.2,
+  "music_volume": 0.15,
+  "captions": true,
+  "whoosh_on_cuts": true,
+  "text": {
+    "land_label": "PROJEK TERHAD 🔥",
+    "land_sqft": 48,
+    "land_unit": "UNIT SAHAJA",
+    "land_dims": "Teres 2 Tingkat",
+    "bedrooms": "4",
+    "bedrooms_label": "BILIK TIDUR 🛏️",
+    "bathrooms": "4",
+    "bathrooms_label": "BILIK AIR 🚿",
+    "cta_title": "BERMINAT? 👀",
+    "cta_checks": [
+      "4 Bilik • 4 Bilik Air",
+      "1,693 kps • Freehold",
+      "Tanah Rezab Melayu"
+    ],
+    "cta": "💬 Komen / DM untuk info lanjut"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "from": 0,
+      "src": "assets/clips/front.mp4",
+      "media_start": 0,
+      "kb": [
+        1.15,
+        1.0
+      ]
+    },
+    {
+      "id": "intro",
+      "from": "w:jom-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 0,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "rezab",
+      "from": "w:tanah-0.15",
+      "src": "assets/clips/corner.mp4",
+      "media_start": 0,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "units",
+      "from": "w:cuma-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 6,
+      "kb": [
+        1.05,
+        1.15
+      ]
+    },
+    {
+      "id": "builtup",
+      "from": "w:keluasan-0.15",
+      "src": "assets/clips/front.mp4",
+      "media_start": 7,
+      "kb": [
+        1.0,
+        1.08
+      ]
+    },
+    {
+      "id": "rooms",
+      "from": "w:dengan-0.1",
+      "src": "assets/clips/corner.mp4",
+      "media_start": 13,
+      "kb": [
+        1.08,
+        1.0
+      ]
+    },
+    {
+      "id": "land",
+      "from": "w:saiz-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 12,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "loc",
+      "from": "w:lokasi-0.15",
+      "src": "assets/clips/aerial.mp4",
+      "media_start": 18,
+      "kb": [
+        1.0,
+        1.1
+      ]
+    },
+    {
+      "id": "cta",
+      "from": "w:berminat-0.2",
+      "src": "assets/stills/front.jpg",
+      "kind": "blur",
+      "kb": [
+        1.1,
+        1.25
+      ]
+    }
+  ],
+  "graphics": [
+    {
+      "block": "titlecard",
+      "scene": "hook",
+      "tc_top": "Teres 2 Tingkat | Freehold Rezab Melayu",
+      "tc_big": "SHAH ALAM\nSEKSYEN 30",
+      "tc_size": 190,
+      "tc_pill": "4 Bilik • 4 Bilik Air",
+      "tc_script": "Taman Idaman Jiwa",
+      "cues": {
+        "pill": "w:luas",
+        "script": "w:alam"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "intro",
+      "line": "TAMAN IDAMAN JIWA",
+      "pill": "Seksyen 30, Shah Alam",
+      "cues": {
+        "pill": "w:seksyen"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "rezab",
+      "line": "TANAH REZAB MELAYU 🌿",
+      "pill": "✅ Freehold",
+      "cues": {
+        "pill": "w:freehold"
+      }
+    },
+    {
+      "block": "land",
+      "scene": "units",
+      "cues": {
+        "count_from": "s:units.start+0.2",
+        "number": "w:48",
+        "unit": "w:unit",
+        "dims": "w:sahaja"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "builtup",
+      "line": "KELUASAN BINAAN",
+      "pill": "1,693 kaki persegi",
+      "cues": {
+        "pill": "w:1,693"
+      }
+    },
+    {
+      "block": "rooms",
+      "scene": "rooms",
+      "cues": {
+        "bed": "w:4",
+        "bath": "w:4#2"
+      }
+    },
+    {
+      "block": "text",
+      "scene": "land",
+      "line": "SAIZ TANAH",
+      "pill": "20' x 64'",
+      "cues": {
+        "pill": "w:20"
+      }
+    },
+    {
+      "block": "nearby",
+      "scene": "loc",
+      "title": "📍 LOKASI",
+      "items": [
+        [
+          "🛍️",
+          "Quayside Mall",
+          "Dekat"
+        ],
+        [
+          "🏘️",
+          "Bandar Rimbayu",
+          "Dekat"
+        ],
+        [
+          "🏙️",
+          "Kota Kemuning",
+          "Dekat"
+        ],
+        [
+          "🛣️",
+          "Lebuhraya KESAS",
+          "Akses mudah"
+        ]
+      ],
+      "cues": {
+        "items": [
+          "w:quayside",
+          "w:bandar",
+          "w:kota",
+          "w:kesas"
+        ]
+      }
+    },
+    {
+      "block": "cta",
+      "scene": "cta",
+      "cues": {
+        "checks": "w:berminat+0.3",
+        "cta": "w:komen"
+      }
+    }
+  ]
+}
